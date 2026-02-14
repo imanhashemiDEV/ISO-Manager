@@ -1,0 +1,47 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Workplace.CreateModel
+
+@{ ViewData["Title"] = "ایجاد محل کار"; }
+        
+        <div class="pc-container">
+            <div class="pc-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                            <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+                <!-- [ Main Content ] start -->
+                <div class="grid grid-cols-12 gap-6">
+                    <div class="col-span-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>ایجاد محل کار</h5>
+                            </div>
+                            <div class="card-body">
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="grid grid-cols-12 gap-6">
+                                        <div class="col-span-12 md:col-span-6 mb-4">
+                                            <label asp-for="Workplace.title" class="control-label"></label>
+                                            <input asp-for="Workplace.title" class="form-control mt-4" />
+                                            <span asp-validation-for="Workplace.title" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">ایجاد</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

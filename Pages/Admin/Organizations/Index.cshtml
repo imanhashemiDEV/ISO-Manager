@@ -1,0 +1,67 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Organization.IndexModel
+
+@{
+    ViewData["Title"] = "لیست شرکت ها";
+}
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="Index">خانه</a></li>
+                    @* <li class="breadcrumb-item"><a href="javascript: void(0)">Online Courses</a></li> *@
+                    <li class="breadcrumb-item" aria-current="page">لیست شرکت ها</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-x-6">
+            <div class="col-span-12">
+                <div class="card table-card">
+                    <div class="card-header">
+                        <div class="sm:flex items-center justify-between">
+                            <h5 class="mb-3 sm:mb-0">لیست شرکت ها</h5>
+                            <div>
+                                <a asp-page="/Admin/Organizations/Create" class="btn btn-primary">اضافه کردن شرکت</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-3">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="pc-dt-simple">
+                                <thead>
+
+                                    <tr>
+                                        <th>ردیف</th>
+                                        <th>@Html.DisplayNameFor(model => model.Organization[0].title)</th>
+                                        <th>عملیات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Organization)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                            <td> @Html.DisplayFor(modelItem => item.title)</td>
+                                            <td>
+                                                <a asp-page="/Admin/Organizations/Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>

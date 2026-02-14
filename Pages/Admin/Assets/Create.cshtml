@@ -1,0 +1,89 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Assets.CreateModel
+
+@{
+ViewData["Title"] = "ایجاد اموال";
+}
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست اموال</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ایجاد اموال</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Asset.title" class="control-label"></label>
+                                    <input asp-for="Asset.title" class="form-control" />
+                                    <span asp-validation-for="Asset.title" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Asset.e_title" class="control-label"></label>
+                                    <input asp-for="Asset.e_title" class="form-control" />
+                                    <span asp-validation-for="Asset.e_title" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Asset.asset_number" class="control-label"></label>
+                                    <input asp-for="Asset.asset_number" class="form-control" />
+                                    <span asp-validation-for="Asset.asset_number" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Asset.serial_number" class="control-label"></label>
+                                    <input asp-for="Asset.serial_number" class="form-control" />
+                                    <span asp-validation-for="Asset.serial_number" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Asset.device_user" class="control-label"></label>
+                                    <input asp-for="Asset.device_user" class="form-control" />
+                                    <span asp-validation-for="Asset.device_user" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Asset.description" class="control-label"></label>
+                                    <input asp-for="Asset.description" class="form-control" />
+                                    <span asp-validation-for="Asset.description" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Asset.inspection_date" class="control-label"></label>
+                                    <input asp-for="Asset.inspection_date" class="form-control" />
+                                    <span asp-validation-for="Asset.inspection_date" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Asset.status" class="control-label"></label>
+                                    <select asp-for="Asset.status" class="form-select">
+                                        <option value="active">فعال</option>
+                                        <option value="deactive">غیر فعال</option>
+                                    </select>
+                                    <span asp-validation-for="Asset.status" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+        @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

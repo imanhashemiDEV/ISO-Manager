@@ -1,0 +1,97 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.OccupationHarmfuls.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].exposure_source)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].evaluation_method)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].exposure_rate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].exposure_duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].exposure_limit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].created_at)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].updated_at)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].Occupation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].HarmfulFactor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].harmful_item_id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.OccupationHarmful) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.exposure_source)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.evaluation_method)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.exposure_rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.exposure_duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.exposure_limit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Occupation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HarmfulFactor.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.harmful_item_id)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

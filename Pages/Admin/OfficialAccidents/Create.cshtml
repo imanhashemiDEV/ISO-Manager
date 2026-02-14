@@ -1,0 +1,164 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.OfficialAccidents.CreateModel
+
+        @{
+        ViewData["Title"] = "Create";
+            Layout = "~/Pages/Shared/_Layout.cshtml";
+        }
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ایجاد آمبولانس</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
+                                    <label asp-for="OfficialAccident.user_id" class="control-label"></label>
+                                    <select id="users" asp-for="OfficialAccident.user_id" class="form-select">
+                                        @foreach (var item in ViewBag.users)
+                                        {
+                                            <option value="@item.id">@item.name - - @item.register_code</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.accident_date" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.accident_date" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.accident_date" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.accident_hour" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.accident_hour" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.accident_hour" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.marriage" class="control-label"></label>
+                                    <select asp-for="OfficialAccident.marriage" class="form-select">
+                                        <option value="married">متاهل</option>
+                                        <option value="single">مجرد</option>
+                                    </select>
+                                    <span asp-validation-for="OfficialAccident.marriage" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.accident_place" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.accident_place" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.accident_place" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.activity_in_accident" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.activity_in_accident" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.activity_in_accident" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.direct_accident_causes" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.direct_accident_causes" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.direct_accident_causes" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.unsafe_condition_causes" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.unsafe_condition_causes" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.unsafe_condition_causes" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.unsafe_action_causes" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.unsafe_action_causes" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.unsafe_action_causes" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 mb-4">
+                                    <label asp-for="OfficialAccident.accident_description" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.accident_description" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.accident_description" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.accident_boss" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.accident_boss" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.accident_boss" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 mb-4">
+                                    <label asp-for="OfficialAccident.hse_description" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.hse_description" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.hse_description" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.is_guilty" class="control-label"></label>
+                                    <select asp-for="OfficialAccident.is_guilty" class="form-select">
+                                        <option value="1">بله</option>
+                                        <option value="0">خیر</option>
+                                    </select>
+                                    <span asp-validation-for="OfficialAccident.is_guilty" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.doctor_description" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.doctor_description" class="form-control" />
+                                    <span asp-validation-for="OfficialAccident.doctor_description" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.accident_consequence" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.accident_consequence" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.accident_consequence" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.accident_complication" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.accident_complication" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.accident_complication" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.accident_injured_part" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.accident_injured_part" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.accident_injured_part" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.hse_boss" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.hse_boss" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.hse_boss" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.lost_days" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.lost_days" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.lost_days" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="OfficialAccident.receive_report_date" class="control-label"></label>
+                                    <input asp-for="OfficialAccident.receive_report_date" class="form-control"/>
+                                    <span asp-validation-for="OfficialAccident.receive_report_date" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+
+    <script>
+
+        var users = new Choices(document.getElementById('users'));
+
+    </script>
+
+}

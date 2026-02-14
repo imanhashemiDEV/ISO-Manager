@@ -1,0 +1,106 @@
+﻿@page
+@using ISO_Manager.Utilities
+@using System.Globalization
+@model ISO_Manager.Pages.Admin.Inspections.IndexModel
+
+@{
+    ViewData["Title"] = "لیست بازرسی ها";
+    var row = 1;
+}
+
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item" aria-current="page">لیست بازرسی ها</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-x-6">
+            <div class="col-span-12">
+                <div class="card table-card">
+                    <div class="card-header">
+                        <div class="sm:flex items-center justify-between">
+                            <h5 class="mb-3 sm:mb-0">لیست بازرسی ها</h5>
+                            <div>
+                                <a asp-page="./Create" class="btn btn-primary">اضافه کردن بازرسی</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-3">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="pc-dt-simple">
+                                <thead>
+
+                                    <tr>
+                                        <th>ردیف</th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Inspection[0].inspection_date)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Inspection[0].User)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Inspection[0].Workplace)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Inspection[0].InspectionPlace)
+                                        </th>
+                                        <th>عملیات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Inspection)
+                                    {
+                                        <tr>
+                                            <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
+                                            <td>
+                                                @DateToPersian.ToShamsi(item.inspection_date, "yyyy/MM/dd")
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.User.name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Workplace.title)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.InspectionPlace.title)
+                                            </td>
+                                            <td>
+                                                <a asp-page="./Details" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                    <i class="ti ti-eye text-xl leading-none"></i>
+                                                </a>
+                                                <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                            @if (ViewBag.ItemCount > ViewBag.Take)
+                            {
+                                <nav aria-label="Page navigation example">
+                                    <ul class="flex justify-center *:*:inline-block *:*:px-3 *:*:py-1.5 *:border *:border-theme-border *:dark:border-themedark-border hover:*:bg-secondary-300/10 mb-3">
+                                        @for (int i = 1; i <= ViewBag.PageCount; i++)
+                                        {
+                                            <li class="@((ViewBag.pageId == i) ? "bg-primary" : "")"><a asp-route-pageId="@i">@i</a></li>
+                                        }
+                                    </ul>
+                                </nav>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>

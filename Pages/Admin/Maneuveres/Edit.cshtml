@@ -1,0 +1,81 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Maneuveres.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Maneuver</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Maneuver.Id" />
+            <div class="form-group">
+                <label asp-for="Maneuver.title" class="control-label"></label>
+                <input asp-for="Maneuver.title" class="form-control" />
+                <span asp-validation-for="Maneuver.title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maneuver.place" class="control-label"></label>
+                <input asp-for="Maneuver.place" class="form-control" />
+                <span asp-validation-for="Maneuver.place" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maneuver.year" class="control-label"></label>
+                <input asp-for="Maneuver.year" class="form-control" />
+                <span asp-validation-for="Maneuver.year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maneuver.type" class="control-label"></label>
+                <input asp-for="Maneuver.type" class="form-control" />
+                <span asp-validation-for="Maneuver.type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maneuver.level" class="control-label"></label>
+                <input asp-for="Maneuver.level" class="form-control" />
+                <span asp-validation-for="Maneuver.level" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maneuver.status" class="control-label"></label>
+                <input asp-for="Maneuver.status" class="form-control" />
+                <span asp-validation-for="Maneuver.status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maneuver.act_time" class="control-label"></label>
+                <input asp-for="Maneuver.act_time" class="form-control" />
+                <span asp-validation-for="Maneuver.act_time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maneuver.equipment" class="control-label"></label>
+                <input asp-for="Maneuver.equipment" class="form-control" />
+                <span asp-validation-for="Maneuver.equipment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maneuver.created_at" class="control-label"></label>
+                <input asp-for="Maneuver.created_at" class="form-control" />
+                <span asp-validation-for="Maneuver.created_at" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maneuver.updated_at" class="control-label"></label>
+                <input asp-for="Maneuver.updated_at" class="form-control" />
+                <span asp-validation-for="Maneuver.updated_at" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

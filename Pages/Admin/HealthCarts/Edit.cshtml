@@ -1,0 +1,80 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.HealthCarts.EditModel
+
+@{
+    ViewData["Title"] = "ویرایش کارت بهداشت";
+}
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست کارت های بهداشت </a></li>
+                    <li class="breadcrumb-item" aria-current="page">ویرایش</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ویرایش کارت بهداشت</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="HealthCart.Id" />
+                            <div class="grid grid-cols-12 gap-6">
+                                
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="HealthCart.end_date" class="control-label"></label>
+                                    <input asp-for="HealthCart.end_date" class="form-control" />
+                                    <span asp-validation-for="HealthCart.end_date" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
+                                    <label asp-for="HealthCart.user_id" class="control-label"></label>
+                                    <select id="users" asp-for="HealthCart.user_id" class="form-select">
+                                        @foreach (var item in ViewBag.users)
+                                        {
+                                            <option value="@item.id">@item.name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
+                                    <label asp-for="HealthCart.workplace_id" class="control-label"></label>
+                                    <select id="workplaces" asp-for="HealthCart.workplace_id" class="form-select">
+                                        @foreach (var item in ViewBag.workplaces)
+                                        {
+                                            <option value="@item.id">@item.title</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ویرایش</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+        var users = new Choices(document.getElementById('users'));
+        var workplaces = new Choices(document.getElementById('workplaces'));
+
+    </script>
+}

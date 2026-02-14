@@ -1,0 +1,107 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Reminders.IndexModel
+
+@{ ViewData["Title"] = "Index"; }
+
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="../Index">خانه</a></li>
+                    @* <li class="breadcrumb-item"><a href="javascript: void(0)">Online Courses</a></li> *@
+                    <li class="breadcrumb-item" aria-current="page">لیست آمبولانس ها</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-x-6">
+            <div class="col-span-12">
+                <div class="card table-card">
+                    <div class="card-header">
+                        <div class="sm:flex items-center justify-between">
+                            <h5 class="mb-3 sm:mb-0">لیست  پیمانکاران</h5>
+                            <div>
+                                <a asp-page="./Create" class="btn btn-primary">اضافه کردن پیمانکار</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-3">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="pc-dt-simple">
+                                <thead>
+
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Reminder[0].title)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Reminder[0].reminder_date)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Reminder[0].status)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Reminder[0].created_at)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Reminder[0].updated_at)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Reminder[0].User)
+                                    </th>
+                                    <th>عملیات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Reminder)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.reminder_date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.status)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.created_at)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.updated_at)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.User.Id)
+                                        </td>
+                                        <td>
+                                            <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                <i class="ti ti-edit text-xl leading-none"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+
+                            </table>
+                            <div class="card-body pc-component">
+                                <div class="flex flex-wrap gap-2" role="toolbar">
+                                    <div class="inline-flex items-center" role="group">
+                                        <button type="button" class="btn btn-light-secondary">8</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>

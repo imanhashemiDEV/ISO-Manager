@@ -1,0 +1,56 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.EmergencyPhoneBooks.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>EmergencyPhoneBook</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmergencyPhoneBook.place)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmergencyPhoneBook.place)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmergencyPhoneBook.city_phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmergencyPhoneBook.city_phone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmergencyPhoneBook.company_phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmergencyPhoneBook.company_phone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmergencyPhoneBook.created_at)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmergencyPhoneBook.created_at)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmergencyPhoneBook.updated_at)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmergencyPhoneBook.updated_at)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmergencyPhoneBook.organization_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmergencyPhoneBook.organization_id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.EmergencyPhoneBook.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

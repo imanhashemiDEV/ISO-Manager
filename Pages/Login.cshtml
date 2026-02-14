@@ -1,0 +1,51 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Home page";
+    Layout = "_HomeLayout";
+}
+
+
+<!-- [ Header ] start -->
+<header id="home"
+        class="flex items-center flex-col justify-center min-h-screen overflow-hidden relative py-[100px] bg-[url('../images/landing/img-headerbg.jpg')] dark:bg-[url(../images/landing/img-headerbg-dark.jpg)] bg-cover">
+
+    <div class="container">
+        <div class="w-full md:w-10/12 text-center mx-auto">
+            <h1 class="text-[22px] md:text-[36px] lg:text-[55px] leading-[1.2] mb-5 wow fadeInUp" data-wow-delay="0.2s">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[rgb(37,161,244)] via-[rgb(249,31,169)] to-[rgb(37,161,244)] bg-[length:400%_100%] bg-left-top animate-[move-bg_24s_infinite_linear]">
+                    Health
+                    Safety
+                    Environment
+                </span>
+            </h1>
+            <div class="auth-main relative">
+                <div class="auth-wrapper v1 flex items-center w-full h-full">
+                    <div class="auth-form flex items-center justify-center grow flex-col bg-cover relative p-6 dark:bg-none">
+                        <div class="card w-full max-w-[480px] shadow-none">
+                            <div class="card-body !p-10">
+                                <a class="w-full mx-auto flex items-center justify-center">
+                                    <img src="~/logo.png" class="mb-4 img-fluid" alt="img">
+                                </a>
+                                <form method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label">شماره پرسنلی</label>
+                                        <input type="text" class="form-control" id="floatingInput">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">رمز عبور</label>
+                                        <input type="password" class="form-control" id="floatingInput1">
+                                    </div>
+                                    <div class="grid mt-4">
+                                        <button type="submit" class="btn btn-primary">رمز عبور</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- [ Header ] End -->

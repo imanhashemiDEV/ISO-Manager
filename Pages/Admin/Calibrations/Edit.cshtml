@@ -1,0 +1,100 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Calibrations.EditModel
+
+@{ ViewData["Title"] = "ویرایش گازسنج"; }
+
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ویرایش</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ویرایش گازسنج</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Calibration.Id" />
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Calibration.title" class="control-label"></label>
+                                    <input asp-for="Calibration.title" class="form-control"/>
+                                    <span asp-validation-for="Calibration.title" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Calibration.asset_number" class="control-label"></label>
+                                    <input asp-for="Calibration.asset_number" class="form-control"/>
+                                    <span asp-validation-for="Calibration.asset_number" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Calibration.serial_number" class="control-label"></label>
+                                    <input asp-for="Calibration.serial_number" class="form-control"/>
+                                    <span asp-validation-for="Calibration.serial_number" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Calibration.device_owner" class="control-label"></label>
+                                    <input asp-for="Calibration.device_owner" class="form-control"/>
+                                    <span asp-validation-for="Calibration.device_owner" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Calibration.device_user" class="control-label"></label>
+                                    <input asp-for="Calibration.device_user" class="form-control"/>
+                                    <span asp-validation-for="Calibration.device_user" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Calibration.delivery_date" class="control-label"></label>
+                                    <input asp-for="Calibration.delivery_date" class="form-control"/>
+                                    <span asp-validation-for="Calibration.delivery_date" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Calibration.start_calibration" class="control-label"></label>
+                                    <input asp-for="Calibration.start_calibration" class="form-control"/>
+                                    <span asp-validation-for="Calibration.start_calibration" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Calibration.end_calibration" class="control-label"></label>
+                                    <input asp-for="Calibration.end_calibration" class="form-control"/>
+                                    <span asp-validation-for="Calibration.end_calibration" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Calibration.status" class="control-label"></label>
+                                    <select asp-for="Calibration.status" class="form-select">
+                                        <option value="active">فعال</option>
+                                        <option value="deactive">غیر فعال</option>
+                                    </select>
+                                    <span asp-validation-for="Calibration.status" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Calibration.description" class="control-label"></label>
+                                    <input asp-for="Calibration.description" class="form-control"/>
+                                    <span asp-validation-for="Calibration.description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

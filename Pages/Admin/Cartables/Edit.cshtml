@@ -1,0 +1,56 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Cartables.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Cartable</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Cartable.Id" />
+            <div class="form-group">
+                <label asp-for="Cartable.title" class="control-label"></label>
+                <input asp-for="Cartable.title" class="form-control" />
+                <span asp-validation-for="Cartable.title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cartable.description" class="control-label"></label>
+                <input asp-for="Cartable.description" class="form-control" />
+                <span asp-validation-for="Cartable.description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cartable.status" class="control-label"></label>
+                <input asp-for="Cartable.status" class="form-control" />
+                <span asp-validation-for="Cartable.status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cartable.created_at" class="control-label"></label>
+                <input asp-for="Cartable.created_at" class="form-control" />
+                <span asp-validation-for="Cartable.created_at" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cartable.updated_at" class="control-label"></label>
+                <input asp-for="Cartable.updated_at" class="form-control" />
+                <span asp-validation-for="Cartable.updated_at" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

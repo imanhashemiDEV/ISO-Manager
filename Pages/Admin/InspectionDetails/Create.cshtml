@@ -1,0 +1,79 @@
+﻿@page "{inspectionId}"
+@model ISO_Manager.Pages.Admin.InspectionDetails.CreateModel
+
+@{
+    ViewData["Title"] = "جزئیات بازرسی";
+    var row = 1;
+}
+
+
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست گزارشات بازرسی</a></li>
+                    <li class="breadcrumb-item" aria-current="page">گزارش بازرسی </li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-x-6">
+            <div class="col-span-12">
+                <div class="card table-card">
+                    <div class="card-header">
+                        <div class="sm:flex items-center justify-between">
+                            <h5 class="mb-3 sm:mb-0">گزارش بازرسی </h5>
+                        </div>
+                    </div>
+                    <div class="card-body pt-3">
+                        <div class="table-responsive">
+                            <form method="post">
+                                 <input type="hidden" asp-for="selectedInspection" value="@Model.selectedInspection">
+                                 <table class="table table-hover" id="pc-dt-simple">
+                                     <thead>
+
+                                     <tr>
+                                         <th>ردیف</th>
+                                         <th>عدم انطباق</th>
+                                         <th>
+                                             @Html.DisplayNameFor(model => model.InspectionTexts[0].text)
+                                         </th>
+                                     </tr>
+                                     </thead>
+                                     <tbody>
+
+                                     @foreach (var item in Model.InspectionTexts)
+                                     {
+                                         <tr>
+                                             <td>@(row++)</td>
+                                             <td>
+                                                 <input type="checkbox" name="Checked" class="form-check-input" value="@item.Id" class="items">
+                                             </td>
+                                             <td>
+                                                 @Html.DisplayFor(modelItem => item.text)
+                                             </td>
+                                         </tr>
+                                     }
+                                     </tbody>
+
+                                 </table>
+
+                                <div class="grid gap-2 mt-2">
+                                    <button class="btn btn-primary" type="submit">ذخیره</button>
+                                </div>
+                            </form>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>

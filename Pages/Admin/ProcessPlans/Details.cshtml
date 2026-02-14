@@ -1,0 +1,74 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.ProcessPlans.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ProcessPlan</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcessPlan.title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcessPlan.title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcessPlan.accept_percent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcessPlan.accept_percent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcessPlan.plan_percent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcessPlan.plan_percent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcessPlan.status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcessPlan.status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcessPlan.deviation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcessPlan.deviation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcessPlan.requests)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcessPlan.requests)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcessPlan.created_at)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcessPlan.created_at)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcessPlan.updated_at)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcessPlan.updated_at)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcessPlan.Process)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcessPlan.Process.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ProcessPlan.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

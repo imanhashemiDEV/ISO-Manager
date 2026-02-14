@@ -1,0 +1,56 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.ClothGroups.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ایجاد گروه البسه</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="ClothGroup.Id" />
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="ClothGroup.name" class="control-label"></label>
+                                    <input asp-for="ClothGroup.name" class="form-control"/>
+                                    <span asp-validation-for="ClothGroup.name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

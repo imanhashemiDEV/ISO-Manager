@@ -1,0 +1,51 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.InspectionPlaces.EditModel
+
+@{
+    ViewData["Title"] = "ویرایش محل های بازرسی";
+}
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست محل های بازرسی</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ویرایش محل بازرسی</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <input type="hidden" asp-for="InspectionPlace.Id" class="form-control" />
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="InspectionPlace.title" class="control-label"></label>
+                                    <input asp-for="InspectionPlace.title" class="form-control"/>
+                                    <span asp-validation-for="InspectionPlace.title" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn btn-success">ویرایش</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

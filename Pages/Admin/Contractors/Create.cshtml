@@ -1,0 +1,128 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Contractors.CreateModel
+
+        @{
+        ViewData["Title"] = "Create";
+            Layout = "~/Pages/Shared/_Layout.cshtml";
+        }
+        
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ایجاد آمبولانس</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Contractor.Id" />
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.title" class="control-label"></label>
+                                    <input asp-for="Contractor.title" class="form-control" />
+                                    <span asp-validation-for="Contractor.title" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.company" class="control-label"></label>
+                                    <input asp-for="Contractor.company" class="form-control" />
+                                    <span asp-validation-for="Contractor.company" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.employer" class="control-label"></label>
+                                    <input asp-for="Contractor.employer" class="form-control" />
+                                    <span asp-validation-for="Contractor.employer" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.employer_mobile" class="control-label"></label>
+                                    <input asp-for="Contractor.employer_mobile" class="form-control" />
+                                    <span asp-validation-for="Contractor.employer_mobile" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.manager" class="control-label"></label>
+                                    <input asp-for="Contractor.manager" class="form-control" />
+                                    <span asp-validation-for="Contractor.manager" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.manager_mobile" class="control-label"></label>
+                                    <input asp-for="Contractor.manager_mobile" class="form-control" />
+                                    <span asp-validation-for="Contractor.manager_mobile" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.manager_agent" class="control-label"></label>
+                                    <input asp-for="Contractor.manager_agent" class="form-control" />
+                                    <span asp-validation-for="Contractor.manager_agent" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.manager_agent_mobile" class="control-label"></label>
+                                    <input asp-for="Contractor.manager_agent_mobile" class="form-control" />
+                                    <span asp-validation-for="Contractor.manager_agent_mobile" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.hse_agent" class="control-label"></label>
+                                    <input asp-for="Contractor.hse_agent" class="form-control" />
+                                    <span asp-validation-for="Contractor.hse_agent" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.hse_agent_mobile" class="control-label"></label>
+                                    <input asp-for="Contractor.hse_agent_mobile" class="form-control" />
+                                    <span asp-validation-for="Contractor.hse_agent_mobile" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.personnel_count" class="control-label"></label>
+                                    <input asp-for="Contractor.personnel_count" class="form-control" />
+                                    <span asp-validation-for="Contractor.personnel_count" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.contract_number" class="control-label"></label>
+                                    <input asp-for="Contractor.contract_number" class="form-control" />
+                                    <span asp-validation-for="Contractor.contract_number" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.start_date" class="control-label"></label>
+                                    <input asp-for="Contractor.start_date" class="form-control" />
+                                    <span asp-validation-for="Contractor.start_date" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.end_date" class="control-label"></label>
+                                    <input asp-for="Contractor.end_date" class="form-control" />
+                                    <span asp-validation-for="Contractor.end_date" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.description" class="control-label"></label>
+                                    <input asp-for="Contractor.description" class="form-control" />
+                                    <span asp-validation-for="Contractor.description" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Contractor.status" class="control-label"></label>
+                                    <input asp-for="Contractor.status" class="form-control" />
+                                    <span asp-validation-for="Contractor.status" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

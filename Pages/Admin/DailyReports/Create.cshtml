@@ -1,0 +1,85 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.DailyReports.CreateModel
+
+@{ ViewData["Title"] = "ایجاد گزارش روزانه"; }
+        
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ایجاد گزارش روزانه</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="DailyReport.type" class="control-label"></label>
+                                    <select asp-for="DailyReport.type" class="form-select my-2">
+                                        <option value="rig">دکل حفاری</option>
+                                        <option value="coil-tube">لوله مغزی</option>
+                                        <option value="pump-truck">پمپ های ویژه</option>
+                                        <option value="pump-nitrogen">پمپ نیتروژن</option>
+                                    </select>
+                                    <span asp-validation-for="DailyReport.type" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="DailyReport.unit" class="control-label"></label>
+                                    <input asp-for="DailyReport.unit" class="form-control my-2" />
+                                    <span asp-validation-for="DailyReport.unit" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="DailyReport.location" class="control-label"></label>
+                                    <input asp-for="DailyReport.location" class="form-control my-2" />
+                                    <span asp-validation-for="DailyReport.location" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
+                                    <label asp-for="DailyReport.rig_boss_id" class="control-label"></label>
+                                    <select id="rig_bosses" asp-for="DailyReport.rig_boss_id" class="form-control" asp-items="ViewBag.rig_boss_id"></select>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
+                                    <label asp-for="DailyReport.camp_boss_id" class="control-label"></label>
+                                    <select id="camp_bosses" asp-for="DailyReport.camp_boss_id" class="form-control" asp-items="ViewBag.camp_boss_id"></select>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
+                                    <label asp-for="DailyReport.doctor_id" class="control-label"></label>
+                                    <select id="doctors" asp-for="DailyReport.doctor_id" class="form-control" asp-items="ViewBag.doctor_id"></select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+        <script>
+            var doctors = new Choices(document.getElementById('doctors'));
+            var camp_bosses = new Choices(document.getElementById('camp_bosses'));
+            var rig_bosses = new Choices(document.getElementById('rig_bosses'));
+        </script>
+
+    }
+}

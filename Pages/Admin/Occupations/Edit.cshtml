@@ -1,0 +1,63 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Occupation.EditModel
+
+@{ ViewData["Title"] = "ویرایش سمت"; }
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ویرایش</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ویرایش سمت</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Occupation.Id" />
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Occupation.title" class="control-label"></label>
+                                    <input asp-for="Occupation.title" class="form-control mt-4" />
+                                    <span asp-validation-for="Occupation.title" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Occupation.occupation_code" class="control-label"></label>
+                                    <input asp-for="Occupation.occupation_code" class="form-control mt-4" />
+                                    <span asp-validation-for="Occupation.occupation_code" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 mb-4">
+                                <label asp-for="Occupation.occupation_type" class="control-label"></label>
+                                <select asp-for="Occupation.occupation_type" class="form-select">
+                                    <option value="rasmi">رسمی</option>
+                                    <option value="peymankari">پیمانکاری</option>
+                                </select>
+                                <span asp-validation-for="Occupation.occupation_type" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-info">ویرایش</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

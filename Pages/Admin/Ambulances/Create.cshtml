@@ -1,0 +1,118 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Ambulances.CreateModel
+
+@{
+ViewData["Title"] = "ایجاد آمبولانس";
+}
+        
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست آمبولانس ها</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ایجاد آمبولانس</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
+                                    <label asp-for="Ambulance.user_id" class="control-label"></label>
+                                    <select id="users" asp-for="Ambulance.user_id" class="form-select">
+                                        @foreach (var item in ViewBag.users)
+                                        {
+                                            <option value="@item.id">@item.name - - @item.register_code</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
+                                    <label asp-for="Ambulance.workplace_id" class="control-label"></label>
+                                    <select id="workplaces" asp-for="Ambulance.workplace_id" class="form-select">
+                                        @foreach (var item in ViewBag.workplaces)
+                                        {
+                                            <option value="@item.id">@item.title</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Ambulance.owner" class="control-label"></label>
+                                    <input asp-for="Ambulance.owner" class="form-control"/>
+                                    <span asp-validation-for="Ambulance.owner" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Ambulance.car_model" class="control-label"></label>
+                                    <input asp-for="Ambulance.car_model" class="form-control"/>
+                                    <span asp-validation-for="Ambulance.car_model" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Ambulance.car_year" class="control-label"></label>
+                                    <input asp-for="Ambulance.car_year" class="form-control"/>
+                                    <span asp-validation-for="Ambulance.car_year" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Ambulance.type" class="control-label"></label>
+                                    <input asp-for="Ambulance.type" class="form-control"/>
+                                    <span asp-validation-for="Ambulance.type" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Ambulance.owner_status" class="control-label"></label>
+                                    <input asp-for="Ambulance.owner_status" class="form-control"/>
+                                    <span asp-validation-for="Ambulance.owner_status" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Ambulance.rental_number" class="control-label"></label>
+                                    <input asp-for="Ambulance.rental_number" class="form-control"/>
+                                    <span asp-validation-for="Ambulance.rental_number" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Ambulance.car_tag" class="control-label"></label>
+                                    <input asp-for="Ambulance.car_tag" class="form-control"/>
+                                    <span asp-validation-for="Ambulance.car_tag" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Ambulance.description" class="control-label"></label>
+                                    <input asp-for="Ambulance.description" class="form-control"/>
+                                    <span asp-validation-for="Ambulance.description" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Ambulance.status" class="control-label"></label>
+                                    <select asp-for="Ambulance.status" class="form-select">
+                                        <option value="active">فعال</option>
+                                        <option value="deactive">غیر فعال</option>
+                                    </select>
+                                    <span asp-validation-for="Ambulance.status" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+            
+            var users = new Choices(document.getElementById('users'));
+        var workplaces = new Choices(document.getElementById('workplaces'));
+       
+        </script>
+}

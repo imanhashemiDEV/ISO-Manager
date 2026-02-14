@@ -1,0 +1,97 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Clothes.EditModel
+
+@{ ViewData["Title"] = "ویرایش البسه تحویلی"; }
+
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ویرایش</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ویرایش البسه</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Cloth.Id" />
+                            <input type="hidden" asp-for="Cloth.user_id" />
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Cloth.cloth_type" class="control-label"></label>
+                                    <select asp-for="Cloth.cloth_type" class="form-select">
+                                        <option value="shoes">کفش ایمنی</option>
+                                        <option value="boot">کفش ساق بلند</option>
+                                        <option value="boot-shoes">چکمه ایمنی</option>
+                                        <option value="boiler-suit">لباس کار</option>
+                                        <option value="glasses">عینک ایمنی</option>
+                                        <option value="earmuff">گوشی ایمنی</option>
+                                        <option value="safety-helmet">کلاه ایمنی</option>
+                                        <option value="rain-coat">بارانی</option>
+                                        <option value="Over-coat">اورکت</option>
+                                    </select>
+                                    <span asp-validation-for="Cloth.cloth_type" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Cloth.receive_type" class="control-label"></label>
+                                    <select asp-for="Cloth.receive_type" class="form-select">
+                                        <option value="usual">سهمیه</option>
+                                        <option value="emergency">اضطراری</option>
+                                        <option value="BossOrder">دستور رئیس HSE</option>
+                                        <option value="guest">مهمان</option>
+                                    </select>
+                                    <span asp-validation-for="Cloth.receive_type" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Cloth.receive_date" class="control-label"></label>
+                                    <input asp-for="Cloth.receive_date" type="text" class="form-control" id="pc-datepicker-1"/>
+                                    <span asp-validation-for="Cloth.receive_date" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Cloth.size" class="control-label"></label>
+                                    <input asp-for="Cloth.size" class="form-control"/>
+                                    <span asp-validation-for="Cloth.size" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Cloth.description" class="control-label"></label>
+                                    <input asp-for="Cloth.description" class="form-control"/>
+                                    <span asp-validation-for="Cloth.description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+        <script>
+              const d_week = new Datepicker(document.querySelector('#pc-datepicker-1'), {
+                buttonClass: 'btn'
+              });
+
+            var users = new Choices(document.getElementById('users'));
+
+        </script>
+    }
+}

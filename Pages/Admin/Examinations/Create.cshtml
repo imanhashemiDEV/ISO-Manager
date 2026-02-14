@@ -1,0 +1,80 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Examinations.CreateModel
+
+@{
+ViewData["Title"] = "ایجاد معاینات";
+}
+        
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست معاینات</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ایجاد معاینات</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <input type="hidden" asp-for="Examination.contractor_id" value="@Model.ContractorId"/>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Examination.user_id" class="control-label"></label>
+                                    <select asp-for="Examination.user_id" class="form-control" asp-items="ViewBag.user_id"></select>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Examination.examination_date" class="control-label"></label>
+                                    <select asp-for="Examination.examination_date" class="form-select">
+                                        <option value="1403">1403</option>
+                                        <option value="1404">1404</option>
+                                        <option value="1405">1405</option>
+                                        <option value="1406">1406</option>
+                                        <option value="1407">1407</option>
+                                        <option value="1408">1408</option>
+                                        <option value="1409">1409</option>
+                                        <option value="1410">1410</option>
+                                    </select>
+                                    <span asp-validation-for="Examination.examination_date" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Examination.examination_result" class="control-label"></label>
+                                    <select asp-for="Examination.examination_result" class="form-select">
+                                        <option value="unimpeded">مناسب</option>
+                                        <option value="conditionally">مشروط</option>
+                                        <option value="incompetence">نامناسب</option>
+                                    </select>
+                                    <span asp-validation-for="Examination.examination_result" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Examination.description" class="control-label"></label>
+                                    <input asp-for="Examination.description" class="form-control"/>
+                                    <span asp-validation-for="Examination.description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

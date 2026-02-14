@@ -1,0 +1,108 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Users.IndexModel
+@{
+    var row = 1;
+}
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="Index">خانه</a></li>
+                    <li class="breadcrumb-item" aria-current="page">لیست کارکنان</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-x-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" class="flex w-full items-center">
+                            <div class=" w-1/2 ml-4">
+                                <input type="text" class="form-control" asp-for="Search">
+                            </div>
+                            <div class="">
+                                <button type="submit" class="btn btn-primary">جستجو</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card table-card">
+                    <div class="card-header">
+                        <div class="sm:flex items-center justify-between">
+                            <h5 class="mb-3 sm:mb-0">لیست کارکنان</h5>
+                            <div>
+                                <a asp-page="./Create" class="btn btn-primary">اضافه کردن کاربر</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-3">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="pc-dt-simple">
+                                <thead>
+                                <tr>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center"> @Html.DisplayNameFor(model => model.Users[0].image)</th>
+                                        <th class="text-center"> @Html.DisplayNameFor(model => model.Users[0].name)</th>
+                                        <th class="text-center"> @Html.DisplayNameFor(model => model.Users[0].mobile)</th>
+                                        <th class="text-center"> @Html.DisplayNameFor(model => model.Users[0].register_code)</th>
+                                        <th class="text-center"> @Html.DisplayNameFor(model => model.Users[0].national_code)</th>
+                                        <th class="text-center"> @Html.DisplayNameFor(model => model.Users[0].employment_type)</th>
+                                        <th class="text-center">عملیات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var item in Model.Users)
+                                {
+                                    <tr>
+                                        <td class="text-start">@Html.DisplayFor(modelItem => item.Id)</td>
+                                        <td>
+                                            <div class="flex items-center">
+                                                <div class="shrink-0">
+                                                    <img src="~/panel/images/user/avatar-7.jpg" alt="user image" class="rounded-full w-10"/>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-start">@Html.DisplayFor(modelItem => item.name)</td>
+                                        <td class="text-start">@Html.DisplayFor(modelItem => item.mobile)</td>
+                                        <td class="text-start">@Html.DisplayFor(modelItem => item.register_code)</td>
+                                        <td class="text-start">@Html.DisplayFor(modelItem => item.national_code)</td>
+                                        <td class="text-start">
+                                            @if (item.employment_type.Equals("rasmi"))
+                                            {
+                                                <span class="badge text-white bg-success-500">رسمی</span>
+                                            }
+                                            else if (item.employment_type.Equals("gharardadi"))
+                                            {
+                                                <span class="badge text-white bg-danger-500">قراردادی</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge text-white bg-info-500">مهمان</span>
+                                            }
+                                        </td>
+                                        <td class="text-start">
+                                            <a asp-page="/Admin/UserInfos/Details" asp-route-user_id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                <i class="ti ti-eye text-xl leading-none"></i>
+                                            </a>
+                                            <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                <i class="ti ti-edit text-xl leading-none"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>

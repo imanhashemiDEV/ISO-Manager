@@ -1,0 +1,244 @@
+﻿@page
+@using ISO_Manager.Utilities
+@model ISO_Manager.Pages.Admin.User_infos.DetailsModel
+
+@{
+    ViewData["Title"] = "جزئیات اطلاعات کاربر";
+}
+
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Users/Index">لیست کاربران</a></li>
+                    <li class="breadcrumb-item" aria-current="page">اطلاعات کاربر</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <!-- [ sample-page ] start -->
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-body !py-0">
+                        <ul class="flex flex-wrap w-full font-medium text-center nav-tabs">
+                            <li class="group active">
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-1" class="inline-flex items-center mr-6 py-4 transition-all duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:text-primary-500 group-[.active]:border-b-primary-500 hover:text-primary-500 active:text-primary-500">
+                                    <i class="ti ti-user ltr:mr-2 rtl:ml-2 text-lg leading-none"></i>
+                                    پروفایل
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-2" class="inline-flex items-center mr-6 py-4 transition-all duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:text-primary-500 group-[.active]:border-b-primary-500 hover:text-primary-500 active:text-primary-500">
+                                    <i class="ti ti-id ltr:mr-2 rtl:ml-2 text-lg leading-none"></i>
+                                    ویرایش اطلاعات 
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-3" class="inline-flex items-center mr-6 py-4 transition-all duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:text-primary-500 group-[.active]:border-b-primary-500 hover:text-primary-500 active:text-primary-500">
+                                    <i class="ti ti-lock ltr:mr-2 rtl:ml-2 text-lg leading-none"></i>
+                                    تغییر رمز 
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-4" class="inline-flex items-center mr-6 py-4 transition-all duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:text-primary-500 group-[.active]:border-b-primary-500 hover:text-primary-500 active:text-primary-500">
+                                    <i class="ti ti-users ltr:mr-2 rtl:ml-2 text-lg leading-none"></i>
+                                    نقش
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane" id="profile-1">
+                        <div class="grid grid-cols-12 gap-6">
+                            <div class="col-span-12 lg:col-span-4 2xl:col-span-3">
+                                <div class="card">
+                                    <div class="card-body relative">
+                                        <div class="absolute right-0 top-0 p-[25px]">
+                                            <span class="badge bg-primary-500 text-white">Single</span>
+                                        </div>
+                                        <div class="text-center mt-3">
+                                            <div class="chat-avtar inline-flex mx-auto justify-center">
+                                                <img class="rounded-full w-[60px]" src="~/panel/images/user/avatar-1.jpg" alt="User image">
+                                            </div>
+                                            <h5 class="mb-0">@Model.User_info.User.name</h5>
+                                            <hr class="my-4 border-secondary-500/10">
+                                            <div class="grid grid-cols-12 gap-0 divide-x rtl:divide-x-reverse divide-inherit divide-theme-border dark:divide-themedark-border">
+                                                <div class="col-span-4">
+                                                    <h5 class="mb-0">45</h5>
+                                                    <small class="text-muted">سن</small>
+                                                </div>
+                                                <div class="col-span-4">
+                                                    <h5 class="mb-0">86 KG</h5>
+                                                    <small class="text-muted">سابقه</small>
+                                                </div>
+                                            </div>
+                                            <hr class="my-4 border-secondary-500/10">
+                                            <div class="inline-flex items-center gap-3 w-full mb-3">
+                                                <i class="ti ti-phone"></i>
+                                                <p class="mb-0">@Model.User_info.User.mobile</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 lg:col-span-8 2xl:col-span-9">
+                               
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>اطلاعات شخصی</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="*:py-4 divide-y divide-inherit border-theme-border dark:border-themedark-border">
+                                            <li class="list-group-item px-0 pt-0">
+                                                <div class="grid grid-cols-12 gap-6">
+                                                    <div class="col-span-12 md:col-span-6">
+                                                        <p class="mb-1 text-muted">سمت :</p>
+                                                        <p class="mb-0">@Model.User_info.Occupation?.title</p>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-6">
+                                                        <p class="mb-1 text-muted">مدرک تحصیلی</p>
+                                                        <p class="mb-0">@Model.User_info.degree</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-0">
+                                                <div class="grid grid-cols-12 gap-6">
+                                                    <div class="col-span-12 md:col-span-6">
+                                                        <p class="mb-1 text-muted">تاریخ تولد</p>
+                                                        <p class="mb-0">@DateToPersian.ToShamsi(@Model.User_info.birthday, "yyyy/MM/dd")</p>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-6">
+                                                        <p class="mb-1 text-muted">تاریخ استخدام</p>
+                                                        <p class="mb-0">@DateToPersian.ToShamsi(@Model.User_info.employment_date, "yyyy/MM/dd")</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-0">
+                                                <div class="grid grid-cols-12 gap-6">
+                                                    <div class="col-span-12 md:col-span-6">
+                                                        <p class="mb-1 text-muted">محل کار</p>
+                                                        <p class="mb-0">@Model.User_info.Workplace?.title</p>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-6">
+                                                        @* <p class="mb-1 text-muted">تاریخ استخدام</p>
+                                                        <p class="mb-0">@Model.User_info.employment_date</p> *@
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden tab-pane" id="profile-2">
+                        <div class="grid grid-cols-12 gap-6">
+                            <div class="col-span-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>General Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="post">
+                                            <div class="grid grid-cols-12 gap-6">
+                                                <div class="col-span-12 md:col-span-6 mb-4">
+                                                    <label class="control-label" asp-for="User.name"></label>
+                                                    <input type="text" class="form-control my-2" asp-for="User.name" value="@Model.SelectedUser.name">
+                                                    <span asp-validation-for="User_info.User.name" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-span-12 md:col-span-6 mb-4">
+                                                    <label asp-for="User.mobile" class="control-label"></label>
+                                                    <input asp-for="User.mobile" class="form-control my-2" value="@Model.SelectedUser.mobile" />
+                                                    <span asp-validation-for="User.mobile" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-span-12 md:col-span-6 mb-4">
+                                                    <label asp-for="User.register_code" class="control-label"></label>
+                                                    <input asp-for="User.register_code" class="form-control my-2" value="@Model.SelectedUser.register_code" />
+                                                    <span asp-validation-for="User.register_code" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-span-12 md:col-span-6 mb-4">
+                                                    <label asp-for="User.national_code" class="control-label"></label>
+                                                    <input asp-for="User.national_code" class="form-control my-2" value="@Model.SelectedUser.national_code" />
+                                                    <span asp-validation-for="User.national_code" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-span-12 md:col-span-6 mb-4">
+                                                    <label class="form-label" asp-for="User.employment_type"></label>
+                                                    <select asp-for="User.employment_type" class="form-select" value="@Model.SelectedUser.employment_type">
+                                                        <option value="rasmi">رسمی</option>
+                                                        <option value="peymankari">پیمانکاری</option>
+                                                        <option value="gharardadi">قراردادی</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-span-12 md:col-span-6 mb-4">
+                                                    <label class="form-label" asp-for="User.UserInfos.occupation_id"></label>
+                                                    <select asp-for="User_info.occupation_id" class="form-select" asp-items="ViewBag.occupation_id"></select>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-success">ثبت</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden tab-pane" id="profile-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>تغییر رمز عبور</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="grid grid-cols-12 gap-6">
+                                    <div class="col-span-12 sm:col-span-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">رمز جدید</label>
+                                            <input type="password" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 sm:col-span-6">
+                                        <h5>قوانین رمز</h5>
+                                        <ul class="rounded-lg *:py-4 *:px-0 divide-y divide-inherit border-theme-border dark:border-themedark-border">
+                                            <li class="list-group-item">
+                                                <i class="ti ti-circle-check text-success f-16 me-2"></i>
+                                                حداقل 4 کاراکتر
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden tab-pane" id="profile-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>تعیین نقش و دسترسی کاربر</h5>
+                            </div>
+                            <div class="card-body">
+                                <form method="post">
+                                    <div class="grid grid-cols-12 gap-6">
+                                        <div class="col-span-12 md:col-span-6 mb-4">
+                                            <label class="form-label" asp-for="User.UserInfos.occupation_id"></label>
+                                            <select asp-for="User_info.occupation_id" class="form-select" asp-items="ViewBag.occupation_id"></select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">ثبت</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ sample-page ] end -->
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+

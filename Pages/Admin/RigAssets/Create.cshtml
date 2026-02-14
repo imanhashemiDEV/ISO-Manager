@@ -1,0 +1,101 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.RigAssets.CreateModel
+
+@{
+    ViewData["Title"] = "ایجاد اموال";
+}
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست اموال</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ایجاد اموال</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="RigAsset.asset_name" class="control-label"></label>
+                                    <input asp-for="RigAsset.asset_name" class="form-control" />
+                                    <span asp-validation-for="RigAsset.asset_name" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="RigAsset.default_count" class="control-label"></label>
+                                    <input asp-for="RigAsset.default_count" class="form-control" />
+                                    <span asp-validation-for="RigAsset.default_count" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="RigAsset.exist_count" class="control-label"></label>
+                                    <input asp-for="RigAsset.exist_count" class="form-control" />
+                                    <span asp-validation-for="RigAsset.exist_count" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="RigAsset.region" class="control-label"></label>
+                                    <select asp-for="RigAsset.region" class="form-select">
+                                        <option value="rig">دکل</option>
+                                        <option value="camp">اردوگاه</option>
+                                        <option value="clinic">درمانگاه</option>
+                                    </select>
+                                    <span asp-validation-for="RigAsset.region" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="RigAsset.count_unit" class="control-label"></label>
+                                    <select asp-for="RigAsset.count_unit" class="form-select">
+                                        <option value="number">عدد</option>
+                                        <option value="set">دست</option>
+                                        <option value="loop">حلقه</option>
+                                        <option value="device">دستگاه</option>
+                                    </select>
+                                    <span asp-validation-for="RigAsset.count_unit" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="RigAsset.position_name" class="control-label"></label>
+                                    <input asp-for="RigAsset.position_name" class="form-control" />
+                                    <span asp-validation-for="RigAsset.position_name" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="RigAsset.place" class="control-label"></label>
+                                    <select asp-for="RigAsset.place" class="form-select">
+                                        <option value="rig-102">دکل 102</option>
+                                        <option value="rig-106">دکل 106</option>
+                                        <option value="rig-107">دکل 107</option>
+                                    </select>
+                                    <span asp-validation-for="RigAsset.place" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="RigAsset.description" class="control-label"></label>
+                                    <input asp-for="RigAsset.description" class="form-control" />
+                                    <span asp-validation-for="RigAsset.description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

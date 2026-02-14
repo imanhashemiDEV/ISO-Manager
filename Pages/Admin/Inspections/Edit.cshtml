@@ -1,0 +1,64 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.Inspections.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست بازرسی ها</a></li>
+                    <li class="breadcrumb-item" aria-current="page">ویرایش</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ویرایش بازرسی</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Inspection.Id" />
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Inspection.inspection_date" class="control-label"></label>
+                                    <input asp-for="Inspection.inspection_date" class="form-control"/>
+                                    <span asp-validation-for="Inspection.inspection_date" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Inspection.user_id" class="control-label"></label>
+                                    <select asp-for="Inspection.user_id" class="form-control" asp-items="ViewBag.user_id"></select>
+                                </div>
+                                
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Inspection.workplace_id" class="control-label"></label>
+                                    <select asp-for="Inspection.workplace_id" class="form-control" asp-items="ViewBag.workplace_id"></select>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Inspection.inspection_place_id" class="control-label"></label>
+                                    <select asp-for="Inspection.inspection_place_id" class="form-control" asp-items="ViewBag.inspection_place_id"></select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">ویرایش</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

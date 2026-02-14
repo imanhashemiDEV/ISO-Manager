@@ -1,0 +1,86 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.OccupationHarmfuls.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>OccupationHarmful</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.exposure_source)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.exposure_source)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.evaluation_method)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.evaluation_method)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.exposure_rate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.exposure_rate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.exposure_duration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.exposure_duration)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.exposure_limit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.exposure_limit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.created_at)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.created_at)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.updated_at)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.updated_at)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.Occupation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.Occupation.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.HarmfulFactor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.HarmfulFactor.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OccupationHarmful.harmful_item_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OccupationHarmful.harmful_item_id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.OccupationHarmful.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

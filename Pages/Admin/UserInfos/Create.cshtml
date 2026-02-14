@@ -1,0 +1,147 @@
+﻿@page
+@model ISO_Manager.Pages.Admin.User_infos.CreateModel
+
+@{
+    ViewData["Title"] = "ایجاد اطلاعات کارکنان";
+}
+
+
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Users/Index">لیست کاربران</a></li>
+                    <li class="breadcrumb-item" aria-current="page">اطلاعات کاربر</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <!-- [ sample-page ] start -->
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-body !py-0">
+                        <ul class="flex flex-wrap w-full font-medium text-center nav-tabs">
+                            <li class="group">
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-1" class="inline-flex items-center mr-6 py-4 transition-all duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:text-primary-500 group-[.active]:border-b-primary-500 hover:text-primary-500 active:text-primary-500">
+                                    <i class="ti ti-id ltr:mr-2 rtl:ml-2 text-lg leading-none"></i>
+                                    ثبت اطلاعات 
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane" id="profile-1">
+                        <div class="grid grid-cols-12 gap-6">
+                            <div class="col-span-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>ثبت اطلاعات</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="POST">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <input type="hidden" asp-for="User_info.user_id" value="@Model.selectedUserId" />
+                                            <div class="grid grid-cols-12 gap-6">
+                                                <div class="col-span-12 sm:col-span-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">شرکت</label>
+                                                        <select asp-for="User_info.organization_id" class="form-select">
+                                                            @foreach (var item in Model.UserOrganizations)
+                                                            {
+                                                                <option value="@item.Id">@item.title</option>
+                                                            }
+                                                        </select>
+                                                        <span asp-validation-for="User_info.degree" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-span-12 sm:col-span-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">سمت</label>
+                                                        <select asp-for="User_info.occupation_id" class="form-select" id="occupation">
+                                                            @foreach (var item in Model.UserOccupations)
+                                                            {
+                                                                <option value="@item.Id">@item.title</option>
+                                                            }
+                                                        </select>
+                                                        <span asp-validation-for="User_info.degree" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-span-12 sm:col-span-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">محل کار</label>
+                                                        <select asp-for="User_info.workplace_id" class="form-select">
+                                                            @foreach (var item in Model.UserWorkplaces)
+                                                            {
+                                                                <option value="@item.Id">@item.title</option>
+                                                            }
+                                                        </select>
+                                                        <span asp-validation-for="User_info.degree" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-span-12 sm:col-span-6">
+                                                    <div class="mb-3">
+                                                        <label asp-for="User_info.birthday" class="form-label"></label>
+                                                        <input data-jdp type="text"
+                                                               asp-for="BirthDay"
+                                                               class="form-control text-right" dir="rtl">
+                                                        <span asp-validation-for="User_info.birthday" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-span-12 sm:col-span-6">
+                                                    <div class="mb-3">
+                                                        <label asp-for="User_info.employment_date" class="form-label"></label>
+                                                        <input data-jdp type="text"
+                                                               asp-for="EmploymentDate"
+                                                               class="form-control text-right" dir="rtl">
+                                                        <span asp-validation-for="User_info.employment_date" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-span-12 sm:col-span-6">
+                                                    <div class="mb-3">
+                                                        <label asp-for="User_info.degree" class="form-label"></label>
+                                                        <select asp-for="User_info.degree" class="form-select">
+                                                            <option value="highschool">زیر دیپلم</option>
+                                                            <option value="diploma">دیپلم</option>
+                                                            <option value="associate">فوق دیپلم</option>
+                                                            <option value="bachelor">لیسانس</option>
+                                                            <option value="master">فوق لیسانس</option>
+                                                            <option value="doctorate">دکتری</option>
+                                                        </select>
+                                                        <span asp-validation-for="User_info.degree" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer text-right btn-page cursor-pointer">
+                                                <button type="submit" class="btn btn-primary mx-1">ثبت</button>
+                                            </div>
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ sample-page ] end -->
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script>
+            var occupation = new Choices(document.getElementById('occupation'));
+
+             jalaliDatepicker.startWatch();
+        </script>
+    }
+}
