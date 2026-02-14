@@ -28,33 +28,33 @@
                             <div class="grid grid-cols-12 gap-6">
                                 <input type="hidden" asp-for="User.Id" />
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label class="control-label" asp-for="User.name"></label>
-                                    <input type="text" class="form-control my-2" asp-for="User.name">
-                                    <span asp-validation-for="User.name" class="text-danger"></span>
+                                    <label class="control-label" asp-for="User.Name"></label>
+                                    <input type="text" class="form-control my-2" asp-for="User.Name">
+                                    <span asp-validation-for="User.Name" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="User.mobile" class="control-label"></label>
-                                    <input asp-for="User.mobile" class="form-control my-2" />
-                                    <span asp-validation-for="User.mobile" class="text-danger"></span>
+                                    <label asp-for="User.Mobile" class="control-label"></label>
+                                    <input asp-for="User.Mobile" class="form-control my-2" />
+                                    <span asp-validation-for="User.Mobile" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="User.register_code" class="control-label"></label>
-                                    <input asp-for="User.register_code" class="form-control my-2" />
-                                    <span asp-validation-for="User.register_code" class="text-danger"></span>
+                                    <label asp-for="User.RegisterCode" class="control-label"></label>
+                                    <input asp-for="User.RegisterCode" class="form-control my-2" />
+                                    <span asp-validation-for="User.RegisterCode" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="User.national_code" class="control-label"></label>
-                                    <input asp-for="User.national_code" class="form-control my-2" />
-                                    <span asp-validation-for="User.national_code" class="text-danger"></span>
+                                    <label asp-for="User.NationalCode" class="control-label"></label>
+                                    <input asp-for="User.NationalCode" class="form-control my-2" />
+                                    <span asp-validation-for="User.NationalCode" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="User.password" class="control-label"></label>
-                                    <input asp-for="User.password" class="form-control my-2" />
-                                    <span asp-validation-for="User.password" class="text-danger"></span>
+                                    <label asp-for="User.PasswordHash" class="control-label"></label>
+                                    <input asp-for="User.PasswordHash" class="form-control my-2" />
+                                    <span asp-validation-for="User.PasswordHash" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label class="form-label" asp-for="User.employment_type"></label>
-                                    <select asp-for="User.employment_type" class="form-select">
+                                    <label class="form-label" asp-for="User.EmploymentType"></label>
+                                    <select asp-for="User.EmploymentType" class="form-select">
                                         <option value="rasmi">رسمی</option>
                                         <option value="peymankari">پیمانکاری</option>
                                         <option value="gharardadi">قراردادی</option>

@@ -54,8 +54,8 @@
                                 {
                                     <tr>
                                         <td>@(row++ + ( (ViewBag.pageId -1) * ViewBag.Take))</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Workplace.title)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Workplace!.title)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.User!.Name)</td>
                                         <td>@Html.DisplayFor(modelItem => item.owner)</td>
                                         <td>@Html.DisplayFor(modelItem => item.car_model)</td>
                                         <td>@Html.DisplayFor(modelItem => item.car_year)</td>

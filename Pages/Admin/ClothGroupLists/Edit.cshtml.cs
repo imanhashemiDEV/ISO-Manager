@@ -37,7 +37,7 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
             }
             ClothGroupList = clothgrouplist;
            ViewData["cloth_groups"] = _context.ClothGroups.ToList();
-           ViewData["users"] = _context.Users.Where(m => m.employment_type == "rasmi" || m.employment_type == "gharardadi").ToList();
+           ViewData["users"] = _context.Users.Where(m => m.EmploymentType == "rasmi" || m.EmploymentType == "gharardadi").ToList();
             return Page();
         }
 

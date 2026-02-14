@@ -35,7 +35,7 @@ namespace ISO_Manager.Pages.Admin.Users
                 return Page();
             }
 
-            if (_context.Users.Any(i => i.mobile == User.mobile))
+            if (_context.Users.Any(i => i.Mobile == User.Mobile))
             {
                 ModelState.AddModelError("Contact.PhoneNumber",
                     "The Phone number is already in use.");

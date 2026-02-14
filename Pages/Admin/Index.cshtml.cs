@@ -64,9 +64,9 @@ namespace ISO_Manager.Pages.Admin
 
             // Users
             var users = _context.Users;
-            RasmiUserCount = users.Where(m=>m.employment_type == "rasmi").Count();
-            GharardadiUserCount = users.Where(m=>m.employment_type == "gharardadi").Count();
-            PeymankariUserCount = users.Where(m=>m.employment_type == "peymankari").Count();
+            RasmiUserCount = users.Where(m=>m.EmploymentType == "rasmi").Count();
+            GharardadiUserCount = users.Where(m=>m.EmploymentType == "gharardadi").Count();
+            PeymankariUserCount = users.Where(m=>m.EmploymentType == "peymankari").Count();
 
 
             // Accidents

@@ -964,3 +964,4 @@ D:\ASP\ISO-Manager\obj\Debug\net10.0\refint\ISO-Manager.dll
 D:\ASP\ISO-Manager\obj\Debug\net10.0\ISO-Manager.pdb
 D:\ASP\ISO-Manager\obj\Debug\net10.0\ISO-Manager.genruntimeconfig.cache
 D:\ASP\ISO-Manager\obj\Debug\net10.0\ref\ISO-Manager.dll
+D:\ASP\ISO-Manager\obj\Debug\net10.0\ISO-Manager.sourcelink.json

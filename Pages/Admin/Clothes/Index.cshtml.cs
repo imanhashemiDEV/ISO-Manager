@@ -35,7 +35,7 @@ namespace ISO_Manager.Pages.Admin.Clothes
             if (Search != null)
             {
                 Cloth = await _context.Clothes.Include(c=>c.User)
-                    .Where(m => m.User.mobile == Search || m.User.name.Contains(Search) || m.User.register_code == Search || m.User.national_code == Search)
+                    .Where(m => m.User.Mobile == Search || m.User.Name.Contains(Search) || m.User.RegisterCode == Search || m.User.NationalCode == Search)
                     .ToListAsync();
             }
             else

@@ -54,7 +54,7 @@
                                         <tr>
                                             <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.User!.name)
+                                                @Html.DisplayFor(modelItem => item.User!.Name)
                                             </td>
                                             <td>
                                                 @DateToPersian.ToShamsi(item.expire_date, "yyyy/MM/dd")

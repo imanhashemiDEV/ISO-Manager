@@ -68,7 +68,7 @@
                                             <div class="chat-avtar inline-flex mx-auto justify-center">
                                                 <img class="rounded-full w-[60px]" src="~/panel/images/user/avatar-1.jpg" alt="User image">
                                             </div>
-                                            <h5 class="mb-0">@Model.User_info.User.name</h5>
+                                            <h5 class="mb-0">@Model.User_info.User.Name</h5>
                                             <hr class="my-4 border-secondary-500/10">
                                             <div class="grid grid-cols-12 gap-0 divide-x rtl:divide-x-reverse divide-inherit divide-theme-border dark:divide-themedark-border">
                                                 <div class="col-span-4">
@@ -83,7 +83,7 @@
                                             <hr class="my-4 border-secondary-500/10">
                                             <div class="inline-flex items-center gap-3 w-full mb-3">
                                                 <i class="ti ti-phone"></i>
-                                                <p class="mb-0">@Model.User_info.User.mobile</p>
+                                                <p class="mb-0">@Model.User_info.User.Mobile</p>
                                             </div>
                                         </div>
                                     </div>
@@ -151,28 +151,28 @@
                                         <form method="post">
                                             <div class="grid grid-cols-12 gap-6">
                                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                                    <label class="control-label" asp-for="User.name"></label>
-                                                    <input type="text" class="form-control my-2" asp-for="User.name" value="@Model.SelectedUser.name">
-                                                    <span asp-validation-for="User_info.User.name" class="text-danger"></span>
+                                                    <label class="control-label" asp-for="User.Name"></label>
+                                                    <input type="text" class="form-control my-2" asp-for="User.Name" value="@Model.SelectedUser.Name">
+                                                    <span asp-validation-for="User_info.User.Name" class="text-danger"></span>
                                                 </div>
                                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                                    <label asp-for="User.mobile" class="control-label"></label>
-                                                    <input asp-for="User.mobile" class="form-control my-2" value="@Model.SelectedUser.mobile" />
-                                                    <span asp-validation-for="User.mobile" class="text-danger"></span>
+                                                    <label asp-for="User.Mobile" class="control-label"></label>
+                                                    <input asp-for="User.Mobile" class="form-control my-2" value="@Model.SelectedUser.Mobile" />
+                                                    <span asp-validation-for="User.Mobile" class="text-danger"></span>
                                                 </div>
                                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                                    <label asp-for="User.register_code" class="control-label"></label>
-                                                    <input asp-for="User.register_code" class="form-control my-2" value="@Model.SelectedUser.register_code" />
-                                                    <span asp-validation-for="User.register_code" class="text-danger"></span>
+                                                    <label asp-for="User.RegisterCode" class="control-label"></label>
+                                                    <input asp-for="User.RegisterCode" class="form-control my-2" value="@Model.SelectedUser.RegisterCode" />
+                                                    <span asp-validation-for="User.RegisterCode" class="text-danger"></span>
                                                 </div>
                                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                                    <label asp-for="User.national_code" class="control-label"></label>
-                                                    <input asp-for="User.national_code" class="form-control my-2" value="@Model.SelectedUser.national_code" />
-                                                    <span asp-validation-for="User.national_code" class="text-danger"></span>
+                                                    <label asp-for="User.NationalCode" class="control-label"></label>
+                                                    <input asp-for="User.NationalCode" class="form-control my-2" value="@Model.SelectedUser.NationalCode" />
+                                                    <span asp-validation-for="User.NationalCode" class="text-danger"></span>
                                                 </div>
                                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                                    <label class="form-label" asp-for="User.employment_type"></label>
-                                                    <select asp-for="User.employment_type" class="form-select" value="@Model.SelectedUser.employment_type">
+                                                    <label class="form-label" asp-for="User.EmploymentType"></label>
+                                                    <select asp-for="User.EmploymentType" class="form-select" value="@Model.SelectedUser.EmploymentType">
                                                         <option value="rasmi">رسمی</option>
                                                         <option value="peymankari">پیمانکاری</option>
                                                         <option value="gharardadi">قراردادی</option>

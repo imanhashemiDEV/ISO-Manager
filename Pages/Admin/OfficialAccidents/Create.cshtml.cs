@@ -21,7 +21,7 @@ namespace ISO_Manager.Pages.Admin.OfficialAccidents
 
         public IActionResult OnGet()
         {
-            ViewData["users"] = _context.Users.Where(m => m.employment_type == "rasmi").ToList();
+            ViewData["users"] = _context.Users.Where(m => m.EmploymentType == "rasmi").ToList();
             return Page();
         }
 

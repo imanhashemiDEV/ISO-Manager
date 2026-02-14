@@ -1754,31 +1754,28 @@ namespace ISO_Manager.Data.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<DateTime>("created_at")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("employment_type")
+                    b.Property<string>("EmploymentType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("image")
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("mobile")
+                    b.Property<string>("Mobile")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("national_code")
+                    b.Property<string>("NationalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("password")
+                    b.Property<string>("RegisterCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("register_code")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("updated_at")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasDiscriminator().HasValue("User");

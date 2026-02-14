@@ -37,7 +37,7 @@ namespace ISO_Manager.Pages.Admin.ContractorAccidents
             }
             ContractorAccident = contractoraccident;
            ViewData["contractors"] = new SelectList(_context.Contractors, "id", "company");
-           ViewData["users"] = _context.Users.Where(m => m.employment_type == "gharardadi" || m.employment_type == "peymankari").ToList();
+           ViewData["users"] = _context.Users.Where(m => m.EmploymentType == "gharardadi" || m.EmploymentType == "peymankari").ToList();
             return Page();
         }
 

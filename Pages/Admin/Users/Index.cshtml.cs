@@ -23,13 +23,13 @@ namespace ISO_Manager.Pages.Admin.Users
         public string Search { get; set; }
         public async Task OnGet()
         {
-            Users = await _context.Users.OrderByDescending(c=>c.updated_at).Take(10).ToListAsync();
+            Users = await _context.Users.OrderByDescending(c=>c.UpdatedAt).Take(10).ToListAsync();
         }
 
         public async Task OnPostAsync()
         {
             Users = await _context.Users
-                .Where(m => m.mobile == Search || m.name.Contains(Search) || m.register_code == Search || m.national_code == Search)
+                .Where(m => m.Mobile == Search || m.Name.Contains(Search) || m.RegisterCode == Search || m.NationalCode == Search)
                 .ToListAsync();
 
 
