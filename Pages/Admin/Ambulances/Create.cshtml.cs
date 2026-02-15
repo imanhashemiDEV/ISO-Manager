@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ISO_Manager.Data;
 using ISO_Manager.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ISO_Manager.Pages.Admin.Ambulances
 {
@@ -19,6 +20,7 @@ namespace ISO_Manager.Pages.Admin.Ambulances
             _context = context;
         }
 
+       // [Authorize]
         public IActionResult OnGet()
         {
             ViewData["users"] = _context.Users.ToList();

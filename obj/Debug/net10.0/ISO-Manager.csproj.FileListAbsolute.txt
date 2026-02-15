@@ -957,7 +957,6 @@ D:\ASP\ISO-Manager\obj\Debug\net10.0\staticwebassets.build.json.cache
 D:\ASP\ISO-Manager\obj\Debug\net10.0\staticwebassets.development.json
 D:\ASP\ISO-Manager\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 D:\ASP\ISO-Manager\obj\Debug\net10.0\swae.build.ex.cache
-D:\ASP\ISO-Manager\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 D:\ASP\ISO-Manager\obj\Debug\net10.0\ISO-Mana.F53B5147.Up2Date
 D:\ASP\ISO-Manager\obj\Debug\net10.0\ISO-Manager.dll
 D:\ASP\ISO-Manager\obj\Debug\net10.0\refint\ISO-Manager.dll
@@ -965,3 +964,4 @@ D:\ASP\ISO-Manager\obj\Debug\net10.0\ISO-Manager.pdb
 D:\ASP\ISO-Manager\obj\Debug\net10.0\ISO-Manager.genruntimeconfig.cache
 D:\ASP\ISO-Manager\obj\Debug\net10.0\ref\ISO-Manager.dll
 D:\ASP\ISO-Manager\obj\Debug\net10.0\ISO-Manager.sourcelink.json
+D:\ASP\ISO-Manager\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

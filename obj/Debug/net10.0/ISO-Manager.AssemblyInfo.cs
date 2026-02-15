@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ISO-Manager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f69be8d397ae61e390c04a513f4b11f7cdbfd9dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9103c8ebcd6301ff84a18af42b52101b5eded8a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ISO-Manager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ISO-Manager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

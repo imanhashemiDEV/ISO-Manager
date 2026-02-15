@@ -23,12 +23,8 @@ namespace ISO_Manager.Pages.Admin.Users
         [BindProperty]
         public User User { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
             var user =  await _context.Users.FirstOrDefaultAsync(m => Equals(m.Id , id));
             if (user == null)
@@ -48,21 +44,8 @@ namespace ISO_Manager.Pages.Admin.Users
 
             _context.Attach(User).State = EntityState.Modified;
 
-           // try
-           // {
-                await _context.SaveChangesAsync();
-           // }
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!UserExists(User.Id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
+            await _context.SaveChangesAsync();
+        
 
             return RedirectToPage("./Index");
         }
