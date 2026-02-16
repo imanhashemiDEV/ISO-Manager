@@ -10,47 +10,57 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "عنوان")]
-        public string? title { get; set; }
+        public string? Title { get; set; }
 
         [Display(Name = "تخمین")]
-        public int? estimate { get; set; }
+        public int? Estimate { get; set; }
 
         [Display(Name = "انجام")]
-        public int? done { get; set; }
+        public int? Done { get; set; }
 
         [Display(Name = "واحد")]
-        public string? unit { get; set; }
+        public string? Unit { get; set; }
 
         [Display(Name = "درصد پلن")]
-        public decimal? plan_percent { get; set; }
+        public decimal? PlanPercent { get; set; }
 
         [Display(Name = "درصد واقعی")]
-        public decimal? realization_percent { get; set; }
+        public decimal? RealizationPercent { get; set; }
 
         [Display(Name = "درصد ")]
-        public decimal? plan_realization_percent { get; set; }
+        public decimal? PlanRealizationPercent { get; set; }
 
         [Display(Name = "درصد قابل پذیرش")]
-        public decimal? accept_percent { get; set; }
+        public decimal? AcceptPercent { get; set; }
 
         [Display(Name = "وضعیت")]
-        public string? status { get; set; }
+        public string? Status { get; set; }
 
         [Display(Name = "توضیحات")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
 
         // relations
 
-
         [ForeignKey("Purpose")]
-        public int? purpose_id { get; set; }
-        public Purpose Purpose { get; set; }
+        [Display(Name = "هدف")]
+        public int? PurposeId { get; set; }
+        [Display(Name = "هدف")]
+        public virtual Purpose? Purpose { get; set; }
+
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
 
     }
 }

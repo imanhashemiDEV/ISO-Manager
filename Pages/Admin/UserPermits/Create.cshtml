@@ -30,16 +30,16 @@ ViewData["Title"] = "ایجاد مجوز";
                         <form method="post">
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="UserPermit.user_id" class="control-label"></label>
-                                    <select asp-for="UserPermit.user_id" class ="form-control" asp-items="ViewBag.user_id" ></select>
+                                    <label asp-for="UserPermit.UserId" class="control-label"></label>
+                                    <select asp-for="UserPermit.UserId" class ="form-control" asp-items="ViewBag.UserId" ></select>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="UserPermit.expire_date" class="control-label"></label>
                                     <input asp-for="UserPermit.expire_date" class="form-control" />
-                                    <span asp-validation-for="UserPermit.expire_date" class="text-danger"></span>
+                                    <span asp-validation-for="UserPermit.expire_date" class="Text-danger"></span>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">ثبت</button>
+                            <button Type="submit" class="btn btn-success">ثبت</button>
                         </form>
                     </div>
                 </div>

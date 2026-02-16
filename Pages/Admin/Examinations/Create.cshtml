@@ -27,15 +27,15 @@ ViewData["Title"] = "ایجاد معاینات";
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <input type="hidden" asp-for="Examination.contractor_id" value="@Model.ContractorId"/>
+                            <input Type="hidden" asp-for="Examination.ContractorId" value="@Model.ContractorId"/>
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Examination.user_id" class="control-label"></label>
-                                    <select asp-for="Examination.user_id" class="form-control" asp-items="ViewBag.user_id"></select>
+                                    <label asp-for="Examination.UserId" class="control-label"></label>
+                                    <select asp-for="Examination.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Examination.examination_date" class="control-label"></label>
-                                    <select asp-for="Examination.examination_date" class="form-select">
+                                    <label asp-for="Examination.ExaminationDate" class="control-label"></label>
+                                    <select asp-for="Examination.ExaminationDate" class="form-select">
                                         <option value="1403">1403</option>
                                         <option value="1404">1404</option>
                                         <option value="1405">1405</option>
@@ -45,24 +45,24 @@ ViewData["Title"] = "ایجاد معاینات";
                                         <option value="1409">1409</option>
                                         <option value="1410">1410</option>
                                     </select>
-                                    <span asp-validation-for="Examination.examination_date" class="text-danger"></span>
+                                    <span asp-validation-for="Examination.ExaminationDate" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Examination.examination_result" class="control-label"></label>
-                                    <select asp-for="Examination.examination_result" class="form-select">
+                                    <label asp-for="Examination.ExaminationResult" class="control-label"></label>
+                                    <select asp-for="Examination.ExaminationResult" class="form-select">
                                         <option value="unimpeded">مناسب</option>
                                         <option value="conditionally">مشروط</option>
                                         <option value="incompetence">نامناسب</option>
                                     </select>
-                                    <span asp-validation-for="Examination.examination_result" class="text-danger"></span>
+                                    <span asp-validation-for="Examination.ExaminationResult" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Examination.description" class="control-label"></label>
-                                    <input asp-for="Examination.description" class="form-control"/>
-                                    <span asp-validation-for="Examination.description" class="text-danger"></span>
+                                    <label asp-for="Examination.Description" class="control-label"></label>
+                                    <input asp-for="Examination.Description" class="form-control"/>
+                                    <span asp-validation-for="Examination.Description" class="Text-danger"></span>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">ثبت</button>
+                            <button Type="submit" class="btn btn-success">ثبت</button>
                         </form>
                     </div>
                 </div>

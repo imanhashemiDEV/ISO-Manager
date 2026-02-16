@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISO_Manager.Models
 {
@@ -8,18 +9,28 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "موضوع")]
-        public string? title { get; set; }
+        public string? Title { get; set; }
 
         [Display(Name = "توضیحات")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "وضعیت")]
-        public string? status { get; set; }
+        public string? Status { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+
+        //relations
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
     }
 }

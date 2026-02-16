@@ -346,6 +346,6 @@ jsVectorMap.addMap('russia', {
     }
   },
   height: 557.3183105409283,
-  projection: { type: 'merc', centralMeridian: 11.5 },
+  projection: { Type: 'merc', centralMeridian: 11.5 },
   width: 900.0
 });

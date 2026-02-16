@@ -37,11 +37,11 @@
                                 <thead>
                                 <tr>
                                     <th>ردیف</th>
-                                    <th> @Html.DisplayNameFor(model => model.Asset[0].title)</th>
-                                    <th> @Html.DisplayNameFor(model => model.Asset[0].e_title)</th>
-                                    <th> @Html.DisplayNameFor(model => model.Asset[0].asset_number)</th>
-                                    <th> @Html.DisplayNameFor(model => model.Asset[0].device_user)</th>
-                                    <th> @Html.DisplayNameFor(model => model.Asset[0].inspection_date)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Asset[0].Title)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Asset[0].ETitle)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Asset[0].AssetNumber)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Asset[0].DeviceUser)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Asset[0].InspectionDate)</th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
@@ -50,16 +50,16 @@
                                     {
                                         <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
-                                            <td>@Html.DisplayFor(modelItem => item.title)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Title)</td>
                                             <td style="width:300px;">
-                                                <p class="flex flex-wrap w-1/6">@Html.DisplayFor(modelItem => item.e_title)</p>
+                                                <p class="flex flex-wrap w-1/6">@Html.DisplayFor(modelItem => item.ETitle)</p>
                                             </td>
-                                            <td>@Html.DisplayFor(modelItem => item.asset_number)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.device_user)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.inspection_date)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.AssetNumber)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.DeviceUser)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.InspectionDate)</td>
                                             <td>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

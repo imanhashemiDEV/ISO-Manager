@@ -1,9 +1,9 @@
-﻿<!doctype html>
+﻿<!docType html>
 <html lang="en" class="preset-1" data-pc-sidebar-caption="true" data-pc-layout="vertical" data-pc-direction="rtl" dir="rtl" data-pc-theme_contrast="" data-pc-theme="light">
 <!-- [Head] start -->
 
 <head>
-    <title>@ViewData["Title"]| مدیریت تعمیر، تکمیل و خدمات فنی چاهها</title>
+    <Title>@ViewData["Title"]| مدیریت تعمیر، تکمیل و خدمات فنی چاهها</Title>
     <!-- [Meta] -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui" />
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="~/css/font/primary-iran-sans.css" />
     <link rel="stylesheet" href="~/css/jalalidatepicker.min.css" />
     <!-- [Favicon] icon -->
-    <link rel="icon" href="~/panel/images/favicon.svg" type="image/x-icon" />
+    <link rel="icon" href="~/panel/images/favicon.svg" Type="image/x-icon" />
     <!-- [Font] Family -->
     <link rel="stylesheet" href="~/panel/fonts/inter/inter.css" id="main-font-link" />
     <!-- [phosphor Icons] https://phosphoricons.com/ -->
@@ -74,13 +74,13 @@
                             </a>
                         </div>
                         <div class="hidden pc-user-links" id="pc_sidebar_userlink">
-                            <div class="pt-3 *:flex *:items-center *:py-2 *:gap-2.5 hover:*:text-primary-500">
+                            <div class="pt-3 *:flex *:items-center *:py-2 *:gap-2.5 hover:*:Text-primary-500">
                                 <p>
-                                    <i class="text-lg leading-none ti ti-user"></i>
+                                    <i class="Text-lg leading-none ti ti-user"></i>
                                     <span>کارشناس ارشد بهداشت حرفه ای</span>
                                 </p>
                                 <a href="#!">
-                                    <i class="text-lg leading-none ti ti-power"></i>
+                                    <i class="Text-lg leading-none ti ti-power"></i>
                                     <span>خروج</span>
                                 </a>
                             </div>
@@ -93,13 +93,14 @@
                             <span class="pc-micon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users w-5 h-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                             </span>
-                            <span class="pc-mtext">کارکنان</span>
+                            <span class="pc-mText">کارکنان</span>
                             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
                         </a>
                         <ul class="pc-submenu">
                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/Users/Index">لیست کارکنان</a></li>
                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/Organizations/Index">سازمان</a></li>
-                            <li class="pc-item"><a class="pc-link" asp-page="/Admin/Workplaces/Index">محل های کار</a></li>
+                            <li class="pc-item"><a class="pc-link" asp-page="/Admin/Offices/Index">اداره</a></li>
+                            <li class="pc-item"><a class="pc-link" asp-page="/Admin/WorkPlaces/Index">محل های کار</a></li>
                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/Occupations/Index">سمت ها</a></li>
                         </ul>
                     </li>
@@ -108,13 +109,13 @@
                             <span class="pc-micon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield w-5 h-5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                             </span>
-                            <span class="pc-mtext">ایمنی</span>
+                            <span class="pc-mText">ایمنی</span>
                             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
                         </a>
                         <ul class="pc-submenu">
                             <li class="pc-item pc-hasmenu">
                                 <a href="#!" class="pc-link">
-                                    <span class="pc-mtext">البسه استحفاظی</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                    <span class="pc-mText">البسه استحفاظی</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                 </a>
                                 <ul class="pc-submenu" style="display: none;">
                                     <li class="pc-item"><a class="pc-link" asp-page="/Admin/Clothes/Index">ثبت انفرادی</a></li>
@@ -125,7 +126,7 @@
                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/Calibrations/Index">کالیبراسیون</a></li>
                             <li class="pc-item pc-hasmenu">
                                 <a href="#!" class="pc-link">
-                                    <span class="pc-mtext">اموال</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                    <span class="pc-mText">اموال</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                 </a>
                                 <ul class="pc-submenu" style="display: none;">
                                     <li class="pc-item"><a class="pc-link" asp-page="/Admin/Assets/Index">اموال ثبتی</a></li>
@@ -134,7 +135,7 @@
                             </li>
                             <li class="pc-item pc-hasmenu">
                                 <a href="#!" class="pc-link">
-                                    <span class="pc-mtext">حوادث</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                    <span class="pc-mText">حوادث</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                 </a>
                                 <ul class="pc-submenu" style="display: none;">
                                     <li class="pc-item"><a class="pc-link" asp-page="/Admin/Accidents/Index">شاخص حوادث</a></li>
@@ -144,7 +145,7 @@
                             </li>
                             <li class="pc-item pc-hasmenu">
                                 <a href="#!" class="pc-link">
-                                    <span class="pc-mtext">بازرسی ها</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                    <span class="pc-mText">بازرسی ها</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                 </a>
                                 <ul class="pc-submenu" style="display: none;">
                                     <li class="pc-item"><a class="pc-link" asp-page="/Admin/InspectionPlaces/Index">گروه بازرسی</a></li>
@@ -153,7 +154,7 @@
                             </li>
                             <li class="pc-item pc-hasmenu">
                                 <a href="#!" class="pc-link">
-                                    <span class="pc-mtext">مجوزهای کار</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                    <span class="pc-mText">مجوزهای کار</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                 </a>
                                 <ul class="pc-submenu" style="display: none;">
                                     <li class="pc-item"><a class="pc-link" asp-page="/Admin/Permits/Index">مجوزهای ثبت شده</a></li>
@@ -167,7 +168,7 @@
                             <span class="pc-micon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart w-5 h-5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                             </span>
-                            <span class="pc-mtext">بهداشت</span>
+                            <span class="pc-mText">بهداشت</span>
                             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
                         </a>
                         <ul class="pc-submenu">
@@ -181,7 +182,7 @@
                             <span class="pc-micon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-cloud-lightning w-5 h-5"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"></path><polyline points="13 11 9 17 15 17 11 23"></polyline></svg>
                             </span>
-                            <span class="pc-mtext">محیط زیست</span>
+                            <span class="pc-mText">محیط زیست</span>
                             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
                         </a>
                         <ul class="pc-submenu">
@@ -193,19 +194,19 @@
                             <span class="pc-micon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase w-5 h-5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                             </span>
-                            <span class="pc-mtext">ایزو</span>
+                            <span class="pc-mText">ایزو</span>
                             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
                         </a>
                         <ul class="pc-submenu">
                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/Standards/Index">متن استانداردها</a></li>
                             <li class="pc-item pc-hasmenu">
                                 <a href="#!" class="pc-link">
-                                    <span class="pc-mtext">ISO9001</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                    <span class="pc-mText">ISO9001</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                 </a>
                                 <ul class="pc-submenu" style="display: none;">
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">بافت سازمان</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">بافت سازمان</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/Processes/Index">لیست فرایندها</a></li>
@@ -214,7 +215,7 @@
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">رهبری و مشارکت</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">رهبری و مشارکت</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin">خطی مشی</a></li>
@@ -222,7 +223,7 @@
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">طرح ریزی</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">طرح ریزی</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/LegalRequirements/Index">الزامات قانونی</a></li>
@@ -233,7 +234,7 @@
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">عملیات</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">عملیات</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin">مدیریت تغییر</a></li>
@@ -243,7 +244,7 @@
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">پایش و اندازه گیری</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">پایش و اندازه گیری</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin">ارزشیابی تطابق</a></li>
@@ -253,12 +254,12 @@
                             </li>
                             <li class="pc-item pc-hasmenu">
                                 <a href="#!" class="pc-link">
-                                    <span class="pc-mtext">ISO14001</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                    <span class="pc-mText">ISO14001</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                 </a>
                                 <ul class="pc-submenu" style="display: none;">
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">بافت سازمان</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">بافت سازمان</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/Processes/Index">لیست فرایندها</a></li>
@@ -267,7 +268,7 @@
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">رهبری و مشارکت</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">رهبری و مشارکت</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin">خطی مشی</a></li>
@@ -275,7 +276,7 @@
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">طرح ریزی</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">طرح ریزی</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/LegalRequirements/Index">الزامات قانونی</a></li>
@@ -286,7 +287,7 @@
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">عملیات</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">عملیات</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin">مدیریت تغییر</a></li>
@@ -296,7 +297,7 @@
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">پایش و اندازه گیری</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">پایش و اندازه گیری</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin">ارزشیابی تطابق</a></li>
@@ -306,29 +307,29 @@
                             </li>
                             <li class="pc-item pc-hasmenu">
                                 <a href="#!" class="pc-link">
-                                    <span class="pc-mtext">ISO45001</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                    <span class="pc-mText">ISO45001</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                 </a>
                                 <ul class="pc-submenu" style="display: none;">
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">بافت سازمان</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">بافت سازمان</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/Processes/Index">لیست فرایندها</a></li>
-                                            <li class="pc-item"><a class="pc-link" asp-page="/Admin/ProcessPlans/Index">پایش فرایندها</a></li>
+                                          
                                         </ul>
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">رهبری و مشارکت</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">رهبری و مشارکت</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
-                                            <li class="pc-item"><a class="pc-link" asp-page="/Admin">خطی مشی</a></li>
+                                            <li class="pc-item"><a class="pc-link" asp-page="/Admin">انتقاد / پیشنهاد</a></li>
                                         </ul>
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">طرح ریزی</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">طرح ریزی</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin/LegalRequirements/Index">الزامات قانونی</a></li>
@@ -339,7 +340,7 @@
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">عملیات</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">عملیات</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin">مدیریت تغییر</a></li>
@@ -349,7 +350,7 @@
                                     </li>
                                     <li class="pc-item pc-hasmenu">
                                         <a href="#!" class="pc-link">
-                                            <span class="pc-mtext">پایش و اندازه گیری</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                            <span class="pc-mText">پایش و اندازه گیری</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
                                         </a>
                                         <ul class="pc-submenu" style="display: none;">
                                             <li class="pc-item"><a class="pc-link" asp-page="/Admin">ارزشیابی تطابق</a></li>
@@ -364,7 +365,7 @@
                             <span class="pc-micon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-server w-5 h-5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
                             </span>
-                            <span class="pc-mtext">پیمانکاران</span>
+                            <span class="pc-mText">پیمانکاران</span>
                             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
                         </a>
                         <ul class="pc-submenu">
@@ -376,7 +377,7 @@
                             <span class="pc-micon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-server w-5 h-5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
                             </span>
-                            <span class="pc-mtext">عمومی</span>
+                            <span class="pc-mText">عمومی</span>
                             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
                         </a>
                         <ul class="pc-submenu">
@@ -404,7 +405,7 @@
                     </li>
                     <li class="pc-h-item pc-sidebar-popup lg:hidden">
                         <a href="#" class="pc-head-link ltr:!ml-0 rtl:!mr-0" id="mobile-collapse">
-                            <i class="text-2xl leading-none ti ti-menu-2"></i>
+                            <i class="Text-2xl leading-none ti ti-menu-2"></i>
                         </a>
                     </li>
                 </ul>
@@ -454,7 +455,7 @@
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-notification"></use>
                             </svg>
-                            <span class="absolute top-0 right-0 z-10 text-white rounded-full badge bg-success-500">3</span>
+                            <span class="absolute top-0 right-0 z-10 Text-white rounded-full badge bg-success-500">3</span>
                         </a>
                         <div class="p-2 dropdown-menu dropdown-notification dropdown-menu-end pc-h-dropdown">
                             <div class="flex items-center justify-between px-5 py-4 dropdown-header">
@@ -462,21 +463,21 @@
                                 <a href="#!" class="btn btn-link btn-sm">Mark all read</a>
                             </div>
                             <div class="relative px-5 py-4 dropdown-body header-notification-scroll" style="max-height: calc(100vh - 215px)">
-                                <p class="mb-3 text-span">Today</p>
+                                <p class="mb-3 Text-span">Today</p>
                                 <div class="mb-2 card">
                                     <div class="card-body">
                                         <div class="flex gap-4">
                                             <div class="shrink-0">
-                                                <svg class="pc-icon text-primary w-[22px] h-[22px]">
+                                                <svg class="pc-icon Text-primary w-[22px] h-[22px]">
                                                     <use xlink:href="#custom-layer"></use>
                                                 </svg>
                                             </div>
                                             <div class="grow">
-                                                <span class="text-sm float-end text-muted">2 min ago</span>
-                                                <h5 class="mb-2 text-body">UI/UX Design</h5>
+                                                <span class="Text-sm float-end Text-muted">2 min ago</span>
+                                                <h5 class="mb-2 Text-body">UI/UX Design</h5>
                                                 <p class="mb-0">
-                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                                                    type and scrambled it to make a type
+                                                    Lorem Ipsum has been the industry's standard dummy Text ever since the 1500s, when an unknown printer took a galley of
+                                                    Type and scrambled it to make a Type
                                                 </p>
                                             </div>
                                         </div>
@@ -486,33 +487,33 @@
                                     <div class="card-body">
                                         <div class="flex gap-4">
                                             <div class="shrink-0">
-                                                <svg class="pc-icon text-primary w-[22px] h-[22px]">
+                                                <svg class="pc-icon Text-primary w-[22px] h-[22px]">
                                                     <use xlink:href="#custom-sms"></use>
                                                 </svg>
                                             </div>
                                             <div class="grow">
-                                                <span class="text-sm float-end text-muted">1 hour ago</span>
-                                                <h5 class="mb-2 text-body">Message</h5>
-                                                <p class="mb-0">Lorem Ipsum has been the industry's standard dummy text ever since the 1500.</p>
+                                                <span class="Text-sm float-end Text-muted">1 hour ago</span>
+                                                <h5 class="mb-2 Text-body">Message</h5>
+                                                <p class="mb-0">Lorem Ipsum has been the industry's standard dummy Text ever since the 1500.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="mt-4 mb-3 text-span">Yesterday</p>
+                                <p class="mt-4 mb-3 Text-span">Yesterday</p>
                                 <div class="mb-2 card">
                                     <div class="card-body">
                                         <div class="flex gap-4">
                                             <div class="shrink-0">
-                                                <svg class="pc-icon text-primary w-[22px] h-[22px]">
-                                                    <use xlink:href="#custom-document-text"></use>
+                                                <svg class="pc-icon Text-primary w-[22px] h-[22px]">
+                                                    <use xlink:href="#custom-document-Text"></use>
                                                 </svg>
                                             </div>
                                             <div class="grow ms-3">
-                                                <span class="text-sm float-end text-muted">2 hour ago</span>
-                                                <h5 class="mb-2 text-body">Forms</h5>
+                                                <span class="Text-sm float-end Text-muted">2 hour ago</span>
+                                                <h5 class="mb-2 Text-body">Forms</h5>
                                                 <p class="mb-0">
-                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                                                    type and scrambled it to make a type
+                                                    Lorem Ipsum has been the industry's standard dummy Text ever since the 1500s, when an unknown printer took a galley of
+                                                    Type and scrambled it to make a Type
                                                 </p>
                                             </div>
                                         </div>
@@ -522,15 +523,15 @@
                                     <div class="card-body">
                                         <div class="flex gap-4">
                                             <div class="shrink-0">
-                                                <svg class="pc-icon text-primary w-[22px] h-[22px]">
+                                                <svg class="pc-icon Text-primary w-[22px] h-[22px]">
                                                     <use xlink:href="#custom-user-bold"></use>
                                                 </svg>
                                             </div>
                                             <div class="grow ms-3">
-                                                <span class="text-sm float-end text-muted">12 hour ago</span>
-                                                <h5 class="mb-2 text-body">Challenge invitation</h5>
+                                                <span class="Text-sm float-end Text-muted">12 hour ago</span>
+                                                <h5 class="mb-2 Text-body">Challenge invitation</h5>
                                                 <p class="mb-2">
-                                                    <span class="text-dark">Jonny </span>
+                                                    <span class="Text-dark">Jonny </span>
                                                     invites to join the challenge
                                                 </p>
                                                 <button class="btn btn-sm btn-outline-secondary me-2">Decline</button>
@@ -543,24 +544,24 @@
                                     <div class="card-body">
                                         <div class="flex gap-4">
                                             <div class="shrink-0">
-                                                <svg class="pc-icon text-primary w-[22px] h-[22px]">
+                                                <svg class="pc-icon Text-primary w-[22px] h-[22px]">
                                                     <use xlink:href="#custom-security-safe"></use>
                                                 </svg>
                                             </div>
                                             <div class="grow ms-3">
-                                                <span class="text-sm float-end text-muted">5 hour ago</span>
-                                                <h5 class="mb-2 text-body">Security</h5>
+                                                <span class="Text-sm float-end Text-muted">5 hour ago</span>
+                                                <h5 class="mb-2 Text-body">Security</h5>
                                                 <p class="mb-0">
-                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                                                    type and scrambled it to make a type
+                                                    Lorem Ipsum has been the industry's standard dummy Text ever since the 1500s, when an unknown printer took a galley of
+                                                    Type and scrambled it to make a Type
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="py-2 text-center">
-                                <a href="#!" class="text-danger-500 hover:text-danger-600 focus:text-danger-600 active:text-danger-600">
+                            <div class="py-2 Text-center">
+                                <a href="#!" class="Text-danger-500 hover:Text-danger-600 focus:Text-danger-600 active:Text-danger-600">
                                     Clear all Notifications
                                 </a>
                             </div>
@@ -578,13 +579,13 @@
   
     <div class="pct-c-btn block fixed ltr:-right-1 rtl:-left-1 top-[100px] z-[1030] overflow-hidden p-0 border-4 ltr:border-r-0 rtl:border-l-0 ltr:rounded-[50%_4px_4px_50%] rtl:rounded-[4px_50%_50%_4px] shadow-[-6px_0px_14px_1px_rgba(27,46,94,0.04)] border-theme-cardbg dark:border-themedark-cardbg bg-theme-cardbg dark:bg-themedark-cardbg transition-all">
         <a href="#" class="block px-4 py-3 transition-all hover:bg-primary-500/10" data-pc-toggle="offcanvas" data-pc-target="#offcanvas_pc_layout">
-            <i class="ph-duotone ph-gear-six block text-[24px] leading-none text-primary-500"></i>
+            <i class="ph-duotone ph-gear-six block Text-[24px] leading-none Text-primary-500"></i>
         </a>
     </div>
     <div class="offcanvas pct-offcanvas !w-[320px] offcanvas-end !z-[1031]" tabindex="-1" id="offcanvas_pc_layout" aria-labelledby="offcanvas_pc_layoutLabel">
         <div class="offcanvas-header">
             <h5 id="offcanvas_pc_layoutLabel">Settings</h5>
-            <button data-pc-dismiss="#offcanvas_pc_layout" class="flex items-center justify-center text-lg rounded w-7 h-7 text-secondary-500 hover:bg-danger-500/10 hover:text-danger-500">
+            <button data-pc-dismiss="#offcanvas_pc_layout" class="flex items-center justify-center Text-lg rounded w-7 h-7 Text-secondary-500 hover:bg-danger-500/10 hover:Text-danger-500">
                 <i class="ti ti-x"></i>
             </button>
         </div>
@@ -593,14 +594,14 @@
                 <li class="list-group-item">
                     <div class="pc-dark">
                         <h6 class="mb-1">Theme Mode</h6>
-                        <p class="mb-4 text-sm text-muted">Choose light or dark mode or Auto</p>
+                        <p class="mb-4 Text-sm Text-muted">Choose light or dark mode or Auto</p>
                         <div class="grid grid-cols-12 gap-6 theme-color theme-layout">
                             <div class="col-span-4">
                                 <div class="grid">
                                     <button class="preset-btn btn active"
                                             data-value="true"
                                             onclick="layout_change('light');">
-                                        <svg class="pc-icon text-warning-500 w-[22px] h-[22px]">
+                                        <svg class="pc-icon Text-warning-500 w-[22px] h-[22px]">
                                             <use xlink:href="#custom-sun-1"></use>
                                         </svg>
                                     </button>
@@ -621,7 +622,7 @@
                                             data-value="default"
                                             onclick="layout_change_default();">
                                         <span class="pc-lay-icon d-flex align-items-center justify-content-center">
-                                            <i class="ph-duotone ph-cpu text-[26px]"></i>
+                                            <i class="ph-duotone ph-cpu Text-[26px]"></i>
                                         </span>
                                     </button>
                                 </div>
@@ -632,7 +633,7 @@
 
                 <li class="list-group-item">
                     <h6 class="mb-1">Theme Contrast</h6>
-                    <p class="mb-4 text-sm text-muted">Choose theme contrast</p>
+                    <p class="mb-4 Text-sm Text-muted">Choose theme contrast</p>
                     <div class="grid grid-cols-12 gap-6 theme-contrast">
                         <div class="col-span-6">
                             <div class="grid">
@@ -660,34 +661,34 @@
                 </li>
                 <li class="list-group-item">
                     <h6 class="mb-1">Custom Theme</h6>
-                    <p class="mb-4 text-sm text-muted">Choose your primary theme color</p>
+                    <p class="mb-4 Text-sm Text-muted">Choose your primary theme color</p>
                     <div class="flex flex-wrap items-center gap-1 mt-3 theme-color preset-color">
                         <a href="#" class="group bg-primary-500 active" data-value="preset-1">
-                            <i class="block group-[.active]:hidden ph-duotone ph-arrow-counter-clockwise text-white text-lg leading-none"></i>
-                            <i class="hidden group-[.active]:block ph-duotone ph-paint-brush text-white text-lg leading-none"></i>
+                            <i class="block group-[.active]:hidden ph-duotone ph-arrow-counter-clockwise Text-white Text-lg leading-none"></i>
+                            <i class="hidden group-[.active]:block ph-duotone ph-paint-brush Text-white Text-lg leading-none"></i>
                         </a>
-                        <a href="#" class="bg-red-500" data-value="preset-2"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-orange-500" data-value="preset-3"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-amber-500" data-value="preset-4"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-yellow-500" data-value="preset-5"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-lime-500" data-value="preset-6"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-green-500" data-value="preset-7"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-emerald-500" data-value="preset-8"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-teal-500" data-value="preset-9"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-cyan-500" data-value="preset-10"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-sky-500" data-value="preset-11"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-blue-500" data-value="preset-12"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-indigo-500" data-value="preset-13"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-violet-500" data-value="preset-14"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-purple-500" data-value="preset-15"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-fuchsia-500" data-value="preset-16"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-pink-500" data-value="preset-17"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
-                        <a href="#" class="bg-rose-500" data-value="preset-18"><i class="text-lg leading-none text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-red-500" data-value="preset-2"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-orange-500" data-value="preset-3"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-amber-500" data-value="preset-4"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-yellow-500" data-value="preset-5"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-lime-500" data-value="preset-6"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-green-500" data-value="preset-7"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-emerald-500" data-value="preset-8"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-teal-500" data-value="preset-9"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-cyan-500" data-value="preset-10"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-sky-500" data-value="preset-11"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-blue-500" data-value="preset-12"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-indigo-500" data-value="preset-13"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-violet-500" data-value="preset-14"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-purple-500" data-value="preset-15"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-fuchsia-500" data-value="preset-16"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-pink-500" data-value="preset-17"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
+                        <a href="#" class="bg-rose-500" data-value="preset-18"><i class="Text-lg leading-none Text-white ph-duotone ph-paint-brush"></i></a>
                     </div>
                 </li>
                 <li class="list-group-item">
                     <h6 class="mb-1">Theme layout</h6>
-                    <p class="mb-4 text-sm text-muted">Choose your layout</p>
+                    <p class="mb-4 Text-sm Text-muted">Choose your layout</p>
                     <div class="flex items-center w-full gap-1 theme-main-layout">
                         <a href="#!" class="preset-btn btn btn-img active" data-value="vertical">
                             <img src="~/panel/images/customizer/caption-on.svg" alt="img" class="img-fluid" />
@@ -708,7 +709,7 @@
                 </li>
                 <li class="list-group-item">
                     <h6 class="mb-1">Sidebar Caption</h6>
-                    <p class="mb-4 text-sm text-muted">Sidebar Caption Hide/Show</p>
+                    <p class="mb-4 Text-sm Text-muted">Sidebar Caption Hide/Show</p>
                     <div class="grid grid-cols-12 gap-6 theme-color theme-nav-caption">
                         <div class="col-span-6">
                             <div class="grid">
@@ -733,7 +734,7 @@
                 <li class="list-group-item">
                     <div class="pc-rtl">
                         <h6 class="mb-1">Theme Layout</h6>
-                        <p class="mb-4 text-sm text-muted">LTR/RTL</p>
+                        <p class="mb-4 Text-sm Text-muted">LTR/RTL</p>
                         <div class="grid grid-cols-12 gap-6 theme-color theme-direction">
                             <div class="col-span-6">
                                 <div class="grid">
@@ -759,7 +760,7 @@
                 <li class="list-group-item pc-box-width">
                     <div class="pc-container-width">
                         <h6 class="mb-1">Layout Width</h6>
-                        <p class="mb-4 text-sm text-muted">Choose Full or Container Layout</p>
+                        <p class="mb-4 Text-sm Text-muted">Choose Full or Container Layout</p>
                         <div class="grid grid-cols-12 gap-6 theme-color theme-container">
                             <div class="col-span-6">
                                 <div class="grid">

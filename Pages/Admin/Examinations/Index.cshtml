@@ -41,13 +41,13 @@
                                             @Html.DisplayNameFor(model => model.Examination[0].User)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Examination[0].examination_date)
+                                            @Html.DisplayNameFor(model => model.Examination[0].ExaminationDate)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Examination[0].examination_result)
+                                            @Html.DisplayNameFor(model => model.Examination[0].ExaminationResult)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Examination[0].description)
+                                            @Html.DisplayNameFor(model => model.Examination[0].Description)
                                         </th>
                                         <th>عملیات</th>
                                     </tr>
@@ -61,28 +61,28 @@
                                                 @Html.DisplayFor(modelItem => item.User.Name)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.examination_date)
+                                                @Html.DisplayFor(modelItem => item.ExaminationDate)
                                             </td>
                                             <td>
-                                                @if (item.examination_result.Equals("incompetence"))
+                                                @if (item.ExaminationResult.Equals("incompetence"))
                                                 {
-                                                    <span class="badge text-white bg-danger-500">نامناسب</span>
+                                                    <span class="badge Text-white bg-danger-500">نامناسب</span>
                                                 }
-                                                else if (item.examination_result.Equals("conditionally"))
+                                                else if (item.ExaminationResult.Equals("conditionally"))
                                                 {
-                                                    <span class="badge text-white bg-warning-500">مشروط</span>
+                                                    <span class="badge Text-white bg-warning-500">مشروط</span>
                                                 }
                                                 else
                                                 {
-                                                    <span class="badge text-white bg-success-500">مناسب</span>
+                                                    <span class="badge Text-white bg-success-500">مناسب</span>
                                                 }
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.description)
+                                                @Html.DisplayFor(modelItem => item.Description)
                                             </td>
                                             <td>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

@@ -16,13 +16,13 @@ Description:  this file will contains defining code for build horizontal layouts
   document.getElementsByTagName('html')[0].setAttribute('data-pc-layout', 'horizontal');
   const pc_nav_content = document.querySelector('.navbar-content').innerHTML;
 
-  // for above 1024 screen size after that horizontal set to default layout
+  // for above 1024 screen Size after that horizontal set to default layout
   var docW = window.innerWidth;
   if (docW > 1024) {
     set_horizontal_menu();
     set_edge_menu();
   }
-  window.addEventListener('resize', function () {
+  window.addEventListener('reSize', function () {
     var docW = window.innerWidth;
     document.querySelector('.navbar-content').innerHTML = '';
     document.querySelector('.navbar-content').innerHTML = pc_nav_content;
@@ -38,9 +38,9 @@ Description:  this file will contains defining code for build horizontal layouts
     }
   });
 
-  // for change to vertical menu from 1024 screen size
+  // for change to vertical menu from 1024 screen Size
   function reinit_vertical_menu() {
-    feather.replace();
+    feather.rePlace();
     menu_click();
 
     if (document.querySelector('.navbar-content')) {
@@ -51,7 +51,7 @@ Description:  this file will contains defining code for build horizontal layouts
   // for horizontal menu
   function reinit_horizontal_menu() {
     set_horizontal_menu();
-    feather.replace();
+    feather.rePlace();
     set_edge_menu();
 
     // for overlay remove
@@ -90,7 +90,7 @@ Description:  this file will contains defining code for build horizontal layouts
               '<li class="pc-item pc-hasmenu">\
                 <a href="#!" class="pc-link ">' +
                 menuicon +
-                '<span class="pc-mtext">' +
+                '<span class="pc-mText">' +
                 flag_item_extra.children[0].innerHTML +
                 '</span>\
                   <span class="pc-arrow"><i data-feather="chevron-right"></i></span>\
@@ -138,7 +138,7 @@ Description:  this file will contains defining code for build horizontal layouts
                                 <span class="pc-micon">' +
                   flag_item_extra.children[1].outerHTML +
                   '</span>\
-                                <span class="pc-mtext">' +
+                                <span class="pc-mText">' +
                   flag_item_extra.children[0].innerHTML +
                   '</span>\
                                 <span class="pc-arrow"><i data-feather="chevron-right"></i></span>\
@@ -167,7 +167,7 @@ Description:  this file will contains defining code for build horizontal layouts
 
     var pc_menu_list_new = document.querySelectorAll('.pc-navbar > li.pc-item');
 
-    // code structure update above 1024 screen size and otherwise remove this code structure
+    // code structure update above 1024 screen Size and otherwise remove this code structure
     pc_menu_list_new.forEach(function (item, list_index) {
       flag_w += get_w(item) + 49;
       if (flag_w > window.innerWidth) {
@@ -189,7 +189,7 @@ Description:  this file will contains defining code for build horizontal layouts
             '<li class="pc-item pc-hasmenu">\
                           <a href="#!" class="pc-link ">\
                               <span class="pc-micon"><svg class="pc-icon"><use xlink:href="#custom-clipboard"></use></svg></span>\
-                              <span class="pc-mtext">Other</span>\
+                              <span class="pc-mText">Other</span>\
                               <span class="pc-arrow"><i data-feather="chevron-right"></i></span>\
                           </a>\
                           <ul class="pc-submenu">' +

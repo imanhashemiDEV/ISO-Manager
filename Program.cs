@@ -6,14 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbConText<ApplicationDbConText>(options =>
     options.UseSqlServer(connectionString));
-
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplicationDbConText>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {

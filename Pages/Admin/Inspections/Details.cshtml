@@ -37,7 +37,7 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.InspectionTexts[0].text)
+                                            @Html.DisplayNameFor(model => model.InspectionTexts[0].Text)
                                         </th>
                                         <th>
                                             توضیحات
@@ -51,25 +51,25 @@
                                     @foreach (var item in Model.InspectionDetails)
                                     {
                                         <form method="post">
-                                            <input type="hidden" asp-for="EditDetailId" value="@item.Id"/>
+                                            <input Type="hidden" asp-for="EditDetailId" value="@item.Id"/>
                                             <tr>
                                                 <td>@(row++)</td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.text)
+                                                    @Html.DisplayFor(modelItem => item.Text)
                                                 </td>
-                                                @if (item.description == null)
+                                                @if (item.Description == null)
                                                 {
                                                     <td>
-                                                        <input type="text" asp-for="InspectionDesc" class="form-control">
+                                                        <input Type="Text" asp-for="InspectionDesc" class="form-control">
                                                     </td>
-                                                <td><button class="btn btn-primary" type="submit">ذخیره</button></td>
+                                                <td><button class="btn btn-primary" Type="submit">ذخیره</button></td>
                                                 }
                                                 else
                                                 {
                                                     <td>
-                                                    <input type="text" asp-for="InspectionDesc" class="form-control" value="@item.description">
+                                                    <input Type="Text" asp-for="InspectionDesc" class="form-control" value="@item.Description">
                                                     </td>
-                                                    <td><button class="btn btn-info" type="submit">ویرایش</button></td>
+                                                    <td><button class="btn btn-info" Type="submit">ویرایش</button></td>
                                                 }
                                                 
                                             </tr>

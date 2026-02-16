@@ -1,9 +1,9 @@
 @font-face {
 	font-family: "secondary-font";
 	src: url("../../fonts/gandom-400.eot");
-	src: url("../../fonts/gandom-400.eot?#iefix") format("embedded-opentype"),
+	src: url("../../fonts/gandom-400.eot?#iefix") format("embedded-openType"),
 		 url("../../fonts/gandom-400.woff2") format("woff2"),
 		 url("../../fonts/gandom-400.woff") format("woff"),
-		 url("../../fonts/gandom-400.ttf") format("truetype");
+		 url("../../fonts/gandom-400.ttf") format("trueType");
 	font-weight: 400;
 }

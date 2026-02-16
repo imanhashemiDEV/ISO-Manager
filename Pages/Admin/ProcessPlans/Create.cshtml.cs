@@ -12,16 +12,16 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["process_id"] = new SelectList(_context.Processes, "id", "id");
+        ViewData["process_id"] = new SelectList(_conText.Processes, "id", "id");
             return Page();
         }
 
@@ -36,8 +36,8 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
                 return Page();
             }
 
-            _context.ProcessPlans.Add(ProcessPlan);
-            await _context.SaveChangesAsync();
+            _conText.ProcessPlans.Add(ProcessPlan);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

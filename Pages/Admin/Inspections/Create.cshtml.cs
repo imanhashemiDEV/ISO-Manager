@@ -12,19 +12,19 @@ namespace ISO_Manager.Pages.Admin.Inspections
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["inspection_place_id"] = new SelectList(_context.InspectionPlaces, "id", "title");
-        ViewData["organization_id"] = new SelectList(_context.Organizations, "id", "title");
-        ViewData["user_id"] = new SelectList(_context.Users, "id", "name");
-        ViewData["workplace_id"] = new SelectList(_context.Workplaces, "id", "title");
+        ViewData["InspectionPlaceId"] = new SelectList(_conText.InspectionPlaces, "id", "Title");
+        ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "Title");
+        ViewData["UserId"] = new SelectList(_conText.Users, "id", "name");
+        ViewData["WorkPlaceId"] = new SelectList(_conText.WorkPlaces, "id", "Title");
             return Page();
         }
 
@@ -39,8 +39,8 @@ namespace ISO_Manager.Pages.Admin.Inspections
                 return Page();
             }
 
-            _context.Inspections.Add(Inspection);
-            await _context.SaveChangesAsync();
+            _conText.Inspections.Add(Inspection);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

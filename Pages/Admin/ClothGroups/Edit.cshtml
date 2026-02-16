@@ -29,16 +29,16 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="ClothGroup.Id" />
+                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <input Type="hidden" asp-for="ClothGroup.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ClothGroup.name" class="control-label"></label>
-                                    <input asp-for="ClothGroup.name" class="form-control"/>
-                                    <span asp-validation-for="ClothGroup.name" class="text-danger"></span>
+                                    <label asp-for="ClothGroup.Title" class="control-label"></label>
+                                    <input asp-for="ClothGroup.Title" class="form-control" />
+                                    <span asp-validation-for="ClothGroup.Title" class="Text-danger"></span>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">ثبت</button>
+                            <button Type="submit" class="btn btn-success">ثبت</button>
                         </form>
                     </div>
                 </div>

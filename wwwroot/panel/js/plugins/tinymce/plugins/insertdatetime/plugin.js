@@ -55,27 +55,27 @@
       return value;
     };
     const getDateTime = (editor, fmt, date = new Date()) => {
-      fmt = fmt.replace('%D', '%m/%d/%Y');
-      fmt = fmt.replace('%r', '%I:%M:%S %p');
-      fmt = fmt.replace('%Y', '' + date.getFullYear());
-      fmt = fmt.replace('%y', '' + date.getYear());
-      fmt = fmt.replace('%m', addZeros(date.getMonth() + 1, 2));
-      fmt = fmt.replace('%d', addZeros(date.getDate(), 2));
-      fmt = fmt.replace('%H', '' + addZeros(date.getHours(), 2));
-      fmt = fmt.replace('%M', '' + addZeros(date.getMinutes(), 2));
-      fmt = fmt.replace('%S', '' + addZeros(date.getSeconds(), 2));
-      fmt = fmt.replace('%I', '' + ((date.getHours() + 11) % 12 + 1));
-      fmt = fmt.replace('%p', '' + (date.getHours() < 12 ? 'AM' : 'PM'));
-      fmt = fmt.replace('%B', '' + editor.translate(monthsLong[date.getMonth()]));
-      fmt = fmt.replace('%b', '' + editor.translate(monthsShort[date.getMonth()]));
-      fmt = fmt.replace('%A', '' + editor.translate(daysLong[date.getDay()]));
-      fmt = fmt.replace('%a', '' + editor.translate(daysShort[date.getDay()]));
-      fmt = fmt.replace('%%', '%');
+      fmt = fmt.rePlace('%D', '%m/%d/%Y');
+      fmt = fmt.rePlace('%r', '%I:%M:%S %p');
+      fmt = fmt.rePlace('%Y', '' + date.getFullYear());
+      fmt = fmt.rePlace('%y', '' + date.getYear());
+      fmt = fmt.rePlace('%m', addZeros(date.getMonth() + 1, 2));
+      fmt = fmt.rePlace('%d', addZeros(date.getDate(), 2));
+      fmt = fmt.rePlace('%H', '' + addZeros(date.getHours(), 2));
+      fmt = fmt.rePlace('%M', '' + addZeros(date.getMinutes(), 2));
+      fmt = fmt.rePlace('%S', '' + addZeros(date.getSeconds(), 2));
+      fmt = fmt.rePlace('%I', '' + ((date.getHours() + 11) % 12 + 1));
+      fmt = fmt.rePlace('%p', '' + (date.getHours() < 12 ? 'AM' : 'PM'));
+      fmt = fmt.rePlace('%B', '' + editor.translate(monthsLong[date.getMonth()]));
+      fmt = fmt.rePlace('%b', '' + editor.translate(monthsShort[date.getMonth()]));
+      fmt = fmt.rePlace('%A', '' + editor.translate(daysLong[date.getDay()]));
+      fmt = fmt.rePlace('%a', '' + editor.translate(daysShort[date.getDay()]));
+      fmt = fmt.rePlace('%%', '%');
       return fmt;
     };
     const updateElement = (editor, timeElm, computerTime, userTime) => {
       const newTimeElm = editor.dom.create('time', { datetime: computerTime }, userTime);
-      editor.dom.replace(newTimeElm, timeElm);
+      editor.dom.rePlace(newTimeElm, timeElm);
       editor.selection.select(newTimeElm, true);
       editor.selection.collapse(false);
     };
@@ -144,8 +144,8 @@
         select: value => value === defaultFormat.get(),
         fetch: done => {
           done(global.map(formats, format => ({
-            type: 'choiceitem',
-            text: getDateTime(editor, format),
+            Type: 'choiceitem',
+            Text: getDateTime(editor, format),
             value: format
           })));
         },
@@ -164,10 +164,10 @@
       };
       editor.ui.registry.addNestedMenuItem('insertdatetime', {
         icon: 'insert-time',
-        text: 'Date/time',
+        Text: 'Date/time',
         getSubmenuItems: () => global.map(formats, format => ({
-          type: 'menuitem',
-          text: getDateTime(editor, format),
+          Type: 'menuitem',
+          Text: getDateTime(editor, format),
           onAction: makeMenuItemHandler(format)
         })),
         onSetup: onSetupEditable(editor)

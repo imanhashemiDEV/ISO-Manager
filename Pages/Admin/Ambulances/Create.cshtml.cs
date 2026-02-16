@@ -13,18 +13,18 @@ namespace ISO_Manager.Pages.Admin.Ambulances
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
        // [Authorize]
         public IActionResult OnGet()
         {
-            ViewData["users"] = _context.Users.ToList();
-            ViewData["workplaces"] = _context.Workplaces.ToList();
+            ViewData["users"] = _conText.Users.ToList();
+            ViewData["workPlaces"] = _conText.WorkPlaces.ToList();
             return Page();
         }
 
@@ -39,8 +39,8 @@ namespace ISO_Manager.Pages.Admin.Ambulances
                 return Page();
             }
 
-            _context.Ambulances.Add(Ambulance);
-            await _context.SaveChangesAsync();
+            _conText.Ambulances.Add(Ambulance);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

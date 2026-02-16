@@ -10,27 +10,35 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "متن پیام")]
-        public string? text { get; set; }
+        public string? Text { get; set; }
 
         [Display(Name = "وضعیت")]
-        public string? status { get; set; }
+        public string? Status { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         // relations
 
         [ForeignKey("Sender")]
-        public string? sender_id { get; set; }
-        public User? Sender { get; set; }
+        public string? SenderId { get; set; }
+        public virtual User? Sender { get; set; }
 
 
         [ForeignKey("Receiver")]
-        public string? receiver_id { get; set; }
-        public User? Receiver { get; set; }
+        public string? ReceiverId { get; set; }
+        public virtual User? Receiver { get; set; }
+
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
 
 
 

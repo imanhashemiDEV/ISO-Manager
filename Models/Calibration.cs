@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISO_Manager.Models
 {
@@ -9,40 +10,51 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "عنوان")]
-        public string? title { get; set; }
+        public string? Title { get; set; }
 
         [Display(Name = "شماره اموال")]
-        public string? asset_number { get; set; }
+        public string? AssetNumber { get; set; }
 
         [Display(Name = "شماره سریال")]
-        public string? serial_number { get; set; }
+        public string? SerialNumber { get; set; }
 
         [Display(Name = "صاحب")]
-        public string? device_owner { get; set; }
+        public string? DeviceOwner { get; set; }
 
         [Display(Name = "محل استفاده")]
-        public string? device_user { get; set; }
+        public string? DeviceUser { get; set; }
 
         [Display(Name = "تاریخ تحویل")]
-        public DateTime delivery_date { get; set; } = DateTime.Now;
+        public DateTime DeliveryDate { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ کالیبراسیون")]
-        public DateTime start_calibration { get; set; } = DateTime.Now;
+        public DateTime StartCalibration { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ انقضا")]
-        public DateTime end_calibration { get; set; } = DateTime.Now;
+        public DateTime EndCalibration { get; set; } = DateTime.Now;
 
         [Display(Name = "توضیحات")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "وضعیت")]
-        public string? status { get; set; }
+        public string? Status { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+
+
+        //relations
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
 
     }
 }

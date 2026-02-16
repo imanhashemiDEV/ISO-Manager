@@ -12,18 +12,18 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<OccupationHarmful> OccupationHarmful { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            OccupationHarmful = await _context.OccupationHarmfuls
+            OccupationHarmful = await _conText.OccupationHarmfuls
                 .Include(o => o.HarmfulFactor)
                 .Include(o => o.Occupation).ToListAsync();
         }

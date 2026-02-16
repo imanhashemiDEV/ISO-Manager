@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var options1 = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 100,
         sparkline: {
           enabled: true
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
           show: false
         },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }

@@ -39,13 +39,13 @@
                                     <th>ردیف</th>
                                     <th>محل استقرار</th>
                                     <th>راننده</th>
-                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].owner)</th>
-                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].car_model)</th>
-                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].car_year)</th>
-                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].type)</th>
-                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].owner_status)</th>
-                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].rental_number)</th>
-                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].car_tag)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].Owner)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].CarModel)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].CarYear)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].Type)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].OwnerStatus)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].RentalNumber)</th>
+                                    <th> @Html.DisplayNameFor(model => model.Ambulances[0].CarTag)</th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
@@ -54,18 +54,18 @@
                                 {
                                     <tr>
                                         <td>@(row++ + ( (ViewBag.pageId -1) * ViewBag.Take))</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Workplace!.title)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.WorkPlace!.Title)</td>
                                         <td>@Html.DisplayFor(modelItem => item.User!.Name)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.owner)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.car_model)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.car_year)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.type)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.owner_status)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.rental_number)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.car_tag)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Owner)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CarModel)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CarYear)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.OwnerStatus)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.RentalNumber)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CarTag)</td>
                                         <td>
                                             <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                <i class="ti ti-edit text-xl leading-none"></i>
+                                                <i class="ti ti-edit Text-xl leading-none"></i>
                                             </a>
                                         </td>
                                     </tr>

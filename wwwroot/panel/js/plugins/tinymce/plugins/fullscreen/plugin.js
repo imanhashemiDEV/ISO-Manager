@@ -25,26 +25,26 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.prototype)) {
+      if (predicate(v, constructor.protoType)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const typeOf = x => {
-      const t = typeof x;
+    const TypeOf = x => {
+      const t = Typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType$1 = type => value => typeOf(value) === type;
-    const isSimpleType = type => value => typeof value === type;
+    const isType$1 = Type => value => TypeOf(value) === Type;
+    const isSimpleType = Type => value => Typeof value === Type;
     const eq$1 = t => a => t === a;
     const isString = isType$1('string');
     const isObject = isType$1('object');
@@ -130,11 +130,11 @@
           return Optional.none();
         }
       }
-      getOr(replacement) {
-        return this.tag ? this.value : replacement;
+      getOr(rePlacement) {
+        return this.tag ? this.value : rePlacement;
       }
-      or(replacement) {
-        return this.tag ? this : replacement;
+      or(rePlacement) {
+        return this.tag ? this : rePlacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -172,7 +172,7 @@
     }
     Optional.singletonNone = new Optional(false);
 
-    const nativePush = Array.prototype.push;
+    const nativePush = Array.protoType.push;
     const map = (xs, f) => {
       const len = xs.length;
       const r = new Array(len);
@@ -299,7 +299,7 @@
       }
     };
 
-    const Global = typeof window !== 'undefined' ? window : Function('return this;')();
+    const Global = Typeof window !== 'undefined' ? window : Function('return this;')();
 
     const path = (parts, scope) => {
       let o = scope !== undefined && scope !== null ? scope : Global;
@@ -324,25 +324,25 @@
       return actual;
     };
 
-    const getPrototypeOf = Object.getPrototypeOf;
+    const getProtoTypeOf = Object.getProtoTypeOf;
     const sandHTMLElement = scope => {
       return getOrDie('HTMLElement', scope);
     };
-    const isPrototypeOf = x => {
-      const scope = resolve('ownerDocument.defaultView', x);
-      return isObject(x) && (sandHTMLElement(scope).prototype.isPrototypeOf(x) || /^HTML\w*Element$/.test(getPrototypeOf(x).constructor.name));
+    const isProtoTypeOf = x => {
+      const scope = resolve('OwnerDocument.defaultView', x);
+      return isObject(x) && (sandHTMLElement(scope).protoType.isProtoTypeOf(x) || /^HTML\w*Element$/.test(getProtoTypeOf(x).constructor.name));
     };
 
     const DOCUMENT = 9;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const TEXT = 3;
+    const Text = 3;
 
-    const type = element => element.dom.nodeType;
-    const isType = t => element => type(element) === t;
-    const isHTMLElement = element => isElement(element) && isPrototypeOf(element.dom);
+    const Type = element => element.dom.nodeType;
+    const isType = t => element => Type(element) === t;
+    const isHTMLElement = element => isElement(element) && isProtoTypeOf(element.dom);
     const isElement = isType(ELEMENT);
-    const isText = isType(TEXT);
+    const isText = isType(Text);
     const isDocumentFragment = isType(DOCUMENT_FRAGMENT);
 
     const rawSet = (dom, key, value) => {
@@ -395,9 +395,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (text, scope) => {
+    const fromText = (Text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createTextNode(Text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -442,7 +442,7 @@
 
     const eq = (e1, e2) => e1.dom === e2.dom;
 
-    const owner = element => SugarElement.fromDom(element.dom.ownerDocument);
+    const Owner = element => SugarElement.fromDom(element.dom.OwnerDocument);
     const parent = element => Optional.from(element.dom.parentNode).map(SugarElement.fromDom);
     const parents = (element, isRoot) => {
       const stop = isFunction(isRoot) ? isRoot : never;
@@ -492,10 +492,10 @@
 
     const inBody = element => {
       const dom = isText(element) ? element.dom.parentNode : element.dom;
-      if (dom === undefined || dom === null || dom.ownerDocument === null) {
+      if (dom === undefined || dom === null || dom.OwnerDocument === null) {
         return false;
       }
-      const doc = dom.ownerDocument;
+      const doc = dom.OwnerDocument;
       return getShadowRoot(SugarElement.fromDom(dom)).fold(() => doc.body.contains(dom), compose1(inBody, getShadowHost));
     };
     const getBody = doc => {
@@ -619,7 +619,7 @@
         };
       }
       const group = i => {
-        return Number(agent.replace(r, '$' + i));
+        return Number(agent.rePlace(r, '$' + i));
       };
       return nu$2(group(1), group(2));
     };
@@ -951,7 +951,7 @@
 
     const fireFullscreenStateChanged = (editor, state) => {
       editor.dispatch('FullscreenStateChanged', { state });
-      editor.dispatch('ResizeEditor');
+      editor.dispatch('ReSizeEditor');
     };
 
     const option = name => editor => editor.options.get(name);
@@ -966,7 +966,7 @@
 
     const getFullscreenRoot = editor => {
       const elem = SugarElement.fromDom(editor.getElement());
-      return getShadowRoot(elem).map(getShadowHost).getOrThunk(() => getBody(owner(elem)));
+      return getShadowRoot(elem).map(getShadowHost).getOrThunk(() => getBody(Owner(elem)));
     };
     const getFullscreenElement = root => {
       if (root.fullscreenElement !== undefined) {
@@ -1010,7 +1010,7 @@
         doc.webkitCancelFullScreen();
       }
     };
-    const isFullscreenElement = elem => elem.dom === getFullscreenElement(owner(elem).dom);
+    const isFullscreenElement = elem => elem.dom === getFullscreenElement(Owner(elem).dom);
 
     const ancestors$1 = (scope, predicate, isRoot) => filter$1(parents(scope, isRoot), predicate);
     const siblings$1 = (scope, predicate) => filter$1(siblings$2(scope), predicate);
@@ -1072,7 +1072,7 @@
       unbind: noop
     }), visualViewport => {
       const editorContainer = value();
-      const resizeBinder = unbindable();
+      const reSizeBinder = unbindable();
       const scrollBinder = unbindable();
       const refreshScroll = () => {
         document.body.scrollTop = 0;
@@ -1095,12 +1095,12 @@
       const bind$1 = element => {
         editorContainer.set(element);
         update.throttle();
-        resizeBinder.set(bind('resize', update.throttle));
+        reSizeBinder.set(bind('reSize', update.throttle));
         scrollBinder.set(bind('scroll', update.throttle));
       };
       const unbind = () => {
         editorContainer.on(() => {
-          resizeBinder.clear();
+          reSizeBinder.clear();
           scrollBinder.clear();
         });
         editorContainer.clear();
@@ -1141,7 +1141,7 @@
         Optional.from(fullscreenState.get()).each(info => info.fullscreenChangeHandler.unbind());
       };
       if (!fullscreenInfo) {
-        const fullscreenChangeHandler = bind$1(owner(fullscreenRoot), getFullscreenchangeEventName(), _evt => {
+        const fullscreenChangeHandler = bind$1(Owner(fullscreenRoot), getFullscreenchangeEventName(), _evt => {
           if (getFullscreenNative(editor)) {
             if (!isFullscreenElement(fullscreenRoot) && fullscreenState.get() !== null) {
               toggleFullscreen(editor, fullscreenState);
@@ -1178,7 +1178,7 @@
       } else {
         fullscreenInfo.fullscreenChangeHandler.unbind();
         if (getFullscreenNative(editor) && isFullscreenElement(fullscreenRoot)) {
-          exitFullscreen(owner(fullscreenRoot));
+          exitFullscreen(Owner(fullscreenRoot));
         }
         iframeStyle.width = fullscreenInfo.iframeWidth;
         iframeStyle.height = fullscreenInfo.iframeHeight;
@@ -1224,12 +1224,12 @@
     const register = (editor, fullscreenState) => {
       const onAction = () => editor.execCommand('mceFullScreen');
       editor.ui.registry.addToggleMenuItem('fullscreen', {
-        text: 'Fullscreen',
+        Text: 'Fullscreen',
         icon: 'fullscreen',
         shortcut: 'Meta+Shift+F',
         onAction,
         onSetup: makeSetupHandler(editor, fullscreenState),
-        context: 'any'
+        conText: 'any'
       });
       editor.ui.registry.addToggleButton('fullscreen', {
         tooltip: 'Fullscreen',
@@ -1237,7 +1237,7 @@
         onAction,
         onSetup: makeSetupHandler(editor, fullscreenState),
         shortcut: 'Meta+Shift+F',
-        context: 'any'
+        conText: 'any'
       });
     };
 

@@ -25,42 +25,42 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="DailyReport.type" class="control-label"></label>
-                                    <select asp-for="DailyReport.type" class="form-select my-2">
+                                    <label asp-for="DailyReport.Type" class="control-label"></label>
+                                    <select asp-for="DailyReport.Type" class="form-select my-2">
                                         <option value="rig">دکل حفاری</option>
                                         <option value="coil-tube">لوله مغزی</option>
                                         <option value="pump-truck">پمپ های ویژه</option>
                                         <option value="pump-nitrogen">پمپ نیتروژن</option>
                                     </select>
-                                    <span asp-validation-for="DailyReport.type" class="text-danger"></span>
+                                    <span asp-validation-for="DailyReport.Type" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="DailyReport.unit" class="control-label"></label>
-                                    <input asp-for="DailyReport.unit" class="form-control my-2" />
-                                    <span asp-validation-for="DailyReport.unit" class="text-danger"></span>
+                                    <label asp-for="DailyReport.Unit" class="control-label"></label>
+                                    <input asp-for="DailyReport.Unit" class="form-control my-2" />
+                                    <span asp-validation-for="DailyReport.Unit" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="DailyReport.location" class="control-label"></label>
-                                    <input asp-for="DailyReport.location" class="form-control my-2" />
-                                    <span asp-validation-for="DailyReport.location" class="text-danger"></span>
+                                    <label asp-for="DailyReport.Location" class="control-label"></label>
+                                    <input asp-for="DailyReport.Location" class="form-control my-2" />
+                                    <span asp-validation-for="DailyReport.Location" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
-                                    <label asp-for="DailyReport.rig_boss_id" class="control-label"></label>
-                                    <select id="rig_bosses" asp-for="DailyReport.rig_boss_id" class="form-control" asp-items="ViewBag.rig_boss_id"></select>
+                                    <label asp-for="DailyReport.RigBossId" class="control-label"></label>
+                                    <select id="rig_bosses" asp-for="DailyReport.RigBossId" class="form-control" asp-items="ViewBag.RigBossId"></select>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
-                                    <label asp-for="DailyReport.camp_boss_id" class="control-label"></label>
-                                    <select id="camp_bosses" asp-for="DailyReport.camp_boss_id" class="form-control" asp-items="ViewBag.camp_boss_id"></select>
+                                    <label asp-for="DailyReport.CampBossId" class="control-label"></label>
+                                    <select id="camp_bosses" asp-for="DailyReport.CampBossId" class="form-control" asp-items="ViewBag.CampBossId"></select>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
-                                    <label asp-for="DailyReport.doctor_id" class="control-label"></label>
-                                    <select id="doctors" asp-for="DailyReport.doctor_id" class="form-control" asp-items="ViewBag.doctor_id"></select>
+                                    <label asp-for="DailyReport.DoctorId" class="control-label"></label>
+                                    <select id="doctors" asp-for="DailyReport.DoctorId" class="form-control" asp-items="ViewBag.DoctorId"></select>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">ثبت</button>
+                            <button Type="submit" class="btn btn-success">ثبت</button>
                         </form>
                     </div>
                 </div>

@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Examinations
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,14 +30,14 @@ namespace ISO_Manager.Pages.Admin.Examinations
                 return NotFound();
             }
 
-            var examination =  await _context.Examinations.FirstOrDefaultAsync(m => m.Id == id);
+            var examination =  await _conText.Examinations.FirstOrDefaultAsync(m => m.Id == id);
             if (examination == null)
             {
                 return NotFound();
             }
             Examination = examination;
-           ViewData["contractor_id"] = new SelectList(_context.Contractors, "id", "company");
-           ViewData["user_id"] = new SelectList(_context.Users, "id", "name");
+           ViewData["ContractorId"] = new SelectList(_conText.Contractors, "id", "Company");
+           ViewData["UserId"] = new SelectList(_conText.Users, "id", "name");
             return Page();
         }
 
@@ -50,11 +50,11 @@ namespace ISO_Manager.Pages.Admin.Examinations
                 return Page();
             }
 
-            _context.Attach(Examination).State = EntityState.Modified;
+            _conText.Attach(Examination).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -68,9 +68,9 @@ namespace ISO_Manager.Pages.Admin.Examinations
                 }
             }
 
-            if (Examination.contractor_id != null)
+            if (Examination.ContractorId != null)
             {
-                return RedirectToPage("./Contractor" , new {contractor_id = Examination.contractor_id.ToString()});
+                return RedirectToPage("./Contractor" , new {ContractorId = Examination.ContractorId.ToString()});
             }
 
             return RedirectToPage("./Index");
@@ -78,7 +78,7 @@ namespace ISO_Manager.Pages.Admin.Examinations
 
         private bool ExaminationExists(long id)
         {
-            return _context.Examinations.Any(e => e.Id == id);
+            return _conText.Examinations.Any(e => e.Id == id);
         }
     }
 }

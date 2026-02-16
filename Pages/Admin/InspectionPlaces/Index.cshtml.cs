@@ -12,18 +12,18 @@ namespace ISO_Manager.Pages.Admin.InspectionPlaces
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<InspectionPlace> InspectionPlace { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            InspectionPlace = await _context.InspectionPlaces
+            InspectionPlace = await _conText.InspectionPlaces
                 //.Include(i => i.Organization)
                 .ToListAsync();
         }

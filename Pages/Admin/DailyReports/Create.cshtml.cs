@@ -12,18 +12,18 @@ namespace ISO_Manager.Pages.Admin.DailyReports
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["camp_boss_id"] = new SelectList(_context.Users, "id", "name");
-        ViewData["doctor_id"] = new SelectList(_context.Users, "id", "name");
-        ViewData["rig_boss_id"] = new SelectList(_context.Users, "id", "name");
+        ViewData["CampBossId"] = new SelectList(_conText.Users, "id", "name");
+        ViewData["DoctorId"] = new SelectList(_conText.Users, "id", "name");
+        ViewData["RigBossId"] = new SelectList(_conText.Users, "id", "name");
             return Page();
         }
 
@@ -38,8 +38,8 @@ namespace ISO_Manager.Pages.Admin.DailyReports
                 return Page();
             }
 
-            _context.DailyReports.Add(DailyReport);
-            await _context.SaveChangesAsync();
+            _conText.DailyReports.Add(DailyReport);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

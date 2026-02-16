@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISO_Manager.Models
 {
@@ -9,38 +10,46 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "عنوان  فارسی")]
-        public string? title { get; set; }
+        public string? Title { get; set; }
 
         [Display(Name = "عنوان انگلیسی")]
-        public string? e_title { get; set; }
+        public string? ETitle { get; set; }
 
         [Display(Name = "بازرس")]
-        public string? inspector { get; set; }
+        public string? Inspector { get; set; }
 
         [Display(Name = "شماره اموال")]
-        public string? asset_number { get; set; }
+        public string? AssetNumber { get; set; }
 
         [Display(Name = "شماره سریال")]
-        public string? serial_number { get; set; }
+        public string? SerialNumber { get; set; }
 
         [Display(Name = "محل استفاده")]
-        public string? device_user { get; set; }
+        public string? DeviceUser { get; set; }
 
         [Display(Name = "توضیحات")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "وضعیت")]
-        public string? status { get; set; }
+        public string? Status { get; set; }
 
         [Display(Name = "تاریخ بازرسی")]
-        public DateTime inspection_date { get; set; } = DateTime.Now;
+        public DateTime InspectionDate { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
+
+        // relations
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
 
     }
 }

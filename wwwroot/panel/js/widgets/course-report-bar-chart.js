@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var course_report_bar_chart_options = {
       chart: {
-        type: 'bar',
+        Type: 'bar',
         height: 210,
         toolbar: {
           show: false

@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Assets
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace ISO_Manager.Pages.Admin.Assets
                 return NotFound();
             }
 
-            var asset =  await _context.Assets.FirstOrDefaultAsync(m => m.Id == id);
+            var asset =  await _conText.Assets.FirstOrDefaultAsync(m => m.Id == id);
             if (asset == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace ISO_Manager.Pages.Admin.Assets
                 return Page();
             }
 
-            _context.Attach(Asset).State = EntityState.Modified;
+            _conText.Attach(Asset).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace ISO_Manager.Pages.Admin.Assets
 
         private bool AssetExists(long id)
         {
-            return _context.Assets.Any(e => e.Id == id);
+            return _conText.Assets.Any(e => e.Id == id);
         }
     }
 }

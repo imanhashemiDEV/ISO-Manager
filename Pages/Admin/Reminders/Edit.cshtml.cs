@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Reminders
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,14 +30,14 @@ namespace ISO_Manager.Pages.Admin.Reminders
                 return NotFound();
             }
 
-            var reminder =  await _context.Reminders.FirstOrDefaultAsync(m => m.Id == id);
+            var reminder =  await _conText.Reminders.FirstOrDefaultAsync(m => m.Id == id);
             if (reminder == null)
             {
                 return NotFound();
             }
             Reminder = reminder;
-           ViewData["organization_id"] = new SelectList(_context.Organizations, "id", "id");
-           ViewData["user_id"] = new SelectList(_context.Users, "id", "id");
+           ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "id");
+           ViewData["UserId"] = new SelectList(_conText.Users, "id", "id");
             return Page();
         }
 
@@ -50,11 +50,11 @@ namespace ISO_Manager.Pages.Admin.Reminders
                 return Page();
             }
 
-            _context.Attach(Reminder).State = EntityState.Modified;
+            _conText.Attach(Reminder).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -73,7 +73,7 @@ namespace ISO_Manager.Pages.Admin.Reminders
 
         private bool ReminderExists(long id)
         {
-            return _context.Reminders.Any(e => e.Id == id);
+            return _conText.Reminders.Any(e => e.Id == id);
         }
     }
 }

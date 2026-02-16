@@ -9,26 +9,26 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.prototype)) {
+      if (predicate(v, constructor.protoType)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const typeOf = x => {
-      const t = typeof x;
+    const TypeOf = x => {
+      const t = Typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType$1 = type => value => typeOf(value) === type;
-    const isSimpleType = type => value => typeof value === type;
+    const isType$1 = Type => value => TypeOf(value) === Type;
+    const isSimpleType = Type => value => Typeof value === Type;
     const eq$1 = t => a => t === a;
     const isString = isType$1('string');
     const isArray = isType$1('array');
@@ -116,11 +116,11 @@
           return Optional.none();
         }
       }
-      getOr(replacement) {
-        return this.tag ? this.value : replacement;
+      getOr(rePlacement) {
+        return this.tag ? this.value : rePlacement;
       }
-      or(replacement) {
-        return this.tag ? this : replacement;
+      or(rePlacement) {
+        return this.tag ? this : rePlacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -191,7 +191,7 @@
     const values = obj => {
       return mapToArray(obj, identity);
     };
-    const size = obj => {
+    const Size = obj => {
       return keys(obj).length;
     };
     const get$4 = (obj, key) => {
@@ -208,8 +208,8 @@
       return true;
     };
 
-    const nativeIndexOf = Array.prototype.indexOf;
-    const nativePush = Array.prototype.push;
+    const nativeIndexOf = Array.protoType.indexOf;
+    const nativePush = Array.protoType.push;
     const rawIndexOf = (ts, t) => nativeIndexOf.call(ts, t);
     const contains = (xs, x) => rawIndexOf(xs, x) > -1;
     const exists = (xs, pred) => {
@@ -343,7 +343,7 @@
     const DOCUMENT = 9;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const TEXT = 3;
+    const Text = 3;
 
     const fromHtml = (html, scope) => {
       const doc = scope || document;
@@ -361,9 +361,9 @@
       const node = doc.createElement(tag);
       return fromDom$1(node);
     };
-    const fromText = (text, scope) => {
+    const fromText = (Text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createTextNode(Text);
       return fromDom$1(node);
     };
     const fromDom$1 = node => {
@@ -413,23 +413,23 @@
     const eq = (e1, e2) => e1.dom === e2.dom;
     const is$1 = is$2;
 
-    typeof window !== 'undefined' ? window : Function('return this;')();
+    Typeof window !== 'undefined' ? window : Function('return this;')();
 
     const name = element => {
       const r = element.dom.nodeName;
       return r.toLowerCase();
     };
-    const type = element => element.dom.nodeType;
-    const isType = t => element => type(element) === t;
-    const isComment = element => type(element) === COMMENT || name(element) === '#comment';
+    const Type = element => element.dom.nodeType;
+    const isType = t => element => Type(element) === t;
+    const isComment = element => Type(element) === COMMENT || name(element) === '#comment';
     const isElement = isType(ELEMENT);
-    const isText = isType(TEXT);
+    const isText = isType(Text);
     const isDocument = isType(DOCUMENT);
     const isDocumentFragment = isType(DOCUMENT_FRAGMENT);
     const isTag = tag => e => isElement(e) && name(e) === tag;
 
-    const owner = element => SugarElement.fromDom(element.dom.ownerDocument);
-    const documentOrOwner = dos => isDocument(dos) ? dos : owner(dos);
+    const Owner = element => SugarElement.fromDom(element.dom.OwnerDocument);
+    const documentOrOwner = dos => isDocument(dos) ? dos : Owner(dos);
     const parent = element => Optional.from(element.dom.parentNode).map(SugarElement.fromDom);
     const parents = (element, isRoot) => {
       const stop = isFunction(isRoot) ? isRoot : never;
@@ -466,10 +466,10 @@
 
     const inBody = element => {
       const dom = isText(element) ? element.dom.parentNode : element.dom;
-      if (dom === undefined || dom === null || dom.ownerDocument === null) {
+      if (dom === undefined || dom === null || dom.OwnerDocument === null) {
         return false;
       }
-      const doc = dom.ownerDocument;
+      const doc = dom.OwnerDocument;
       return getShadowRoot(SugarElement.fromDom(dom)).fold(() => doc.body.contains(dom), compose1(inBody, getShadowHost));
     };
 
@@ -528,11 +528,11 @@
     const getNodeName = elm => elm.nodeName.toLowerCase();
     const getBody = editor => SugarElement.fromDom(editor.getBody());
     const getIsRoot = editor => element => eq(element, getBody(editor));
-    const removePxSuffix = size => size ? size.replace(/px$/, '') : '';
-    const addPxSuffix = size => /^\d+(\.\d+)?$/.test(size) ? size + 'px' : size;
+    const removePxSuffix = Size => Size ? Size.rePlace(/px$/, '') : '';
+    const addPxSuffix = Size => /^\d+(\.\d+)?$/.test(Size) ? Size + 'px' : Size;
     const getSelectionStart = editor => SugarElement.fromDom(editor.selection.getStart());
     const getSelectionEnd = editor => SugarElement.fromDom(editor.selection.getEnd());
-    const isInEditableContext = cell => closest$2(cell, isTag('table')).forall(isEditable);
+    const isInEditableConText = cell => closest$2(cell, isTag('table')).forall(isEditable);
 
     const children$2 = (scope, predicate) => filter(children$3(scope), predicate);
     const descendants$1 = (scope, predicate) => {
@@ -605,7 +605,7 @@
     const startsWith = (str, prefix) => {
       return checkRange(str, prefix, 0);
     };
-    const blank = r => s => s.replace(r, '');
+    const blank = r => s => s.rePlace(r, '');
     const trim = blank(/^\s+|\s+$/g);
     const isNotEmpty = s => s.length > 0;
     const isEmpty = s => !isNotEmpty(s);
@@ -928,12 +928,12 @@
 
     const toNumber = (px, fallback) => toFloat(px).getOr(fallback);
     const getProp = (element, name, fallback) => toNumber(get$1(element, name), fallback);
-    const calcContentBoxSize = (element, size, upper, lower) => {
+    const calcContentBoxSize = (element, Size, upper, lower) => {
       const paddingUpper = getProp(element, `padding-${ upper }`, 0);
       const paddingLower = getProp(element, `padding-${ lower }`, 0);
       const borderUpper = getProp(element, `border-${ upper }-width`, 0);
       const borderLower = getProp(element, `border-${ lower }-width`, 0);
-      return size - paddingUpper - paddingLower - borderUpper - borderLower;
+      return Size - paddingUpper - paddingLower - borderUpper - borderLower;
     };
     const getCalculatedWidth = (element, boxSizing) => {
       const dom = element.dom;
@@ -948,10 +948,10 @@
 
     const defaultTableToolbar = 'tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol';
     const defaultCellBorderWidths = range(5, i => {
-      const size = `${ i + 1 }px`;
+      const Size = `${ i + 1 }px`;
       return {
-        title: size,
-        value: size
+        Title: Size,
+        value: Size
       };
     });
     const defaultCellBorderStyles = map([
@@ -965,10 +965,10 @@
       'Outset',
       'None',
       'Hidden'
-    ], type => {
+    ], Type => {
       return {
-        title: type,
-        value: type.toLowerCase()
+        Title: Type,
+        value: Type.toLowerCase()
       };
     });
     const defaultWidth = '100%';
@@ -1210,7 +1210,7 @@
       };
     };
 
-    const api = NodeValue(isText, 'text');
+    const api = NodeValue(isText, 'Text');
     const get = element => api.get(element);
     const set = (element, value) => api.set(element, value);
 
@@ -1289,9 +1289,9 @@
           'iframe',
           'noframes',
           'noembed',
-          'title',
+          'Title',
           'style',
-          'textarea',
+          'Textarea',
           'xmp'
         ], tag);
       };
@@ -1335,7 +1335,7 @@
         create: constant({
           nu: SugarElement.fromTag,
           clone: clone$1,
-          text: SugarElement.fromText
+          Text: SugarElement.fromText
         }),
         query: constant({
           comparePosition,
@@ -1470,19 +1470,19 @@
 
     const verticalAlignValues = [
       {
-        text: 'None',
+        Text: 'None',
         value: ''
       },
       {
-        text: 'Top',
+        Text: 'Top',
         value: 'top'
       },
       {
-        text: 'Middle',
+        Text: 'Middle',
         value: 'middle'
       },
       {
-        text: 'Bottom',
+        Text: 'Bottom',
         value: 'bottom'
       }
     ];
@@ -1533,12 +1533,12 @@
       const canvas = document.createElement('canvas');
       canvas.height = 1;
       canvas.width = 1;
-      const canvasContext = canvas.getContext('2d');
-      canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-      canvasContext.fillStyle = '#FFFFFF';
-      canvasContext.fillStyle = color;
-      canvasContext.fillRect(0, 0, 1, 1);
-      const rgba = canvasContext.getImageData(0, 0, 1, 1).data;
+      const canvasConText = canvas.getConText('2d');
+      canvasConText.clearRect(0, 0, canvas.width, canvas.height);
+      canvasConText.fillStyle = '#FFFFFF';
+      canvasConText.fillStyle = color;
+      canvasConText.fillRect(0, 0, 1, 1);
+      const rgba = canvasConText.getImageData(0, 0, 1, 1).data;
       const r = rgba[0];
       const g = rgba[1];
       const b = rgba[2];
@@ -1604,15 +1604,15 @@
     };
     const isListGroup = item => hasNonNullableKey(item, 'menu');
     const buildListItems = items => map(items, item => {
-      const text = item.text || item.title || '';
+      const Text = item.Text || item.Title || '';
       if (isListGroup(item)) {
         return {
-          text,
+          Text,
           items: buildListItems(item.menu)
         };
       } else {
         return {
-          text,
+          Text,
           value: item.value
         };
       }
@@ -1623,24 +1623,24 @@
       }
       return Optional.some(buildListItems([
         {
-          text: 'Select...',
+          Text: 'Select...',
           value: 'mce-no-match'
         },
         ...classList
       ]));
     };
     const buildMenuItems = (editor, items, format, onAction) => map(items, item => {
-      const text = item.text || item.title;
+      const Text = item.Text || item.Title;
       if (isListGroup(item)) {
         return {
-          type: 'nestedmenuitem',
-          text,
+          Type: 'nestedmenuitem',
+          Text,
           getSubmenuItems: () => buildMenuItems(editor, item.menu, format, onAction)
         };
       } else {
         return {
-          text,
-          type: 'togglemenuitem',
+          Text,
+          Type: 'togglemenuitem',
           onAction: () => onAction(item.value),
           onSetup: onSetupToggle(editor, format, item.value)
         };
@@ -1662,13 +1662,13 @@
     const generateMenuItemsCallback = (editor, items, format, onAction) => callback => callback(buildMenuItems(editor, items, format, onAction));
     const buildColorMenu = (editor, colorList, style) => {
       const colorMap = map(colorList, entry => ({
-        text: entry.title,
+        Text: entry.Title,
         value: '#' + anyToHex(entry.value).value,
-        type: 'choiceitem'
+        Type: 'choiceitem'
       }));
       return [{
-          type: 'fancymenuitem',
-          fancytype: 'colorswatch',
+          Type: 'fancymenuitem',
+          fancyType: 'colorswatch',
           initData: {
             colors: colorMap.length > 0 ? colorMap : undefined,
             allowCustomColors: false
@@ -1682,94 +1682,94 @@
     const changeRowHeader = editor => () => {
       const currentType = editor.queryCommandValue('mceTableRowType');
       const newType = currentType === 'header' ? 'body' : 'header';
-      editor.execCommand('mceTableRowType', false, { type: newType });
+      editor.execCommand('mceTableRowType', false, { Type: newType });
     };
     const changeColumnHeader = editor => () => {
       const currentType = editor.queryCommandValue('mceTableColType');
       const newType = currentType === 'th' ? 'td' : 'th';
-      editor.execCommand('mceTableColType', false, { type: newType });
+      editor.execCommand('mceTableColType', false, { Type: newType });
     };
 
     const getClassList$1 = editor => buildClassList(getCellClassList(editor)).map(items => ({
       name: 'class',
-      type: 'listbox',
+      Type: 'listbox',
       label: 'Class',
       items
     }));
     const children = [
       {
         name: 'width',
-        type: 'input',
+        Type: 'input',
         label: 'Width'
       },
       {
-        name: 'celltype',
-        type: 'listbox',
-        label: 'Cell type',
+        name: 'cellType',
+        Type: 'listbox',
+        label: 'Cell Type',
         items: [
           {
-            text: 'Cell',
+            Text: 'Cell',
             value: 'td'
           },
           {
-            text: 'Header cell',
+            Text: 'Header cell',
             value: 'th'
           }
         ]
       },
       {
         name: 'scope',
-        type: 'listbox',
+        Type: 'listbox',
         label: 'Scope',
         items: [
           {
-            text: 'None',
+            Text: 'None',
             value: ''
           },
           {
-            text: 'Row',
+            Text: 'Row',
             value: 'row'
           },
           {
-            text: 'Column',
+            Text: 'Column',
             value: 'col'
           },
           {
-            text: 'Row group',
+            Text: 'Row group',
             value: 'rowgroup'
           },
           {
-            text: 'Column group',
+            Text: 'Column group',
             value: 'colgroup'
           }
         ]
       },
       {
         name: 'halign',
-        type: 'listbox',
+        Type: 'listbox',
         label: 'Horizontal align',
         items: [
           {
-            text: 'None',
+            Text: 'None',
             value: ''
           },
           {
-            text: 'Left',
+            Text: 'Left',
             value: 'left'
           },
           {
-            text: 'Center',
+            Text: 'Center',
             value: 'center'
           },
           {
-            text: 'Right',
+            Text: 'Right',
             value: 'right'
           }
         ]
       },
       {
         name: 'valign',
-        type: 'listbox',
+        Type: 'listbox',
         label: 'Vertical align',
         items: verticalAlignValues
       }
@@ -1778,35 +1778,35 @@
 
     const getAdvancedTab = (editor, dialogName) => {
       const emptyBorderStyle = [{
-          text: 'Select...',
+          Text: 'Select...',
           value: ''
         }];
       const advTabItems = [
         {
           name: 'borderstyle',
-          type: 'listbox',
+          Type: 'listbox',
           label: 'Border style',
           items: emptyBorderStyle.concat(buildListItems(getTableBorderStyles(editor)))
         },
         {
           name: 'bordercolor',
-          type: 'colorinput',
+          Type: 'colorinput',
           label: 'Border color'
         },
         {
           name: 'backgroundcolor',
-          type: 'colorinput',
+          Type: 'colorinput',
           label: 'Background color'
         }
       ];
       const borderWidth = {
         name: 'borderwidth',
-        type: 'input',
+        Type: 'input',
         label: 'Border width'
       };
       const items = dialogName === 'cell' ? [borderWidth].concat(advTabItems) : advTabItems;
       return {
-        title: 'Advanced',
+        Title: 'Advanced',
         name: 'advanced',
         items
       };
@@ -1849,14 +1849,14 @@
       const isHeaderRow = row.section === 'thead';
       const isHeaderCells = is(findCommonCellType(row.cells), 'th');
       if (row.section === 'tfoot') {
-        return { type: 'footer' };
+        return { Type: 'footer' };
       } else if (isHeaderRow || isHeaderCells) {
         return {
-          type: 'header',
+          Type: 'header',
           subType: getRowHeaderType(isHeaderRow, isHeaderCells)
         };
       } else {
-        return { type: 'body' };
+        return { Type: 'body' };
       }
     };
     const findCommonCellType = cells => {
@@ -1870,7 +1870,7 @@
       }
     };
     const findCommonRowType = rows => {
-      const rowTypes = map(rows, row => getRowType$1(row).type);
+      const rowTypes = map(rows, row => getRowType$1(row).Type);
       const hasHeader = contains(rowTypes, 'header');
       const hasFooter = contains(rowTypes, 'footer');
       if (!hasHeader && !hasFooter) {
@@ -2132,7 +2132,7 @@
       return {
         height: dom.getStyle(elm, 'height') || dom.getAttrib(elm, 'height'),
         class: dom.getAttrib(elm, 'class', ''),
-        type: getRowType(elm),
+        Type: getRowType(elm),
         align: getHAlignment(editor, elm),
         ...hasAdvancedRowTab ? extractAdvancedStyles(elm) : {}
       };
@@ -2144,7 +2144,7 @@
       return {
         width: getStyle(colElm, 'width'),
         scope: dom.getAttrib(cell, 'scope'),
-        celltype: getNodeName(cell),
+        cellType: getNodeName(cell),
         class: dom.getAttrib(cell, 'class', ''),
         halign: getHAlignment(editor, cell),
         valign: getVAlignment(editor, cell),
@@ -2207,17 +2207,17 @@
     };
     const applyStructureData$1 = (editor, data) => {
       editor.execCommand('mceTableCellType', false, {
-        type: data.celltype,
+        Type: data.cellType,
         no_events: true
       });
     };
     const applyCellData = (editor, cells, oldData, data) => {
       const modifiedData = filter$1(data, (value, key) => oldData[key] !== value);
-      if (size(modifiedData) > 0 && cells.length >= 1) {
+      if (Size(modifiedData) > 0 && cells.length >= 1) {
         table(cells[0]).each(table => {
           const selectedCells = getSelectedCells(table, cells);
-          const styleModified = size(filter$1(modifiedData, (_value, key) => key !== 'scope' && key !== 'celltype')) > 0;
-          const structureModified = has(modifiedData, 'celltype');
+          const styleModified = Size(filter$1(modifiedData, (_value, key) => key !== 'scope' && key !== 'cellType')) > 0;
+          const structureModified = has(modifiedData, 'cellType');
           if (styleModified || has(modifiedData, 'scope')) {
             applyStyleData$1(editor, selectedCells, data, curry(has, modifiedData));
           }
@@ -2250,10 +2250,10 @@
       }
       const data = getData$1(editor, cells);
       const dialogTabPanel = {
-        type: 'tabpanel',
+        Type: 'tabpanel',
         tabs: [
           {
-            title: 'General',
+            Title: 'General',
             name: 'general',
             items: getItems$2(editor)
           },
@@ -2261,27 +2261,27 @@
         ]
       };
       const dialogPanel = {
-        type: 'panel',
+        Type: 'panel',
         items: [{
-            type: 'grid',
+            Type: 'grid',
             columns: 2,
             items: getItems$2(editor)
           }]
       };
       editor.windowManager.open({
-        title: 'Cell Properties',
-        size: 'normal',
+        Title: 'Cell Properties',
+        Size: 'normal',
         body: hasAdvancedCellTab(editor) ? dialogTabPanel : dialogPanel,
         buttons: [
           {
-            type: 'cancel',
+            Type: 'cancel',
             name: 'cancel',
-            text: 'Cancel'
+            Text: 'Cancel'
           },
           {
-            type: 'submit',
+            Type: 'submit',
             name: 'save',
-            text: 'Save',
+            Text: 'Save',
             primary: true
           }
         ],
@@ -2292,49 +2292,49 @@
 
     const getClassList = editor => buildClassList(getRowClassList(editor)).map(items => ({
       name: 'class',
-      type: 'listbox',
+      Type: 'listbox',
       label: 'Class',
       items
     }));
     const formChildren = [
       {
-        type: 'listbox',
-        name: 'type',
-        label: 'Row type',
+        Type: 'listbox',
+        name: 'Type',
+        label: 'Row Type',
         items: [
           {
-            text: 'Header',
+            Text: 'Header',
             value: 'header'
           },
           {
-            text: 'Body',
+            Text: 'Body',
             value: 'body'
           },
           {
-            text: 'Footer',
+            Text: 'Footer',
             value: 'footer'
           }
         ]
       },
       {
-        type: 'listbox',
+        Type: 'listbox',
         name: 'align',
         label: 'Alignment',
         items: [
           {
-            text: 'None',
+            Text: 'None',
             value: ''
           },
           {
-            text: 'Left',
+            Text: 'Left',
             value: 'left'
           },
           {
-            text: 'Center',
+            Text: 'Center',
             value: 'center'
           },
           {
-            text: 'Right',
+            Text: 'Right',
             value: 'right'
           }
         ]
@@ -2342,7 +2342,7 @@
       {
         label: 'Height',
         name: 'height',
-        type: 'input'
+        Type: 'input'
       }
     ];
     const getItems$1 = editor => formChildren.concat(getClassList(editor).toArray());
@@ -2388,23 +2388,23 @@
     };
     const applyStructureData = (editor, data) => {
       editor.execCommand('mceTableRowType', false, {
-        type: data.type,
+        Type: data.Type,
         no_events: true
       });
     };
     const applyRowData = (editor, rows, oldData, data) => {
       const modifiedData = filter$1(data, (value, key) => oldData[key] !== value);
-      if (size(modifiedData) > 0) {
-        const typeModified = has(modifiedData, 'type');
-        const styleModified = typeModified ? size(modifiedData) > 1 : true;
+      if (Size(modifiedData) > 0) {
+        const TypeModified = has(modifiedData, 'Type');
+        const styleModified = TypeModified ? Size(modifiedData) > 1 : true;
         if (styleModified) {
           applyStyleData(editor, rows, data, curry(has, modifiedData));
         }
-        if (typeModified) {
+        if (TypeModified) {
           applyStructureData(editor, data);
         }
         table(SugarElement.fromDom(rows[0])).each(table => fireTableModified(editor, table.dom, {
-          structure: typeModified,
+          structure: TypeModified,
           style: styleModified
         }));
       }
@@ -2425,10 +2425,10 @@
       const rowsData = map(rows, rowElm => extractDataFromRowElement(editor, rowElm.dom, hasAdvancedRowTab(editor)));
       const data = getSharedValues(rowsData);
       const dialogTabPanel = {
-        type: 'tabpanel',
+        Type: 'tabpanel',
         tabs: [
           {
-            title: 'General',
+            Title: 'General',
             name: 'general',
             items: getItems$1(editor)
           },
@@ -2436,27 +2436,27 @@
         ]
       };
       const dialogPanel = {
-        type: 'panel',
+        Type: 'panel',
         items: [{
-            type: 'grid',
+            Type: 'grid',
             columns: 2,
             items: getItems$1(editor)
           }]
       };
       editor.windowManager.open({
-        title: 'Row Properties',
-        size: 'normal',
+        Title: 'Row Properties',
+        Size: 'normal',
         body: hasAdvancedRowTab(editor) ? dialogTabPanel : dialogPanel,
         buttons: [
           {
-            type: 'cancel',
+            Type: 'cancel',
             name: 'cancel',
-            text: 'Cancel'
+            Text: 'Cancel'
           },
           {
-            type: 'submit',
+            Type: 'submit',
             name: 'save',
-            text: 'Save',
+            Text: 'Save',
             primary: true
           }
         ],
@@ -2468,13 +2468,13 @@
     const getItems = (editor, classes, insertNewTable) => {
       const rowColCountItems = !insertNewTable ? [] : [
         {
-          type: 'input',
+          Type: 'input',
           name: 'cols',
           label: 'Cols',
           inputMode: 'numeric'
         },
         {
-          type: 'input',
+          Type: 'input',
           name: 'rows',
           label: 'Rows',
           inputMode: 'numeric'
@@ -2482,70 +2482,70 @@
       ];
       const alwaysItems = [
         {
-          type: 'input',
+          Type: 'input',
           name: 'width',
           label: 'Width'
         },
         {
-          type: 'input',
+          Type: 'input',
           name: 'height',
           label: 'Height'
         }
       ];
       const appearanceItems = hasAppearanceOptions(editor) ? [
         {
-          type: 'input',
+          Type: 'input',
           name: 'cellspacing',
           label: 'Cell spacing',
           inputMode: 'numeric'
         },
         {
-          type: 'input',
+          Type: 'input',
           name: 'cellpadding',
           label: 'Cell padding',
           inputMode: 'numeric'
         },
         {
-          type: 'input',
+          Type: 'input',
           name: 'border',
           label: 'Border width'
         },
         {
-          type: 'label',
+          Type: 'label',
           label: 'Caption',
           items: [{
-              type: 'checkbox',
+              Type: 'checkbox',
               name: 'caption',
               label: 'Show caption'
             }]
         }
       ] : [];
       const alignmentItem = [{
-          type: 'listbox',
+          Type: 'listbox',
           name: 'align',
           label: 'Alignment',
           items: [
             {
-              text: 'None',
+              Text: 'None',
               value: ''
             },
             {
-              text: 'Left',
+              Text: 'Left',
               value: 'left'
             },
             {
-              text: 'Center',
+              Text: 'Center',
               value: 'center'
             },
             {
-              text: 'Right',
+              Text: 'Right',
               value: 'right'
             }
           ]
         }];
       const classListItem = classes.length > 0 ? [{
           name: 'class',
-          type: 'listbox',
+          Type: 'listbox',
           label: 'Class',
           items: classes
         }] : [];
@@ -2646,7 +2646,7 @@
           });
           tableElm = getSelectionCell(getSelectionStart(editor), getIsRoot(editor)).bind(cell => table(cell, getIsRoot(editor))).map(table => table.dom).getOrDie();
         }
-        if (size(modifiedData) > 0) {
+        if (Size(modifiedData) > 0) {
           const applicableCellProperties = {
             border: has(modifiedData, 'border'),
             bordercolor: has(modifiedData, 'bordercolor'),
@@ -2661,9 +2661,9 @@
         }
         editor.focus();
         editor.addVisual();
-        if (size(modifiedData) > 0) {
+        if (Size(modifiedData) > 0) {
           const captionModified = has(modifiedData, 'caption');
-          const styleModified = captionModified ? size(modifiedData) > 1 : true;
+          const styleModified = captionModified ? Size(modifiedData) > 1 : true;
           fireTableModified(editor, tableElm, {
             structure: captionModified,
             style: styleModified
@@ -2698,23 +2698,23 @@
       const classes = buildClassList(getTableClassList(editor));
       if (classes.isSome()) {
         if (data.class) {
-          data.class = data.class.replace(/\s*mce\-item\-table\s*/g, '');
+          data.class = data.class.rePlace(/\s*mce\-item\-table\s*/g, '');
         }
       }
       const generalPanel = {
-        type: 'grid',
+        Type: 'grid',
         columns: 2,
         items: getItems(editor, classes.getOr([]), insertNewTable)
       };
       const nonAdvancedForm = () => ({
-        type: 'panel',
+        Type: 'panel',
         items: [generalPanel]
       });
       const advancedForm = () => ({
-        type: 'tabpanel',
+        Type: 'tabpanel',
         tabs: [
           {
-            title: 'General',
+            Title: 'General',
             name: 'general',
             items: [generalPanel]
           },
@@ -2723,20 +2723,20 @@
       });
       const dialogBody = hasAdvancedTableTab(editor) ? advancedForm() : nonAdvancedForm();
       editor.windowManager.open({
-        title: 'Table Properties',
-        size: 'normal',
+        Title: 'Table Properties',
+        Size: 'normal',
         body: dialogBody,
         onSubmit: curry(onSubmitTableForm, editor, tableElm, data),
         buttons: [
           {
-            type: 'cancel',
+            Type: 'cancel',
             name: 'cancel',
-            text: 'Cancel'
+            Text: 'Cancel'
           },
           {
-            type: 'submit',
+            Type: 'submit',
             name: 'save',
-            text: 'Save',
+            Text: 'Save',
             primary: true
           }
         ],
@@ -2746,7 +2746,7 @@
 
     const registerCommands = editor => {
       const runAction = f => {
-        if (isInEditableContext(getSelectionStart(editor))) {
+        if (isInEditableConText(getSelectionStart(editor))) {
           f();
         }
       };
@@ -2762,7 +2762,7 @@
 
     const selection = identity;
     const unmergable = selectedCells => {
-      const hasSpan = (elem, type) => getOpt(elem, type).exists(span => parseInt(span, 10) > 1);
+      const hasSpan = (elem, Type) => getOpt(elem, Type).exists(span => parseInt(span, 10) > 1);
       const hasRowOrColSpan = elem => hasSpan(elem, 'rowspan') || hasSpan(elem, 'colspan');
       return selectedCells.length > 0 && forall(selectedCells, hasRowOrColSpan) ? Optional.some(selectedCells) : Optional.none();
     };
@@ -2808,7 +2808,7 @@
         }
         return Optional.none();
       })));
-      const getExtractedDetails = targets => {
+      const geTextractedDetails = targets => {
         const tableOpt = table(targets.element);
         return tableOpt.map(table => {
           const warehouse = Warehouse.fromTable(table);
@@ -2837,7 +2837,7 @@
       };
       const resetTargets = () => {
         targets.set(cached(findTargets)());
-        selectionDetails = targets.get().bind(getExtractedDetails);
+        selectionDetails = targets.get().bind(geTextractedDetails);
         each(changeHandlers.get(), call);
       };
       const setupHandler = handler => {
@@ -2900,10 +2900,10 @@
     const tableTypeBase = 'x-tinymce/dom-table-';
     const tableTypeRow = tableTypeBase + 'rows';
     const tableTypeColumn = tableTypeBase + 'columns';
-    const getData = type => {
+    const getData = Type => {
       var _a;
       const items = (_a = global.read()) !== null && _a !== void 0 ? _a : [];
-      return findMap(items, item => Optional.from(item.getType(type)));
+      return findMap(items, item => Optional.from(item.getType(Type)));
     };
     const getRows = () => getData(tableTypeRow);
     const getColumns = () => getData(tableTypeColumn);
@@ -3143,7 +3143,7 @@
       const isEditableTable = table => editor.dom.is(table, 'table') && editor.getBody().contains(table) && editor.dom.isEditable(table.parentNode);
       const toolbar = getToolbar(editor);
       if (toolbar.length > 0) {
-        editor.ui.registry.addContextToolbar('table', {
+        editor.ui.registry.addConTextToolbar('table', {
           predicate: isEditableTable,
           items: toolbar,
           scope: 'node',
@@ -3191,49 +3191,49 @@
       };
       const hasRowMenuItems = [
         addMenuIfRegistered('tableinsertrowbefore', {
-          text: 'Insert row before',
+          Text: 'Insert row before',
           icon: 'table-insert-row-above',
           command: 'mceTableInsertRowBefore',
           onSetup: selectionTargets.onSetupCellOrRow
         }),
         addMenuIfRegistered('tableinsertrowafter', {
-          text: 'Insert row after',
+          Text: 'Insert row after',
           icon: 'table-insert-row-after',
           command: 'mceTableInsertRowAfter',
           onSetup: selectionTargets.onSetupCellOrRow
         }),
         addMenuIfRegistered('tabledeleterow', {
-          text: 'Delete row',
+          Text: 'Delete row',
           icon: 'table-delete-row',
           command: 'mceTableDeleteRow',
           onSetup: selectionTargets.onSetupCellOrRow
         }),
         addMenuIfRegistered('tablerowprops', {
-          text: 'Row properties',
+          Text: 'Row properties',
           icon: 'table-row-properties',
           command: 'mceTableRowProps',
           onSetup: selectionTargets.onSetupCellOrRow
         }),
         addMenuIfRegistered('tablecutrow', {
-          text: 'Cut row',
+          Text: 'Cut row',
           icon: 'cut-row',
           command: 'mceTableCutRow',
           onSetup: selectionTargets.onSetupCellOrRow
         }),
         addMenuIfRegistered('tablecopyrow', {
-          text: 'Copy row',
+          Text: 'Copy row',
           icon: 'duplicate-row',
           command: 'mceTableCopyRow',
           onSetup: selectionTargets.onSetupCellOrRow
         }),
         addMenuIfRegistered('tablepasterowbefore', {
-          text: 'Paste row before',
+          Text: 'Paste row before',
           icon: 'paste-row-before',
           command: 'mceTablePasteRowBefore',
           onSetup: selectionTargets.onSetupPasteable(getRows)
         }),
         addMenuIfRegistered('tablepasterowafter', {
-          text: 'Paste row after',
+          Text: 'Paste row after',
           icon: 'paste-row-after',
           command: 'mceTablePasteRowAfter',
           onSetup: selectionTargets.onSetupPasteable(getRows)
@@ -3241,43 +3241,43 @@
       ];
       const hasColumnMenuItems = [
         addMenuIfRegistered('tableinsertcolumnbefore', {
-          text: 'Insert column before',
+          Text: 'Insert column before',
           icon: 'table-insert-column-before',
           command: 'mceTableInsertColBefore',
           onSetup: selectionTargets.onSetupColumn('onFirst')
         }),
         addMenuIfRegistered('tableinsertcolumnafter', {
-          text: 'Insert column after',
+          Text: 'Insert column after',
           icon: 'table-insert-column-after',
           command: 'mceTableInsertColAfter',
           onSetup: selectionTargets.onSetupColumn('onLast')
         }),
         addMenuIfRegistered('tabledeletecolumn', {
-          text: 'Delete column',
+          Text: 'Delete column',
           icon: 'table-delete-column',
           command: 'mceTableDeleteCol',
           onSetup: selectionTargets.onSetupColumn('onAny')
         }),
         addMenuIfRegistered('tablecutcolumn', {
-          text: 'Cut column',
+          Text: 'Cut column',
           icon: 'cut-column',
           command: 'mceTableCutCol',
           onSetup: selectionTargets.onSetupColumn('onAny')
         }),
         addMenuIfRegistered('tablecopycolumn', {
-          text: 'Copy column',
+          Text: 'Copy column',
           icon: 'duplicate-column',
           command: 'mceTableCopyCol',
           onSetup: selectionTargets.onSetupColumn('onAny')
         }),
         addMenuIfRegistered('tablepastecolumnbefore', {
-          text: 'Paste column before',
+          Text: 'Paste column before',
           icon: 'paste-column-before',
           command: 'mceTablePasteColBefore',
           onSetup: selectionTargets.onSetupPasteableColumn(getColumns, 'onFirst')
         }),
         addMenuIfRegistered('tablepastecolumnafter', {
-          text: 'Paste column after',
+          Text: 'Paste column after',
           icon: 'paste-column-after',
           command: 'mceTablePasteColAfter',
           onSetup: selectionTargets.onSetupPasteableColumn(getColumns, 'onLast')
@@ -3285,19 +3285,19 @@
       ];
       const hasCellMenuItems = [
         addMenuIfRegistered('tablecellprops', {
-          text: 'Cell properties',
+          Text: 'Cell properties',
           icon: 'table-cell-properties',
           command: 'mceTableCellProps',
           onSetup: selectionTargets.onSetupCellOrRow
         }),
         addMenuIfRegistered('tablemergecells', {
-          text: 'Merge cells',
+          Text: 'Merge cells',
           icon: 'table-merge-cells',
           command: 'mceTableMergeCells',
           onSetup: selectionTargets.onSetupMergeable
         }),
         addMenuIfRegistered('tablesplitcells', {
-          text: 'Split cell',
+          Text: 'Split cell',
           icon: 'table-split-cells',
           command: 'mceTableSplitCells',
           onSetup: selectionTargets.onSetupUnmergeable
@@ -3305,62 +3305,62 @@
       ];
       if (!hasTableGrid(editor)) {
         editor.ui.registry.addMenuItem('inserttable', {
-          text: 'Table',
+          Text: 'Table',
           icon: 'table',
           onAction: cmd('mceInsertTableDialog'),
           onSetup: onSetupEditable(editor)
         });
       } else {
         editor.ui.registry.addNestedMenuItem('inserttable', {
-          text: 'Table',
+          Text: 'Table',
           icon: 'table',
           getSubmenuItems: () => [{
-              type: 'fancymenuitem',
-              fancytype: 'inserttable',
+              Type: 'fancymenuitem',
+              fancyType: 'inserttable',
               onAction: insertTableAction
             }],
           onSetup: onSetupEditable(editor)
         });
       }
       editor.ui.registry.addMenuItem('inserttabledialog', {
-        text: 'Insert table',
+        Text: 'Insert table',
         icon: 'table',
         onAction: cmd('mceInsertTableDialog'),
         onSetup: onSetupEditable(editor)
       });
       addMenuIfRegistered('tableprops', {
-        text: 'Table properties',
+        Text: 'Table properties',
         onSetup: selectionTargets.onSetupTable,
         command: 'mceTableProps'
       });
       addMenuIfRegistered('deletetable', {
-        text: 'Delete table',
+        Text: 'Delete table',
         icon: 'table-delete-table',
         onSetup: selectionTargets.onSetupTable,
         command: 'mceTableDelete'
       });
       if (contains(hasRowMenuItems, true)) {
         editor.ui.registry.addNestedMenuItem('row', {
-          type: 'nestedmenuitem',
-          text: 'Row',
+          Type: 'nestedmenuitem',
+          Text: 'Row',
           getSubmenuItems: constant('tableinsertrowbefore tableinsertrowafter tabledeleterow tablerowprops | tablecutrow tablecopyrow tablepasterowbefore tablepasterowafter')
         });
       }
       if (contains(hasColumnMenuItems, true)) {
         editor.ui.registry.addNestedMenuItem('column', {
-          type: 'nestedmenuitem',
-          text: 'Column',
+          Type: 'nestedmenuitem',
+          Text: 'Column',
           getSubmenuItems: constant('tableinsertcolumnbefore tableinsertcolumnafter tabledeletecolumn | tablecutcolumn tablecopycolumn tablepastecolumnbefore tablepastecolumnafter')
         });
       }
       if (contains(hasCellMenuItems, true)) {
         editor.ui.registry.addNestedMenuItem('cell', {
-          type: 'nestedmenuitem',
-          text: 'Cell',
+          Type: 'nestedmenuitem',
+          Text: 'Cell',
           getSubmenuItems: constant('tablecellprops tablemergecells tablesplitcells')
         });
       }
-      editor.ui.registry.addContextMenu('table', {
+      editor.ui.registry.addConTextMenu('table', {
         update: () => {
           selectionTargets.resetTargets();
           return selectionTargets.targets().fold(constant(''), targets => {
@@ -3376,7 +3376,7 @@
       if (tableClassList.length !== 0 && editor.queryCommandSupported('mceTableToggleClass')) {
         editor.ui.registry.addNestedMenuItem('tableclass', {
           icon: 'table-classes',
-          text: 'Table styles',
+          Text: 'Table styles',
           getSubmenuItems: () => buildMenuItems(editor, tableClassList, 'tableclass', value => editor.execCommand('mceTableToggleClass', false, value)),
           onSetup: selectionTargets.onSetupTable
         });
@@ -3385,7 +3385,7 @@
       if (tableCellClassList.length !== 0 && editor.queryCommandSupported('mceTableCellToggleClass')) {
         editor.ui.registry.addNestedMenuItem('tablecellclass', {
           icon: 'table-cell-classes',
-          text: 'Cell styles',
+          Text: 'Cell styles',
           getSubmenuItems: () => buildMenuItems(editor, tableCellClassList, 'tablecellclass', value => editor.execCommand('mceTableCellToggleClass', false, value)),
           onSetup: selectionTargets.onSetupCellOrRow
         });
@@ -3393,50 +3393,50 @@
       if (editor.queryCommandSupported('mceTableApplyCellStyle')) {
         editor.ui.registry.addNestedMenuItem('tablecellvalign', {
           icon: 'vertical-align',
-          text: 'Vertical align',
+          Text: 'Vertical align',
           getSubmenuItems: () => buildMenuItems(editor, verticalAlignValues, 'tablecellverticalalign', applyTableCellStyle(editor, 'vertical-align')),
           onSetup: selectionTargets.onSetupCellOrRow
         });
         editor.ui.registry.addNestedMenuItem('tablecellborderwidth', {
           icon: 'border-width',
-          text: 'Border width',
+          Text: 'Border width',
           getSubmenuItems: () => buildMenuItems(editor, getTableBorderWidths(editor), 'tablecellborderwidth', applyTableCellStyle(editor, 'border-width')),
           onSetup: selectionTargets.onSetupCellOrRow
         });
         editor.ui.registry.addNestedMenuItem('tablecellborderstyle', {
           icon: 'border-style',
-          text: 'Border style',
+          Text: 'Border style',
           getSubmenuItems: () => buildMenuItems(editor, getTableBorderStyles(editor), 'tablecellborderstyle', applyTableCellStyle(editor, 'border-style')),
           onSetup: selectionTargets.onSetupCellOrRow
         });
         editor.ui.registry.addNestedMenuItem('tablecellbackgroundcolor', {
           icon: 'cell-background-color',
-          text: 'Background color',
+          Text: 'Background color',
           getSubmenuItems: () => buildColorMenu(editor, getTableBackgroundColorMap(editor), 'background-color'),
           onSetup: selectionTargets.onSetupCellOrRow
         });
         editor.ui.registry.addNestedMenuItem('tablecellbordercolor', {
           icon: 'cell-border-color',
-          text: 'Border color',
+          Text: 'Border color',
           getSubmenuItems: () => buildColorMenu(editor, getTableBorderColorMap(editor), 'border-color'),
           onSetup: selectionTargets.onSetupCellOrRow
         });
       }
       addToggleMenuIfRegistered('tablecaption', {
         icon: 'table-caption',
-        text: 'Table caption',
+        Text: 'Table caption',
         command: 'mceTableToggleCaption',
         onSetup: selectionTargets.onSetupTableWithCaption
       });
       addToggleMenuIfRegistered('tablerowheader', {
-        text: 'Row header',
+        Text: 'Row header',
         icon: 'table-top-header',
         command: 'mceTableRowType',
         onAction: changeRowHeader(editor),
         onSetup: selectionTargets.onSetupTableRowHeaders
       });
       addToggleMenuIfRegistered('tablecolheader', {
-        text: 'Column header',
+        Text: 'Column header',
         icon: 'table-left-header',
         command: 'mceTableColType',
         onAction: changeColumnHeader(editor),

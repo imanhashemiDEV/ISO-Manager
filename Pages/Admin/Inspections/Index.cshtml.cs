@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Inspections
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<Inspection> Inspection { get;set; } = default!;
@@ -25,7 +25,7 @@ namespace ISO_Manager.Pages.Admin.Inspections
         {
             var Take = 30;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _context.Inspections.Count();
+            var ItemCount = _conText.Inspections.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -39,11 +39,11 @@ namespace ISO_Manager.Pages.Admin.Inspections
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            Inspection = await _context.Inspections
+            Inspection = await _conText.Inspections
                 .Include(i => i.InspectionPlace)
                 //.Include(i => i.Organization)
                 .Include(i => i.User)
-                .Include(i => i.Workplace)
+                .Include(i => i.WorkPlace)
                 .OrderByDescending(m => m.Id)
                 .Skip(skip).Take(Take)
                 .ToListAsync();

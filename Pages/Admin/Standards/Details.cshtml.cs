@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Standards
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public Standard Standard { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.Standards
                 return NotFound();
             }
 
-            var standard = await _context.Standards.FirstOrDefaultAsync(m => m.Id == id);
+            var standard = await _conText.Standards.FirstOrDefaultAsync(m => m.Id == id);
 
             if (standard is not null)
             {

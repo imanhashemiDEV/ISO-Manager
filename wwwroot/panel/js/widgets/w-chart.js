@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function floatchart() {
   (function () {
     var options1 = {
-      chart: { type: 'bar', height: 50, sparkline: { enabled: true } },
+      chart: { Type: 'bar', height: 50, sparkline: { enabled: true } },
       colors: ['#4680FF'],
       plotOptions: { bar: { borderRadius: 2, columnWidth: '80%' } },
       series: [
@@ -20,7 +20,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -32,7 +32,7 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#all-earnings-graph'), options1);
     chart.render();
     var options2 = {
-      chart: { type: 'bar', height: 50, sparkline: { enabled: true } },
+      chart: { Type: 'bar', height: 50, sparkline: { enabled: true } },
       colors: ['#E58A00'],
       plotOptions: { bar: { borderRadius: 2, columnWidth: '80%' } },
       series: [
@@ -45,7 +45,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -57,7 +57,7 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#page-views-graph'), options2);
     chart.render();
     var options3 = {
-      chart: { type: 'bar', height: 50, sparkline: { enabled: true } },
+      chart: { Type: 'bar', height: 50, sparkline: { enabled: true } },
       colors: ['#2CA87F'],
       plotOptions: { bar: { borderRadius: 2, columnWidth: '80%' } },
       series: [
@@ -70,7 +70,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -82,7 +82,7 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#total-task-graph'), options3);
     chart.render();
     var options4 = {
-      chart: { type: 'bar', height: 50, sparkline: { enabled: true } },
+      chart: { Type: 'bar', height: 50, sparkline: { enabled: true } },
       colors: ['#DC2626'],
       plotOptions: { bar: { borderRadius: 2, columnWidth: '80%' } },
       series: [
@@ -95,7 +95,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -108,7 +108,7 @@ function floatchart() {
     chart.render();
     var options5 = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 230,
         toolbar: {
           show: false
@@ -116,10 +116,10 @@ function floatchart() {
       },
       colors: ['#0d6efd'],
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -159,17 +159,17 @@ function floatchart() {
     chart.render();
     var options6 = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 60,
         stacked: true,
         sparkline: { enabled: true }
       },
       colors: ['#4680FF'],
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -182,17 +182,17 @@ function floatchart() {
     chart.render();
     var options7 = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 60,
         stacked: true,
         sparkline: { enabled: true }
       },
       colors: ['#DC2626'],
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -206,7 +206,7 @@ function floatchart() {
     var options8 = {
       chart: {
         height: 320,
-        type: 'donut'
+        Type: 'donut'
       },
       series: [27, 23, 20, 17],
       colors: ['#4680FF', '#E58A00', '#2CA87F', '#4680FF'],
@@ -220,7 +220,7 @@ function floatchart() {
       plotOptions: {
         pie: {
           donut: {
-            size: '65%',
+            Size: '65%',
             labels: {
               show: true,
               name: {
@@ -246,7 +246,7 @@ function floatchart() {
             plotOptions: {
               pie: {
                 donut: {
-                  size: '65%',
+                  Size: '65%',
                   labels: {
                     show: false
                   }
@@ -260,7 +260,7 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#total-income-graph'), options8);
     chart.render();
     var options9 = {
-      chart: { type: 'bar', height: 80, sparkline: { enabled: true } },
+      chart: { Type: 'bar', height: 80, sparkline: { enabled: true } },
       colors: ['#4680FF'],
       plotOptions: { bar: { borderRadius: 4, columnWidth: '80%' } },
       series: [
@@ -273,7 +273,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -285,16 +285,16 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#new-orders-graph'), options9);
     chart.render();
     var options10 = {
-      chart: { type: 'area', height: 80, sparkline: { enabled: true } },
+      chart: { Type: 'area', height: 80, sparkline: { enabled: true } },
       colors: ['#2CA87F'],
       stroke: {
         width: 1
       },
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -312,7 +312,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -359,7 +359,7 @@ function floatchart() {
         }
       ],
       chart: {
-        type: 'rangeBar',
+        Type: 'rangeBar',
         height: 80,
         sparkline: { enabled: true },
         toolbar: {
@@ -411,7 +411,7 @@ function floatchart() {
     var options12 = {
       chart: {
         height: 250,
-        type: 'bar',
+        Type: 'bar',
         toolbar: {
           show: false
         }
@@ -474,7 +474,7 @@ function floatchart() {
     var options13 = {
       chart: {
         height: 250,
-        type: 'bar',
+        Type: 'bar',
         toolbar: {
           show: false
         }
@@ -534,7 +534,7 @@ function floatchart() {
     var chart1 = new ApexCharts(document.querySelector('#overview-chart-4'), options13);
     chart1.render();
     var options14 = {
-      chart: { type: 'bar', height: 80, sparkline: { enabled: true } },
+      chart: { Type: 'bar', height: 80, sparkline: { enabled: true } },
       colors: ['#2CA87F'],
       plotOptions: { bar: { columnWidth: '80%' } },
       series: [
@@ -547,7 +547,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -559,7 +559,7 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#income-graph'), options14);
     chart.render();
     var options15 = {
-      chart: { type: 'area', height: 130, sparkline: { enabled: true } },
+      chart: { Type: 'area', height: 130, sparkline: { enabled: true } },
       colors: ['#1890ff'],
       plotOptions: { bar: { columnWidth: '80%' } },
       series: [
@@ -576,7 +576,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -590,7 +590,7 @@ function floatchart() {
     var options16 = {
       chart: {
         height: 350,
-        type: 'pie'
+        Type: 'pie'
       },
       labels: ['Components', 'Widgets', 'Pages', 'Forms', 'Other', 'Apps'],
       series: [40, 20, 10, 15, 5, 10],
@@ -627,13 +627,13 @@ function floatchart() {
       series: [30],
       chart: {
         height: 150,
-        type: 'radialBar'
+        Type: 'radialBar'
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            size: '60%',
+            Size: '60%',
             background: 'transparent',
             imageOffsetX: 0,
             imageOffsetY: 0,
@@ -664,7 +664,7 @@ function floatchart() {
       },
       colors: ['#4680FF'],
       fill: {
-        type: 'solid'
+        Type: 'solid'
       },
       stroke: {
         lineCap: 'round'
@@ -676,13 +676,13 @@ function floatchart() {
       series: [30],
       chart: {
         height: 150,
-        type: 'radialBar'
+        Type: 'radialBar'
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            size: '60%',
+            Size: '60%',
             background: 'transparent',
             imageOffsetX: 0,
             imageOffsetY: 0,
@@ -713,7 +713,7 @@ function floatchart() {
       },
       colors: ['#DC2626'],
       fill: {
-        type: 'solid'
+        Type: 'solid'
       },
       stroke: {
         lineCap: 'round'
@@ -741,7 +741,7 @@ function floatchart() {
         }
       ],
       chart: {
-        type: 'bar',
+        Type: 'bar',
         height: 350,
         stacked: true,
         toolbar: {
@@ -789,7 +789,7 @@ function floatchart() {
     chart.render();
     var options20 = {
       chart: {
-        type: 'bar',
+        Type: 'bar',
         height: 430,
         toolbar: {
           show: false
@@ -850,7 +850,7 @@ function floatchart() {
     chart.render();
     var options21 = {
       chart: {
-        type: 'bar',
+        Type: 'bar',
         height: 250,
         stacked: true,
         toolbar: {

@@ -12,17 +12,17 @@ namespace ISO_Manager.Pages.Admin.Reminders
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["organization_id"] = new SelectList(_context.Organizations, "id", "id");
-        ViewData["user_id"] = new SelectList(_context.Users, "id", "id");
+        ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "id");
+        ViewData["UserId"] = new SelectList(_conText.Users, "id", "id");
             return Page();
         }
 
@@ -37,8 +37,8 @@ namespace ISO_Manager.Pages.Admin.Reminders
                 return Page();
             }
 
-            _context.Reminders.Add(Reminder);
-            await _context.SaveChangesAsync();
+            _conText.Reminders.Add(Reminder);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

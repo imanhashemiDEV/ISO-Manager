@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Ambulances
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,14 +30,14 @@ namespace ISO_Manager.Pages.Admin.Ambulances
                 return NotFound();
             }
 
-            var ambulance =  await _context.Ambulances.FirstOrDefaultAsync(m => m.Id == id);
+            var ambulance =  await _conText.Ambulances.FirstOrDefaultAsync(m => m.Id == id);
             if (ambulance == null)
             {
                 return NotFound();
             }
             Ambulance = ambulance;
-            ViewData["users"] = _context.Users.ToList();
-            ViewData["workplaces"] = _context.Workplaces.ToList();
+            ViewData["users"] = _conText.Users.ToList();
+            ViewData["workPlaces"] = _conText.WorkPlaces.ToList();
             return Page();
         }
 
@@ -50,11 +50,11 @@ namespace ISO_Manager.Pages.Admin.Ambulances
                 return Page();
             }
 
-            _context.Attach(Ambulance).State = EntityState.Modified;
+            _conText.Attach(Ambulance).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -73,7 +73,7 @@ namespace ISO_Manager.Pages.Admin.Ambulances
 
         private bool AmbulanceExists(long id)
         {
-            return _context.Ambulances.Any(e => e.Id == id);
+            return _conText.Ambulances.Any(e => e.Id == id);
         }
     }
 }

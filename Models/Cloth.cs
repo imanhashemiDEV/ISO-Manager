@@ -9,39 +9,42 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
         
         [Display(Name = "نوع لباس")]
-        public string? cloth_type { get; set; }
+        public string? ClothType { get; set; }
 
         [Display(Name = "تاریخ تحویل")]
-        public DateTime receive_date { get; set; }
+        public DateTime ReceiveDate { get; set; }
 
         [Display(Name = "نوع دریافت")]
-        public string? receive_type { get; set; }
+        public string? ReceiveType { get; set; }
 
         [Display(Name = "سایز")]
-        public int? size { get; set; }
+        public int? Size { get; set; }
 
         [Display(Name = "توضیحات")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
 
         // relations
 
         [ForeignKey("User")]
         [Display(Name = "دریافت کننده")]
-        public string? user_id { get; set; }
+        public string? UserId { get; set; }
         [Display(Name = "دریافت کننده")]
-        public User? User { get; set; }
+        public virtual User? User { get; set; }
 
 
-        //[ForeignKey("Organization")]
-        //public long? organization_id { get; set; }
-        //public Organization? Organization { get; set; }
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
 
     }
 }

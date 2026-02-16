@@ -3,24 +3,24 @@
   document.addEventListener('DOMContentLoaded', function () {
     introJs()
       .setOptions({
-        steps: [
+        Steps: [
           {
             intro: 'Hello world!'
           },
           {
-            element: document.querySelector('.step1'),
+            element: document.querySelector('.Step1'),
             intro: 'This is Card'
           },
           {
-            element: document.querySelector('.step2'),
+            element: document.querySelector('.Step2'),
             intro: 'This is Card header'
           },
           {
-            element: document.querySelector('.step3'),
+            element: document.querySelector('.Step3'),
             intro: 'This is Card Title'
           },
           {
-            element: document.querySelector('.step4'),
+            element: document.querySelector('.Step4'),
             intro: 'This is Card Body'
           }
         ]

@@ -2,10 +2,10 @@
     border: none;
     width: 300px;
     direction: rtl;
-    font-size: 1rem;
+    font-Size: 1rem;
     background-color: #fff;
     box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    Text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     color: #444;
     border-radius: 0 0 5px 5px;
 }
@@ -24,7 +24,7 @@
 .datePickerDay {
     width: 35px;
     height: 30px;
-    text-align: center;
+    Text-align: center;
     cursor: pointer;
 }
 
@@ -33,7 +33,7 @@
     }
 
 .datePickerDaySelect {
-    text-align: center;
+    Text-align: center;
     cursor: pointer;
     background-color: #00be8a;
     color: #fff;
@@ -41,7 +41,7 @@
 }
 
 .datePickerToday {
-    text-align: center;
+    Text-align: center;
     cursor: pointer;
     font-weight: bold;
     border: 1px solid #c9c9c9;
@@ -50,7 +50,7 @@
 
 .datePickerHeader td {
     padding: 5px;
-    text-shadow: 0 0 1px #eee;
+    Text-shadow: 0 0 1px #eee;
     color: #444;
     border-bottom: 1px solid #ccc
 }
@@ -63,14 +63,14 @@
 .datePickerHeader button, .datePickerFooter button {
     border-radius: 2px;
     border: none;
-    font-size: 1rem;
+    font-Size: 1rem;
     cursor: pointer;
 }
 
 .datePickerHeader button {
     width: 30px;
     height: 30px;
-    font-size: 1.7rem;
+    font-Size: 1.7rem;
     line-height: 0;
     vertical-align: middle;
     border: 1px solid #ccc;
@@ -90,7 +90,7 @@
     }
 
 .datePickerYear, .datePickerMonth {
-    text-align: center;
+    Text-align: center;
     display: inline-block;
     height: 17px;
     vertical-align: middle;

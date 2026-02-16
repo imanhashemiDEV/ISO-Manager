@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.InspectionTexts
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public long PlaceId { get; set; }
@@ -24,8 +24,8 @@ namespace ISO_Manager.Pages.Admin.InspectionTexts
         public IActionResult OnGet(long? id)
         {
             PlaceId = (long)id;
-        ViewData["inspection_place_id"] = new SelectList(_context.InspectionPlaces, "id", "id");
-        ViewData["organization_id"] = new SelectList(_context.Organizations, "id", "id");
+        ViewData["InspectionPlaceId"] = new SelectList(_conText.InspectionPlaces, "id", "id");
+        ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "id");
             return Page();
         }
 
@@ -40,8 +40,8 @@ namespace ISO_Manager.Pages.Admin.InspectionTexts
                 return Page();
             }
 
-            _context.InspectionTexts.Add(InspectionText);
-            await _context.SaveChangesAsync();
+            _conText.InspectionTexts.Add(InspectionText);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("/Admin/InspectionPlaces/Index");
         }

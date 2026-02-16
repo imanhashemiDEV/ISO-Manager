@@ -25,23 +25,23 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="ClothGroupList.Id" />
-                            @* <input type="hidden" asp-for="ClothGroupList.user_id" /> *@
+                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <input Type="hidden" asp-for="ClothGroupList.Id" />
+                            @* <input Type="hidden" asp-for="ClothGroupList.UserId" /> *@
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ClothGroupList.shoes" class="control-label"></label>
-                                    <input asp-for="ClothGroupList.shoes" class="form-control"/>
-                                    <span asp-validation-for="ClothGroupList.shoes" class="text-danger"></span>
+                                    <label asp-for="ClothGroupList.Shoes" class="control-label"></label>
+                                    <input asp-for="ClothGroupList.Shoes" class="form-control"/>
+                                    <span asp-validation-for="ClothGroupList.Shoes" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ClothGroupList.boiler_suit" class="control-label"></label>
-                                    <input asp-for="ClothGroupList.boiler_suit" class="form-control"/>
-                                    <span asp-validation-for="ClothGroupList.boiler_suit" class="text-danger"></span>
+                                    <label asp-for="ClothGroupList.BoilerSuit" class="control-label"></label>
+                                    <input asp-for="ClothGroupList.BoilerSuit" class="form-control"/>
+                                    <span asp-validation-for="ClothGroupList.BoilerSuit" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ClothGroupList.user_id" class="control-label"></label>
-                                    <select id="users" asp-for="ClothGroupList.user_id" class="form-select">
+                                    <label asp-for="ClothGroupList.UserId" class="control-label"></label>
+                                    <select id="users" asp-for="ClothGroupList.UserId" class="form-select">
                                         @foreach (var item in ViewBag.users)
                                         {
                                             <option value="@item.id">@item.name - - @item.register_code</option>
@@ -49,8 +49,8 @@
                                     </select>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ClothGroupList.cloth_group_id" class="control-label"></label>
-                                    <select id="groups" asp-for="ClothGroupList.cloth_group_id" class="form-select">
+                                    <label asp-for="ClothGroupList.ClothGroupId" class="control-label"></label>
+                                    <select id="groups" asp-for="ClothGroupList.ClothGroupId" class="form-select">
                                         @foreach (var item in ViewBag.cloth_groups)
                                         {
                                             <option value="@item.id">@item.name</option>
@@ -58,7 +58,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">ثبت</button>
+                            <button Type="submit" class="btn btn-success">ثبت</button>
                         </form>
                     </div>
                 </div>

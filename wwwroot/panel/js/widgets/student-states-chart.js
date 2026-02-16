@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var student_states_chart_options = {
       chart: {
         height: 250,
-        type: 'donut'
+        Type: 'donut'
       },
       dataLabels: {
         enabled: false
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
       plotOptions: {
         pie: {
           donut: {
-            size: '65%'
+            Size: '65%'
           }
         }
       },

@@ -11,7 +11,7 @@ body.tox-dialog__disable-scroll {
   touch-action: pinch-zoom;
   width: 100%;
 }
-.tox.tox-tinymce.tox-fullscreen .tox-statusbar__resize-handle {
+.tox.tox-tinymce.tox-fullscreen .tox-Statusbar__reSize-handle {
   display: none;
 }
 .tox.tox-tinymce.tox-fullscreen,

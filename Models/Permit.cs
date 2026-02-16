@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISO_Manager.Models
 {
@@ -9,37 +10,48 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "مکان")]
-        public string? place { get; set; }
+        public string? Place { get; set; }
 
         [Display(Name = "نوع پرمیت")]
-        public string? permit_type { get; set; }
+        public string? PermitType { get; set; }
 
         [Display(Name = "نوع ضمیمه")]
-        public string? permit_attachment_type { get; set; }
+        public string? PermitAttachmentType { get; set; }
 
         [Display(Name = "تاریخ پرمیت")]
-        public DateTime? permit_date { get; set; }
+        public DateTime? PermitDate { get; set; }
 
         [Display(Name = "شماره پرمیت")]
-        public string? permit_number { get; set; }
+        public string? PermitNumber { get; set; }
 
         [Display(Name = "مدت زمان")]
-        public string? duration { get; set; }
+        public string? Duration { get; set; }
 
         [Display(Name = "صاحب محل")]
-        public string? owner { get; set; }
+        public string? Owner { get; set; }
 
         [Display(Name = "مسئول انجام")]
-        public string? responsible { get; set; }
+        public string? Responsible { get; set; }
 
         [Display(Name = "توضیحات")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+
+
+        //relations
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
 
     }
 }

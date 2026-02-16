@@ -1,5 +1,5 @@
 ﻿@page
-@model ISO_Manager.Pages.Admin.Workplace.CreateModel
+@model ISO_Manager.Pages.Admin.WorkPlace.CreateModel
 
 @{ ViewData["Title"] = "ایجاد محل کار"; }
         
@@ -24,15 +24,15 @@
                             </div>
                             <div class="card-body">
                                 <form method="post">
-                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
                                     <div class="grid grid-cols-12 gap-6">
                                         <div class="col-span-12 md:col-span-6 mb-4">
-                                            <label asp-for="Workplace.title" class="control-label"></label>
-                                            <input asp-for="Workplace.title" class="form-control mt-4" />
-                                            <span asp-validation-for="Workplace.title" class="text-danger"></span>
+                                            <label asp-for="WorkPlace.Title" class="control-label"></label>
+                                            <input asp-for="WorkPlace.Title" class="form-control mt-4" />
+                                            <span asp-validation-for="WorkPlace.Title" class="Text-danger"></span>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-success">ایجاد</button>
+                                    <button Type="submit" class="btn btn-success">ایجاد</button>
                                 </form>
                             </div>
                         </div>

@@ -9,7 +9,7 @@ function floatchart() {
   (function () {
     var total_line_1_chart_options = {
       chart: {
-        type: 'line',
+        Type: 'line',
         height: 60,
         sparkline: {
           enabled: true
@@ -43,7 +43,7 @@ function floatchart() {
           show: false
         },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -59,7 +59,7 @@ function floatchart() {
 
     var total_line_2_chart_options = {
       chart: {
-        type: 'line',
+        Type: 'line',
         height: 60,
         sparkline: {
           enabled: true
@@ -93,7 +93,7 @@ function floatchart() {
           show: false
         },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -109,7 +109,7 @@ function floatchart() {
 
     var total_line_3_chart_options = {
       chart: {
-        type: 'line',
+        Type: 'line',
         height: 60,
         sparkline: {
           enabled: true
@@ -143,7 +143,7 @@ function floatchart() {
           show: false
         },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -159,7 +159,7 @@ function floatchart() {
 
     var cashflow_bar_chart_options = {
       chart: {
-        type: 'bar',
+        Type: 'bar',
         height: 210,
         toolbar: {
           show: false
@@ -228,7 +228,7 @@ function floatchart() {
     var options = {
       chart: {
         height: 300,
-        type: 'donut'
+        Type: 'donut'
       },
       dataLabels: {
         enabled: false
@@ -240,7 +240,7 @@ function floatchart() {
       plotOptions: {
         pie: {
           donut: {
-            size: '65%'
+            Size: '65%'
           }
         }
       },

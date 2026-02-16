@@ -78,16 +78,16 @@
     const SETS = SETS$1;
     const OTHER = characterIndices.OTHER;
     const getType = char => {
-      let type = OTHER;
+      let Type = OTHER;
       const setsLength = SETS.length;
       for (let j = 0; j < setsLength; ++j) {
         const set = SETS[j];
         if (set && set.test(char)) {
-          type = j;
+          Type = j;
           break;
         }
       }
-      return type;
+      return Type;
     };
     const memoize = func => {
       const cache = {};
@@ -107,53 +107,53 @@
     };
 
     const isWordBoundary = (map, index) => {
-      const type = map[index];
+      const Type = map[index];
       const nextType = map[index + 1];
       if (index < 0 || index > map.length - 1 && index !== 0) {
         return false;
       }
-      if (type === characterIndices.ALETTER && nextType === characterIndices.ALETTER) {
+      if (Type === characterIndices.ALETTER && nextType === characterIndices.ALETTER) {
         return false;
       }
       const nextNextType = map[index + 2];
-      if (type === characterIndices.ALETTER && (nextType === characterIndices.MIDLETTER || nextType === characterIndices.MIDNUMLET || nextType === characterIndices.AT) && nextNextType === characterIndices.ALETTER) {
+      if (Type === characterIndices.ALETTER && (nextType === characterIndices.MIDLETTER || nextType === characterIndices.MIDNUMLET || nextType === characterIndices.AT) && nextNextType === characterIndices.ALETTER) {
         return false;
       }
       const prevType = map[index - 1];
-      if ((type === characterIndices.MIDLETTER || type === characterIndices.MIDNUMLET || nextType === characterIndices.AT) && nextType === characterIndices.ALETTER && prevType === characterIndices.ALETTER) {
+      if ((Type === characterIndices.MIDLETTER || Type === characterIndices.MIDNUMLET || nextType === characterIndices.AT) && nextType === characterIndices.ALETTER && prevType === characterIndices.ALETTER) {
         return false;
       }
-      if ((type === characterIndices.NUMERIC || type === characterIndices.ALETTER) && (nextType === characterIndices.NUMERIC || nextType === characterIndices.ALETTER)) {
+      if ((Type === characterIndices.NUMERIC || Type === characterIndices.ALETTER) && (nextType === characterIndices.NUMERIC || nextType === characterIndices.ALETTER)) {
         return false;
       }
-      if ((type === characterIndices.MIDNUM || type === characterIndices.MIDNUMLET) && nextType === characterIndices.NUMERIC && prevType === characterIndices.NUMERIC) {
+      if ((Type === characterIndices.MIDNUM || Type === characterIndices.MIDNUMLET) && nextType === characterIndices.NUMERIC && prevType === characterIndices.NUMERIC) {
         return false;
       }
-      if (type === characterIndices.NUMERIC && (nextType === characterIndices.MIDNUM || nextType === characterIndices.MIDNUMLET) && nextNextType === characterIndices.NUMERIC) {
+      if (Type === characterIndices.NUMERIC && (nextType === characterIndices.MIDNUM || nextType === characterIndices.MIDNUMLET) && nextNextType === characterIndices.NUMERIC) {
         return false;
       }
-      if ((type === characterIndices.EXTEND || type === characterIndices.FORMAT) && (nextType === characterIndices.ALETTER || nextType === characterIndices.NUMERIC || nextType === characterIndices.KATAKANA || nextType === characterIndices.EXTEND || nextType === characterIndices.FORMAT) || (nextType === characterIndices.EXTEND || nextType === characterIndices.FORMAT && (nextNextType === characterIndices.ALETTER || nextNextType === characterIndices.NUMERIC || nextNextType === characterIndices.KATAKANA || nextNextType === characterIndices.EXTEND || nextNextType === characterIndices.FORMAT)) && (type === characterIndices.ALETTER || type === characterIndices.NUMERIC || type === characterIndices.KATAKANA || type === characterIndices.EXTEND || type === characterIndices.FORMAT)) {
+      if ((Type === characterIndices.EXTEND || Type === characterIndices.FORMAT) && (nextType === characterIndices.ALETTER || nextType === characterIndices.NUMERIC || nextType === characterIndices.KATAKANA || nextType === characterIndices.EXTEND || nextType === characterIndices.FORMAT) || (nextType === characterIndices.EXTEND || nextType === characterIndices.FORMAT && (nextNextType === characterIndices.ALETTER || nextNextType === characterIndices.NUMERIC || nextNextType === characterIndices.KATAKANA || nextNextType === characterIndices.EXTEND || nextNextType === characterIndices.FORMAT)) && (Type === characterIndices.ALETTER || Type === characterIndices.NUMERIC || Type === characterIndices.KATAKANA || Type === characterIndices.EXTEND || Type === characterIndices.FORMAT)) {
         return false;
       }
-      if (type === characterIndices.CR && nextType === characterIndices.LF) {
+      if (Type === characterIndices.CR && nextType === characterIndices.LF) {
         return false;
       }
-      if (type === characterIndices.NEWLINE || type === characterIndices.CR || type === characterIndices.LF) {
+      if (Type === characterIndices.NEWLINE || Type === characterIndices.CR || Type === characterIndices.LF) {
         return true;
       }
       if (nextType === characterIndices.NEWLINE || nextType === characterIndices.CR || nextType === characterIndices.LF) {
         return true;
       }
-      if (type === characterIndices.KATAKANA && nextType === characterIndices.KATAKANA) {
+      if (Type === characterIndices.KATAKANA && nextType === characterIndices.KATAKANA) {
         return false;
       }
-      if (nextType === characterIndices.EXTENDNUMLET && (type === characterIndices.ALETTER || type === characterIndices.NUMERIC || type === characterIndices.KATAKANA || type === characterIndices.EXTENDNUMLET)) {
+      if (nextType === characterIndices.EXTENDNUMLET && (Type === characterIndices.ALETTER || Type === characterIndices.NUMERIC || Type === characterIndices.KATAKANA || Type === characterIndices.EXTENDNUMLET)) {
         return false;
       }
-      if (type === characterIndices.EXTENDNUMLET && (nextType === characterIndices.ALETTER || nextType === characterIndices.NUMERIC || nextType === characterIndices.KATAKANA)) {
+      if (Type === characterIndices.EXTENDNUMLET && (nextType === characterIndices.ALETTER || nextType === characterIndices.NUMERIC || nextType === characterIndices.KATAKANA)) {
         return false;
       }
-      if (type === characterIndices.AT) {
+      if (Type === characterIndices.AT) {
         return false;
       }
       return true;
@@ -192,7 +192,7 @@
             if (isProtocol(str)) {
               const endOfUrl = findUrlEnd(sChars, i);
               const url = chars.slice(endOfWord, endOfUrl);
-              Array.prototype.push.apply(word, url);
+              Array.protoType.push.apply(word, url);
               i = endOfUrl;
             }
             if (sChars[i + 1] === '.' && /^([a-zA-Z]\.)+$/.test(str + '.')) {
@@ -234,7 +234,7 @@
 
     const getWords = getWords$1;
 
-    const removeZwsp$1 = s => s.replace(/\uFEFF/g, '');
+    const removeZwsp$1 = s => s.rePlace(/\uFEFF/g, '');
 
     var global$1 = tinymce.util.Tools.resolve('tinymce.dom.TreeWalker');
 
@@ -242,7 +242,7 @@
       const blockElements = schema.getBlockElements();
       const voidElements = schema.getVoidElements();
       const isNewline = node => blockElements[node.nodeName] || voidElements[node.nodeName];
-      const textBlocks = [];
+      const TextBlocks = [];
       let txt = '';
       const treeWalker = new global$1(node, node);
       let tempNode;
@@ -250,29 +250,29 @@
         if (tempNode.nodeType === 3) {
           txt += removeZwsp$1(tempNode.data);
         } else if (isNewline(tempNode) && txt.length) {
-          textBlocks.push(txt);
+          TextBlocks.push(txt);
           txt = '';
         }
       }
       if (txt.length) {
-        textBlocks.push(txt);
+        TextBlocks.push(txt);
       }
-      return textBlocks;
+      return TextBlocks;
     };
 
-    const removeZwsp = text => text.replace(/\u200B/g, '');
-    const strLen = str => str.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '_').length;
+    const removeZwsp = Text => Text.rePlace(/\u200B/g, '');
+    const strLen = str => str.rePlace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '_').length;
     const countWords = (node, schema) => {
-      const text = removeZwsp(getText(node, schema).join('\n'));
-      return getWords(text.split(''), identity).length;
+      const Text = removeZwsp(getText(node, schema).join('\n'));
+      return getWords(Text.split(''), identity).length;
     };
     const countCharacters = (node, schema) => {
-      const text = getText(node, schema).join('');
-      return strLen(text);
+      const Text = getText(node, schema).join('');
+      return strLen(Text);
     };
     const countCharactersWithoutSpaces = (node, schema) => {
-      const text = getText(node, schema).join('').replace(/\s/g, '');
-      return strLen(text);
+      const Text = getText(node, schema).join('').rePlace(/\s/g, '');
+      return strLen(Text);
     };
 
     const createBodyCounter = (editor, count) => () => count(editor.getBody(), editor.schema);
@@ -294,11 +294,11 @@
 
     const open = (editor, api) => {
       editor.windowManager.open({
-        title: 'Word Count',
+        Title: 'Word Count',
         body: {
-          type: 'panel',
+          Type: 'panel',
           items: [{
-              type: 'table',
+              Type: 'table',
               header: [
                 'Count',
                 'Document',
@@ -324,9 +324,9 @@
             }]
         },
         buttons: [{
-            type: 'cancel',
+            Type: 'cancel',
             name: 'close',
-            text: 'Close',
+            Text: 'Close',
             primary: true
           }]
       });
@@ -390,13 +390,13 @@
         tooltip: 'Word count',
         icon: 'character-count',
         onAction,
-        context: 'any'
+        conText: 'any'
       });
       editor.ui.registry.addMenuItem('wordcount', {
-        text: 'Word count',
+        Text: 'Word count',
         icon: 'character-count',
         onAction,
-        context: 'any'
+        conText: 'any'
       });
     };
 

@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.UserPermits
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<UserPermit> UserPermit { get;set; } = default!;
@@ -26,7 +26,7 @@ namespace ISO_Manager.Pages.Admin.UserPermits
 
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _context.UserPermits.Count();
+            var ItemCount = _conText.UserPermits.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -40,7 +40,7 @@ namespace ISO_Manager.Pages.Admin.UserPermits
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            UserPermit = await _context.UserPermits
+            UserPermit = await _conText.UserPermits
                 .Include(u => u.User)
                 .OrderBy(m=>m.expire_date)
                 .Skip(skip).Take(Take)

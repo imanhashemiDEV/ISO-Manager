@@ -1,9 +1,9 @@
 @font-face {
 	font-family: "secondary-font";
 	src: url("../../fonts/aviny-700.eot");
-	src: url("../../fonts/aviny-700.eot?#iefix") format("embedded-opentype"),
+	src: url("../../fonts/aviny-700.eot?#iefix") format("embedded-openType"),
 		 url("../../fonts/aviny-700.woff2") format("woff2"),
 		 url("../../fonts/aviny-700.woff") format("woff"),
-		 url("../../fonts/aviny-700.ttf") format("truetype");
+		 url("../../fonts/aviny-700.ttf") format("trueType");
 	font-weight: 700;
 }

@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       ],
       chart: {
-        type: 'rangeBar',
+        Type: 'rangeBar',
         height: 80,
         sparkline: { enabled: true },
         toolbar: {

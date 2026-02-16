@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var invites_goal_chart_option = {
       series: [76],
       chart: {
-        type: 'radialBar',
+        Type: 'radialBar',
         offsetY: -20,
         sparkline: {
           enabled: true
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
           endAngle: 95,
           hollow: {
             margin: 15,
-            size: '50%'
+            Size: '50%'
           },
           track: {
             background: '#eaeaea',

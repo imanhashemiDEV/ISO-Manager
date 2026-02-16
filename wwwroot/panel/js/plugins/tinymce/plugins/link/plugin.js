@@ -9,26 +9,26 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.prototype)) {
+      if (predicate(v, constructor.protoType)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const typeOf = x => {
-      const t = typeof x;
+    const TypeOf = x => {
+      const t = Typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType = type => value => typeOf(value) === type;
-    const isSimpleType = type => value => typeof value === type;
+    const isType = Type => value => TypeOf(value) === Type;
+    const isSimpleType = Type => value => Typeof value === Type;
     const eq = t => a => t === a;
     const isString = isType('string');
     const isObject = isType('object');
@@ -112,11 +112,11 @@
           return Optional.none();
         }
       }
-      getOr(replacement) {
-        return this.tag ? this.value : replacement;
+      getOr(rePlacement) {
+        return this.tag ? this.value : rePlacement;
       }
-      or(replacement) {
-        return this.tag ? this : replacement;
+      or(rePlacement) {
+        return this.tag ? this : rePlacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -154,8 +154,8 @@
     }
     Optional.singletonNone = new Optional(false);
 
-    const nativeIndexOf = Array.prototype.indexOf;
-    const nativePush = Array.prototype.push;
+    const nativeIndexOf = Array.protoType.indexOf;
+    const nativePush = Array.protoType.push;
     const rawIndexOf = (ts, t) => nativeIndexOf.call(ts, t);
     const contains = (xs, x) => rawIndexOf(xs, x) > -1;
     const map = (xs, f) => {
@@ -245,7 +245,7 @@
         },
         default: false
       });
-      registerOption('link_context_toolbar', {
+      registerOption('link_conText_toolbar', {
         processor: 'boolean',
         default: false
       });
@@ -267,7 +267,7 @@
         processor: 'object[]',
         default: []
       });
-      registerOption('link_title', {
+      registerOption('link_Title', {
         processor: 'boolean',
         default: true
       });
@@ -281,14 +281,14 @@
       });
     };
     const assumeExternalTargets = option('link_assume_external_targets');
-    const hasContextToolbar = option('link_context_toolbar');
+    const hasConTextToolbar = option('link_conText_toolbar');
     const getLinkList = option('link_list');
     const getDefaultLinkTarget = option('link_default_target');
     const getDefaultLinkProtocol = option('link_default_protocol');
     const getTargetList = option('link_target_list');
     const getRelList = option('link_rel_list');
     const getLinkClassList = option('link_class_list');
-    const shouldShowLinkTitle = option('link_title');
+    const shouldShowLinkTitle = option('link_Title');
     const allowUnsafeLinkTarget = option('allow_unsafe_link_target');
     const useQuickLink = option('link_quicklink');
 
@@ -360,7 +360,7 @@
       const newRels = isUnsafe ? addTargetRules(rels) : removeTargetRules(rels);
       return newRels.length > 0 ? toString(newRels) : '';
     };
-    const trimCaretContainers = text => text.replace(/\uFEFF/g, '');
+    const trimCaretContainers = Text => Text.rePlace(/\uFEFF/g, '');
     const getAnchorElement = (editor, selectedElm) => {
       selectedElm = selectedElm || getLinksInSelection(editor.selection.getRng())[0] || editor.selection.getNode();
       if (isImageFigure(selectedElm)) {
@@ -371,8 +371,8 @@
     };
     const isInAnchor = (editor, selectedElm) => getAnchorElement(editor, selectedElm).isSome();
     const getAnchorText = (selection, anchorElm) => {
-      const text = anchorElm.fold(() => selection.getContent({ format: 'text' }), anchorElm => anchorElm.innerText || anchorElm.textContent || '');
-      return trimCaretContainers(text);
+      const Text = anchorElm.fold(() => selection.getContent({ format: 'Text' }), anchorElm => anchorElm.innerText || anchorElm.TextContent || '');
+      return trimCaretContainers(Text);
     };
     const getLinksInSelection = rng => collectNodesInRange(rng, isLink);
     const getLinks$1 = elements => global$2.grep(elements, isLink);
@@ -397,7 +397,7 @@
 
     const getLinkAttrs = data => {
       const attrs = [
-        'title',
+        'Title',
         'rel',
         'class',
         'target'
@@ -427,26 +427,26 @@
       newLinkAttrs.href = handleExternalTargets(newLinkAttrs.href, assumeExternalTargets(editor));
       return newLinkAttrs;
     };
-    const updateLink = (editor, anchorElm, text, linkAttrs) => {
-      text.each(text => {
+    const updateLink = (editor, anchorElm, Text, linkAttrs) => {
+      Text.each(Text => {
         if (has(anchorElm, 'innerText')) {
-          anchorElm.innerText = text;
+          anchorElm.innerText = Text;
         } else {
-          anchorElm.textContent = text;
+          anchorElm.TextContent = Text;
         }
       });
       editor.dom.setAttribs(anchorElm, linkAttrs);
       editor.selection.select(anchorElm);
     };
-    const createLink = (editor, selectedElm, text, linkAttrs) => {
+    const createLink = (editor, selectedElm, Text, linkAttrs) => {
       const dom = editor.dom;
       if (isImageFigure(selectedElm)) {
         linkImageFigure(dom, selectedElm, linkAttrs);
       } else {
-        text.fold(() => {
+        Text.fold(() => {
           editor.execCommand('mceInsertLink', false, linkAttrs);
-        }, text => {
-          editor.insertContent(dom.createHTML('a', linkAttrs, dom.encode(text)));
+        }, Text => {
+          editor.insertContent(dom.createHTML('a', linkAttrs, dom.encode(Text)));
         });
       }
     };
@@ -459,10 +459,10 @@
           attachState.attach();
         }
         anchorElm.fold(() => {
-          createLink(editor, selectedElm, data.text, linkAttrs);
+          createLink(editor, selectedElm, data.Text, linkAttrs);
         }, elm => {
           editor.focus();
-          updateLink(editor, elm, data.text, linkAttrs);
+          updateLink(editor, elm, data.Text, linkAttrs);
         });
       });
     };
@@ -499,16 +499,16 @@
         href,
         rel,
         target,
-        text,
-        title
+        Text,
+        Title
       } = data;
       return filter({
         class: cls.getOrNull(),
         href,
         rel: rel.getOrNull(),
         target: target.getOrNull(),
-        text: text.getOrNull(),
-        title: title.getOrNull()
+        Text: Text.getOrNull(),
+        Title: Title.getOrNull()
       }, (v, _k) => isNull(v) === false);
     };
     const sanitizeData = (editor, data) => {
@@ -554,10 +554,10 @@
 
     const getValue = item => isString(item.value) ? item.value : '';
     const getText = item => {
-      if (isString(item.text)) {
-        return item.text;
-      } else if (isString(item.title)) {
-        return item.title;
+      if (isString(item.Text)) {
+        return item.Text;
+      } else if (isString(item.Title)) {
+        return item.Title;
       } else {
         return '';
       }
@@ -565,17 +565,17 @@
     const sanitizeList = (list, extractValue) => {
       const out = [];
       global$2.each(list, item => {
-        const text = getText(item);
+        const Text = getText(item);
         if (item.menu !== undefined) {
           const items = sanitizeList(item.menu, extractValue);
           out.push({
-            text,
+            Text,
             items
           });
         } else {
           const value = extractValue(item);
           out.push({
-            text,
+            Text,
             value
           });
         }
@@ -586,7 +586,7 @@
     const sanitize = list => sanitizeWith(getValue)(list);
     const createUi = (name, label) => items => ({
       name,
-      type: 'listbox',
+      Type: 'listbox',
       label,
       items
     });
@@ -612,11 +612,11 @@
         url: {
           value: i.value,
           meta: {
-            text: hasPersistentText ? persistentText : i.text,
+            Text: hasPersistentText ? persistentText : i.Text,
             attach: noop
           }
         },
-        text: hasPersistentText ? persistentText : i.text
+        Text: hasPersistentText ? persistentText : i.Text
       })) : Optional.none();
     };
     const findCatalog = (catalogs, fieldName) => {
@@ -630,24 +630,24 @@
     };
     const init = (initialData, linkCatalog) => {
       const persistentData = {
-        text: initialData.text,
-        title: initialData.title
+        Text: initialData.Text,
+        Title: initialData.Title
       };
       const getTitleFromUrlChange = url => {
         var _a;
-        return someIf(persistentData.title.length <= 0, Optional.from((_a = url.meta) === null || _a === void 0 ? void 0 : _a.title).getOr(''));
+        return someIf(persistentData.Title.length <= 0, Optional.from((_a = url.meta) === null || _a === void 0 ? void 0 : _a.Title).getOr(''));
       };
       const getTextFromUrlChange = url => {
         var _a;
-        return someIf(persistentData.text.length <= 0, Optional.from((_a = url.meta) === null || _a === void 0 ? void 0 : _a.text).getOr(url.value));
+        return someIf(persistentData.Text.length <= 0, Optional.from((_a = url.meta) === null || _a === void 0 ? void 0 : _a.Text).getOr(url.value));
       };
       const onUrlChange = data => {
-        const text = getTextFromUrlChange(data.url);
-        const title = getTitleFromUrlChange(data.url);
-        if (text.isSome() || title.isSome()) {
+        const Text = getTextFromUrlChange(data.url);
+        const Title = getTitleFromUrlChange(data.url);
+        if (Text.isSome() || Title.isSome()) {
           return Optional.some({
-            ...text.map(text => ({ text })).getOr({}),
-            ...title.map(title => ({ title })).getOr({})
+            ...Text.map(Text => ({ Text })).getOr({}),
+            ...Title.map(Title => ({ Title })).getOr({})
           });
         } else {
           return Optional.none();
@@ -655,7 +655,7 @@
       };
       const onCatalogChange = (data, change) => {
         const catalog = findCatalog(linkCatalog, change).getOr([]);
-        return getDelta(persistentData.text, change, catalog, data);
+        return getDelta(persistentData.Text, change, catalog, data);
       };
       const onChange = (getData, change) => {
         const name = change.name;
@@ -666,7 +666,7 @@
             'link'
           ], name)) {
           return onCatalogChange(getData(), name);
-        } else if (name === 'text' || name === 'title') {
+        } else if (name === 'Text' || name === 'Title') {
           persistentData[name] = getData()[name];
           return Optional.none();
         } else {
@@ -728,12 +728,12 @@
       const anchors = bind(anchorNodes, anchor => {
         const id = anchor.name || anchor.id;
         return id ? [{
-            text: id,
+            Text: id,
             value: '#' + id
           }] : [];
       });
       return anchors.length > 0 ? Optional.some([{
-          text: 'None',
+          Text: 'None',
           value: ''
         }].concat(anchors)) : Optional.none();
     };
@@ -748,9 +748,9 @@
     };
     const ClassListOptions = { getClasses };
 
-    const parseJson = text => {
+    const parseJson = Text => {
       try {
-        return Optional.some(JSON.parse(text));
+        return Optional.some(JSON.parse(Text));
       } catch (err) {
         return Optional.none();
       }
@@ -760,7 +760,7 @@
       const linkList = getLinkList(editor);
       return new Promise(resolve => {
         if (isString(linkList)) {
-          fetch(linkList).then(res => res.ok ? res.text().then(parseJson) : Promise.reject()).then(resolve, () => resolve(Optional.none()));
+          fetch(linkList).then(res => res.ok ? res.Text().then(parseJson) : Promise.reject()).then(resolve, () => resolve(Optional.none()));
         } else if (isFunction(linkList)) {
           linkList(output => resolve(Optional.some(output)));
         } else {
@@ -769,7 +769,7 @@
       }).then(optItems => optItems.bind(ListOptions.sanitizeWith(extractor)).map(items => {
         if (items.length > 0) {
           const noneItem = [{
-              text: 'None',
+              Text: 'None',
               value: ''
             }];
           return noneItem.concat(items);
@@ -795,11 +795,11 @@
 
     const fallbacks = [
       {
-        text: 'Current window',
+        Text: 'Current window',
         value: ''
       },
       {
-        text: 'New window',
+        Text: 'New window',
         value: '_blank'
       }
     ];
@@ -821,16 +821,16 @@
     const extractFromAnchor = (editor, anchor) => {
       const dom = editor.dom;
       const onlyText = isOnlyTextSelected(editor);
-      const text = onlyText ? Optional.some(getAnchorText(editor.selection, anchor)) : Optional.none();
+      const Text = onlyText ? Optional.some(getAnchorText(editor.selection, anchor)) : Optional.none();
       const url = anchor.bind(anchorElm => Optional.from(dom.getAttrib(anchorElm, 'href')));
       const target = anchor.bind(anchorElm => Optional.from(dom.getAttrib(anchorElm, 'target')));
       const rel = anchor.bind(anchorElm => nonEmptyAttr(dom, anchorElm, 'rel'));
       const linkClass = anchor.bind(anchorElm => nonEmptyAttr(dom, anchorElm, 'class'));
-      const title = anchor.bind(anchorElm => nonEmptyAttr(dom, anchorElm, 'title'));
+      const Title = anchor.bind(anchorElm => nonEmptyAttr(dom, anchorElm, 'Title'));
       return {
         url,
-        text,
-        title,
+        Text,
+        Title,
         target,
         rel,
         linkClass
@@ -848,7 +848,7 @@
           link: links
         },
         optNode: linkNode,
-        flags: { titleEnabled: shouldShowLinkTitle(editor) }
+        flags: { TitleEnabled: shouldShowLinkTitle(editor) }
       };
     });
     const DialogInfo = { collect };
@@ -863,11 +863,11 @@
       const getChangedValue = key => Optional.from(data[key]).filter(value => !is(info.anchor[key], value));
       const changedData = {
         href: data.url.value,
-        text: getChangedValue('text'),
+        Text: getChangedValue('Text'),
         target: getChangedValue('target'),
         rel: getChangedValue('rel'),
         class: getChangedValue('linkClass'),
-        title: getChangedValue('title')
+        Title: getChangedValue('Title')
       };
       const attachState = {
         href: data.url.value,
@@ -890,8 +890,8 @@
           value: url,
           meta: { original: { value: url } }
         },
-        text: anchor.text.getOr(''),
-        title: anchor.title.getOr(''),
+        Text: anchor.Text.getOr(''),
+        Title: anchor.Title.getOr(''),
         anchor: url,
         link: url,
         rel: anchor.rel.getOr(''),
@@ -902,19 +902,19 @@
     const makeDialog = (settings, onSubmit, editor) => {
       const urlInput = [{
           name: 'url',
-          type: 'urlinput',
-          filetype: 'file',
+          Type: 'urlinput',
+          fileType: 'file',
           label: 'URL',
-          picker_text: 'Browse links'
+          picker_Text: 'Browse links'
         }];
-      const displayText = settings.anchor.text.map(() => ({
-        name: 'text',
-        type: 'input',
+      const displayText = settings.anchor.Text.map(() => ({
+        name: 'Text',
+        Type: 'input',
         label: 'Text to display'
       })).toArray();
-      const titleText = settings.flags.titleEnabled ? [{
-          name: 'title',
-          type: 'input',
+      const TitleText = settings.flags.TitleEnabled ? [{
+          name: 'Title',
+          Type: 'input',
           label: 'Title'
         }] : [];
       const defaultTarget = Optional.from(getDefaultLinkTarget(editor));
@@ -922,11 +922,11 @@
       const catalogs = settings.catalogs;
       const dialogDelta = DialogChanges.init(initialData, catalogs);
       const body = {
-        type: 'panel',
+        Type: 'panel',
         items: flatten([
           urlInput,
           displayText,
-          titleText,
+          TitleText,
           cat([
             catalogs.anchor.map(ListOptions.createUi('anchor', 'Anchors')),
             catalogs.rels.map(ListOptions.createUi('rel', 'Rel')),
@@ -937,19 +937,19 @@
         ])
       };
       return {
-        title: 'Insert/Edit Link',
-        size: 'normal',
+        Title: 'Insert/Edit Link',
+        Size: 'normal',
         body,
         buttons: [
           {
-            type: 'cancel',
+            Type: 'cancel',
             name: 'cancel',
-            text: 'Cancel'
+            Text: 'Cancel'
           },
           {
-            type: 'submit',
+            Type: 'submit',
             name: 'save',
-            text: 'Save',
+            Text: 'Save',
             primary: true
           }
         ],
@@ -977,7 +977,7 @@
         if ((value === null || value === void 0 ? void 0 : value.dialog) === true || !useQuickLink(editor)) {
           open(editor);
         } else {
-          editor.dispatch('contexttoolbar-show', { toolbarKey: 'quicklink' });
+          editor.dispatch('conTexttoolbar-show', { toolbarKey: 'quicklink' });
         }
       });
     };
@@ -1097,7 +1097,7 @@
       const selectedLink = value();
       const getSelectedLink = () => selectedLink.get().or(getLinkFromSelection(editor));
       const gotoSelectedLink = () => getSelectedLink().each(link => gotoLink(editor, link));
-      editor.on('contextmenu', e => {
+      editor.on('conTextmenu', e => {
         getLinkFromElement(editor, e.target).each(selectedLink.set);
       });
       editor.on('SelectionChange', () => {
@@ -1179,29 +1179,29 @@
     };
     const setupMenuItems = (editor, openLink) => {
       editor.ui.registry.addMenuItem('openlink', {
-        text: 'Open link',
+        Text: 'Open link',
         icon: 'new-tab',
         onAction: openLink.gotoSelectedLink,
         onSetup: toggleRequiresLinkState(editor)
       });
       editor.ui.registry.addMenuItem('link', {
         icon: 'link',
-        text: 'Link...',
+        Text: 'Link...',
         shortcut: 'Meta+K',
         onAction: openDialog(editor),
         onSetup: toggleLinkMenuState(editor)
       });
       editor.ui.registry.addMenuItem('unlink', {
         icon: 'unlink',
-        text: 'Remove link',
+        Text: 'Remove link',
         onAction: () => unlink(editor),
         onSetup: toggleRequiresLinkState(editor)
       });
     };
-    const setupContextMenu = editor => {
+    const setupConTextMenu = editor => {
       const inLink = 'link unlink openlink';
       const noLink = 'link';
-      editor.ui.registry.addContextMenu('link', {
+      editor.ui.registry.addConTextMenu('link', {
         update: element => {
           const isEditable = editor.dom.isEditable(element);
           if (!isEditable) {
@@ -1211,7 +1211,7 @@
         }
       });
     };
-    const setupContextToolbars = (editor, openLink) => {
+    const setupConTextToolbars = (editor, openLink) => {
       const collapseSelectionToEnd = editor => {
         editor.selection.collapse(false);
       };
@@ -1224,28 +1224,28 @@
         const anchor = getAnchorElement(editor);
         const onlyText = isOnlyTextSelected(editor);
         if (anchor.isNone() && onlyText) {
-          const text = getAnchorText(editor.selection, anchor);
-          return someIf(text.length === 0, value);
+          const Text = getAnchorText(editor.selection, anchor);
+          return someIf(Text.length === 0, value);
         } else {
           return Optional.none();
         }
       };
-      editor.ui.registry.addContextForm('quicklink', {
+      editor.ui.registry.addConTextForm('quicklink', {
         launch: {
-          type: 'contextformtogglebutton',
+          Type: 'conTextformtogglebutton',
           icon: 'link',
           tooltip: 'Link',
           onSetup: toggleLinkState(editor)
         },
         label: 'Link',
-        predicate: node => hasContextToolbar(editor) && isInAnchor(editor, node),
+        predicate: node => hasConTextToolbar(editor) && isInAnchor(editor, node),
         initValue: () => {
           const elm = getAnchorElement(editor);
           return elm.fold(constant(''), getHref);
         },
         commands: [
           {
-            type: 'contextformtogglebutton',
+            Type: 'conTextformtogglebutton',
             icon: 'link',
             tooltip: 'Link',
             primary: true,
@@ -1256,15 +1256,15 @@
             },
             onAction: formApi => {
               const value = formApi.getValue();
-              const text = getLinkText(value);
+              const Text = getLinkText(value);
               const attachState = {
                 href: value,
                 attach: noop
               };
               link(editor, attachState, {
                 href: value,
-                text,
-                title: Optional.none(),
+                Text,
+                Title: Optional.none(),
                 rel: Optional.none(),
                 target: Optional.from(getDefaultLinkTarget(editor)),
                 class: Optional.none()
@@ -1274,7 +1274,7 @@
             }
           },
           {
-            type: 'contextformbutton',
+            Type: 'conTextformbutton',
             icon: 'unlink',
             tooltip: 'Remove link',
             onSetup: onSetupLink,
@@ -1284,7 +1284,7 @@
             }
           },
           {
-            type: 'contextformbutton',
+            Type: 'conTextformbutton',
             icon: 'new-tab',
             tooltip: 'Open link',
             onSetup: onSetupLink,
@@ -1300,8 +1300,8 @@
       const openLink = setup$1(editor);
       setupButtons(editor, openLink);
       setupMenuItems(editor, openLink);
-      setupContextMenu(editor);
-      setupContextToolbars(editor, openLink);
+      setupConTextMenu(editor);
+      setupConTextToolbars(editor, openLink);
     };
 
     var Plugin = () => {

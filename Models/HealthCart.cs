@@ -11,29 +11,36 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "تاریخ انقضا")]
-        public DateTime end_date { get; set; }
+        public DateTime EndDate { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
 
         // relations
 
         [ForeignKey("User")]
         [Display(Name = "نام و نام خانوادگی ")]
-        public string? user_id { get; set; }
+        public string? UserId { get; set; }
         [Display(Name = "نام و نام خانوادگی ")]
-        public User? User { get; set; }
+        public virtual User? User { get; set; }
 
 
-        [ForeignKey("Workplace")]
+        [ForeignKey("WorkPlace")]
         [Display(Name = "نام محل")]
-        public int? workplace_id { get; set; }
+        public int? WorkPlaceId { get; set; }
         [Display(Name = "نام محل")]
-        public Workplace? Workplace { get; set; }
+        public virtual WorkPlace? WorkPlace { get; set; }
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
 
     }
 }

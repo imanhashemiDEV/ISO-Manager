@@ -38,13 +38,13 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Permit[0].place)
+                                            @Html.DisplayNameFor(model => model.Permit[0].Place)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Permit[0].permit_type)
+                                            @Html.DisplayNameFor(model => model.Permit[0].permit_Type)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Permit[0].permit_attachment_type)
+                                            @Html.DisplayNameFor(model => model.Permit[0].permit_attachment_Type)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.Permit[0].permit_date)
@@ -56,13 +56,13 @@
                                             @Html.DisplayNameFor(model => model.Permit[0].duration)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Permit[0].owner)
+                                            @Html.DisplayNameFor(model => model.Permit[0].Owner)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.Permit[0].responsible)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Permit[0].description)
+                                            @Html.DisplayNameFor(model => model.Permit[0].Description)
                                         </th>
                                         <th>عملیات</th>
                                     </tr>
@@ -73,13 +73,13 @@
                                         <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.place)
+                                                @Html.DisplayFor(modelItem => item.Place)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.permit_type)
+                                                @Html.DisplayFor(modelItem => item.permit_Type)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.permit_attachment_type)
+                                                @Html.DisplayFor(modelItem => item.permit_attachment_Type)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.permit_date)
@@ -91,17 +91,17 @@
                                                 @Html.DisplayFor(modelItem => item.duration)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.owner)
+                                                @Html.DisplayFor(modelItem => item.Owner)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.responsible)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.description)
+                                                @Html.DisplayFor(modelItem => item.Description)
                                             </td>
                                             <td>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

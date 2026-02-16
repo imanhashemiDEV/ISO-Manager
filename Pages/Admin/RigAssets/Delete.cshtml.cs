@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.RigAssets
 {
     public class DeleteModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DeleteModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DeleteModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -29,7 +29,7 @@ namespace ISO_Manager.Pages.Admin.RigAssets
                 return NotFound();
             }
 
-            var rigasset = await _context.RigAssets.FirstOrDefaultAsync(m => m.Id == id);
+            var rigasset = await _conText.RigAssets.FirstOrDefaultAsync(m => m.Id == id);
 
             if (rigasset is not null)
             {
@@ -48,12 +48,12 @@ namespace ISO_Manager.Pages.Admin.RigAssets
                 return NotFound();
             }
 
-            var rigasset = await _context.RigAssets.FindAsync(id);
+            var rigasset = await _conText.RigAssets.FindAsync(id);
             if (rigasset != null)
             {
                 RigAsset = rigasset;
-                _context.RigAssets.Remove(RigAsset);
-                await _context.SaveChangesAsync();
+                _conText.RigAssets.Remove(RigAsset);
+                await _conText.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");

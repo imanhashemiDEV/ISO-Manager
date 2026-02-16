@@ -94,6 +94,6 @@ jsVectorMap.addMap('italy', {
     }
   },
   height: 1170.80553538365,
-  projection: { type: 'merc', centralMeridian: 0.0 },
+  projection: { Type: 'merc', centralMeridian: 0.0 },
   width: 900.0
 });

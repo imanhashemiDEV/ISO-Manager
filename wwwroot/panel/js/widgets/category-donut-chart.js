@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var options = {
       chart: {
         height: 300,
-        type: 'donut'
+        Type: 'donut'
       },
       dataLabels: {
         enabled: false
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
       plotOptions: {
         pie: {
           donut: {
-            size: '65%'
+            Size: '65%'
           }
         }
       },

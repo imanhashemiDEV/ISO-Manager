@@ -38,13 +38,13 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.EmergencyPhoneBook[0].place)
+                                            @Html.DisplayNameFor(model => model.EmergencyPhoneBook[0].Place)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.EmergencyPhoneBook[0].city_phone)
+                                            @Html.DisplayNameFor(model => model.EmergencyPhoneBook[0].CityPhone)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.EmergencyPhoneBook[0].company_phone)
+                                            @Html.DisplayNameFor(model => model.EmergencyPhoneBook[0].CompanyPhone)
                                         </th>
                                         <th>عملیات</th>
                                     </tr>
@@ -55,17 +55,17 @@
                                         <tr>
                                             <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.place)
+                                                @Html.DisplayFor(modelItem => item.Place)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.city_phone)
+                                                @Html.DisplayFor(modelItem => item.CityPhone)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.company_phone)
+                                                @Html.DisplayFor(modelItem => item.CompanyPhone)
                                             </td>
                                             <td>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

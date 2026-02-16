@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var total_invoice_1_chart_options = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 55,
         sparkline: {
           enabled: true
@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       colors: ['#2ca87f'],
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
           show: false
         },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return 'Ticket ';
             }
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var total_invoice_2_chart_options = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 55,
         sparkline: {
           enabled: true
@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       colors: ['#e58a00'],
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
           show: false
         },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return 'Ticket ';
             }
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var total_invoice_3_chart_options = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 55,
         sparkline: {
           enabled: true
@@ -111,10 +111,10 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       colors: ['#dc2626'],
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
           show: false
         },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return 'Ticket ';
             }

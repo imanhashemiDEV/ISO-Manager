@@ -15,28 +15,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.OccupationHarmful[0].exposure_source)
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].ExposureSource)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OccupationHarmful[0].evaluation_method)
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].EvaluationMethod)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OccupationHarmful[0].exposure_rate)
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].ExposureRate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OccupationHarmful[0].exposure_duration)
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].ExposureDuration)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OccupationHarmful[0].exposure_limit)
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].ExposureLimit)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OccupationHarmful[0].status)
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].Status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OccupationHarmful[0].created_at)
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].CreatedAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OccupationHarmful[0].updated_at)
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].UpdatedAt)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OccupationHarmful[0].Occupation)
@@ -45,7 +45,7 @@
                 @Html.DisplayNameFor(model => model.OccupationHarmful[0].HarmfulFactor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OccupationHarmful[0].harmful_item_id)
+                @Html.DisplayNameFor(model => model.OccupationHarmful[0].HarmfulItemId)
             </th>
             <th></th>
         </tr>
@@ -54,28 +54,28 @@
 @foreach (var item in Model.OccupationHarmful) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.exposure_source)
+                @Html.DisplayFor(modelItem => item.ExposureSource)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.evaluation_method)
+                @Html.DisplayFor(modelItem => item.EvaluationMethod)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.exposure_rate)
+                @Html.DisplayFor(modelItem => item.ExposureRate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.exposure_duration)
+                @Html.DisplayFor(modelItem => item.ExposureDuration)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.exposure_limit)
+                @Html.DisplayFor(modelItem => item.ExposureLimit)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.status)
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.created_at)
+                @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.updated_at)
+                @Html.DisplayFor(modelItem => item.UpdatedAt)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Occupation.Id)
@@ -84,7 +84,7 @@
                 @Html.DisplayFor(modelItem => item.HarmfulFactor.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.harmful_item_id)
+                @Html.DisplayFor(modelItem => item.HarmfulItemId)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

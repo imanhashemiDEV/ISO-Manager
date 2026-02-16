@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.User_infos
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace ISO_Manager.Pages.Admin.User_infos
                 return NotFound();
             }
 
-            var user_info =  await _context.UserInfos.FirstOrDefaultAsync(m => Equals(m.Id , id));
+            var user_info =  await _conText.UserInfos.FirstOrDefaultAsync(m => Equals(m.Id , id));
             if (user_info == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace ISO_Manager.Pages.Admin.User_infos
                 return Page();
             }
 
-            _context.Attach(User_info).State = EntityState.Modified;
+            _conText.Attach(User_info).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace ISO_Manager.Pages.Admin.User_infos
 
         private bool User_infoExists(long id)
         {
-            return _context.UserInfos.Any(e => e.Id == id);
+            return _conText.UserInfos.Any(e => e.Id == id);
         }
     }
 }

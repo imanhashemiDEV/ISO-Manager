@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var options_invoice = {
       chart: {
         height: 350,
-        type: 'line',
+        Type: 'line',
         toolbar: {
           show: false
         }
@@ -27,12 +27,12 @@ document.addEventListener('DOMContentLoaded', function () {
       series: [
         {
           name: 'TEAM A',
-          type: 'column',
+          Type: 'column',
           data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 25]
         },
         {
           name: 'TEAM B',
-          type: 'line',
+          Type: 'line',
           data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 35]
         }
       ],
@@ -41,18 +41,18 @@ document.addEventListener('DOMContentLoaded', function () {
         curve: 'smooth'
       },
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           inverseColors: false,
           shade: 'light',
-          type: 'vertical',
+          Type: 'vertical',
           opacityFrom: [0, 1],
           opacityTo: [0.5, 1],
           stops: [0, 100],
           hover: {
             inverseColors: false,
             shade: 'light',
-            type: 'vertical',
+            Type: 'vertical',
             opacityFrom: 0.15,
             opacityTo: 0.65,
             stops: [0, 96, 100]
@@ -60,13 +60,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       },
       markers: {
-        size: 3,
+        Size: 3,
         colors: '#fFF',
         strokeColors: '#e58a00',
         strokeWidth: 2,
         shape: 'circle',
         hover: {
-          size: 5
+          Size: 5
         }
       },
       colors: ['#e58a00', '#e58a00'],

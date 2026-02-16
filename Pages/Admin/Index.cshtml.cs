@@ -11,11 +11,11 @@ namespace ISO_Manager.Pages.Admin
     public class IndexModel : PageModel
     {
 
-        public readonly ApplicationDbContext _context;
+        public readonly ApplicationDbConText _conText;
 
-        public IndexModel(ApplicationDbContext context)
+        public IndexModel(ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public int RasmiUserCount { get; set; } = 0;
@@ -44,7 +44,7 @@ namespace ISO_Manager.Pages.Admin
         public async Task OnGetAsync()
         {
            // long id = 30;
-           //// var user = _context.UserInfos.First(m => Equals(m.user_id , id));
+           //// var user = _conText.UserInfos.First(m => Equals(m.UserId , id));
             // var B = user.birthday;
             // var diff = DateTime.Now - B;
             // Age = ((diff.Days%365)/30)-1;
@@ -54,55 +54,55 @@ namespace ISO_Manager.Pages.Admin
 
             PersianCalendar pc = new PersianCalendar();
             DateTime thisDate = DateTime.Now;
-            int shamsi_year = pc.GetYear(thisDate);
-            YearStartDate = pc.ToDateTime(shamsi_year, 01, 01, 00, 00, 0, 0); 
-            YearEndDate = pc.ToDateTime(shamsi_year, 12, 29, 11, 59, 0, 0); 
+            int shamsi_Year = pc.GetYear(thisDate);
+            YearStartDate = pc.ToDateTime(shamsi_Year, 01, 01, 00, 00, 0, 0); 
+            YearEndDate = pc.ToDateTime(shamsi_Year, 12, 29, 11, 59, 0, 0); 
 
             //var gregorianCalendar = new GregorianCalendar();
-            //var year = gregorianCalendar.GetYear(DateTime.Now).ToString();
-            //YearStartDate = DateTime.Parse($"{year}/01/01");
+            //var Year = gregorianCalendar.GetYear(DateTime.Now).ToString();
+            //YearStartDate = DateTime.Parse($"{Year}/01/01");
 
             // Users
-            var users = _context.Users;
+            var users = _conText.Users;
             RasmiUserCount = users.Where(m=>m.EmploymentType == "rasmi").Count();
             GharardadiUserCount = users.Where(m=>m.EmploymentType == "gharardadi").Count();
             PeymankariUserCount = users.Where(m=>m.EmploymentType == "peymankari").Count();
 
 
             // Accidents
-            var OfficialAccidents = _context.OfficialAccidents;
-            RasmiAccidentCount = OfficialAccidents.Where(m=>m.accident_complication== "???? ?? ??? ?????")
-                .Count(m => m.accident_date >= YearStartDate && m.accident_date <= YearEndDate);
+            var OfficialAccidents = _conText.OfficialAccidents;
+            RasmiAccidentCount = OfficialAccidents.Where(m=>m.AccidentComplication== "???? ?? ??? ?????")
+                .Count(m => m.AccidentDate >= YearStartDate && m.AccidentDate <= YearEndDate);
             var RasmiLostDays = OfficialAccidents
-                .Where(m => m.accident_complication == "???? ?? ??? ?????" && m.accident_date >= YearStartDate && m.accident_date <= YearEndDate)
-                .Sum(m => m.lost_days);
+                .Where(m => m.AccidentComplication == "???? ?? ??? ?????" && m.AccidentDate >= YearStartDate && m.AccidentDate <= YearEndDate)
+                .Sum(m => m.LostDays);
 
-            var ContractorAccidents = _context.ContractorAccidents;
+            var ContractorAccidents = _conText.ContractorAccidents;
             PeymankariAccidentCount = ContractorAccidents
-                .Where(m => m.accident_complication == "???? ?? ??? ?????")
-                .Count(m => m.accident_date >= YearStartDate && m.accident_date <= YearEndDate);
-            var PeymankariLostDays = ContractorAccidents.Where(m => m.accident_complication == "???? ?? ??? ?????" && m.accident_date >= YearStartDate && m.accident_date <= YearEndDate)
-                .Sum(m => m.lost_days);
+                .Where(m => m.AccidentComplication == "???? ?? ??? ?????")
+                .Count(m => m.AccidentDate >= YearStartDate && m.AccidentDate <= YearEndDate);
+            var PeymankariLostDays = ContractorAccidents.Where(m => m.AccidentComplication == "???? ?? ??? ?????" && m.AccidentDate >= YearStartDate && m.AccidentDate <= YearEndDate)
+                .Sum(m => m.LostDays);
 
             LostAccidentDays = (int)(RasmiLostDays + PeymankariLostDays);
 
             // Calibration
-            var Calibration = _context.Calibrations;
-            ActiveGasDetector = Calibration.Count(m => m.status=="active");
-            InProgressGasDetector = Calibration.Count(m => m.status== "in-calibration");
-            ExpiredGasDetector = Calibration.Count(m => m.status== "wasted");
+            var Calibration = _conText.Calibrations;
+            ActiveGasDetector = Calibration.Count(m => m.Status=="active");
+            InProgressGasDetector = Calibration.Count(m => m.Status== "in-calibration");
+            ExpiredGasDetector = Calibration.Count(m => m.Status== "wasted");
 
             //Contractors
-            var Contractors = _context.Contractors;
-            ActiveContractor = Contractors.Where(m=>m.end_date > DateTime.Now).Count(m => m.status == "active");
-            ExpiredContractor = Contractors.Where(m=>m.end_date < DateTime.Now).Count(m => m.status == "active");
+            var Contractors = _conText.Contractors;
+            ActiveContractor = Contractors.Where(m=>m.EndDate > DateTime.Now).Count(m => m.Status == "active");
+            ExpiredContractor = Contractors.Where(m=>m.EndDate < DateTime.Now).Count(m => m.Status == "active");
 
 
-            DailyReport = await _context.DailyReports
+            DailyReport = await _conText.DailyReports
                 .Include(d => d.CampBoss)
                 .Include(d => d.Doctor)
                 .Include(d => d.RigBoss)
-                .Where(m=>m.type=="rig")
+                .Where(m=>m.Type=="rig")
                 .ToListAsync();
         }
     }

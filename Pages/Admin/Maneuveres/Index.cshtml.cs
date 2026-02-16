@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Maneuveres
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<Maneuver> Maneuver { get;set; } = default!;
@@ -26,7 +26,7 @@ namespace ISO_Manager.Pages.Admin.Maneuveres
         {
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _context.Maneuvers.Count();
+            var ItemCount = _conText.Maneuvers.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -40,7 +40,7 @@ namespace ISO_Manager.Pages.Admin.Maneuveres
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            Maneuver = await _context.Maneuvers
+            Maneuver = await _conText.Maneuvers
                 .Skip(skip).Take(Take)
                 .ToListAsync();
         }

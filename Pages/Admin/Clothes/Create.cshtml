@@ -27,8 +27,8 @@
                             <div class="grid grid-cols-12 gap-6">
                                 
                                 <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
-                                    <label asp-for="Cloth.user_id" class="control-label"></label>
-                                    <select id="users" asp-for="Cloth.user_id" class="form-select">
+                                    <label asp-for="Cloth.UserId" class="control-label"></label>
+                                    <select id="users" asp-for="Cloth.UserId" class="form-select">
                                         @foreach (var item in ViewBag.users)
                                         {
                                             <option value="@item.id">@item.name - - @item.register_code</option>
@@ -36,11 +36,11 @@
                                     </select>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Cloth.cloth_type" class="control-label"></label>
-                                    <select asp-for="Cloth.cloth_type" class="form-select">
-                                        <option value="shoes">کفش ایمنی</option>
+                                    <label asp-for="Cloth.ClothType" class="control-label"></label>
+                                    <select asp-for="Cloth.ClothType" class="form-select">
+                                        <option value="Shoes">کفش ایمنی</option>
                                         <option value="boot">کفش ساق بلند</option>
-                                        <option value="boot-shoes">چکمه ایمنی</option>
+                                        <option value="boot-Shoes">چکمه ایمنی</option>
                                         <option value="boiler-suit">لباس کار</option>
                                         <option value="glasses">عینک ایمنی</option>
                                         <option value="earmuff">گوشی ایمنی</option>
@@ -48,37 +48,37 @@
                                         <option value="rain-coat">بارانی</option>
                                         <option value="Over-coat">اورکت</option>
                                     </select>
-                                    <span asp-validation-for="Cloth.cloth_type" class="text-danger"></span>
+                                    <span asp-validation-for="Cloth.ClothType" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Cloth.receive_type" class="control-label"></label>
-                                    <select asp-for="Cloth.receive_type" class="form-select">
+                                    <label asp-for="Cloth.ReceiveType" class="control-label"></label>
+                                    <select asp-for="Cloth.ReceiveType" class="form-select">
                                         <option value="usual">سهمیه</option>
                                         <option value="emergency">اضطراری</option>
                                         <option value="BossOrder">دستور رئیس HSE</option>
                                         <option value="guest">مهمان</option>
                                     </select>
-                                    <span asp-validation-for="Cloth.receive_type" class="text-danger"></span>
+                                    <span asp-validation-for="Cloth.ReceiveType" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Cloth.receive_date" class="control-label"></label>
-                                    <input data-jdp type="text"
+                                    <label asp-for="Cloth.ReceiveDate" class="control-label"></label>
+                                    <input data-jdp Type="Text"
                                            asp-for="@Model.ReceivedDate"
-                                           class="form-control text-right" dir="rtl">
-                                    <span asp-validation-for="Cloth.receive_date" class="text-danger"></span>
+                                           class="form-control Text-right" dir="rtl">
+                                    <span asp-validation-for="Cloth.ReceiveDate" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Cloth.size" class="control-label"></label>
-                                    <input asp-for="Cloth.size" class="form-control"/>
-                                    <span asp-validation-for="Cloth.size" class="text-danger"></span>
+                                    <label asp-for="Cloth.Size" class="control-label"></label>
+                                    <input asp-for="Cloth.Size" class="form-control"/>
+                                    <span asp-validation-for="Cloth.Size" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Cloth.description" class="control-label"></label>
-                                    <input asp-for="Cloth.description" class="form-control"/>
-                                    <span asp-validation-for="Cloth.description" class="text-danger"></span>
+                                    <label asp-for="Cloth.Description" class="control-label"></label>
+                                    <input asp-for="Cloth.Description" class="form-control"/>
+                                    <span asp-validation-for="Cloth.Description" class="Text-danger"></span>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">ثبت</button>
+                            <button Type="submit" class="btn btn-success">ثبت</button>
                         </form>
                     </div>
                 </div>

@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Contractors
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<Contractor> Contractor { get;set; } = default!;
@@ -26,7 +26,7 @@ namespace ISO_Manager.Pages.Admin.Contractors
         {
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _context.Contractors.Count();
+            var ItemCount = _conText.Contractors.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -40,9 +40,9 @@ namespace ISO_Manager.Pages.Admin.Contractors
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            Contractor = await _context.Contractors
-                .OrderBy(m=>m.status)
-                .ThenBy(m=>m.end_date)
+            Contractor = await _conText.Contractors
+                .OrderBy(m=>m.Status)
+                .ThenBy(m=>m.EndDate)
                 .ToListAsync();
         }
     }

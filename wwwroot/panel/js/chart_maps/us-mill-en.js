@@ -229,6 +229,6 @@ jsVectorMap.addMap('us_mill_en', {
     }
   },
   height: 478.4546304213027,
-  projection: { type: 'mill', centralMeridian: -10.0 },
+  projection: { Type: 'mill', centralMeridian: -10.0 },
   width: 900.0
 });

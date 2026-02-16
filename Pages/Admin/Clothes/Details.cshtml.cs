@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Clothes
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public Cloth Cloth { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.Clothes
                 return NotFound();
             }
 
-            var cloth = await _context.Clothes.FirstOrDefaultAsync(m => m.Id == id);
+            var cloth = await _conText.Clothes.FirstOrDefaultAsync(m => m.Id == id);
 
             if (cloth is not null)
             {

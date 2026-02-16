@@ -15,10 +15,10 @@ namespace ISO_Manager.Data.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<string>(Type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(Type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(Type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(Type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,30 +29,30 @@ namespace ISO_Manager.Data.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RegisterCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NationalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmploymentType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<string>(Type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(Type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    Name = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Mobile = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    RegisterCode = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    NationalCode = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    EmploymentType = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    UserName = table.Column<string>(Type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(Type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(Type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(Type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(Type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(Type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(Type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(Type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(Type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(Type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,19 +63,19 @@ namespace ISO_Manager.Data.Migrations
                 name: "Assets",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    e_title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    inspector = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    asset_number = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    serial_number = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    device_user = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    inspection_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ETitle = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    inspector = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AssetNumber = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    SerialNumber = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    DeviceUser = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    InspectionDate = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,20 +86,20 @@ namespace ISO_Manager.Data.Migrations
                 name: "Calibrations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    asset_number = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    serial_number = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    device_owner = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    device_user = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    delivery_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    start_calibration = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    end_calibration = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AssetNumber = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    SerialNumber = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    DeviceOwner = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    DeviceUser = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    DeliveryDate = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    StartCalibration = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    EndCalibration = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -110,13 +110,13 @@ namespace ISO_Manager.Data.Migrations
                 name: "Cartables",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -127,11 +127,11 @@ namespace ISO_Manager.Data.Migrations
                 name: "ClothGroups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    name = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,26 +142,26 @@ namespace ISO_Manager.Data.Migrations
                 name: "Contractors",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    company = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    employer = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    employer_mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    manager = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    manager_mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    manager_agent = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    manager_agent_mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    hse_agent = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    hse_agent_mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    personnel_count = table.Column<int>(type: "int", nullable: true),
-                    contract_number = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    start_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    end_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Company = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Employer = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    EmployerMobile = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Manager = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ManagerMobile = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ManagerAgent = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ManagerAgentMobile = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    HseAgent = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    HseAgentMobile = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    PersonnelCount = table.Column<int>(Type: "int", nullable: true),
+                    ContractNumber = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    StartDate = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -172,12 +172,12 @@ namespace ISO_Manager.Data.Migrations
                 name: "Duties",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    step = table.Column<double>(type: "float", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Step = table.Column<double>(Type: "float", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -188,14 +188,14 @@ namespace ISO_Manager.Data.Migrations
                 name: "EmergencyPhoneBooks",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    place = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    city_phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    company_phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    organization_id = table.Column<int>(type: "int", nullable: true)
+                    Place = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CityPhone = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CompanyPhone = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    OrganizationId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -206,11 +206,11 @@ namespace ISO_Manager.Data.Migrations
                 name: "HarmfulFactor",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -221,11 +221,11 @@ namespace ISO_Manager.Data.Migrations
                 name: "InspectionPlaces",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -236,13 +236,13 @@ namespace ISO_Manager.Data.Migrations
                 name: "LegalRequirements",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    regulation_title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    regulation_organization = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    regulation_date = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    RegulationTitle = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    RegulationOrganization = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    RegulationDate = table.Column<string>(Type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -253,18 +253,18 @@ namespace ISO_Manager.Data.Migrations
                 name: "Maneuvers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    place = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    year = table.Column<int>(type: "int", nullable: true),
-                    type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    level = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    act_time = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    equipment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Place = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Year = table.Column<int>(Type: "int", nullable: true),
+                    Type = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Level = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ActTime = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Equipment = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -275,13 +275,13 @@ namespace ISO_Manager.Data.Migrations
                 name: "Occupations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    occupation_code = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    occupation_type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    OccupationCode = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    OccupationType = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -292,11 +292,11 @@ namespace ISO_Manager.Data.Migrations
                 name: "Organizations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -307,19 +307,19 @@ namespace ISO_Manager.Data.Migrations
                 name: "Permits",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    place = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    permit_type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    permit_attachment_type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    permit_date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    permit_number = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    duration = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    owner = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    responsible = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Place = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    permit_Type = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    permit_attachment_Type = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    permit_date = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    permit_number = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    duration = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Owner = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    responsible = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -330,12 +330,12 @@ namespace ISO_Manager.Data.Migrations
                 name: "Processes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    year = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Year = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -346,12 +346,12 @@ namespace ISO_Manager.Data.Migrations
                 name: "Purposes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    year = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Year = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -362,18 +362,18 @@ namespace ISO_Manager.Data.Migrations
                 name: "RigAssets",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    asset_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    default_count = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    exist_count = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    count_unit = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    region = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    position_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    place = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    asset_name = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    default_count = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    exist_count = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    count_Unit = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    region = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    position_name = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Place = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -384,14 +384,14 @@ namespace ISO_Manager.Data.Migrations
                 name: "Standards",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    standard_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fa_chapter = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fa_subchapter = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fa_text = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    standard_name = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    fa_chapter = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    fa_subchapter = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    fa_Text = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -399,29 +399,29 @@ namespace ISO_Manager.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Workplaces",
+                name: "WorkPlaces",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Workplaces", x => x.Id);
+                    table.PrimaryKey("PK_WorkPlaces", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    RoleId = table.Column<string>(Type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(Type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -438,11 +438,11 @@ namespace ISO_Manager.Data.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(Type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -459,10 +459,10 @@ namespace ISO_Manager.Data.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    LoginProvider = table.Column<string>(Type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(Type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -479,8 +479,8 @@ namespace ISO_Manager.Data.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<string>(Type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -503,10 +503,10 @@ namespace ISO_Manager.Data.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(Type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(Type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(Type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -523,23 +523,23 @@ namespace ISO_Manager.Data.Migrations
                 name: "Clothes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    cloth_type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    receive_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    receive_type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    size = table.Column<int>(type: "int", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    ClothType = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ReceiveDate = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    ReceiveType = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Size = table.Column<int>(Type: "int", nullable: true),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clothes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Clothes_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_Clothes_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
@@ -548,34 +548,34 @@ namespace ISO_Manager.Data.Migrations
                 name: "DailyReports",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    unit = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    location = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    rig_boss_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    camp_boss_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    doctor_id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Type = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Unit = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Location = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    RigBossId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    CampBossId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    DoctorId = table.Column<string>(Type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DailyReports", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DailyReports_AspNetUsers_camp_boss_id",
-                        column: x => x.camp_boss_id,
+                        name: "FK_DailyReports_AspNetUsers_CampBossId",
+                        column: x => x.CampBossId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_DailyReports_AspNetUsers_doctor_id",
-                        column: x => x.doctor_id,
+                        name: "FK_DailyReports_AspNetUsers_DoctorId",
+                        column: x => x.DoctorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_DailyReports_AspNetUsers_rig_boss_id",
-                        column: x => x.rig_boss_id,
+                        name: "FK_DailyReports_AspNetUsers_RigBossId",
+                        column: x => x.RigBossId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
@@ -584,26 +584,26 @@ namespace ISO_Manager.Data.Migrations
                 name: "Messages",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    text = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    sender_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    receiver_id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Text = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    SenderId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    ReceiverId = table.Column<string>(Type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Messages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Messages_AspNetUsers_receiver_id",
-                        column: x => x.receiver_id,
+                        name: "FK_Messages_AspNetUsers_ReceiverId",
+                        column: x => x.ReceiverId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Messages_AspNetUsers_sender_id",
-                        column: x => x.sender_id,
+                        name: "FK_Messages_AspNetUsers_SenderId",
+                        column: x => x.SenderId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
@@ -612,40 +612,40 @@ namespace ISO_Manager.Data.Migrations
                 name: "OfficialAccidents",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    accident_number = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    accident_hour = table.Column<TimeOnly>(type: "time", nullable: true),
-                    marriage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_place = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    activity_in_accident = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    direct_accident_causes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    unsafe_action_causes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    unsafe_condition_causes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_boss = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    doctor_description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    examination_date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    hse_description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    is_guilty = table.Column<short>(type: "smallint", nullable: true),
-                    accident_consequence = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_complication = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_injured_part = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    hse_boss = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    scan = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    lost_days = table.Column<int>(type: "int", nullable: true),
-                    receive_report_date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    accident_number = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentDate = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    AccidentHour = table.Column<TimeOnly>(Type: "time", nullable: true),
+                    Marriage = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentPlace = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ActivityInAccident = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    DirectAccidentCauses = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    UnsafeActionCauses = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    UnsafeConditionCauses = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentDescription = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentBoss = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    DoctorDescription = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ExaminationDate = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    HseDescription = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    IsGuilty = table.Column<short>(Type: "smallint", nullable: true),
+                    AccidentConsequence = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentComplication = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentInjuredPart = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    HseBoss = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    scan = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    LostDays = table.Column<int>(Type: "int", nullable: true),
+                    ReceiveReportDate = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OfficialAccidents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OfficialAccidents_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_OfficialAccidents_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
@@ -654,21 +654,21 @@ namespace ISO_Manager.Data.Migrations
                 name: "Reminders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    reminder_date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    reminder_date = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reminders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reminders_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_Reminders_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
@@ -677,19 +677,19 @@ namespace ISO_Manager.Data.Migrations
                 name: "UserPermits",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    expire_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    expire_date = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserPermits", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserPermits_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_UserPermits_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
@@ -698,26 +698,26 @@ namespace ISO_Manager.Data.Migrations
                 name: "ClothGroupLists",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    shoes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    boiler_suit = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    cloth_group_id = table.Column<int>(type: "int", nullable: true)
+                    Shoes = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    BoilerSuit = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    ClothGroupId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClothGroupLists", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ClothGroupLists_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_ClothGroupLists_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ClothGroupLists_ClothGroups_cloth_group_id",
-                        column: x => x.cloth_group_id,
+                        name: "FK_ClothGroupLists_ClothGroups_ClothGroupId",
+                        column: x => x.ClothGroupId,
                         principalTable: "ClothGroups",
                         principalColumn: "Id");
                 });
@@ -726,44 +726,44 @@ namespace ISO_Manager.Data.Migrations
                 name: "ContractorAccidents",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    accident_number = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    accident_hour = table.Column<TimeOnly>(type: "time", nullable: true),
-                    marriage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_place = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    activity_in_accident = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    direct_accident_causes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    unsafe_action_causes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    unsafe_condition_causes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_boss = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    hse_description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    is_guilty = table.Column<short>(type: "smallint", nullable: true),
-                    accident_consequence = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_complication = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accident_injured_part = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    hse_boss = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    scan = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    lost_days = table.Column<int>(type: "int", nullable: true),
-                    receive_report_date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    contractor_id = table.Column<int>(type: "int", nullable: true)
+                    accident_number = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentDate = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    AccidentHour = table.Column<TimeOnly>(Type: "time", nullable: true),
+                    Marriage = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentPlace = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ActivityInAccident = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    DirectAccidentCauses = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    UnsafeActionCauses = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    UnsafeConditionCauses = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentDescription = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentBoss = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    HseDescription = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    IsGuilty = table.Column<short>(Type: "smallint", nullable: true),
+                    AccidentConsequence = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentComplication = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    AccidentInjuredPart = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    HseBoss = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    scan = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    LostDays = table.Column<int>(Type: "int", nullable: true),
+                    ReceiveReportDate = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    ContractorId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ContractorAccidents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ContractorAccidents_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_ContractorAccidents_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ContractorAccidents_Contractors_contractor_id",
-                        column: x => x.contractor_id,
+                        name: "FK_ContractorAccidents_Contractors_ContractorId",
+                        column: x => x.ContractorId,
                         principalTable: "Contractors",
                         principalColumn: "Id");
                 });
@@ -772,27 +772,27 @@ namespace ISO_Manager.Data.Migrations
                 name: "Examinations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    examination_date = table.Column<int>(type: "int", nullable: true),
-                    examination_result = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    contractor_id = table.Column<int>(type: "int", nullable: true)
+                    ExaminationDate = table.Column<int>(Type: "int", nullable: true),
+                    ExaminationResult = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    ContractorId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Examinations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Examinations_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_Examinations_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Examinations_Contractors_contractor_id",
-                        column: x => x.contractor_id,
+                        name: "FK_Examinations_Contractors_ContractorId",
+                        column: x => x.ContractorId,
                         principalTable: "Contractors",
                         principalColumn: "Id");
                 });
@@ -801,19 +801,19 @@ namespace ISO_Manager.Data.Migrations
                 name: "HarmfulItem",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    harmful_factor_id = table.Column<int>(type: "int", nullable: true)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    HarmfulFactorId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HarmfulItem", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HarmfulItem_HarmfulFactor_harmful_factor_id",
-                        column: x => x.harmful_factor_id,
+                        name: "FK_HarmfulItem_HarmfulFactor_HarmfulFactorId",
+                        column: x => x.HarmfulFactorId,
                         principalTable: "HarmfulFactor",
                         principalColumn: "Id");
                 });
@@ -822,20 +822,20 @@ namespace ISO_Manager.Data.Migrations
                 name: "InspectionTexts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    text = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    step = table.Column<int>(type: "int", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    inspection_place_id = table.Column<int>(type: "int", nullable: true)
+                    Text = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Step = table.Column<int>(Type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    InspectionPlaceId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_InspectionTexts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InspectionTexts_InspectionPlaces_inspection_place_id",
-                        column: x => x.inspection_place_id,
+                        name: "FK_InspectionTexts_InspectionPlaces_InspectionPlaceId",
+                        column: x => x.InspectionPlaceId,
                         principalTable: "InspectionPlaces",
                         principalColumn: "Id");
                 });
@@ -844,17 +844,17 @@ namespace ISO_Manager.Data.Migrations
                 name: "ProcessPlans",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accept_percent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    plan_percent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    deviation = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    requests = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    process_id = table.Column<int>(type: "int", nullable: true)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    accept_percent = table.Column<decimal>(Type: "decimal(18,2)", nullable: true),
+                    plan_percent = table.Column<decimal>(Type: "decimal(18,2)", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    deviation = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    requests = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    process_id = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -870,21 +870,21 @@ namespace ISO_Manager.Data.Migrations
                 name: "OperationPlans",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    estimate = table.Column<int>(type: "int", nullable: true),
-                    done = table.Column<int>(type: "int", nullable: true),
-                    unit = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    plan_percent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    realization_percent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    plan_realization_percent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    accept_percent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    purpose_id = table.Column<int>(type: "int", nullable: true)
+                    Title = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Estimate = table.Column<int>(Type: "int", nullable: true),
+                    done = table.Column<int>(Type: "int", nullable: true),
+                    Unit = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    plan_percent = table.Column<decimal>(Type: "decimal(18,2)", nullable: true),
+                    realization_percent = table.Column<decimal>(Type: "decimal(18,2)", nullable: true),
+                    plan_realization_percent = table.Column<decimal>(Type: "decimal(18,2)", nullable: true),
+                    accept_percent = table.Column<decimal>(Type: "decimal(18,2)", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    purpose_id = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -900,34 +900,34 @@ namespace ISO_Manager.Data.Migrations
                 name: "Ambulances",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    owner = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    car_model = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    car_year = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    owner_status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    rental_number = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    car_tag = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    workplace_id = table.Column<int>(type: "int", nullable: true)
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Owner = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CarModel = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CarYear = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    OwnerStatus = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    RentalNumber = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CarTag = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    WorkPlaceId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ambulances", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Ambulances_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_Ambulances_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Ambulances_Workplaces_workplace_id",
-                        column: x => x.workplace_id,
-                        principalTable: "Workplaces",
+                        name: "FK_Ambulances_WorkPlaces_WorkPlaceId",
+                        column: x => x.WorkPlaceId,
+                        principalTable: "WorkPlaces",
                         principalColumn: "Id");
                 });
 
@@ -935,32 +935,32 @@ namespace ISO_Manager.Data.Migrations
                 name: "EmergencyTeams",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    duty = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    workplace_id = table.Column<int>(type: "int", nullable: true),
-                    duty_id = table.Column<int>(type: "int", nullable: true)
+                    Duty = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    WorkPlaceId = table.Column<int>(Type: "int", nullable: true),
+                    DutyId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EmergencyTeams", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EmergencyTeams_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_EmergencyTeams_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_EmergencyTeams_Duties_duty_id",
-                        column: x => x.duty_id,
+                        name: "FK_EmergencyTeams_Duties_DutyId",
+                        column: x => x.DutyId,
                         principalTable: "Duties",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_EmergencyTeams_Workplaces_workplace_id",
-                        column: x => x.workplace_id,
-                        principalTable: "Workplaces",
+                        name: "FK_EmergencyTeams_WorkPlaces_WorkPlaceId",
+                        column: x => x.WorkPlaceId,
+                        principalTable: "WorkPlaces",
                         principalColumn: "Id");
                 });
 
@@ -968,26 +968,26 @@ namespace ISO_Manager.Data.Migrations
                 name: "HealthCarts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    end_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    workplace_id = table.Column<int>(type: "int", nullable: true)
+                    EndDate = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    WorkPlaceId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HealthCarts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HealthCarts_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_HealthCarts_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_HealthCarts_Workplaces_workplace_id",
-                        column: x => x.workplace_id,
-                        principalTable: "Workplaces",
+                        name: "FK_HealthCarts_WorkPlaces_WorkPlaceId",
+                        column: x => x.WorkPlaceId,
+                        principalTable: "WorkPlaces",
                         principalColumn: "Id");
                 });
 
@@ -995,32 +995,32 @@ namespace ISO_Manager.Data.Migrations
                 name: "Inspections",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    inspection_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    workplace_id = table.Column<int>(type: "int", nullable: true),
-                    inspection_place_id = table.Column<int>(type: "int", nullable: true)
+                    InspectionDate = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    WorkPlaceId = table.Column<int>(Type: "int", nullable: true),
+                    InspectionPlaceId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Inspections", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Inspections_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_Inspections_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Inspections_InspectionPlaces_inspection_place_id",
-                        column: x => x.inspection_place_id,
+                        name: "FK_Inspections_InspectionPlaces_InspectionPlaceId",
+                        column: x => x.InspectionPlaceId,
                         principalTable: "InspectionPlaces",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Inspections_Workplaces_workplace_id",
-                        column: x => x.workplace_id,
-                        principalTable: "Workplaces",
+                        name: "FK_Inspections_WorkPlaces_WorkPlaceId",
+                        column: x => x.WorkPlaceId,
+                        principalTable: "WorkPlaces",
                         principalColumn: "Id");
                 });
 
@@ -1028,40 +1028,40 @@ namespace ISO_Manager.Data.Migrations
                 name: "UserInfos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    employment_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    degree = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    user_id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    organization_id = table.Column<int>(type: "int", nullable: true),
-                    occupation_id = table.Column<int>(type: "int", nullable: true),
-                    workplace_id = table.Column<int>(type: "int", nullable: true)
+                    birthday = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    employment_date = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    degree = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UserId = table.Column<string>(Type: "nvarchar(450)", nullable: true),
+                    OrganizationId = table.Column<int>(Type: "int", nullable: true),
+                    OccupationId = table.Column<int>(Type: "int", nullable: true),
+                    WorkPlaceId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserInfos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserInfos_AspNetUsers_user_id",
-                        column: x => x.user_id,
+                        name: "FK_UserInfos_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_UserInfos_Occupations_occupation_id",
-                        column: x => x.occupation_id,
+                        name: "FK_UserInfos_Occupations_OccupationId",
+                        column: x => x.OccupationId,
                         principalTable: "Occupations",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_UserInfos_Organizations_organization_id",
-                        column: x => x.organization_id,
+                        name: "FK_UserInfos_Organizations_OrganizationId",
+                        column: x => x.OrganizationId,
                         principalTable: "Organizations",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_UserInfos_Workplaces_workplace_id",
-                        column: x => x.workplace_id,
-                        principalTable: "Workplaces",
+                        name: "FK_UserInfos_WorkPlaces_WorkPlaceId",
+                        column: x => x.WorkPlaceId,
+                        principalTable: "WorkPlaces",
                         principalColumn: "Id");
                 });
 
@@ -1069,27 +1069,27 @@ namespace ISO_Manager.Data.Migrations
                 name: "OccupationHarmfuls",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    exposure_source = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    evaluation_method = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    exposure_rate = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    exposure_duration = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    exposure_limit = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    occupation_id = table.Column<int>(type: "int", nullable: true),
-                    harmful_factor_id = table.Column<int>(type: "int", nullable: true),
-                    harmful_item_id = table.Column<int>(type: "int", nullable: true),
-                    HarmfulItemId = table.Column<int>(type: "int", nullable: false)
+                    ExposureSource = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    EvaluationMethod = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ExposureRate = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ExposureDuration = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    ExposureLimit = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    OccupationId = table.Column<int>(Type: "int", nullable: true),
+                    HarmfulFactorId = table.Column<int>(Type: "int", nullable: true),
+                    HarmfulItemId = table.Column<int>(Type: "int", nullable: true),
+                    HarmfulItemId = table.Column<int>(Type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OccupationHarmfuls", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OccupationHarmfuls_HarmfulFactor_harmful_factor_id",
-                        column: x => x.harmful_factor_id,
+                        name: "FK_OccupationHarmfuls_HarmfulFactor_HarmfulFactorId",
+                        column: x => x.HarmfulFactorId,
                         principalTable: "HarmfulFactor",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -1099,8 +1099,8 @@ namespace ISO_Manager.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OccupationHarmfuls_Occupations_occupation_id",
-                        column: x => x.occupation_id,
+                        name: "FK_OccupationHarmfuls_Occupations_OccupationId",
+                        column: x => x.OccupationId,
                         principalTable: "Occupations",
                         principalColumn: "Id");
                 });
@@ -1109,46 +1109,46 @@ namespace ISO_Manager.Data.Migrations
                 name: "InspectionDetails",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(Type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    inspection_date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    text = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    inspection_id = table.Column<int>(type: "int", nullable: true),
-                    text_id = table.Column<int>(type: "int", nullable: true),
-                    workplace_id = table.Column<int>(type: "int", nullable: true)
+                    InspectionDate = table.Column<DateTime>(Type: "datetime2", nullable: true),
+                    Text = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(Type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(Type: "datetime2", nullable: false),
+                    InspectionId = table.Column<int>(Type: "int", nullable: true),
+                    TextId = table.Column<int>(Type: "int", nullable: true),
+                    WorkPlaceId = table.Column<int>(Type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_InspectionDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InspectionDetails_InspectionTexts_text_id",
-                        column: x => x.text_id,
+                        name: "FK_InspectionDetails_InspectionTexts_TextId",
+                        column: x => x.TextId,
                         principalTable: "InspectionTexts",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_InspectionDetails_Inspections_inspection_id",
-                        column: x => x.inspection_id,
+                        name: "FK_InspectionDetails_Inspections_InspectionId",
+                        column: x => x.InspectionId,
                         principalTable: "Inspections",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_InspectionDetails_Workplaces_workplace_id",
-                        column: x => x.workplace_id,
-                        principalTable: "Workplaces",
+                        name: "FK_InspectionDetails_WorkPlaces_WorkPlaceId",
+                        column: x => x.WorkPlaceId,
+                        principalTable: "WorkPlaces",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ambulances_user_id",
+                name: "IX_Ambulances_UserId",
                 table: "Ambulances",
-                column: "user_id");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ambulances_workplace_id",
+                name: "IX_Ambulances_WorkPlaceId",
                 table: "Ambulances",
-                column: "workplace_id");
+                column: "WorkPlaceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -1190,134 +1190,134 @@ namespace ISO_Manager.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clothes_user_id",
+                name: "IX_Clothes_UserId",
                 table: "Clothes",
-                column: "user_id");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClothGroupLists_cloth_group_id",
+                name: "IX_ClothGroupLists_ClothGroupId",
                 table: "ClothGroupLists",
-                column: "cloth_group_id");
+                column: "ClothGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClothGroupLists_user_id",
+                name: "IX_ClothGroupLists_UserId",
                 table: "ClothGroupLists",
-                column: "user_id");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContractorAccidents_contractor_id",
+                name: "IX_ContractorAccidents_ContractorId",
                 table: "ContractorAccidents",
-                column: "contractor_id");
+                column: "ContractorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContractorAccidents_user_id",
+                name: "IX_ContractorAccidents_UserId",
                 table: "ContractorAccidents",
-                column: "user_id");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DailyReports_camp_boss_id",
+                name: "IX_DailyReports_CampBossId",
                 table: "DailyReports",
-                column: "camp_boss_id");
+                column: "CampBossId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DailyReports_doctor_id",
+                name: "IX_DailyReports_DoctorId",
                 table: "DailyReports",
-                column: "doctor_id");
+                column: "DoctorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DailyReports_rig_boss_id",
+                name: "IX_DailyReports_RigBossId",
                 table: "DailyReports",
-                column: "rig_boss_id");
+                column: "RigBossId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmergencyTeams_duty_id",
+                name: "IX_EmergencyTeams_DutyId",
                 table: "EmergencyTeams",
-                column: "duty_id");
+                column: "DutyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmergencyTeams_user_id",
+                name: "IX_EmergencyTeams_UserId",
                 table: "EmergencyTeams",
-                column: "user_id");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmergencyTeams_workplace_id",
+                name: "IX_EmergencyTeams_WorkPlaceId",
                 table: "EmergencyTeams",
-                column: "workplace_id");
+                column: "WorkPlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Examinations_contractor_id",
+                name: "IX_Examinations_ContractorId",
                 table: "Examinations",
-                column: "contractor_id");
+                column: "ContractorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Examinations_user_id",
+                name: "IX_Examinations_UserId",
                 table: "Examinations",
-                column: "user_id");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HarmfulItem_harmful_factor_id",
+                name: "IX_HarmfulItem_HarmfulFactorId",
                 table: "HarmfulItem",
-                column: "harmful_factor_id");
+                column: "HarmfulFactorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HealthCarts_user_id",
+                name: "IX_HealthCarts_UserId",
                 table: "HealthCarts",
-                column: "user_id");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HealthCarts_workplace_id",
+                name: "IX_HealthCarts_WorkPlaceId",
                 table: "HealthCarts",
-                column: "workplace_id");
+                column: "WorkPlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InspectionDetails_inspection_id",
+                name: "IX_InspectionDetails_InspectionId",
                 table: "InspectionDetails",
-                column: "inspection_id");
+                column: "InspectionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InspectionDetails_text_id",
+                name: "IX_InspectionDetails_TextId",
                 table: "InspectionDetails",
-                column: "text_id");
+                column: "TextId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InspectionDetails_workplace_id",
+                name: "IX_InspectionDetails_WorkPlaceId",
                 table: "InspectionDetails",
-                column: "workplace_id");
+                column: "WorkPlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Inspections_inspection_place_id",
+                name: "IX_Inspections_InspectionPlaceId",
                 table: "Inspections",
-                column: "inspection_place_id");
+                column: "InspectionPlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Inspections_user_id",
+                name: "IX_Inspections_UserId",
                 table: "Inspections",
-                column: "user_id");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Inspections_workplace_id",
+                name: "IX_Inspections_WorkPlaceId",
                 table: "Inspections",
-                column: "workplace_id");
+                column: "WorkPlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InspectionTexts_inspection_place_id",
+                name: "IX_InspectionTexts_InspectionPlaceId",
                 table: "InspectionTexts",
-                column: "inspection_place_id");
+                column: "InspectionPlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Messages_receiver_id",
+                name: "IX_Messages_ReceiverId",
                 table: "Messages",
-                column: "receiver_id");
+                column: "ReceiverId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Messages_sender_id",
+                name: "IX_Messages_SenderId",
                 table: "Messages",
-                column: "sender_id");
+                column: "SenderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OccupationHarmfuls_harmful_factor_id",
+                name: "IX_OccupationHarmfuls_HarmfulFactorId",
                 table: "OccupationHarmfuls",
-                column: "harmful_factor_id");
+                column: "HarmfulFactorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OccupationHarmfuls_HarmfulItemId",
@@ -1325,14 +1325,14 @@ namespace ISO_Manager.Data.Migrations
                 column: "HarmfulItemId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OccupationHarmfuls_occupation_id",
+                name: "IX_OccupationHarmfuls_OccupationId",
                 table: "OccupationHarmfuls",
-                column: "occupation_id");
+                column: "OccupationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OfficialAccidents_user_id",
+                name: "IX_OfficialAccidents_UserId",
                 table: "OfficialAccidents",
-                column: "user_id");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OperationPlans_purpose_id",
@@ -1345,36 +1345,36 @@ namespace ISO_Manager.Data.Migrations
                 column: "process_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reminders_user_id",
+                name: "IX_Reminders_UserId",
                 table: "Reminders",
-                column: "user_id");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserInfos_occupation_id",
+                name: "IX_UserInfos_OccupationId",
                 table: "UserInfos",
-                column: "occupation_id");
+                column: "OccupationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserInfos_organization_id",
+                name: "IX_UserInfos_OrganizationId",
                 table: "UserInfos",
-                column: "organization_id");
+                column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserInfos_user_id",
+                name: "IX_UserInfos_UserId",
                 table: "UserInfos",
-                column: "user_id",
+                column: "UserId",
                 unique: true,
-                filter: "[user_id] IS NOT NULL");
+                filter: "[UserId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserInfos_workplace_id",
+                name: "IX_UserInfos_WorkPlaceId",
                 table: "UserInfos",
-                column: "workplace_id");
+                column: "WorkPlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserPermits_user_id",
+                name: "IX_UserPermits_UserId",
                 table: "UserPermits",
-                column: "user_id");
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -1513,7 +1513,7 @@ namespace ISO_Manager.Data.Migrations
                 name: "InspectionPlaces");
 
             migrationBuilder.DropTable(
-                name: "Workplaces");
+                name: "WorkPlaces");
 
             migrationBuilder.DropTable(
                 name: "HarmfulFactor");

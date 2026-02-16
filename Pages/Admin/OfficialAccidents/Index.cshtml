@@ -41,25 +41,25 @@
                                             @Html.DisplayNameFor(model => model.OfficialAccident[0].User)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].accident_date)
+                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].AccidentDate)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].accident_place)
+                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].AccidentPlace)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].accident_description)
+                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].AccidentDescription)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].accident_consequence)
+                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].AccidentConsequence)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].accident_complication)
+                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].AccidentComplication)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].accident_injured_part)
+                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].AccidentInjuredPart)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].lost_days)
+                                            @Html.DisplayNameFor(model => model.OfficialAccident[0].LostDays)
                                         </th>
                                         <th>عملیات</th>
                                     </tr>
@@ -73,32 +73,32 @@
                                                 @Html.DisplayFor(modelItem => item.User.Name)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.accident_date)
+                                                @Html.DisplayFor(modelItem => item.AccidentDate)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.accident_place)
+                                                @Html.DisplayFor(modelItem => item.AccidentPlace)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.accident_description)
+                                                @Html.DisplayFor(modelItem => item.AccidentDescription)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.accident_consequence)
+                                                @Html.DisplayFor(modelItem => item.AccidentConsequence)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.accident_complication)
+                                                @Html.DisplayFor(modelItem => item.AccidentComplication)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.accident_injured_part)
+                                                @Html.DisplayFor(modelItem => item.AccidentInjuredPart)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.lost_days)
+                                                @Html.DisplayFor(modelItem => item.LostDays)
                                             </td>
                                             <td>
                                                 <a asp-page="./Details" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-eye text-xl leading-none"></i>
+                                                    <i class="ti ti-eye Text-xl leading-none"></i>
                                                 </a>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

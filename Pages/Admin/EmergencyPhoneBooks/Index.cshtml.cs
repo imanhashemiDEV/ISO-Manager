@@ -12,18 +12,18 @@ namespace ISO_Manager.Pages.Admin.EmergencyPhoneBooks
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<EmergencyPhoneBook> EmergencyPhoneBook { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            EmergencyPhoneBook = await _context.EmergencyPhoneBooks.ToListAsync();
+            EmergencyPhoneBook = await _conText.EmergencyPhoneBooks.ToListAsync();
         }
     }
 }

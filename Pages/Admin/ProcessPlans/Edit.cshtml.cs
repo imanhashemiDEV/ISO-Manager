@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,13 +30,13 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
                 return NotFound();
             }
 
-            var processplan =  await _context.ProcessPlans.FirstOrDefaultAsync(m => m.Id == id);
+            var processplan =  await _conText.ProcessPlans.FirstOrDefaultAsync(m => m.Id == id);
             if (processplan == null)
             {
                 return NotFound();
             }
             ProcessPlan = processplan;
-           ViewData["process_id"] = new SelectList(_context.Processes, "id", "id");
+           ViewData["process_id"] = new SelectList(_conText.Processes, "id", "id");
             return Page();
         }
 
@@ -49,11 +49,11 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
                 return Page();
             }
 
-            _context.Attach(ProcessPlan).State = EntityState.Modified;
+            _conText.Attach(ProcessPlan).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +72,7 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
 
         private bool ProcessPlanExists(long id)
         {
-            return _context.ProcessPlans.Any(e => e.Id == id);
+            return _conText.ProcessPlans.Any(e => e.Id == id);
         }
     }
 }

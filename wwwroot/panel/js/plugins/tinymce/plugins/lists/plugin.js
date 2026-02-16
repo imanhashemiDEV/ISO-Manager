@@ -9,26 +9,26 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.prototype)) {
+      if (predicate(v, constructor.protoType)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const typeOf = x => {
-      const t = typeof x;
+    const TypeOf = x => {
+      const t = Typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType$1 = type => value => typeOf(value) === type;
-    const isSimpleType = type => value => typeof value === type;
+    const isType$1 = Type => value => TypeOf(value) === Type;
+    const isSimpleType = Type => value => Typeof value === Type;
     const isString = isType$1('string');
     const isObject = isType$1('object');
     const isArray = isType$1('array');
@@ -109,11 +109,11 @@
           return Optional.none();
         }
       }
-      getOr(replacement) {
-        return this.tag ? this.value : replacement;
+      getOr(rePlacement) {
+        return this.tag ? this.value : rePlacement;
       }
-      or(replacement) {
-        return this.tag ? this : replacement;
+      or(rePlacement) {
+        return this.tag ? this : rePlacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -151,9 +151,9 @@
     }
     Optional.singletonNone = new Optional(false);
 
-    const nativeSlice = Array.prototype.slice;
-    const nativeIndexOf = Array.prototype.indexOf;
-    const nativePush = Array.prototype.push;
+    const nativeSlice = Array.protoType.slice;
+    const nativeIndexOf = Array.protoType.indexOf;
+    const nativePush = Array.protoType.push;
     const rawIndexOf = (ts, t) => nativeIndexOf.call(ts, t);
     const contains$1 = (xs, x) => rawIndexOf(xs, x) > -1;
     const exists = (xs, pred) => {
@@ -199,12 +199,12 @@
         let group = [];
         for (let i = 0, len = xs.length; i < len; i++) {
           const x = xs[i];
-          const type = f(x);
-          if (type !== wasType) {
+          const Type = f(x);
+          if (Type !== wasType) {
             r.push(group);
             group = [];
           }
-          wasType = type;
+          wasType = Type;
           group.push(x);
         }
         if (group.length !== 0) {
@@ -271,7 +271,7 @@
     const COMMENT = 8;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const TEXT = 3;
+    const Text = 3;
 
     const fromHtml = (html, scope) => {
       const doc = scope || document;
@@ -289,9 +289,9 @@
       const node = doc.createElement(tag);
       return fromDom$1(node);
     };
-    const fromText = (text, scope) => {
+    const fromText = (Text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createTextNode(Text);
       return fromDom$1(node);
     };
     const fromDom$1 = node => {
@@ -337,7 +337,7 @@
     };
     const is = is$1;
 
-    const Global = typeof window !== 'undefined' ? window : Function('return this;')();
+    const Global = Typeof window !== 'undefined' ? window : Function('return this;')();
 
     const path = (parts, scope) => {
       let o = scope !== undefined && scope !== null ? scope : Global;
@@ -362,25 +362,25 @@
       return actual;
     };
 
-    const getPrototypeOf = Object.getPrototypeOf;
+    const getProtoTypeOf = Object.getProtoTypeOf;
     const sandHTMLElement = scope => {
       return getOrDie('HTMLElement', scope);
     };
-    const isPrototypeOf = x => {
-      const scope = resolve('ownerDocument.defaultView', x);
-      return isObject(x) && (sandHTMLElement(scope).prototype.isPrototypeOf(x) || /^HTML\w*Element$/.test(getPrototypeOf(x).constructor.name));
+    const isProtoTypeOf = x => {
+      const scope = resolve('OwnerDocument.defaultView', x);
+      return isObject(x) && (sandHTMLElement(scope).protoType.isProtoTypeOf(x) || /^HTML\w*Element$/.test(getProtoTypeOf(x).constructor.name));
     };
 
     const name = element => {
       const r = element.dom.nodeName;
       return r.toLowerCase();
     };
-    const type = element => element.dom.nodeType;
-    const isType = t => element => type(element) === t;
-    const isComment = element => type(element) === COMMENT || name(element) === '#comment';
-    const isHTMLElement = element => isElement$1(element) && isPrototypeOf(element.dom);
+    const Type = element => element.dom.nodeType;
+    const isType = t => element => Type(element) === t;
+    const isComment = element => Type(element) === COMMENT || name(element) === '#comment';
+    const isHTMLElement = element => isElement$1(element) && isProtoTypeOf(element.dom);
     const isElement$1 = isType(ELEMENT);
-    const isText = isType(TEXT);
+    const isText = isType(Text);
     const isDocumentFragment = isType(DOCUMENT_FRAGMENT);
     const isTag = tag => e => isElement$1(e) && name(e) === tag;
 
@@ -405,10 +405,10 @@
 
     const inBody = element => {
       const dom = isText(element) ? element.dom.parentNode : element.dom;
-      if (dom === undefined || dom === null || dom.ownerDocument === null) {
+      if (dom === undefined || dom === null || dom.OwnerDocument === null) {
         return false;
       }
-      const doc = dom.ownerDocument;
+      const doc = dom.OwnerDocument;
       return getShadowRoot(SugarElement.fromDom(dom)).fold(() => doc.body.contains(dom), compose1(inBody, getShadowHost));
     };
 
@@ -498,7 +498,7 @@
     };
 
     const empty = element => {
-      element.dom.textContent = '';
+      element.dom.TextContent = '';
       each$1(children(element), rogue => {
         remove(rogue);
       });
@@ -607,7 +607,7 @@
     };
     const isEmpty$2 = (dom, elm, keepBookmarks) => {
       const empty = dom.isEmpty(elm);
-      if (keepBookmarks && dom.select('span[data-mce-type=bookmark]', elm).length > 0) {
+      if (keepBookmarks && dom.select('span[data-mce-Type=bookmark]', elm).length > 0) {
         return false;
       }
       return empty;
@@ -633,33 +633,33 @@
       const blockName = getForcedRootBlock(editor);
       const blockAttrs = getForcedRootBlockAttrs(editor);
       let node;
-      let textBlock;
+      let TextBlock;
       let hasContentNode = false;
-      textBlock = dom.create(blockName, {
+      TextBlock = dom.create(blockName, {
         ...blockAttrs,
         ...attrs.style ? { style: attrs.style } : {}
       });
       if (!isBlock(contentNode.firstChild, blockElements)) {
-        fragment.appendChild(textBlock);
+        fragment.appendChild(TextBlock);
       }
       while (node = contentNode.firstChild) {
         const nodeName = node.nodeName;
-        if (!hasContentNode && (nodeName !== 'SPAN' || node.getAttribute('data-mce-type') !== 'bookmark')) {
+        if (!hasContentNode && (nodeName !== 'SPAN' || node.getAttribute('data-mce-Type') !== 'bookmark')) {
           hasContentNode = true;
         }
         if (isBlock(node, blockElements)) {
           fragment.appendChild(node);
-          textBlock = null;
+          TextBlock = null;
         } else {
-          if (!textBlock) {
-            textBlock = dom.create(blockName, blockAttrs);
-            fragment.appendChild(textBlock);
+          if (!TextBlock) {
+            TextBlock = dom.create(blockName, blockAttrs);
+            fragment.appendChild(TextBlock);
           }
-          textBlock.appendChild(node);
+          TextBlock.appendChild(node);
         }
       }
-      if (!hasContentNode && textBlock) {
-        textBlock.appendChild(dom.create('br', { 'data-mce-bogus': '1' }));
+      if (!hasContentNode && TextBlock) {
+        TextBlock.appendChild(dom.create('br', { 'data-mce-bogus': '1' }));
       }
       return fragment;
     };
@@ -675,7 +675,7 @@
         }
         DOM$2.remove(targetNode);
       };
-      const bookmarks = DOM$2.select('span[data-mce-type="bookmark"]', list);
+      const bookmarks = DOM$2.select('span[data-mce-Type="bookmark"]', list);
       const newBlock = createTextBlock(editor, li);
       const tmpRng = DOM$2.createRng();
       tmpRng.setStartAfter(li);
@@ -866,7 +866,7 @@
       element
     });
 
-    const blank = r => s => s.replace(r, '');
+    const blank = r => s => s.rePlace(r, '');
     const trim = blank(/^\s+|\s+$/g);
     const isNotEmpty = s => s.length > 0;
     const isEmpty$1 = s => !isNotEmpty(s);
@@ -932,16 +932,16 @@
       append$1(segment.list, segment.item);
       return segment;
     };
-    const createSegments = (scope, entry, size) => {
+    const createSegments = (scope, entry, Size) => {
       const segments = [];
-      for (let i = 0; i < size; i++) {
+      for (let i = 0; i < Size; i++) {
         segments.push(createSegment(scope, isEntryList(entry) ? entry.listType : entry.parentListType));
       }
       return segments;
     };
     const populateSegments = (segments, entry) => {
       for (let i = 0; i < segments.length - 1; i++) {
-        set(segments[i].item, 'list-style-type', 'none');
+        set(segments[i].item, 'list-style-Type', 'none');
       }
       last(segments).each(segment => {
         if (isEntryList(entry)) {
@@ -1202,7 +1202,7 @@
         let container = rng[start ? 'startContainer' : 'endContainer'];
         let offset = rng[start ? 'startOffset' : 'endOffset'];
         if (isElement(container)) {
-          const offsetNode = DOM$1.create('span', { 'data-mce-type': 'bookmark' });
+          const offsetNode = DOM$1.create('span', { 'data-mce-Type': 'bookmark' });
           if (container.hasChildNodes()) {
             offset = Math.min(offset, container.childNodes.length - 1);
             if (start) {
@@ -1235,7 +1235,7 @@
             if (node === container) {
               return idx;
             }
-            if (!isElement(node) || node.getAttribute('data-mce-type') !== 'bookmark') {
+            if (!isElement(node) || node.getAttribute('data-mce-Type') !== 'bookmark') {
               idx++;
             }
             node = node.nextSibling;
@@ -1281,8 +1281,8 @@
     };
 
     const updateListStyle = (dom, el, detail) => {
-      const type = detail['list-style-type'] ? detail['list-style-type'] : null;
-      dom.setStyle(el, 'list-style-type', type);
+      const Type = detail['list-style-Type'] ? detail['list-style-Type'] : null;
+      dom.setStyle(el, 'list-style-Type', Type);
     };
     const setAttribs = (elm, attrs) => {
       global$2.each(attrs, (value, key) => {
@@ -1324,14 +1324,14 @@
         const dir = forward ? 'next' : 'prev';
         let node;
         while (node = walker[dir]()) {
-          if (!(isVoid(editor, node) || isZwsp(node.textContent) || ((_a = node.textContent) === null || _a === void 0 ? void 0 : _a.length) === 0)) {
+          if (!(isVoid(editor, node) || isZwsp(node.TextContent) || ((_a = node.TextContent) === null || _a === void 0 ? void 0 : _a.length) === 0)) {
             return Optional.some(node);
           }
         }
         return Optional.none();
       };
       if (start && isTextNode$1(container)) {
-        if (isZwsp(container.textContent)) {
+        if (isZwsp(container.TextContent)) {
           container = findBetterContainer(container, false).getOr(container);
         } else {
           if (container.parentNode !== null && isInline(editor, container.parentNode)) {
@@ -1343,7 +1343,7 @@
         }
       }
       if (!start && isTextNode$1(container)) {
-        if (isZwsp(container.textContent)) {
+        if (isZwsp(container.TextContent)) {
           container = findBetterContainer(container, true).getOr(container);
         } else {
           if (container.parentNode !== null && isInline(editor, container.parentNode)) {
@@ -1367,7 +1367,7 @@
       return container;
     };
     const getSelectedTextBlocks = (editor, rng, root) => {
-      const textBlocks = [];
+      const TextBlocks = [];
       const dom = editor.dom;
       const startNode = getEndPointNode(editor, rng, true, root);
       const endNode = getEndPointNode(editor, rng, false, root);
@@ -1382,7 +1382,7 @@
       global$2.each(siblings, node => {
         var _a;
         if (isTextBlock(editor, node)) {
-          textBlocks.push(node);
+          TextBlocks.push(node);
           block = null;
           return;
         }
@@ -1403,15 +1403,15 @@
         if (!block) {
           block = dom.create('p');
           (_a = node.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(block, node);
-          textBlocks.push(block);
+          TextBlocks.push(block);
         }
         block.appendChild(node);
       });
-      return textBlocks;
+      return TextBlocks;
     };
     const hasCompatibleStyle = (dom, sib, detail) => {
-      const sibStyle = dom.getStyle(sib, 'list-style-type');
-      let detailStyle = detail ? detail['list-style-type'] : '';
+      const sibStyle = dom.getStyle(sib, 'list-style-Type');
+      let detailStyle = detail ? detail['list-style-Type'] : '';
       detailStyle = detailStyle === null ? '' : detailStyle;
       return sibStyle === detailStyle;
     };
@@ -1475,8 +1475,8 @@
       return isListNode(list1) && list1.nodeName === (list2 === null || list2 === void 0 ? void 0 : list2.nodeName);
     };
     const hasSameListStyle = (dom, list1, list2) => {
-      const targetStyle = dom.getStyle(list1, 'list-style-type', true);
-      const style = dom.getStyle(list2, 'list-style-type', true);
+      const targetStyle = dom.getStyle(list1, 'list-style-Type', true);
+      const style = dom.getStyle(list2, 'list-style-Type', true);
       return targetStyle === style;
     };
     const hasSameClasses = (elm1, elm2) => {
@@ -1551,7 +1551,7 @@
       }
     };
     const hasListStyleDetail = detail => {
-      return 'list-style-type' in detail;
+      return 'list-style-Type' in detail;
     };
     const toggleSingleList = (editor, parentList, listName, detail) => {
       if (parentList === editor.getBody()) {
@@ -1969,11 +1969,11 @@
         return;
       }
       editor.windowManager.open({
-        title: 'List Properties',
+        Title: 'List Properties',
         body: {
-          type: 'panel',
+          Type: 'panel',
           items: [{
-              type: 'input',
+              Type: 'input',
               name: 'start',
               label: 'Start list at number',
               inputMode: 'numeric'
@@ -1982,19 +1982,19 @@
         initialData: {
           start: parseDetail({
             start: editor.dom.getAttrib(currentList, 'start', '1'),
-            listStyleType: Optional.from(editor.dom.getStyle(currentList, 'list-style-type'))
+            listStyleType: Optional.from(editor.dom.getStyle(currentList, 'list-style-Type'))
           })
         },
         buttons: [
           {
-            type: 'cancel',
+            Type: 'cancel',
             name: 'cancel',
-            text: 'Cancel'
+            Text: 'Cancel'
           },
           {
-            type: 'submit',
+            Type: 'submit',
             name: 'save',
-            text: 'Save',
+            Text: 'Save',
             primary: true
           }
         ],
@@ -2003,7 +2003,7 @@
           parseStartValue(data.start).each(detail => {
             editor.execCommand('mceListUpdate', false, {
               attrs: { start: detail.start === '1' ? '' : detail.start },
-              styles: { 'list-style-type': detail.listStyleType.getOr('') }
+              styles: { 'list-style-Type': detail.listStyleType.getOr('') }
             });
           });
           api.close();
@@ -2054,7 +2054,7 @@
 
     var global = tinymce.util.Tools.resolve('tinymce.html.Node');
 
-    const isTextNode = node => node.type === 3;
+    const isTextNode = node => node.Type === 3;
     const isEmpty = nodeBuffer => nodeBuffer.length === 0;
     const wrapInvalidChildren = list => {
       const insertListItem = (buffer, refNode) => {
@@ -2144,13 +2144,13 @@
     };
     const register = editor => {
       const listProperties = {
-        text: 'List properties...',
+        Text: 'List properties...',
         icon: 'ordered-list',
         onAction: () => editor.execCommand('mceListProps'),
         onSetup: setupMenuButtonHandler(editor, 'OL')
       };
       editor.ui.registry.addMenuItem('listprops', listProperties);
-      editor.ui.registry.addContextMenu('lists', {
+      editor.ui.registry.addConTextMenu('lists', {
         update: node => {
           const parentList = getParentList(editor, node);
           return isOlNode(parentList) ? ['listprops'] : [];

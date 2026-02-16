@@ -28,21 +28,21 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="Process.Id" />
+                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <input Type="hidden" asp-for="Process.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Process.title" class="control-label"></label>
-                                    <input asp-for="Process.title" class="form-control"/>
-                                    <span asp-validation-for="Process.title" class="text-danger"></span>
+                                    <label asp-for="Process.Title" class="control-label"></label>
+                                    <input asp-for="Process.Title" class="form-control"/>
+                                    <span asp-validation-for="Process.Title" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Process.year" class="control-label"></label>
-                                    <input asp-for="Process.year" class="form-control" />
-                                    <span asp-validation-for="Process.year" class="text-danger"></span>
+                                    <label asp-for="Process.Year" class="control-label"></label>
+                                    <input asp-for="Process.Year" class="form-control" />
+                                    <span asp-validation-for="Process.Year" class="Text-danger"></span>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">ثبت</button>
+                            <button Type="submit" class="btn btn-success">ثبت</button>
                         </form>
                     </div>
                 </div>

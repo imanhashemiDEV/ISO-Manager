@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ISO_Manager.Data
 {
-    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext(options)
+    public class ApplicationDbConText(DbConTextOptions<ApplicationDbConText> options) : IdentityDbConText(options)
     {
 
         public DbSet<User> Users { get; set; }
         public DbSet<UserInfo> UserInfos { get; set; } = default!;
         public DbSet<Organization> Organizations { get; set; } = default!;
         public DbSet<Occupation> Occupations { get; set; } = default!;
-        public DbSet<Workplace> Workplaces { get; set; } = default!;
+        public DbSet<WorkPlace> WorkPlaces { get; set; } = default!;
         public DbSet<Ambulance> Ambulances { get; set; } = default!;
         public DbSet<Asset> Assets { get; set; } = default!;
         public DbSet<Calibration> Calibrations { get; set; } = default!;
@@ -45,6 +45,7 @@ namespace ISO_Manager.Data
         public DbSet<UserPermit> UserPermits { get; set; } = default!;
         public DbSet<InspectionDetail> InspectionDetails { get; set; } = default!;
         public DbSet<RigAsset> RigAssets { get; set; } = default!;
+        public DbSet<ISO_Manager.Models.Office> Offices { get; set; } = default!;
 
     }
 }

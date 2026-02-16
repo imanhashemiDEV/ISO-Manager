@@ -27,29 +27,29 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="Inspection.Id" />
+                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <input Type="hidden" asp-for="Inspection.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Inspection.inspection_date" class="control-label"></label>
-                                    <input asp-for="Inspection.inspection_date" class="form-control"/>
-                                    <span asp-validation-for="Inspection.inspection_date" class="text-danger"></span>
+                                    <label asp-for="Inspection.InspectionDate" class="control-label"></label>
+                                    <input asp-for="Inspection.InspectionDate" class="form-control"/>
+                                    <span asp-validation-for="Inspection.InspectionDate" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Inspection.user_id" class="control-label"></label>
-                                    <select asp-for="Inspection.user_id" class="form-control" asp-items="ViewBag.user_id"></select>
+                                    <label asp-for="Inspection.UserId" class="control-label"></label>
+                                    <select asp-for="Inspection.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
                                 </div>
                                 
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Inspection.workplace_id" class="control-label"></label>
-                                    <select asp-for="Inspection.workplace_id" class="form-control" asp-items="ViewBag.workplace_id"></select>
+                                    <label asp-for="Inspection.WorkPlaceId" class="control-label"></label>
+                                    <select asp-for="Inspection.WorkPlaceId" class="form-control" asp-items="ViewBag.WorkPlaceId"></select>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Inspection.inspection_place_id" class="control-label"></label>
-                                    <select asp-for="Inspection.inspection_place_id" class="form-control" asp-items="ViewBag.inspection_place_id"></select>
+                                    <label asp-for="Inspection.InspectionPlaceId" class="control-label"></label>
+                                    <select asp-for="Inspection.InspectionPlaceId" class="form-control" asp-items="ViewBag.InspectionPlaceId"></select>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">ویرایش</button>
+                            <button Type="submit" class="btn btn-success">ویرایش</button>
                         </form>
                     </div>
                 </div>

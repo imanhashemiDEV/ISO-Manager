@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public ClothGroup ClothGroup { get; set; } = default!;
@@ -31,7 +31,7 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
 
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _context.ClothGroupLists.Count(m => m.cloth_group_id == id);
+            var ItemCount = _conText.ClothGroupLists.Count(m => m.ClothGroupId == id);
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -45,14 +45,14 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            ClothGroupList = await _context.ClothGroupLists
+            ClothGroupList = await _conText.ClothGroupLists
                 .Include(c => c.ClothGroup)
                 .Include(c => c.User)
-                .Where(m=>m.cloth_group_id== id)
+                .Where(m=>m.ClothGroupId== id)
                 .Skip(skip).Take(Take)
                 .ToListAsync();
 
-            var clothgroup = await _context.ClothGroups.FirstOrDefaultAsync(m => m.Id == id);
+            var clothgroup = await _conText.ClothGroups.FirstOrDefaultAsync(m => m.Id == id);
 
             if (clothgroup is not null)
             {

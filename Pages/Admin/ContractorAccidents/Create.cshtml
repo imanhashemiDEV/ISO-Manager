@@ -30,8 +30,8 @@ ViewData["Title"] = "ایجاد حادثه پیمانکاری و قرارداد�
                             <div class="grid grid-cols-12 gap-6">
                                 
                                 <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
-                                    <label asp-for="ContractorAccident.user_id" class="control-label"></label>
-                                    <select id="users" asp-for="ContractorAccident.user_id" class="form-select">
+                                    <label asp-for="ContractorAccident.UserId" class="control-label"></label>
+                                    <select id="users" asp-for="ContractorAccident.UserId" class="form-select">
                                         @foreach (var item in ViewBag.users)
                                         {
                                             <option value="@item.id">@item.name - - @item.register_code</option>
@@ -39,109 +39,109 @@ ViewData["Title"] = "ایجاد حادثه پیمانکاری و قرارداد�
                                     </select>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.contractor_id" class="control-label"></label>
-                                    <select asp-for="ContractorAccident.contractor_id" class="form-control" asp-items="ViewBag.contractors"></select>
-                                    <span asp-validation-for="ContractorAccident.contractor_id" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.ContractorId" class="control-label"></label>
+                                    <select asp-for="ContractorAccident.ContractorId" class="form-control" asp-items="ViewBag.contractors"></select>
+                                    <span asp-validation-for="ContractorAccident.ContractorId" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.accident_date" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.accident_date" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.accident_date" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.AccidentDate" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.AccidentDate" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.AccidentDate" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.accident_hour" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.accident_hour" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.accident_hour" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.AccidentHour" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.AccidentHour" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.AccidentHour" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.marriage" class="control-label"></label>
-                                    <select asp-for="ContractorAccident.marriage" class="form-select">
+                                    <label asp-for="ContractorAccident.Marriage" class="control-label"></label>
+                                    <select asp-for="ContractorAccident.Marriage" class="form-select">
                                         <option value="married">متاهل</option>
                                         <option value="single">مجرد</option>
                                     </select>
-                                    <span asp-validation-for="ContractorAccident.marriage" class="text-danger"></span>
+                                    <span asp-validation-for="ContractorAccident.Marriage" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.accident_place" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.accident_place" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.accident_place" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.AccidentPlace" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.AccidentPlace" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.AccidentPlace" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <<label asp-for="ContractorAccident.activity_in_accident" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.activity_in_accident" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.activity_in_accident" class="text-danger"></span>
+                                    <<label asp-for="ContractorAccident.ActivityInAccident" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.ActivityInAccident" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.ActivityInAccident" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.direct_accident_causes" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.direct_accident_causes" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.direct_accident_causes" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.DirectAccidentCauses" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.DirectAccidentCauses" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.DirectAccidentCauses" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.unsafe_condition_causes" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.unsafe_condition_causes" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.unsafe_condition_causes" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.UnsafeConditionCauses" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.UnsafeConditionCauses" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.UnsafeConditionCauses" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.unsafe_action_causes" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.unsafe_action_causes" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.unsafe_action_causes" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.UnsafeActionCauses" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.UnsafeActionCauses" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.UnsafeActionCauses" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 mb-4">
-                                    <label asp-for="ContractorAccident.accident_description" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.accident_description" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.accident_description" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.AccidentDescription" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.AccidentDescription" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.AccidentDescription" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.accident_boss" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.accident_boss" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.accident_boss" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.AccidentBoss" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.AccidentBoss" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.AccidentBoss" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 mb-4">
-                                    <label asp-for="ContractorAccident.hse_description" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.hse_description" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.hse_description" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.HseDescription" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.HseDescription" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.HseDescription" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.is_guilty" class="control-label"></label>
-                                    <select asp-for="ContractorAccident.is_guilty" class="form-select">
+                                    <label asp-for="ContractorAccident.IsGuilty" class="control-label"></label>
+                                    <select asp-for="ContractorAccident.IsGuilty" class="form-select">
                                         <option value="1">بله</option>
                                         <option value="0">خیر</option>
                                     </select>
-                                    <span asp-validation-for="ContractorAccident.is_guilty" class="text-danger"></span>
+                                    <span asp-validation-for="ContractorAccident.IsGuilty" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.accident_consequence" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.accident_consequence" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.accident_consequence" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.AccidentConsequence" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.AccidentConsequence" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.AccidentConsequence" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.accident_complication" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.accident_complication" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.accident_complication" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.AccidentComplication" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.AccidentComplication" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.AccidentComplication" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.accident_injured_part" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.accident_injured_part" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.accident_injured_part" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.AccidentInjuredPart" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.AccidentInjuredPart" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.AccidentInjuredPart" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.hse_boss" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.hse_boss" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.hse_boss" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.HseBoss" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.HseBoss" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.HseBoss" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.lost_days" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.lost_days" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.lost_days" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.LostDays" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.LostDays" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.LostDays" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="ContractorAccident.receive_report_date" class="control-label"></label>
-                                    <input asp-for="ContractorAccident.receive_report_date" class="form-control" />
-                                    <span asp-validation-for="ContractorAccident.receive_report_date" class="text-danger"></span>
+                                    <label asp-for="ContractorAccident.ReceiveReportDate" class="control-label"></label>
+                                    <input asp-for="ContractorAccident.ReceiveReportDate" class="form-control" />
+                                    <span asp-validation-for="ContractorAccident.ReceiveReportDate" class="Text-danger"></span>
                                 </div>
                                 
                             </div>
-                            <button type="submit" class="btn btn-success">ثبت</button>
+                            <button Type="submit" class="btn btn-success">ثبت</button>
                         </form>
                     </div>
                 </div>

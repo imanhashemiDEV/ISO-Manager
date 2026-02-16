@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var visitors_bar_chart_options = {
       chart: {
-        type: 'bar',
+        Type: 'bar',
         height: 220,
         toolbar: {
           show: false
@@ -22,13 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
       states: {
         normal: {
           filter: {
-            type: 'lighten',
+            Type: 'lighten',
             value: 0.5
           }
         },
         hover: {
           filter: {
-            type: 'lighten',
+            Type: 'lighten',
             value: 0
           }
         }

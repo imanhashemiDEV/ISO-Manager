@@ -38,13 +38,13 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.LegalRequirement[0].regulation_title)
+                                            @Html.DisplayNameFor(model => model.LegalRequirement[0].RegulationTitle)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.LegalRequirement[0].regulation_organization)
+                                            @Html.DisplayNameFor(model => model.LegalRequirement[0].RegulationOrganization)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.LegalRequirement[0].regulation_date)
+                                            @Html.DisplayNameFor(model => model.LegalRequirement[0].RegulationDate)
                                         </th>
                                         <th>عملیات</th>
                                     </tr>
@@ -55,17 +55,17 @@
                                         <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.regulation_title)
+                                                @Html.DisplayFor(modelItem => item.RegulationTitle)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.regulation_organization)
+                                                @Html.DisplayFor(modelItem => item.RegulationOrganization)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.regulation_date)
+                                                @Html.DisplayFor(modelItem => item.RegulationDate)
                                             </td>
                                             <td>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

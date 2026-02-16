@@ -22,25 +22,25 @@
     const open = editor => {
       const editorContent = getContent(editor);
       editor.windowManager.open({
-        title: 'Source Code',
-        size: 'large',
+        Title: 'Source Code',
+        Size: 'large',
         body: {
-          type: 'panel',
+          Type: 'panel',
           items: [{
-              type: 'textarea',
+              Type: 'Textarea',
               name: 'code'
             }]
         },
         buttons: [
           {
-            type: 'cancel',
+            Type: 'cancel',
             name: 'cancel',
-            text: 'Cancel'
+            Text: 'Cancel'
           },
           {
-            type: 'submit',
+            Type: 'submit',
             name: 'save',
-            text: 'Save',
+            Text: 'Save',
             primary: true
           }
         ],
@@ -67,7 +67,7 @@
       });
       editor.ui.registry.addMenuItem('code', {
         icon: 'sourcecode',
-        text: 'Source code',
+        Text: 'Source code',
         onAction
       });
     };

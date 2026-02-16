@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<HealthCart> HealthCart { get;set; } = default!;
@@ -26,7 +26,7 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
 
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _context.HealthCarts.Count();
+            var ItemCount = _conText.HealthCarts.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -40,11 +40,11 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            HealthCart = await _context.HealthCarts
+            HealthCart = await _conText.HealthCarts
                 .Include(h => h.User)
-                .Include(h => h.Workplace)
+                .Include(h => h.WorkPlace)
                 .Skip(skip).Take(Take)
-                .OrderBy(m=>m.end_date)
+                .OrderBy(m=>m.EndDate)
                 .ToListAsync();
         }
     }

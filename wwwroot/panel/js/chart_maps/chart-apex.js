@@ -4,7 +4,7 @@ setTimeout(function () {
     var options = {
       chart: {
         height: 300,
-        type: 'line',
+        Type: 'line',
         zoom: {
           enabled: false
         }
@@ -77,7 +77,7 @@ setTimeout(function () {
     var options_real_time = {
       chart: {
         height: 300,
-        type: 'line',
+        Type: 'line',
         animations: {
           enabled: true,
           easing: 'linear',
@@ -105,10 +105,10 @@ setTimeout(function () {
       ],
       colors: ['#4680FF'],
       markers: {
-        size: 0
+        Size: 0
       },
       xaxis: {
-        type: 'datetime',
+        Type: 'datetime',
         range: 777600000
       },
       yaxis: {
@@ -156,7 +156,7 @@ setTimeout(function () {
     var options_different = {
       chart: {
         height: 300,
-        type: 'line',
+        Type: 'line',
         zoom: {
           enabled: false
         }
@@ -185,10 +185,10 @@ setTimeout(function () {
         }
       ],
       markers: {
-        size: 0,
+        Size: 0,
 
         hover: {
-          sizeOffset: 6
+          SizeOffset: 6
         }
       },
       xaxis: {
@@ -197,21 +197,21 @@ setTimeout(function () {
       tooltip: {
         y: [
           {
-            title: {
+            Title: {
               formatter: function (val) {
                 return val + ' (mins)';
               }
             }
           },
           {
-            title: {
+            Title: {
               formatter: function (val) {
                 return val + ' per session';
               }
             }
           },
           {
-            title: {
+            Title: {
               formatter: function (val) {
                 return val;
               }
@@ -230,7 +230,7 @@ setTimeout(function () {
     var options_area_chart_1 = {
       chart: {
         height: 350,
-        type: 'area',
+        Type: 'area',
         toolbar: {
           show: false
         }
@@ -254,7 +254,7 @@ setTimeout(function () {
       ],
 
       xaxis: {
-        type: 'datetime',
+        Type: 'datetime',
         categories: [
           '2018-09-19T00:00:00',
           '2018-09-19T01:30:00',
@@ -285,7 +285,7 @@ setTimeout(function () {
             borderColor: '#999',
             label: {
               show: true,
-              text: 'Support',
+              Text: 'Support',
               style: {
                 color: '#fff',
                 background: '#00E396'
@@ -300,7 +300,7 @@ setTimeout(function () {
             yAxisIndex: 0,
             label: {
               show: true,
-              text: 'Rally',
+              Text: 'Rally',
               style: {
                 color: '#fff',
                 background: '#775DD0'
@@ -310,7 +310,7 @@ setTimeout(function () {
         ]
       },
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 320,
         toolbar: {
           show: false
@@ -601,12 +601,12 @@ setTimeout(function () {
         }
       ],
       markers: {
-        size: 0,
+        Size: 0,
         style: 'hollow'
       },
       colors: ['#4680FF'],
       xaxis: {
-        type: 'datetime',
+        Type: 'datetime',
         min: new Date('01 Mar 2012').getTime(),
         tickAmount: 6
       },
@@ -616,7 +616,7 @@ setTimeout(function () {
         }
       },
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
           opacityFrom: 0.7,
@@ -629,7 +629,7 @@ setTimeout(function () {
     chart.render();
     var resetCssClasses = function (activeEl) {
       var els = document.querySelectorAll('button');
-      Array.prototype.forEach.call(els, function (el) {
+      Array.protoType.forEach.call(els, function (el) {
         el.classList.remove('active');
       });
 
@@ -653,7 +653,7 @@ setTimeout(function () {
         }
       });
     });
-    document.querySelector('#one_year').addEventListener('click', function (e) {
+    document.querySelector('#one_Year').addEventListener('click', function (e) {
       resetCssClasses(e);
       chart.updateOptions({
         xaxis: {
@@ -686,7 +686,7 @@ setTimeout(function () {
     var options_bar_chart_1 = {
       chart: {
         height: 350,
-        type: 'bar'
+        Type: 'bar'
       },
       plotOptions: {
         bar: {
@@ -739,7 +739,7 @@ setTimeout(function () {
     var options_bar_chart_2 = {
       chart: {
         height: 350,
-        type: 'bar',
+        Type: 'bar',
         stacked: true,
         toolbar: {
           show: false
@@ -785,7 +785,7 @@ setTimeout(function () {
         }
       ],
       xaxis: {
-        type: 'datetime',
+        Type: 'datetime',
         categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT', '01/05/2011 GMT', '01/06/2011 GMT']
       },
       legend: {
@@ -802,7 +802,7 @@ setTimeout(function () {
     var options_bar_chart_3 = {
       chart: {
         height: 350,
-        type: 'bar'
+        Type: 'bar'
       },
       plotOptions: {
         bar: {
@@ -845,7 +845,7 @@ setTimeout(function () {
     var options_bar_chart_4 = {
       chart: {
         height: 350,
-        type: 'bar',
+        Type: 'bar',
         stacked: true,
         stackType: '100%'
       },
@@ -909,17 +909,17 @@ setTimeout(function () {
     var options_mixed_chart_1 = {
       chart: {
         height: 350,
-        type: 'line'
+        Type: 'line'
       },
       series: [
         {
           name: 'Website Blog',
-          type: 'column',
+          Type: 'column',
           data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
         },
         {
           name: 'Social Media',
-          type: 'line',
+          Type: 'line',
           data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
         }
       ],
@@ -942,7 +942,7 @@ setTimeout(function () {
         '12 Jan 2001'
       ],
       xaxis: {
-        type: 'datetime'
+        Type: 'datetime'
       }
     };
     var chart_mixed_chart_1 = new ApexCharts(document.querySelector('#mixed-chart-1'), options_mixed_chart_1);
@@ -952,7 +952,7 @@ setTimeout(function () {
     var options_mixed_chart_2 = {
       chart: {
         height: 350,
-        type: 'line',
+        Type: 'line',
         stacked: false
       },
       stroke: {
@@ -968,17 +968,17 @@ setTimeout(function () {
       series: [
         {
           name: 'Facebook',
-          type: 'column',
+          Type: 'column',
           data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
         },
         {
           name: 'Vine',
-          type: 'area',
+          Type: 'area',
           data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
         },
         {
           name: 'Dribbble',
-          type: 'line',
+          Type: 'line',
           data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
         }
       ],
@@ -987,7 +987,7 @@ setTimeout(function () {
         gradient: {
           inverseColors: false,
           shade: 'light',
-          type: 'vertical',
+          Type: 'vertical',
           opacityFrom: 0.85,
           opacityTo: 0.55,
           stops: [0, 100, 100, 100]
@@ -1007,10 +1007,10 @@ setTimeout(function () {
         '11/01/2003'
       ],
       markers: {
-        size: 0
+        Size: 0
       },
       xaxis: {
-        type: 'datetime'
+        Type: 'datetime'
       },
       yaxis: {
         min: 0
@@ -1020,7 +1020,7 @@ setTimeout(function () {
         intersect: false,
         y: {
           formatter: function (y) {
-            if (typeof y !== 'undefined') {
+            if (Typeof y !== 'undefined') {
               return y.toFixed(0) + ' views';
             }
             return y;
@@ -1053,7 +1053,7 @@ setTimeout(function () {
     var options_candlestick = {
       chart: {
         height: 350,
-        type: 'candlestick'
+        Type: 'candlestick'
       },
       series: [
         {
@@ -1303,10 +1303,10 @@ setTimeout(function () {
       ],
       colors: ['#2CA87F', '#DC2626'],
       fill: {
-        type: 'solid'
+        Type: 'solid'
       },
       xaxis: {
-        type: 'datetime'
+        Type: 'datetime'
       },
       yaxis: {
         tooltip: {
@@ -1335,7 +1335,7 @@ setTimeout(function () {
     var options_bubble_chart_1 = {
       chart: {
         height: 350,
-        type: 'bubble'
+        Type: 'bubble'
       },
       dataLabels: {
         enabled: false
@@ -1376,7 +1376,7 @@ setTimeout(function () {
       },
       xaxis: {
         tickAmount: 12,
-        type: 'category'
+        Type: 'category'
       },
       yaxis: {
         max: 70
@@ -1402,7 +1402,7 @@ setTimeout(function () {
     var options_bubble_chart_2 = {
       chart: {
         height: 350,
-        type: 'bubble'
+        Type: 'bubble'
       },
       dataLabels: {
         enabled: false
@@ -1438,12 +1438,12 @@ setTimeout(function () {
         }
       ],
       fill: {
-        type: 'gradient'
+        Type: 'gradient'
       },
       colors: ['#4680FF', '#2CA87F', '#E58A00', '#DC2626'],
       xaxis: {
         tickAmount: 12,
-        type: 'datetime',
+        Type: 'datetime',
 
         labels: {
           rotate: 0
@@ -1463,10 +1463,10 @@ setTimeout(function () {
     var options_scatter_chart_1 = {
       chart: {
         height: 350,
-        type: 'scatter',
+        Type: 'scatter',
         zoom: {
           enabled: true,
-          type: 'xy'
+          Type: 'xy'
         }
       },
       colors: ['#4680FF', '#2CA87F', '#DC2626', '#E58A00', '#13c2c2'],
@@ -1599,9 +1599,9 @@ setTimeout(function () {
     var options_scatter_chart_2 = {
       chart: {
         height: 350,
-        type: 'scatter',
+        Type: 'scatter',
         zoom: {
-          type: 'xy'
+          Type: 'xy'
         }
       },
       series: [
@@ -1657,7 +1657,7 @@ setTimeout(function () {
         offsetY: 8
       },
       xaxis: {
-        type: 'datetime'
+        Type: 'datetime'
       },
       yaxis: {
         max: 70
@@ -1698,7 +1698,7 @@ setTimeout(function () {
     var options_heatmap_chart_1 = {
       chart: {
         height: 350,
-        type: 'heatmap'
+        Type: 'heatmap'
       },
       dataLabels: {
         enabled: false
@@ -1792,7 +1792,7 @@ setTimeout(function () {
     var options_heatmap_chart_2 = {
       chart: {
         height: 350,
-        type: 'heatmap'
+        Type: 'heatmap'
       },
       stroke: {
         width: 0
@@ -1890,7 +1890,7 @@ setTimeout(function () {
       ],
       colors: ['#4680FF', '#13c2c2', '#2CA87F', '#E58A00', '#DC2626'],
       xaxis: {
-        type: 'category'
+        Type: 'category'
       }
     };
     var chart_heatmap_chart_2 = new ApexCharts(document.querySelector('#heatmap-chart-2'), options_heatmap_chart_2);
@@ -1900,7 +1900,7 @@ setTimeout(function () {
     var options_pie_chart_1 = {
       chart: {
         height: 320,
-        type: 'pie'
+        Type: 'pie'
       },
       labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
       series: [44, 55, 13, 43, 22],
@@ -1933,7 +1933,7 @@ setTimeout(function () {
     var options_pie_chart_2 = {
       chart: {
         height: 320,
-        type: 'donut'
+        Type: 'donut'
       },
       series: [44, 55, 41, 17, 15],
       colors: ['#4680FF', '#2CA87F', '#13c2c2', '#E58A00', '#DC2626'],
@@ -1980,12 +1980,12 @@ setTimeout(function () {
     var options_radialbar_1 = {
       chart: {
         height: 350,
-        type: 'radialBar'
+        Type: 'radialBar'
       },
       plotOptions: {
         radialBar: {
           hollow: {
-            size: '70%'
+            Size: '70%'
           }
         }
       },
@@ -2000,7 +2000,7 @@ setTimeout(function () {
     var options_radialbar_2 = {
       chart: {
         height: 350,
-        type: 'radialBar'
+        Type: 'radialBar'
       },
       plotOptions: {
         radialBar: {
@@ -2009,7 +2009,7 @@ setTimeout(function () {
           endAngle: 270,
           hollow: {
             margin: 5,
-            size: '30%',
+            Size: '30%',
             background: 'transparent',
             image: undefined
           },
@@ -2037,7 +2037,7 @@ setTimeout(function () {
           useSeriesColors: true
         },
         markers: {
-          size: 0
+          Size: 0
         },
         formatter: function (seriesName, opts) {
           return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex];
@@ -2066,7 +2066,7 @@ setTimeout(function () {
     var options_radar_chart_1 = {
       chart: {
         height: 350,
-        type: 'radar'
+        Type: 'radar'
       },
       series: [
         {
@@ -2077,7 +2077,7 @@ setTimeout(function () {
       labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       plotOptions: {
         radar: {
-          size: 140,
+          Size: 140,
           polygons: {
             strokeColor: '#f3f6ff',
             fill: {
@@ -2088,7 +2088,7 @@ setTimeout(function () {
       },
       colors: ['#DC2626'],
       markers: {
-        size: 4,
+        Size: 4,
         colors: ['#fff'],
         strokeColor: '#DC2626',
         strokeWidth: 2
@@ -2120,7 +2120,7 @@ setTimeout(function () {
     var options_radar_chart_2 = {
       chart: {
         height: 350,
-        type: 'radar',
+        Type: 'radar',
         dropShadow: {
           enabled: true,
           blur: 1,
@@ -2150,7 +2150,7 @@ setTimeout(function () {
         opacity: 0.7
       },
       markers: {
-        size: 0
+        Size: 0
       },
       labels: ['2011', '2012', '2013', '2014', '2015', '2016']
     };

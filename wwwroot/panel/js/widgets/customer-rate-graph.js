@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var options5 = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 230,
         toolbar: {
           show: false
@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       colors: ['#0d6efd'],
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0

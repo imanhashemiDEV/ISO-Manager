@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Duties
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public Duty Duty { get; set; } = default!;
@@ -28,11 +28,11 @@ namespace ISO_Manager.Pages.Admin.Duties
                 return NotFound();
             }
 
-            var duty = await _context.Duties.FirstOrDefaultAsync(m => m.Id == id);
+            var Duty = await _conText.Duties.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (duty is not null)
+            if (Duty is not null)
             {
-                Duty = duty;
+                Duty = Duty;
 
                 return Page();
             }

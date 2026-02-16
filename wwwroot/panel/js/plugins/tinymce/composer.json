@@ -1,26 +1,26 @@
 {
 	"name": "tinymce/tinymce",
 	"version": "7.5.1",
-	"description": "Web based JavaScript HTML WYSIWYG editor control.",
+	"Description": "Web based JavaScript HTML WYSIWYG editor control.",
 	"license": [
 		"GPL-2.0-or-later"
 	],
 	"keywords": [
 		"wysiwyg",
 		"tinymce",
-		"richtext",
+		"richText",
 		"javascript",
 		"html",
-		"text",
+		"Text",
 		"rich editor",
-		"rich text editor",
+		"rich Text editor",
 		"rte",
-		"rich text",
+		"rich Text",
 		"contenteditable",
 		"editing"
 	],
 	"homepage": "https://www.tiny.cloud/",
-	"type": "component",
+	"Type": "component",
 	"extra": {
 		"component": {
 			"scripts": [

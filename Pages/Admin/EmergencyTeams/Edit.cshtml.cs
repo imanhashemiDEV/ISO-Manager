@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.EmergencyTeams
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,15 +30,15 @@ namespace ISO_Manager.Pages.Admin.EmergencyTeams
                 return NotFound();
             }
 
-            var emergencyteam =  await _context.EmergencyTeams.FirstOrDefaultAsync(m => m.Id == id);
+            var emergencyteam =  await _conText.EmergencyTeams.FirstOrDefaultAsync(m => m.Id == id);
             if (emergencyteam == null)
             {
                 return NotFound();
             }
             EmergencyTeam = emergencyteam;
-           ViewData["duty_id"] = new SelectList(_context.Duties, "id", "id");
-           ViewData["user_id"] = new SelectList(_context.Users, "id", "id");
-           ViewData["workplace_id"] = new SelectList(_context.Workplaces, "id", "id");
+           ViewData["DutyId"] = new SelectList(_conText.Duties, "id", "id");
+           ViewData["UserId"] = new SelectList(_conText.Users, "id", "id");
+           ViewData["WorkPlaceId"] = new SelectList(_conText.WorkPlaces, "id", "id");
             return Page();
         }
 
@@ -51,11 +51,11 @@ namespace ISO_Manager.Pages.Admin.EmergencyTeams
                 return Page();
             }
 
-            _context.Attach(EmergencyTeam).State = EntityState.Modified;
+            _conText.Attach(EmergencyTeam).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -74,7 +74,7 @@ namespace ISO_Manager.Pages.Admin.EmergencyTeams
 
         private bool EmergencyTeamExists(long id)
         {
-            return _context.EmergencyTeams.Any(e => e.Id == id);
+            return _conText.EmergencyTeams.Any(e => e.Id == id);
         }
     }
 }

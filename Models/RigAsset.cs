@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISO_Manager.Models
 {
@@ -9,34 +10,45 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "عنوان  فارسی")]
-        public string? asset_name { get; set; }
+        public string? AssetName { get; set; }
 
         [Display(Name = "تعداد پیشفرض")]
-        public string? default_count { get; set; }
+        public string? DefaultCount { get; set; }
 
         [Display(Name = "تعداد موجود")]
-        public string? exist_count { get; set; }
+        public string? ExistCount { get; set; }
 
         [Display(Name = "واحد")]
-        public string? count_unit { get; set; }
+        public string? CountUnit { get; set; }
 
         [Display(Name = "نوع محل")]
-        public string? region { get; set; }
+        public string? Region { get; set; }
 
         [Display(Name = "محل قرارگیری")]
-        public string? position_name { get; set; }
+        public string? PositionName { get; set; }
 
         [Display(Name = "نام دکل")] 
-        public string? place { get; set; } = "rig";
+        public string? Place { get; set; } = "rig";
 
         [Display(Name = "توضیحات")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+
+
+        //relations
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
 
 
     }

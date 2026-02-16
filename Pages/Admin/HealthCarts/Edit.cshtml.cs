@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,15 +30,15 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
                 return NotFound();
             }
 
-            var healthcart =  await _context.HealthCarts.FirstOrDefaultAsync(m => m.Id == id);
+            var healthcart =  await _conText.HealthCarts.FirstOrDefaultAsync(m => m.Id == id);
             if (healthcart == null)
             {
                 return NotFound();
             }
             HealthCart = healthcart;
 
-           ViewData["users"] = _context.Users.ToList();
-           ViewData["workplaces"] = _context.Workplaces.ToList();
+           ViewData["users"] = _conText.Users.ToList();
+           ViewData["workPlaces"] = _conText.WorkPlaces.ToList();
             return Page();
         }
 
@@ -51,11 +51,11 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
                 return Page();
             }
 
-            _context.Attach(HealthCart).State = EntityState.Modified;
+            _conText.Attach(HealthCart).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -74,7 +74,7 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
 
         private bool HealthCartExists(long id)
         {
-            return _context.HealthCarts.Any(e => e.Id == id);
+            return _conText.HealthCarts.Any(e => e.Id == id);
         }
     }
 }

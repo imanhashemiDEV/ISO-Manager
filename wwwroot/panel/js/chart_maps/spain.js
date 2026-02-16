@@ -216,6 +216,6 @@ jsVectorMap.addMap('spain', {
     }
   },
   height: 800.996283508868,
-  projection: { type: 'merc', centralMeridian: 0.0 },
+  projection: { Type: 'merc', centralMeridian: 0.0 },
   width: 900.0
 });

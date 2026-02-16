@@ -34,7 +34,7 @@
                         </select>
                     </div>
                     <div class="">
-                        <button type="submit" class="btn btn-primary">بررسی</button>
+                        <button Type="submit" class="btn btn-primary">بررسی</button>
                     </div>
                 </form>
             </div>
@@ -50,19 +50,19 @@
         </div>
 
         <div class="card-body">
-            <ul class="flex flex-wrap w-full text-center nav-tabs my-4 p-4">
+            <ul class="flex flex-wrap w-full Text-center nav-tabs my-4 p-4">
                 <li class="group active">
-                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-1" class="inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg text-primary-500 group-[.active]:bg-primary-500 group-[.active]:text-white">
+                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-1" class="inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
                         دکل
                     </a>
                 </li>
                 <li class="group">
-                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-2" class="inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg text-primary-500 group-[.active]:bg-primary-500 group-[.active]:text-white">
+                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-2" class="inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
                         اردوگاه
                     </a>
                 </li>
                 <li class="group">
-                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-3" class="inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg text-primary-500 group-[.active]:bg-primary-500 group-[.active]:text-white">
+                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-3" class="inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
                         درمانگاه
                     </a>
                 </li>
@@ -85,13 +85,13 @@
                                     @Html.DisplayNameFor(model => model.RigAsset[0].exist_count)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].count_unit)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].count_Unit)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.RigAsset[0].position_name)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].description)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].Description)
                                 </th>
                                 <th>عملیات</th>
                             </tr>
@@ -111,36 +111,36 @@
                                         @Html.DisplayFor(modelItem => item.exist_count)
                                     </td>
                                     <td>
-                                        @if (item.count_unit.Equals("number"))
+                                        @if (item.count_Unit.Equals("number"))
                                         {
-                                            <span class="badge text-white bg-success-500">عدد</span>
+                                            <span class="badge Text-white bg-success-500">عدد</span>
                                         }
-                                        else if (item.count_unit.Equals("loop"))
+                                        else if (item.count_Unit.Equals("loop"))
                                         {
-                                            <span class="badge text-white bg-danger-500">حلقه</span>
+                                            <span class="badge Text-white bg-danger-500">حلقه</span>
                                         }
-                                        else if (item.count_unit.Equals("set"))
+                                        else if (item.count_Unit.Equals("set"))
                                         {
-                                            <span class="badge text-white bg-secondary-500">دست</span>
+                                            <span class="badge Text-white bg-secondary-500">دست</span>
                                         }
-                                        else if (item.count_unit.Equals("device"))
+                                        else if (item.count_Unit.Equals("device"))
                                         {
-                                            <span class="badge text-white bg-primary-500">دستگاه</span>
+                                            <span class="badge Text-white bg-primary-500">دستگاه</span>
                                         }
                                         else
                                         {
-                                            <span class="badge text-white bg-info-500">نامشخص</span>
+                                            <span class="badge Text-white bg-info-500">نامشخص</span>
                                         }
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.position_name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.description)
+                                        @Html.DisplayFor(modelItem => item.Description)
                                     </td>
                                     <td>
                                         <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                            <i class="ti ti-edit text-xl leading-none"></i>
+                                            <i class="ti ti-edit Text-xl leading-none"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -167,13 +167,13 @@
                                     @Html.DisplayNameFor(model => model.RigAsset[0].exist_count)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].count_unit)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].count_Unit)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.RigAsset[0].position_name)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].description)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].Description)
                                 </th>
                                 <th>عملیات</th>
                             </tr>
@@ -193,36 +193,36 @@
                                         @Html.DisplayFor(modelItem => item.exist_count)
                                     </td>
                                     <td>
-                                        @if (item.count_unit.Equals("number"))
+                                        @if (item.count_Unit.Equals("number"))
                                         {
-                                            <span class="badge text-white bg-success-500">عدد</span>
+                                            <span class="badge Text-white bg-success-500">عدد</span>
                                         }
-                                        else if (item.count_unit.Equals("loop"))
+                                        else if (item.count_Unit.Equals("loop"))
                                         {
-                                            <span class="badge text-white bg-danger-500">حلقه</span>
+                                            <span class="badge Text-white bg-danger-500">حلقه</span>
                                         }
-                                        else if (item.count_unit.Equals("set"))
+                                        else if (item.count_Unit.Equals("set"))
                                         {
-                                            <span class="badge text-white bg-secondary-500">دست</span>
+                                            <span class="badge Text-white bg-secondary-500">دست</span>
                                         }
-                                        else if (item.count_unit.Equals("device"))
+                                        else if (item.count_Unit.Equals("device"))
                                         {
-                                            <span class="badge text-white bg-primary-500">دستگاه</span>
+                                            <span class="badge Text-white bg-primary-500">دستگاه</span>
                                         }
                                         else
                                         {
-                                            <span class="badge text-white bg-info-500">نامشخص</span>
+                                            <span class="badge Text-white bg-info-500">نامشخص</span>
                                         }
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.position_name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.description)
+                                        @Html.DisplayFor(modelItem => item.Description)
                                     </td>
                                     <td>
                                         <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                            <i class="ti ti-edit text-xl leading-none"></i>
+                                            <i class="ti ti-edit Text-xl leading-none"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -248,13 +248,13 @@
                                     @Html.DisplayNameFor(model => model.RigAsset[0].exist_count)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].count_unit)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].count_Unit)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.RigAsset[0].position_name)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].description)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].Description)
                                 </th>
                                 <th>عملیات</th>
                             </tr>
@@ -274,36 +274,36 @@
                                         @Html.DisplayFor(modelItem => item.exist_count)
                                     </td>
                                     <td>
-                                        @if (item.count_unit.Equals("number"))
+                                        @if (item.count_Unit.Equals("number"))
                                         {
-                                            <span class="badge text-white bg-success-500">عدد</span>
+                                            <span class="badge Text-white bg-success-500">عدد</span>
                                         }
-                                        else if (item.count_unit.Equals("loop"))
+                                        else if (item.count_Unit.Equals("loop"))
                                         {
-                                            <span class="badge text-white bg-danger-500">حلقه</span>
+                                            <span class="badge Text-white bg-danger-500">حلقه</span>
                                         }
-                                        else if (item.count_unit.Equals("set"))
+                                        else if (item.count_Unit.Equals("set"))
                                         {
-                                            <span class="badge text-white bg-secondary-500">دست</span>
+                                            <span class="badge Text-white bg-secondary-500">دست</span>
                                         }
-                                        else if (item.count_unit.Equals("device"))
+                                        else if (item.count_Unit.Equals("device"))
                                         {
-                                            <span class="badge text-white bg-primary-500">دستگاه</span>
+                                            <span class="badge Text-white bg-primary-500">دستگاه</span>
                                         }
                                         else
                                         {
-                                            <span class="badge text-white bg-info-500">نامشخص</span>
+                                            <span class="badge Text-white bg-info-500">نامشخص</span>
                                         }
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.position_name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.description)
+                                        @Html.DisplayFor(modelItem => item.Description)
                                     </td>
                                     <td>
                                         <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                            <i class="ti ti-edit text-xl leading-none"></i>
+                                            <i class="ti ti-edit Text-xl leading-none"></i>
                                         </a>
                                     </td>
                                 </tr>

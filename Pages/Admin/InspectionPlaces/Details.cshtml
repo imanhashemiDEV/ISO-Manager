@@ -40,7 +40,7 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.InspectionText[0].text)
+                                            @Html.DisplayNameFor(model => model.InspectionText[0].Text)
                                         </th>
                                         <th>عملیات</th>
                                     </tr>
@@ -51,11 +51,11 @@
                                         <tr>
                                             <td>@(row++)</td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.text)
+                                                @Html.DisplayFor(modelItem => item.Text)
                                             </td>
                                             <td>
                                                 <a asp-page="/Admin/InspectionTexts/Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

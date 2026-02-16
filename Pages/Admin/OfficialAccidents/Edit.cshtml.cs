@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.OfficialAccidents
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,13 +30,13 @@ namespace ISO_Manager.Pages.Admin.OfficialAccidents
                 return NotFound();
             }
 
-            var officialaccident =  await _context.OfficialAccidents.FirstOrDefaultAsync(m => m.Id == id);
+            var officialaccident =  await _conText.OfficialAccidents.FirstOrDefaultAsync(m => m.Id == id);
             if (officialaccident == null)
             {
                 return NotFound();
             }
             OfficialAccident = officialaccident;
-            ViewData["users"] = _context.Users.Where(m => m.EmploymentType == "rasmi").ToList();
+            ViewData["users"] = _conText.Users.Where(m => m.EmploymentType == "rasmi").ToList();
             return Page();
         }
 
@@ -49,11 +49,11 @@ namespace ISO_Manager.Pages.Admin.OfficialAccidents
                 return Page();
             }
 
-            _context.Attach(OfficialAccident).State = EntityState.Modified;
+            _conText.Attach(OfficialAccident).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +72,7 @@ namespace ISO_Manager.Pages.Admin.OfficialAccidents
 
         private bool OfficialAccidentExists(long id)
         {
-            return _context.OfficialAccidents.Any(e => e.Id == id);
+            return _conText.OfficialAccidents.Any(e => e.Id == id);
         }
     }
 }

@@ -7,9 +7,9 @@
  * Released under the MIT license
  */
 (function( factory ) {
-	if ( typeof define === "function" && define.amd ) {
+	if ( Typeof define === "function" && define.amd ) {
 		define( ["jquery"], factory );
-	} else if (typeof module === "object" && module.exports) {
+	} else if (Typeof module === "object" && module.exports) {
 		module.exports = factory( require( "jquery" ) );
 	} else {
 		factory( jQuery );
@@ -71,13 +71,13 @@ $.extend( $.fn, {
 				function handle() {
 					var hidden, result;
 
-					// Insert a hidden input as a replacement for the missing submit button
+					// Insert a hidden input as a rePlacement for the missing submit button
 					// The hidden input is inserted in two cases:
 					//   - A user defined a `submitHandler`
 					//   - There was a pending request due to `remote` method and `stopRequest()`
 					//     was called to submit the form in case it's valid
 					if ( validator.submitButton && ( validator.settings.submitHandler || validator.formSubmitted ) ) {
-						hidden = $( "<input type='hidden'/>" )
+						hidden = $( "<input Type='hidden'/>" )
 							.attr( "name", validator.submitButton.name )
 							.val( $( validator.submitButton ).val() )
 							.appendTo( validator.currentForm );
@@ -143,7 +143,7 @@ $.extend( $.fn, {
 	// https://jqueryvalidation.org/rules/
 	rules: function( command, argument ) {
 		var element = this[ 0 ],
-			isContentEditable = typeof this.attr( "contenteditable" ) !== "undefined" && this.attr( "contenteditable" ) !== "false",
+			isContentEditable = Typeof this.attr( "contenteditable" ) !== "undefined" && this.attr( "contenteditable" ) !== "false",
 			settings, staticRules, existingRules, data, param, filtered;
 
 		// If nothing is selected, return empty object; can't chain anyway
@@ -216,11 +216,11 @@ $.extend( $.fn, {
 	}
 } );
 
-// JQuery trim is deprecated, provide a trim method based on String.prototype.trim
+// JQuery trim is deprecated, provide a trim method based on String.protoType.trim
 var trim = function( str ) {
 
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim#Polyfill
-	return str.replace( /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "" );
+	return str.rePlace( /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "" );
 };
 
 // Custom selectors
@@ -269,7 +269,7 @@ $.validator.format = function( source, params ) {
 		params = [ params ];
 	}
 	$.each( params, function( i, n ) {
-		source = source.replace( new RegExp( "\\{" + i + "\\}", "g" ), function() {
+		source = source.rePlace( new RegExp( "\\{" + i + "\\}", "g" ), function() {
 			return n;
 		} );
 	} );
@@ -349,14 +349,14 @@ $.extend( $.validator, {
 			}
 		},
 		highlight: function( element, errorClass, validClass ) {
-			if ( element.type === "radio" ) {
+			if ( element.Type === "radio" ) {
 				this.findByName( element.name ).addClass( errorClass ).removeClass( validClass );
 			} else {
 				$( element ).addClass( errorClass ).removeClass( validClass );
 			}
 		},
 		unhighlight: function( element, errorClass, validClass ) {
-			if ( element.type === "radio" ) {
+			if ( element.Type === "radio" ) {
 				this.findByName( element.name ).removeClass( errorClass ).addClass( validClass );
 			} else {
 				$( element ).removeClass( errorClass ).addClass( validClass );
@@ -385,16 +385,16 @@ $.extend( $.validator, {
 		range: $.validator.format( "Please enter a value between {0} and {1}." ),
 		max: $.validator.format( "Please enter a value less than or equal to {0}." ),
 		min: $.validator.format( "Please enter a value greater than or equal to {0}." ),
-		step: $.validator.format( "Please enter a multiple of {0}." )
+		Step: $.validator.format( "Please enter a multiple of {0}." )
 	},
 
 	autoCreateRanges: false,
 
-	prototype: {
+	protoType: {
 
 		init: function() {
 			this.labelContainer = $( this.settings.errorLabelContainer );
-			this.errorContext = this.labelContainer.length && this.labelContainer || $( this.currentForm );
+			this.errorConText = this.labelContainer.length && this.labelContainer || $( this.currentForm );
 			this.containers = $( this.settings.errorContainer ).add( this.settings.errorLabelContainer );
 			this.submitted = {};
 			this.valueCache = {};
@@ -407,7 +407,7 @@ $.extend( $.validator, {
 				groups = ( this.groups = {} ),
 				rules;
 			$.each( this.settings.groups, function( key, value ) {
-				if ( typeof value === "string" ) {
+				if ( Typeof value === "string" ) {
 					value = value.split( /\s/ );
 				}
 				$.each( value, function( index, name ) {
@@ -420,7 +420,7 @@ $.extend( $.validator, {
 			} );
 
 			function delegate( event ) {
-				var isContentEditable = typeof $( this ).attr( "contenteditable" ) !== "undefined" && $( this ).attr( "contenteditable" ) !== "false";
+				var isContentEditable = Typeof $( this ).attr( "contenteditable" ) !== "undefined" && $( this ).attr( "contenteditable" ) !== "false";
 
 				// Set form expando on contenteditable
 				if ( !this.form && isContentEditable ) {
@@ -435,17 +435,17 @@ $.extend( $.validator, {
 				}
 
 				var validator = $.data( this.form, "validator" ),
-					eventType = "on" + event.type.replace( /^validate/, "" ),
+					eventType = "on" + event.Type.rePlace( /^validate/, "" ),
 					settings = validator.settings;
 				if ( settings[ eventType ] && !$( this ).is( settings.ignore ) ) {
 					settings[ eventType ].call( validator, this, event );
 				}
 			}
-			var focusListeners = [ ":text", "[type='password']", "[type='file']", "select", "textarea", "[type='number']", "[type='search']",
-								"[type='tel']", "[type='url']", "[type='email']", "[type='datetime']", "[type='date']", "[type='month']",
-								"[type='week']", "[type='time']", "[type='datetime-local']", "[type='range']", "[type='color']",
-								"[type='radio']", "[type='checkbox']", "[contenteditable]", "[type='button']" ];
-			var clickListeners = [ "select", "option", "[type='radio']", "[type='checkbox']" ];
+			var focusListeners = [ ":Text", "[Type='password']", "[Type='file']", "select", "Textarea", "[Type='number']", "[Type='search']",
+								"[Type='tel']", "[Type='url']", "[Type='email']", "[Type='datetime']", "[Type='date']", "[Type='month']",
+								"[Type='week']", "[Type='time']", "[Type='datetime-local']", "[Type='range']", "[Type='color']",
+								"[Type='radio']", "[Type='checkbox']", "[contenteditable]", "[Type='button']" ];
+			var clickListeners = [ "select", "option", "[Type='radio']", "[Type='checkbox']" ];
 			$( this.currentForm )
 				.on( "focusin.validate focusout.validate keyup.validate", focusListeners.concat( this.settings.customElements ).join( ", " ), delegate )
 
@@ -522,7 +522,7 @@ $.extend( $.validator, {
 				}
 				this.showErrors();
 
-				// Add aria-invalid status for screen readers
+				// Add aria-invalid Status for screen readers
 				$( element ).attr( "aria-invalid", !rs );
 			}
 
@@ -611,15 +611,15 @@ $.extend( $.validator, {
 		},
 
 		hideThese: function( errors ) {
-			errors.not( this.containers ).text( "" );
+			errors.not( this.containers ).Text( "" );
 			this.addWrapper( errors ).hide();
 		},
 
 		valid: function() {
-			return this.size() === 0;
+			return this.Size() === 0;
 		},
 
-		size: function() {
+		Size: function() {
 			return this.errorList.length;
 		},
 
@@ -649,7 +649,7 @@ $.extend( $.validator, {
 		elements: function() {
 			var validator = this,
 				rulesCache = {},
-				selectors = [ "input", "select", "textarea", "[contenteditable]" ];
+				selectors = [ "input", "select", "Textarea", "[contenteditable]" ];
 
 			// Select all valid inputs inside the form (no submit or reset buttons)
 			return $( this.currentForm )
@@ -658,7 +658,7 @@ $.extend( $.validator, {
 			.not( this.settings.ignore )
 			.filter( function() {
 				var name = this.name || $( this ).attr( "name" ); // For contenteditable
-				var isContentEditable = typeof $( this ).attr( "contenteditable" ) !== "undefined" && $( this ).attr( "contenteditable" ) !== "false";
+				var isContentEditable = Typeof $( this ).attr( "contenteditable" ) !== "undefined" && $( this ).attr( "contenteditable" ) !== "false";
 
 				if ( !name && validator.settings.debug && window.console ) {
 					console.error( "%o has no name assigned", this );
@@ -691,7 +691,7 @@ $.extend( $.validator, {
 
 		errors: function() {
 			var errorClass = this.settings.errorClass.split( " " ).join( "." );
-			return $( this.settings.errorElement + "." + errorClass, this.errorContext );
+			return $( this.settings.errorElement + "." + errorClass, this.errorConText );
 		},
 
 		resetInternals: function() {
@@ -719,23 +719,23 @@ $.extend( $.validator, {
 
 		elementValue: function( element ) {
 			var $element = $( element ),
-				type = element.type,
-				isContentEditable = typeof $element.attr( "contenteditable" ) !== "undefined" && $element.attr( "contenteditable" ) !== "false",
+				Type = element.Type,
+				isContentEditable = Typeof $element.attr( "contenteditable" ) !== "undefined" && $element.attr( "contenteditable" ) !== "false",
 				val, idx;
 
-			if ( type === "radio" || type === "checkbox" ) {
+			if ( Type === "radio" || Type === "checkbox" ) {
 				return this.findByName( element.name ).filter( ":checked" ).val();
-			} else if ( type === "number" && typeof element.validity !== "undefined" ) {
+			} else if ( Type === "number" && Typeof element.validity !== "undefined" ) {
 				return element.validity.badInput ? "NaN" : $element.val();
 			}
 
 			if ( isContentEditable ) {
-				val = $element.text();
+				val = $element.Text();
 			} else {
 				val = $element.val();
 			}
 
-			if ( type === "file" ) {
+			if ( Type === "file" ) {
 
 				// Modern browser (chrome & safari)
 				if ( val.substr( 0, 12 ) === "C:\\fakepath\\" ) {
@@ -759,8 +759,8 @@ $.extend( $.validator, {
 				return val;
 			}
 
-			if ( typeof val === "string" ) {
-				return val.replace( /\r/g, "" );
+			if ( Typeof val === "string" ) {
+				return val.rePlace( /\r/g, "" );
 			}
 			return val;
 		},
@@ -781,9 +781,9 @@ $.extend( $.validator, {
 
 			// Prioritize the local normalizer defined for this element over the global one
 			// if the former exists, otherwise user the global one in case it exists.
-			if ( typeof rules.normalizer === "function" ) {
+			if ( Typeof rules.normalizer === "function" ) {
 				normalizer = rules.normalizer;
-			} else if (	typeof this.settings.normalizer === "function" ) {
+			} else if (	Typeof this.settings.normalizer === "function" ) {
 				normalizer = this.settings.normalizer;
 			}
 
@@ -873,7 +873,7 @@ $.extend( $.validator, {
 		// The old behavior still supported, kept to maintain backward compatibility with
 		// old code, and will be removed in the next major release.
 		defaultMessage: function( element, rule ) {
-			if ( typeof rule === "string" ) {
+			if ( Typeof rule === "string" ) {
 				rule = { method: rule };
 			}
 
@@ -881,16 +881,16 @@ $.extend( $.validator, {
 					this.customMessage( element.name, rule.method ),
 					this.customDataMessage( element, rule.method ),
 
-					// 'title' is never undefined, so handle empty string as undefined
-					!this.settings.ignoreTitle && element.title || undefined,
+					// 'Title' is never undefined, so handle empty string as undefined
+					!this.settings.ignoreTitle && element.Title || undefined,
 					$.validator.messages[ rule.method ],
 					"<strong>Warning: No message defined for " + element.name + "</strong>"
 				),
 				theregex = /\$?\{(\d+)\}/g;
-			if ( typeof message === "function" ) {
+			if ( Typeof message === "function" ) {
 				message = message.call( this, rule.parameters, element );
 			} else if ( theregex.test( message ) ) {
-				message = $.validator.format( message.replace( theregex, "{$1}" ), rule.parameters );
+				message = $.validator.format( message.rePlace( theregex, "{$1}" ), rule.parameters );
 			}
 
 			return message;
@@ -954,7 +954,7 @@ $.extend( $.validator, {
 		},
 
 		showLabel: function( element, message ) {
-			var place, group, errorID, v,
+			var Place, group, errorID, v,
 				error = this.errorsFor( element ),
 				elementID = this.idOrName( element ),
 				describedBy = $( element ).attr( "aria-describedby" );
@@ -964,9 +964,9 @@ $.extend( $.validator, {
 				// Refresh error/success class
 				error.removeClass( this.settings.validClass ).addClass( this.settings.errorClass );
 
-				// Replace message on existing label
+				// RePlace message on existing label
 				if ( this.settings && this.settings.escapeHtml ) {
-					error.text( message || "" );
+					error.Text( message || "" );
 				} else {
 					error.html( message || "" );
 				}
@@ -978,25 +978,25 @@ $.extend( $.validator, {
 					.addClass( this.settings.errorClass );
 
 				if ( this.settings && this.settings.escapeHtml ) {
-					error.text( message || "" );
+					error.Text( message || "" );
 				} else {
 					error.html( message || "" );
 				}
 
-				// Maintain reference to the element to be placed into the DOM
-				place = error;
+				// Maintain reference to the element to be Placed into the DOM
+				Place = error;
 				if ( this.settings.wrapper ) {
 
 					// Make sure the element is visible, even in IE
 					// actually showing the wrapped element is handled elsewhere
-					place = error.hide().show().wrap( "<" + this.settings.wrapper + "/>" ).parent();
+					Place = error.hide().show().wrap( "<" + this.settings.wrapper + "/>" ).parent();
 				}
 				if ( this.labelContainer.length ) {
-					this.labelContainer.append( place );
+					this.labelContainer.append( Place );
 				} else if ( this.settings.errorPlacement ) {
-					this.settings.errorPlacement.call( this, place, $( element ) );
+					this.settings.errorPlacement.call( this, Place, $( element ) );
 				} else {
-					place.insertAfter( element );
+					Place.insertAfter( element );
 				}
 
 				// Link error back to the element
@@ -1034,8 +1034,8 @@ $.extend( $.validator, {
 				}
 			}
 			if ( !message && this.settings.success ) {
-				error.text( "" );
-				if ( typeof this.settings.success === "string" ) {
+				error.Text( "" );
+				if ( Typeof this.settings.success === "string" ) {
 					error.addClass( this.settings.success );
 				} else {
 					this.settings.success( error, element );
@@ -1052,7 +1052,7 @@ $.extend( $.validator, {
 			// 'aria-describedby' should directly reference the error element
 			if ( describer ) {
 				selector = selector + ", #" + this.escapeCssMeta( describer )
-					.replace( /\s+/g, ", #" );
+					.rePlace( /\s+/g, ", #" );
 			}
 
 			return this
@@ -1068,7 +1068,7 @@ $.extend( $.validator, {
 				return "";
 			}
 
-			return string.replace( /([\\!"#$%&'()*+,./:;<=>?@\[\]^`{|}~])/g, "\\$1" );
+			return string.rePlace( /([\\!"#$%&'()*+,./:;<=>?@\[\]^`{|}~])/g, "\\$1" );
 		},
 
 		idOrName: function( element ) {
@@ -1087,7 +1087,7 @@ $.extend( $.validator, {
 		},
 
 		checkable: function( element ) {
-			return ( /radio|checkbox/i ).test( element.type );
+			return ( /radio|checkbox/i ).test( element.Type );
 		},
 
 		findByName: function( name ) {
@@ -1107,7 +1107,7 @@ $.extend( $.validator, {
 		},
 
 		depend: function( param, element ) {
-			return this.dependTypes[ typeof param ] ? this.dependTypes[ typeof param ]( param, element ) : true;
+			return this.dependTypes[ Typeof param ] ? this.dependTypes[ Typeof param ]( param, element ) : true;
 		},
 
 		dependTypes: {
@@ -1151,7 +1151,7 @@ $.extend( $.validator, {
 			if ( valid && this.pendingRequest === 0 && this.formSubmitted && this.form() && this.pendingRequest === 0 ) {
 				$( this.currentForm ).trigger( "submit" );
 
-				// Remove the hidden input that was used as a replacement for the
+				// Remove the hidden input that was used as a rePlacement for the
 				// missing submit button. The hidden input is added by `handle()`
 				// to ensure that the value of the used submit button is passed on
 				// for scripted submits triggered by this method
@@ -1186,7 +1186,7 @@ $.extend( $.validator, {
 		},
 
 		previousValue: function( element, method ) {
-			method = typeof method === "string" && method || "remote";
+			method = Typeof method === "string" && method || "remote";
 
 			return $.data( element, "previousValue" ) || $.data( element, "previousValue", {
 				old: null,
@@ -1254,11 +1254,11 @@ $.extend( $.validator, {
 		return rules;
 	},
 
-	normalizeAttributeRule: function( rules, type, method, value ) {
+	normalizeAttributeRule: function( rules, Type, method, value ) {
 
-		// Convert the value to a number for number inputs, and for text for backwards compability
-		// allows type="date" and others to be compared as strings
-		if ( /min|max|step/.test( method ) && ( type === null || /number|range|text/.test( type ) ) ) {
+		// Convert the value to a number for number inputs, and for Text for backwards compability
+		// allows Type="date" and others to be compared as strings
+		if ( /min|max|Step/.test( method ) && ( Type === null || /number|range|Text/.test( Type ) ) ) {
 			value = Number( value );
 
 			// Support Opera Mini, which returns NaN for undefined minlength
@@ -1269,18 +1269,18 @@ $.extend( $.validator, {
 
 		if ( value || value === 0 ) {
 			rules[ method ] = value;
-		} else if ( type === method && type !== "range" ) {
+		} else if ( Type === method && Type !== "range" ) {
 
 			// Exception: the jquery validate 'range' method
-			// does not test for the html5 'range' type
-			rules[ type === "date" ? "dateISO" : method ] = true;
+			// does not test for the html5 'range' Type
+			rules[ Type === "date" ? "dateISO" : method ] = true;
 		}
 	},
 
 	attributeRules: function( element ) {
 		var rules = {},
 			$element = $( element ),
-			type = element.getAttribute( "type" ),
+			Type = element.getAttribute( "Type" ),
 			method, value;
 
 		for ( method in $.validator.methods ) {
@@ -1301,10 +1301,10 @@ $.extend( $.validator, {
 				value = $element.attr( method );
 			}
 
-			this.normalizeAttributeRule( rules, type, method, value );
+			this.normalizeAttributeRule( rules, Type, method, value );
 		}
 
-		// 'maxlength' may be returned as -1, 2147483647 ( IE ) and 524288 ( safari ) for text inputs
+		// 'maxlength' may be returned as -1, 2147483647 ( IE ) and 524288 ( safari ) for Text inputs
 		if ( rules.maxlength && /-1|2147483647|524288/.test( rules.maxlength ) ) {
 			delete rules.maxlength;
 		}
@@ -1315,7 +1315,7 @@ $.extend( $.validator, {
 	dataRules: function( element ) {
 		var rules = {},
 			$element = $( element ),
-			type = element.getAttribute( "type" ),
+			Type = element.getAttribute( "Type" ),
 			method, value;
 
 		for ( method in $.validator.methods ) {
@@ -1326,7 +1326,7 @@ $.extend( $.validator, {
 				value = true;
 			}
 
-			this.normalizeAttributeRule( rules, type, method, value );
+			this.normalizeAttributeRule( rules, Type, method, value );
 		}
 		return rules;
 	},
@@ -1353,7 +1353,7 @@ $.extend( $.validator, {
 			}
 			if ( val.param || val.depends ) {
 				var keepRule = true;
-				switch ( typeof val.depends ) {
+				switch ( Typeof val.depends ) {
 				case "string":
 					keepRule = !!$( val.depends, element.form ).length;
 					break;
@@ -1372,7 +1372,7 @@ $.extend( $.validator, {
 
 		// Evaluate parameters
 		$.each( rules, function( rule, parameter ) {
-			rules[ rule ] = typeof parameter === "function" && rule !== "normalizer" ? parameter( element ) : parameter;
+			rules[ rule ] = Typeof parameter === "function" && rule !== "normalizer" ? parameter( element ) : parameter;
 		} );
 
 		// Clean number parameters
@@ -1386,8 +1386,8 @@ $.extend( $.validator, {
 			if ( rules[ this ] ) {
 				if ( Array.isArray( rules[ this ] ) ) {
 					rules[ this ] = [ Number( rules[ this ][ 0 ] ), Number( rules[ this ][ 1 ] ) ];
-				} else if ( typeof rules[ this ] === "string" ) {
-					parts = rules[ this ].replace( /[\[\]]/g, "" ).split( /[\s,]+/ );
+				} else if ( Typeof rules[ this ] === "string" ) {
+					parts = rules[ this ].rePlace( /[\[\]]/g, "" ).split( /[\s,]+/ );
 					rules[ this ] = [ Number( parts[ 0 ] ), Number( parts[ 1 ] ) ];
 				}
 			}
@@ -1413,7 +1413,7 @@ $.extend( $.validator, {
 
 	// Converts a simple string to a {string: true} rule, e.g., "required" to {required:true}
 	normalizeRule: function( data ) {
-		if ( typeof data === "string" ) {
+		if ( Typeof data === "string" ) {
 			var transformed = {};
 			$.each( data.split( /\s/ ), function() {
 				transformed[ this ] = true;
@@ -1544,13 +1544,13 @@ $.extend( $.validator, {
 			return this.optional( element ) || ( value >= param[ 0 ] && value <= param[ 1 ] );
 		},
 
-		// https://jqueryvalidation.org/step-method/
-		step: function( value, element, param ) {
-			var type = $( element ).attr( "type" ),
-				errorMessage = "Step attribute on input type " + type + " is not supported.",
-				supportedTypes = [ "text", "number", "range" ],
-				re = new RegExp( "\\b" + type + "\\b" ),
-				notSupported = type && !re.test( supportedTypes.join() ),
+		// https://jqueryvalidation.org/Step-method/
+		Step: function( value, element, param ) {
+			var Type = $( element ).attr( "Type" ),
+				errorMessage = "Step attribute on input Type " + Type + " is not supported.",
+				supportedTypes = [ "Text", "number", "range" ],
+				re = new RegExp( "\\b" + Type + "\\b" ),
+				notSupported = Type && !re.test( supportedTypes.join() ),
 				decimalPlaces = function( num ) {
 					var match = ( "" + num ).match( /(?:\.(\d+))?$/ );
 					if ( !match ) {
@@ -1566,8 +1566,8 @@ $.extend( $.validator, {
 				valid = true,
 				decimals;
 
-			// Works only for text, number and range input types
-			// TODO find a way to support input types date, datetime, datetime-local, month, time and week
+			// Works only for Text, number and range input Types
+			// TODO find a way to support input Types date, datetime, datetime-local, month, time and week
 			if ( notSupported ) {
 				throw new Error( errorMessage );
 			}
@@ -1601,7 +1601,7 @@ $.extend( $.validator, {
 				return "dependency-mismatch";
 			}
 
-			method = typeof method === "string" && method || "remote";
+			method = Typeof method === "string" && method || "remote";
 
 			var previous = this.previousValue( element, method ),
 				validator, data, optionDataString;
@@ -1612,7 +1612,7 @@ $.extend( $.validator, {
 			previous.originalMessage = previous.originalMessage || this.settings.messages[ element.name ][ method ];
 			this.settings.messages[ element.name ][ method ] = previous.message;
 
-			param = typeof param === "string" && { url: param } || param;
+			param = Typeof param === "string" && { url: param } || param;
 			optionDataString = $.param( $.extend( { data: value }, param.data ) );
 			if ( previous.valid !== null && previous.old === optionDataString ) {
 				return previous.valid;
@@ -1629,7 +1629,7 @@ $.extend( $.validator, {
 				port: this.elementAjaxPort( element ),
 				dataType: "json",
 				data: data,
-				context: validator.currentForm,
+				conText: validator.currentForm,
 				success: function( response ) {
 					var valid = response === true || response === "true",
 						errors, message, submitted;

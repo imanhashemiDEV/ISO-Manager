@@ -14,17 +14,17 @@ namespace ISO_Manager.Pages.Admin.Clothes
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["organization_id"] = new SelectList(_context.Organizations, "id", "id");
-        ViewData["users"] = _context.Users.Where(m=>m.EmploymentType == "rasmi" || m.EmploymentType=="gharardadi").ToList();
+        ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "id");
+        ViewData["users"] = _conText.Users.Where(m=>m.EmploymentType == "rasmi" || m.EmploymentType=="gharardadi").ToList();
             return Page();
         }
 
@@ -41,10 +41,10 @@ namespace ISO_Manager.Pages.Admin.Clothes
                 return Page();
             }
 
-            Cloth.receive_date = DateToMiladi.ToMiladi(ReceivedDate);
+            Cloth.ReceiveDate = DateToMiladi.ToMiladi(ReceivedDate);
 
-            _context.Clothes.Add(Cloth);
-            await _context.SaveChangesAsync();
+            _conText.Clothes.Add(Cloth);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

@@ -15,19 +15,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.EmergencyTeam[0].duty)
+                @Html.DisplayNameFor(model => model.EmergencyTeam[0].Duty)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmergencyTeam[0].created_at)
+                @Html.DisplayNameFor(model => model.EmergencyTeam[0].CreatedAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmergencyTeam[0].updated_at)
+                @Html.DisplayNameFor(model => model.EmergencyTeam[0].UpdatedAt)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EmergencyTeam[0].User)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmergencyTeam[0].Workplace)
+                @Html.DisplayNameFor(model => model.EmergencyTeam[0].WorkPlace)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EmergencyTeam[0].Duty)
@@ -39,19 +39,19 @@
 @foreach (var item in Model.EmergencyTeam) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.duty)
+                @Html.DisplayFor(modelItem => item.Duty)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.created_at)
+                @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.updated_at)
+                @Html.DisplayFor(modelItem => item.UpdatedAt)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.User.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Workplace.Id)
+                @Html.DisplayFor(modelItem => item.WorkPlace.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Duty.Id)

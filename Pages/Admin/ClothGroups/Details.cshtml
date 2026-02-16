@@ -38,10 +38,10 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.ClothGroupList[0].shoes)
+                                            @Html.DisplayNameFor(model => model.ClothGroupList[0].Shoes)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.ClothGroupList[0].boiler_suit)
+                                            @Html.DisplayNameFor(model => model.ClothGroupList[0].BoilerSuit)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.ClothGroupList[0].User)
@@ -55,17 +55,17 @@
                                         <tr>
                                             <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.shoes)
+                                                @Html.DisplayFor(modelItem => item.Shoes)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.boiler_suit)
+                                                @Html.DisplayFor(modelItem => item.BoilerSuit)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.User.Name)
                                             </td>
                                             <td>
                                                 <a asp-page="/Admin/ClothGroupLists/Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

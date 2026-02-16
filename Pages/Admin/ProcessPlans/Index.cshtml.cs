@@ -12,20 +12,20 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<ProcessPlan> ProcessPlan { get;set; } = default!;
 
-        public async Task OnGetAsync(int pageId = 1)
+        public async Task OnGetAsync(long id , int pageId = 1)
         {
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _context.ProcessPlans.Count();
+            var ItemCount = _conText.ProcessPlans.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -38,7 +38,8 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
             {
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
-            ProcessPlan = await _context.ProcessPlans
+            ProcessPlan = await _conText.ProcessPlans
+                .Where(m=>m.process_id == id)
                 .Include(p => p.Process)
                 .Skip(skip).Take(Take)
                 .ToListAsync();

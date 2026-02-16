@@ -13,50 +13,50 @@
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="InspectionDetail.Id" />
+            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+            <input Type="hidden" asp-for="InspectionDetail.Id" />
             <div class="form-group">
-                <label asp-for="InspectionDetail.inspection_date" class="control-label"></label>
-                <input asp-for="InspectionDetail.inspection_date" class="form-control" />
-                <span asp-validation-for="InspectionDetail.inspection_date" class="text-danger"></span>
+                <label asp-for="InspectionDetail.InspectionDate" class="control-label"></label>
+                <input asp-for="InspectionDetail.InspectionDate" class="form-control" />
+                <span asp-validation-for="InspectionDetail.InspectionDate" class="Text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InspectionDetail.text" class="control-label"></label>
-                <input asp-for="InspectionDetail.text" class="form-control" />
-                <span asp-validation-for="InspectionDetail.text" class="text-danger"></span>
+                <label asp-for="InspectionDetail.Text" class="control-label"></label>
+                <input asp-for="InspectionDetail.Text" class="form-control" />
+                <span asp-validation-for="InspectionDetail.Text" class="Text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InspectionDetail.description" class="control-label"></label>
-                <input asp-for="InspectionDetail.description" class="form-control" />
-                <span asp-validation-for="InspectionDetail.description" class="text-danger"></span>
+                <label asp-for="InspectionDetail.Description" class="control-label"></label>
+                <input asp-for="InspectionDetail.Description" class="form-control" />
+                <span asp-validation-for="InspectionDetail.Description" class="Text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InspectionDetail.created_at" class="control-label"></label>
-                <input asp-for="InspectionDetail.created_at" class="form-control" />
-                <span asp-validation-for="InspectionDetail.created_at" class="text-danger"></span>
+                <label asp-for="InspectionDetail.CreatedAt" class="control-label"></label>
+                <input asp-for="InspectionDetail.CreatedAt" class="form-control" />
+                <span asp-validation-for="InspectionDetail.CreatedAt" class="Text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InspectionDetail.updated_at" class="control-label"></label>
-                <input asp-for="InspectionDetail.updated_at" class="form-control" />
-                <span asp-validation-for="InspectionDetail.updated_at" class="text-danger"></span>
+                <label asp-for="InspectionDetail.UpdatedAt" class="control-label"></label>
+                <input asp-for="InspectionDetail.UpdatedAt" class="form-control" />
+                <span asp-validation-for="InspectionDetail.UpdatedAt" class="Text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InspectionDetail.inspection_id" class="control-label"></label>
-                <select asp-for="InspectionDetail.inspection_id" class="form-control" asp-items="ViewBag.inspection_id" ></select>
-                <span asp-validation-for="InspectionDetail.inspection_id" class="text-danger"></span>
+                <label asp-for="InspectionDetail.InspectionId" class="control-label"></label>
+                <select asp-for="InspectionDetail.InspectionId" class="form-control" asp-items="ViewBag.InspectionId" ></select>
+                <span asp-validation-for="InspectionDetail.InspectionId" class="Text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InspectionDetail.text_id" class="control-label"></label>
-                <select asp-for="InspectionDetail.text_id" class="form-control" asp-items="ViewBag.text_id" ></select>
-                <span asp-validation-for="InspectionDetail.text_id" class="text-danger"></span>
+                <label asp-for="InspectionDetail.TextId" class="control-label"></label>
+                <select asp-for="InspectionDetail.TextId" class="form-control" asp-items="ViewBag.TextId" ></select>
+                <span asp-validation-for="InspectionDetail.TextId" class="Text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InspectionDetail.workplace_id" class="control-label"></label>
-                <select asp-for="InspectionDetail.workplace_id" class="form-control" asp-items="ViewBag.workplace_id" ></select>
-                <span asp-validation-for="InspectionDetail.workplace_id" class="text-danger"></span>
+                <label asp-for="InspectionDetail.WorkPlaceId" class="control-label"></label>
+                <select asp-for="InspectionDetail.WorkPlaceId" class="form-control" asp-items="ViewBag.WorkPlaceId" ></select>
+                <span asp-validation-for="InspectionDetail.WorkPlaceId" class="Text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input Type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>

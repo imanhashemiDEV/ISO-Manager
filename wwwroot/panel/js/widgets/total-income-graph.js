@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var options8 = {
       chart: {
         height: 320,
-        type: 'donut'
+        Type: 'donut'
       },
       series: [27, 23, 20, 17],
       colors: ['#4680FF', '#E58A00', '#2CA87F', '#4680FF'],
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
       plotOptions: {
         pie: {
           donut: {
-            size: '65%',
+            Size: '65%',
             labels: {
               show: true,
               name: {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
             plotOptions: {
               pie: {
                 donut: {
-                  size: '65%',
+                  Size: '65%',
                   labels: {
                     show: false
                   }

@@ -38,7 +38,7 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.ClothGroup[0].name)
+                                            @Html.DisplayNameFor(model => model.ClothGroup[0].Title)
                                         </th>
                                         <th>عملیات</th>
                                     </tr>
@@ -49,14 +49,14 @@
                                         <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.name)
+                                                @Html.DisplayFor(modelItem => item.Title)
                                             </td>
                                             <td>
                                                 <a asp-page="./Details" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-eye text-xl leading-none"></i>
+                                                    <i class="ti ti-eye Text-xl leading-none"></i>
                                                 </a>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

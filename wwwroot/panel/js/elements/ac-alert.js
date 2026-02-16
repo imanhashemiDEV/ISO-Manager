@@ -11,15 +11,15 @@
   document.querySelector('.bs-error-icon').addEventListener('click', function () {
     Swal.fire({
       icon: 'error',
-      title: 'Oops...',
-      text: 'Something went wrong!',
+      Title: 'Oops...',
+      Text: 'Something went wrong!',
       footer: '<a href>Why do I have this issue?</a>'
     });
   });
 
   document.querySelector('.bs-long-content').addEventListener('click', function () {
     Swal.fire({
-      imageUrl: 'https://placeholder.pics/svg/300x1500',
+      imageUrl: 'https://Placeholder.pics/svg/300x1500',
       imageHeight: 1500,
       imageAlt: 'A tall image'
     });
@@ -27,9 +27,9 @@
 
   document.querySelector('.bs-cust-html').addEventListener('click', function () {
     Swal.fire({
-      title: '<strong>HTML <u>example</u></strong>',
+      Title: '<strong>HTML <u>example</u></strong>',
       icon: 'info',
-      html: 'You can use <b>bold text</b>, ' + '<a href="//sweetalert2.github.io">links</a> ' + 'and other HTML tags',
+      html: 'You can use <b>bold Text</b>, ' + '<a href="//sweetalert2.github.io">links</a> ' + 'and other HTML tags',
       showCloseButton: true,
       showCancelButton: true,
       focusConfirm: false,
@@ -42,7 +42,7 @@
 
   document.querySelector('.bs-tre-button').addEventListener('click', function () {
     Swal.fire({
-      title: 'Do you want to save the changes?',
+      Title: 'Do you want to save the changes?',
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: `Save`,
@@ -60,7 +60,7 @@
     Swal.fire({
       position: 'top-end',
       icon: 'success',
-      title: 'Your work has been saved',
+      Title: 'Your work has been saved',
       showConfirmButton: false,
       timer: 1500
     });
@@ -68,7 +68,7 @@
 
   document.querySelector('.bs-cust-anim').addEventListener('click', function () {
     Swal.fire({
-      title: 'Custom animation with Animate.css',
+      Title: 'Custom animation with Animate.css',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
       },
@@ -88,8 +88,8 @@
     });
     swalWithBootstrapButtons
       .fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        Title: 'Are you sure?',
+        Text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
@@ -107,8 +107,8 @@
 
   document.querySelector('.bs-cust-img').addEventListener('click', function () {
     Swal.fire({
-      title: 'Sweet!',
-      text: 'Modal with a custom image.',
+      Title: 'Sweet!',
+      Text: 'Modal with a custom image.',
       imageUrl: 'https://unsplash.it/400/200',
       imageWidth: 400,
       imageHeight: 200,
@@ -119,7 +119,7 @@
   document.querySelector('.bs-auto-close').addEventListener('click', function () {
     let timerInterval;
     Swal.fire({
-      title: 'Auto close alert!',
+      Title: 'Auto close alert!',
       html: 'I will close in <b></b> milliseconds.',
       timer: 2000,
       timerProgressBar: true,
@@ -130,7 +130,7 @@
           if (content) {
             const b = content.querySelector('b');
             if (b) {
-              b.textContent = Swal.getTimerLeft();
+              b.TextContent = Swal.getTimerLeft();
             }
           }
         }, 100);
@@ -146,7 +146,7 @@
 
   document.querySelector('.bs-rtl-lang').addEventListener('click', function () {
     Swal.fire({
-      title: 'هل تريد الاستمرار؟',
+      Title: 'هل تريد الاستمرار؟',
       icon: 'question',
       iconHtml: '؟',
       confirmButtonText: 'نعم',
@@ -158,8 +158,8 @@
 
   document.querySelector('.bs-ajex-req').addEventListener('click', function () {
     Swal.fire({
-      title: 'Submit your Github username',
-      input: 'text',
+      Title: 'Submit your Github username',
+      input: 'Text',
       inputAttributes: {
         autocapitalize: 'off'
       },
@@ -170,7 +170,7 @@
         return fetch(`//api.github.com/users/` + login)
           .then((response) => {
             if (!response.ok) {
-              throw new Error(response.statusText);
+              throw new Error(response.StatusText);
             }
             return response.json();
           })
@@ -182,7 +182,7 @@
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
-          title: result.value.login + `'s avatar`,
+          Title: result.value.login + `'s avatar`,
           imageUrl: result.value.avatar_url
         });
       }
@@ -203,54 +203,54 @@
     });
     Toast.fire({
       icon: 'success',
-      title: 'Signed in successfully'
+      Title: 'Signed in successfully'
     });
   });
 
   document.querySelector('.bs-success-ico').addEventListener('click', function () {
     Swal.fire({
       icon: 'success',
-      title: 'Success modal'
+      Title: 'Success modal'
     });
   });
 
   document.querySelector('.bs-error-ico').addEventListener('click', function () {
     Swal.fire({
       icon: 'error',
-      title: 'Error modal'
+      Title: 'Error modal'
     });
   });
 
   document.querySelector('.bs-warning-ico').addEventListener('click', function () {
     Swal.fire({
       icon: 'warning',
-      title: 'warning modal'
+      Title: 'warning modal'
     });
   });
 
   document.querySelector('.bs-info-ico').addEventListener('click', function () {
     Swal.fire({
       icon: 'info',
-      title: 'info modal'
+      Title: 'info modal'
     });
   });
 
   document.querySelector('.bs-question-ico').addEventListener('click', function () {
     Swal.fire({
       icon: 'question',
-      title: 'question modal'
+      Title: 'question modal'
     });
   });
 
-  document.querySelector('.bs-text-input').addEventListener('click', function () {
+  document.querySelector('.bs-Text-input').addEventListener('click', function () {
     (async () => {
       const ipAPI = '//api.ipify.org?format=json';
       const inputValue = fetch(ipAPI)
         .then((response) => response.json())
         .then((data) => data.ip);
       const { value: ipAddress } = await Swal.fire({
-        title: 'Enter your IP address',
-        input: 'text',
+        Title: 'Enter your IP address',
+        input: 'Text',
         inputValue: inputValue,
         showCancelButton: true,
         inputValidator: (value) => {
@@ -268,7 +268,7 @@
   document.querySelector('.bs-email-input').addEventListener('click', function () {
     (async () => {
       const { value: email } = await Swal.fire({
-        title: 'Input email address',
+        Title: 'Input email address',
         input: 'email',
         inputPlaceholder: 'Enter your email address'
       });
@@ -294,7 +294,7 @@
   document.querySelector('.bs-password-input').addEventListener('click', function () {
     (async () => {
       const { value: password } = await Swal.fire({
-        title: 'Enter your password',
+        Title: 'Enter your password',
         input: 'password',
         inputPlaceholder: 'Enter your password',
         inputAttributes: {
@@ -309,18 +309,18 @@
     })();
   });
 
-  document.querySelector('.bs-textarea-input').addEventListener('click', function () {
+  document.querySelector('.bs-Textarea-input').addEventListener('click', function () {
     (async () => {
-      const { value: text } = await Swal.fire({
-        input: 'textarea',
+      const { value: Text } = await Swal.fire({
+        input: 'Textarea',
         inputPlaceholder: 'Type your message here...',
         inputAttributes: {
           'aria-label': 'Type your message here'
         },
         showCancelButton: true
       });
-      if (text) {
-        Swal.fire(text);
+      if (Text) {
+        Swal.fire(Text);
       }
     })();
   });
@@ -328,7 +328,7 @@
   document.querySelector('.bs-select-input').addEventListener('click', function () {
     (async () => {
       const { value: fruit } = await Swal.fire({
-        title: 'Select field validation',
+        Title: 'Select field validation',
         input: 'select',
         inputOptions: {
           Fruits: {
@@ -374,7 +374,7 @@
         }, 1000);
       });
       const { value: color } = await Swal.fire({
-        title: 'Select color',
+        Title: 'Select color',
         input: 'radio',
         inputOptions: inputOptions,
         inputValidator: (value) => {
@@ -394,7 +394,7 @@
   document.querySelector('.bs-checkbox-input').addEventListener('click', function () {
     (async () => {
       const { value: accept } = await Swal.fire({
-        title: 'Terms and conditions',
+        Title: 'Terms and conditions',
         input: 'checkbox',
         inputValue: 1,
         inputPlaceholder: 'I agree with the terms and conditions',
@@ -412,7 +412,7 @@
   document.querySelector('.bs-file-input').addEventListener('click', function () {
     (async () => {
       const { value: file } = await Swal.fire({
-        title: 'Select image',
+        Title: 'Select image',
         input: 'file',
         inputAttributes: {
           accept: 'image/*',
@@ -423,7 +423,7 @@
         const reader = new FileReader();
         reader.onload = (e) => {
           Swal.fire({
-            title: 'Your uploaded picture',
+            Title: 'Your uploaded picture',
             imageUrl: e.target.result,
             imageAlt: 'The uploaded picture'
           });
@@ -436,13 +436,13 @@
   document.querySelector('.bs-range-input').addEventListener('click', function () {
     (async () => {
       Swal.fire({
-        title: 'How old are you?',
+        Title: 'How old are you?',
         icon: 'question',
         input: 'range',
         inputAttributes: {
           min: 8,
           max: 120,
-          step: 1
+          Step: 1
         },
         inputValue: 25
       });
@@ -452,7 +452,7 @@
   document.querySelector('.bs-multiple-input').addEventListener('click', function () {
     (async () => {
       const { value: formValues } = await Swal.fire({
-        title: 'Multiple inputs',
+        Title: 'Multiple inputs',
         html: '<input id="swal-input1" class="swal2-input">' + '<input id="swal-input2" class="swal2-input">',
         focusConfirm: false,
         preConfirm: () => {

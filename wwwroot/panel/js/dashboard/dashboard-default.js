@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function floatchart() {
   (function () {
     var options1 = {
-      chart: { type: 'bar', height: 50, sparkline: { enabled: true } },
+      chart: { Type: 'bar', height: 50, sparkline: { enabled: true } },
       colors: ['#4680FF'],
       plotOptions: { bar: { columnWidth: '80%' } },
       series: [
@@ -21,7 +21,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -33,7 +33,7 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#all-earnings-graph'), options1);
     chart.render();
     var options2 = {
-      chart: { type: 'bar', height: 50, sparkline: { enabled: true } },
+      chart: { Type: 'bar', height: 50, sparkline: { enabled: true } },
       colors: ['#E58A00'],
       plotOptions: { bar: { columnWidth: '80%' } },
       series: [
@@ -46,7 +46,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -58,7 +58,7 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#page-views-graph'), options2);
     chart.render();
     var options3 = {
-      chart: { type: 'bar', height: 50, sparkline: { enabled: true } },
+      chart: { Type: 'bar', height: 50, sparkline: { enabled: true } },
       colors: ['#2CA87F'],
       plotOptions: { bar: { columnWidth: '80%' } },
       series: [
@@ -71,7 +71,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -83,7 +83,7 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#total-task-graph'), options3);
     chart.render();
     var options4 = {
-      chart: { type: 'bar', height: 50, sparkline: { enabled: true } },
+      chart: { Type: 'bar', height: 50, sparkline: { enabled: true } },
       colors: ['#DC2626'],
       plotOptions: { bar: { columnWidth: '80%' } },
       series: [
@@ -96,7 +96,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -109,7 +109,7 @@ function floatchart() {
     chart.render();
     var options5 = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 300,
         toolbar: {
           show: false
@@ -117,10 +117,10 @@ function floatchart() {
       },
       colors: ['#0d6efd'],
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -160,17 +160,17 @@ function floatchart() {
     chart.render();
     var options6 = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 60,
         stacked: true,
         sparkline: { enabled: true }
       },
       colors: ['#4680FF'],
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -183,17 +183,17 @@ function floatchart() {
     chart.render();
     var options7 = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 60,
         stacked: true,
         sparkline: { enabled: true }
       },
       colors: ['#DC2626'],
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -207,7 +207,7 @@ function floatchart() {
     var options8 = {
       chart: {
         height: 320,
-        type: 'donut'
+        Type: 'donut'
       },
       series: [27, 23, 20, 17],
       colors: ['#4680FF', '#E58A00', '#2CA87F', '#4680FF'],
@@ -221,7 +221,7 @@ function floatchart() {
       plotOptions: {
         pie: {
           donut: {
-            size: '65%',
+            Size: '65%',
             labels: {
               show: true,
               name: {
@@ -244,7 +244,7 @@ function floatchart() {
             plotOptions: {
               pie: {
                 donut: {
-                  size: '65%',
+                  Size: '65%',
                   labels: {
                     show: true
                   }

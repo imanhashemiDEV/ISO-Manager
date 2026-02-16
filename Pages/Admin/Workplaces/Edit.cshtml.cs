@@ -9,19 +9,19 @@ using Microsoft.EntityFrameworkCore;
 using ISO_Manager.Data;
 using ISO_Manager.Models;
 
-namespace ISO_Manager.Pages.Admin.Workplace
+namespace ISO_Manager.Pages.Admin.WorkPlace
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
-        public Models.Workplace Workplace { get; set; } = default!;
+        public Models.WorkPlace WorkPlace { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {
@@ -30,12 +30,12 @@ namespace ISO_Manager.Pages.Admin.Workplace
                 return NotFound();
             }
 
-            var workplace =  await _context.Workplaces.FirstOrDefaultAsync(m => m.Id == id);
-            if (workplace == null)
+            var workPlace =  await _conText.WorkPlaces.FirstOrDefaultAsync(m => m.Id == id);
+            if (workPlace == null)
             {
                 return NotFound();
             }
-            Workplace = workplace;
+            WorkPlace = workPlace;
             return Page();
         }
 
@@ -48,15 +48,15 @@ namespace ISO_Manager.Pages.Admin.Workplace
                 return Page();
             }
 
-            _context.Attach(Workplace).State = EntityState.Modified;
+            _conText.Attach(WorkPlace).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!WorkplaceExists(Workplace.Id))
+                if (!WorkPlaceExists(WorkPlace.Id))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace ISO_Manager.Pages.Admin.Workplace
             return RedirectToPage("./Index");
         }
 
-        private bool WorkplaceExists(long id)
+        private bool WorkPlaceExists(long id)
         {
-            return _context.Workplaces.Any(e => e.Id == id);
+            return _conText.WorkPlaces.Any(e => e.Id == id);
         }
     }
 }

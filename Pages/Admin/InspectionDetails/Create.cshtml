@@ -33,7 +33,7 @@
                     <div class="card-body pt-3">
                         <div class="table-responsive">
                             <form method="post">
-                                 <input type="hidden" asp-for="selectedInspection" value="@Model.selectedInspection">
+                                 <input Type="hidden" asp-for="selectedInspection" value="@Model.selectedInspection">
                                  <table class="table table-hover" id="pc-dt-simple">
                                      <thead>
 
@@ -41,7 +41,7 @@
                                          <th>ردیف</th>
                                          <th>عدم انطباق</th>
                                          <th>
-                                             @Html.DisplayNameFor(model => model.InspectionTexts[0].text)
+                                             @Html.DisplayNameFor(model => model.InspectionTexts[0].Text)
                                          </th>
                                      </tr>
                                      </thead>
@@ -52,10 +52,10 @@
                                          <tr>
                                              <td>@(row++)</td>
                                              <td>
-                                                 <input type="checkbox" name="Checked" class="form-check-input" value="@item.Id" class="items">
+                                                 <input Type="checkbox" name="Checked" class="form-check-input" value="@item.Id" class="items">
                                              </td>
                                              <td>
-                                                 @Html.DisplayFor(modelItem => item.text)
+                                                 @Html.DisplayFor(modelItem => item.Text)
                                              </td>
                                          </tr>
                                      }
@@ -64,7 +64,7 @@
                                  </table>
 
                                 <div class="grid gap-2 mt-2">
-                                    <button class="btn btn-primary" type="submit">ذخیره</button>
+                                    <button class="btn btn-primary" Type="submit">ذخیره</button>
                                 </div>
                             </form>
                             

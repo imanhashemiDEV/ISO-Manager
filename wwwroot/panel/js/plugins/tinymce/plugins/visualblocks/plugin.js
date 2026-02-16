@@ -51,7 +51,7 @@
     const setup = (editor, pluginUrl, enabledState) => {
       editor.on('PreviewFormats AfterPreviewFormats', e => {
         if (enabledState.get()) {
-          editor.dom.toggleClass(editor.getBody(), 'mce-visualblocks', e.type === 'afterpreviewformats');
+          editor.dom.toggleClass(editor.getBody(), 'mce-visualblocks', e.Type === 'afterpreviewformats');
         }
       });
       editor.on('init', () => {
@@ -74,14 +74,14 @@
         tooltip: 'Show blocks',
         onAction,
         onSetup: toggleActiveState(editor, enabledState),
-        context: 'any'
+        conText: 'any'
       });
       editor.ui.registry.addToggleMenuItem('visualblocks', {
-        text: 'Show blocks',
+        Text: 'Show blocks',
         icon: 'visualblocks',
         onAction,
         onSetup: toggleActiveState(editor, enabledState),
-        context: 'any'
+        conText: 'any'
       });
     };
 

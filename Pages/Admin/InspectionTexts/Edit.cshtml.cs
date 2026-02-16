@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.InspectionTexts
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,14 +30,14 @@ namespace ISO_Manager.Pages.Admin.InspectionTexts
                 return NotFound();
             }
 
-            var inspectiontext =  await _context.InspectionTexts.FirstOrDefaultAsync(m => m.Id == id);
-            if (inspectiontext == null)
+            var inspectionText =  await _conText.InspectionTexts.FirstOrDefaultAsync(m => m.Id == id);
+            if (inspectionText == null)
             {
                 return NotFound();
             }
-            InspectionText = inspectiontext;
-           ViewData["inspection_place_id"] = new SelectList(_context.InspectionPlaces, "id", "id");
-           ViewData["organization_id"] = new SelectList(_context.Organizations, "id", "id");
+            InspectionText = inspectionText;
+           ViewData["InspectionPlaceId"] = new SelectList(_conText.InspectionPlaces, "id", "id");
+           ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "id");
             return Page();
         }
 
@@ -50,11 +50,11 @@ namespace ISO_Manager.Pages.Admin.InspectionTexts
                 return Page();
             }
 
-            _context.Attach(InspectionText).State = EntityState.Modified;
+            _conText.Attach(InspectionText).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -73,7 +73,7 @@ namespace ISO_Manager.Pages.Admin.InspectionTexts
 
         private bool InspectionTextExists(long id)
         {
-            return _context.InspectionTexts.Any(e => e.Id == id);
+            return _conText.InspectionTexts.Any(e => e.Id == id);
         }
     }
 }

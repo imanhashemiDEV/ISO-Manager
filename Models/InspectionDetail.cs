@@ -10,35 +10,43 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "تاریخ بازرسی")]
-        public DateTime? inspection_date { get; set; }
+        public DateTime? InspectionDate { get; set; }
 
         [Display(Name = "متن بازرسی")]
-        public string? text { get; set; }
+        public string? Text { get; set; }
 
         [Display(Name = "توضیحات")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         // relations
 
 
         [ForeignKey("Inspection")]
-        public int? inspection_id { get; set; }
-        public Inspection? Inspection { get; set; }
+        public int? InspectionId { get; set; }
+        public virtual Inspection? Inspection { get; set; }
 
         [ForeignKey("InspectionText")]
-        public int? text_id { get; set; }
-        public InspectionText? InspectionText { get; set; }
+        public int? TextId { get; set; }
+        public virtual InspectionText? InspectionText { get; set; }
 
-        [ForeignKey("Workplace")]
+        [ForeignKey("WorkPlace")]
         [Display(Name = "نام محل")]
-        public int? workplace_id { get; set; }
+        public int? WorkPlaceId { get; set; }
         [Display(Name = "نام محل")]
-        public Workplace? Workplace { get; set; }
+        public virtual WorkPlace? WorkPlace { get; set; }
+
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
     }
 }

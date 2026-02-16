@@ -9,50 +9,49 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
         
         [Display(Name = "تاریخ تولد")]
-        public DateTime birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
         [Display(Name = "تاریخ استخدام")]
-        public DateTime employment_date { get; set; }
+        public DateTime Employment_date { get; set; }
 
         [Display(Name = "مدرک تحصیلی")]
-        public string? degree { get; set; }
+        public string? Degree { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
 
         // relations
 
-        
         [ForeignKey("User")]
         [Display(Name = "نام و نام خانوادگی")]
-        public string? user_id { get; set; }
+        public string? UserId { get; set; }
         [Display(Name = "نام و نام خانوادگی")]
-        public User? User { get; set; }
+        public virtual User? User { get; set; }
 
 
         [ForeignKey("Organization")]
         [Display(Name = "نام سازمان")]
-        public int? organization_id { get; set; }
+        public int? OrganizationId { get; set; }
         [Display(Name = "نام سازمان")]
-        public Organization? Organization { get; set; }
+        public virtual Organization? Organization { get; set; }
 
 
         [ForeignKey("Occupation")]
         [Display(Name = "سمت")]
-        public int? occupation_id { get; set; }
+        public int? OccupationId { get; set; }
         [Display(Name = "سمت")]
-        public Occupation? Occupation { get; set; }
+        public virtual Occupation? Occupation { get; set; }
         
 
-
-        [ForeignKey("Workplace")]
+        [ForeignKey("WorkPlace")]
         [Display(Name = "محل کار")]
-        public int? workplace_id { get; set; }
+        public int? WorkPlaceId { get; set; }
         [Display(Name = "محل کار")]
-        public Workplace? Workplace { get; set; }
+        public virtual WorkPlace? WorkPlace { get; set; }
 
     }
 }

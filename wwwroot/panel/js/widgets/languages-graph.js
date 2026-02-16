@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var options15 = {
-      chart: { type: 'area', height: 130, sparkline: { enabled: true } },
+      chart: { Type: 'area', height: 130, sparkline: { enabled: true } },
       colors: ['#1890ff'],
       plotOptions: { bar: { columnWidth: '80%' } },
       series: [
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }

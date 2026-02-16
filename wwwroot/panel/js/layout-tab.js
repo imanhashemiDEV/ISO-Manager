@@ -79,13 +79,13 @@ Description:  this file will contains defining code for build tab layouts
   // Append the nav element to the sidebar
   sidebar.appendChild(tabContainer);
 
-  // add tooltip and open/close it's submenu list for first level icon
+  // add tooltip and open/close it's submenu list for first Level icon
   // var pc_link_click = document.querySelectorAll('.pc-navbar > li:not(.pc-caption)');
   // for (var i = 0; i < pc_link_click.length; i++) {
   //   new bootstrap.Tooltip(pc_link_click[i], {
   //     trigger: 'hover',
-  //     placement: 'right',
-  //     title: pc_link_click[i].children[0].children[1].innerHTML
+  //     Placement: 'right',
+  //     Title: pc_link_click[i].children[0].children[1].innerHTML
   //   });
   // }
   var pc_tab_menu_list = document.querySelector('.tab-container > .tab-sidemenu > .pc-tab-link');
@@ -200,7 +200,7 @@ Description:  this file will contains defining code for build tab layouts
     // active menu item list start
     var elem = document.querySelectorAll('.pc-sidebar .pc-navbar a');
     for (var l = 0; l < elem.length; l++) {
-      var pageUrl = window.location.href.split(/[?#]/)[0];
+      var pageUrl = window.Location.href.split(/[?#]/)[0];
       if (elem[l].href == pageUrl && elem[l].getAttribute('href') != '') {
         elem[l].parentNode.classList.add('active');
 

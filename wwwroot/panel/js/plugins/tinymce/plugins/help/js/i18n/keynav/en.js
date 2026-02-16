@@ -14,7 +14,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '  <dt>Focus the notification</dt>\n' +
   '  <dd>Windows or Linux: Alt+F12</dd>\n' +
   '  <dd>macOS: &#x2325;F12</dd>\n' +
-  '  <dt>Focus a contextual toolbar</dt>\n' +
+  '  <dt>Focus a conTextual toolbar</dt>\n' +
   '  <dd>Windows, Linux or macOS: Ctrl+F9</dd>\n' +
   '</dl>\n' +
   '\n' +
@@ -36,7 +36,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '  <li>Element path in the footer</li>\n' +
   '  <li>Word count toggle button in the footer</li>\n' +
   '  <li>Branding link in the footer</li>\n' +
-  '  <li>Editor resize handle in the footer</li>\n' +
+  '  <li>Editor reSize handle in the footer</li>\n' +
   '</ol>\n' +
   '\n' +
   '<p>If a UI section is not present, it is skipped.</p>\n' +

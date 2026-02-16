@@ -25,16 +25,16 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="Cloth.Id" />
-                            <input type="hidden" asp-for="Cloth.user_id" />
+                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <input Type="hidden" asp-for="Cloth.Id" />
+                            <input Type="hidden" asp-for="Cloth.UserId" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Cloth.cloth_type" class="control-label"></label>
-                                    <select asp-for="Cloth.cloth_type" class="form-select">
-                                        <option value="shoes">کفش ایمنی</option>
+                                    <label asp-for="Cloth.ClothType" class="control-label"></label>
+                                    <select asp-for="Cloth.ClothType" class="form-select">
+                                        <option value="Shoes">کفش ایمنی</option>
                                         <option value="boot">کفش ساق بلند</option>
-                                        <option value="boot-shoes">چکمه ایمنی</option>
+                                        <option value="boot-Shoes">چکمه ایمنی</option>
                                         <option value="boiler-suit">لباس کار</option>
                                         <option value="glasses">عینک ایمنی</option>
                                         <option value="earmuff">گوشی ایمنی</option>
@@ -42,35 +42,35 @@
                                         <option value="rain-coat">بارانی</option>
                                         <option value="Over-coat">اورکت</option>
                                     </select>
-                                    <span asp-validation-for="Cloth.cloth_type" class="text-danger"></span>
+                                    <span asp-validation-for="Cloth.ClothType" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Cloth.receive_type" class="control-label"></label>
-                                    <select asp-for="Cloth.receive_type" class="form-select">
+                                    <label asp-for="Cloth.ReceiveType" class="control-label"></label>
+                                    <select asp-for="Cloth.ReceiveType" class="form-select">
                                         <option value="usual">سهمیه</option>
                                         <option value="emergency">اضطراری</option>
                                         <option value="BossOrder">دستور رئیس HSE</option>
                                         <option value="guest">مهمان</option>
                                     </select>
-                                    <span asp-validation-for="Cloth.receive_type" class="text-danger"></span>
+                                    <span asp-validation-for="Cloth.ReceiveType" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Cloth.receive_date" class="control-label"></label>
-                                    <input asp-for="Cloth.receive_date" type="text" class="form-control" id="pc-datepicker-1"/>
-                                    <span asp-validation-for="Cloth.receive_date" class="text-danger"></span>
+                                    <label asp-for="Cloth.ReceiveDate" class="control-label"></label>
+                                    <input asp-for="Cloth.ReceiveDate" Type="Text" class="form-control" id="pc-datepicker-1"/>
+                                    <span asp-validation-for="Cloth.ReceiveDate" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Cloth.size" class="control-label"></label>
-                                    <input asp-for="Cloth.size" class="form-control"/>
-                                    <span asp-validation-for="Cloth.size" class="text-danger"></span>
+                                    <label asp-for="Cloth.Size" class="control-label"></label>
+                                    <input asp-for="Cloth.Size" class="form-control"/>
+                                    <span asp-validation-for="Cloth.Size" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="Cloth.description" class="control-label"></label>
-                                    <input asp-for="Cloth.description" class="form-control"/>
-                                    <span asp-validation-for="Cloth.description" class="text-danger"></span>
+                                    <label asp-for="Cloth.Description" class="control-label"></label>
+                                    <input asp-for="Cloth.Description" class="form-control"/>
+                                    <span asp-validation-for="Cloth.Description" class="Text-danger"></span>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">ثبت</button>
+                            <button Type="submit" class="btn btn-success">ثبت</button>
                         </form>
                     </div>
                 </div>

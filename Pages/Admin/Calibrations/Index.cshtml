@@ -29,10 +29,10 @@
                     <div class="card-body">
                         <form method="post" class="flex w-full items-center">
                             <div class=" w-1/2 ml-4">
-                                <input type="text" class="form-control" asp-for="Search">
+                                <input Type="Text" class="form-control" asp-for="Search">
                             </div>
                             <div class="">
-                                <button type="submit" class="btn btn-primary">جستجو</button>
+                                <button Type="submit" class="btn btn-primary">جستجو</button>
                             </div>
                         </form>
                     </div>
@@ -54,25 +54,25 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Calibration[0].title)
+                                        @Html.DisplayNameFor(model => model.Calibration[0].Title)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Calibration[0].asset_number)
+                                        @Html.DisplayNameFor(model => model.Calibration[0].AssetNumber)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Calibration[0].serial_number)
+                                        @Html.DisplayNameFor(model => model.Calibration[0].SerialNumber)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Calibration[0].device_owner)
+                                        @Html.DisplayNameFor(model => model.Calibration[0].DeviceOwner)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Calibration[0].device_user)
+                                        @Html.DisplayNameFor(model => model.Calibration[0].DeviceUser)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Calibration[0].start_calibration)
+                                        @Html.DisplayNameFor(model => model.Calibration[0].StartCalibration)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Calibration[0].end_calibration)
+                                        @Html.DisplayNameFor(model => model.Calibration[0].EndCalibration)
                                     </th>
                                     <th>عملیات</th>
                                 </tr>
@@ -83,29 +83,29 @@
                                     <tr>
                                         <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.title)
+                                            @Html.DisplayFor(modelItem => item.Title)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.asset_number)
+                                            @Html.DisplayFor(modelItem => item.AssetNumber)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.serial_number)
+                                            @Html.DisplayFor(modelItem => item.SerialNumber)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.device_owner)
+                                            @Html.DisplayFor(modelItem => item.DeviceOwner)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.device_user)
+                                            @Html.DisplayFor(modelItem => item.DeviceUser)
                                         </td>
                                         <td>
-                                                @DateToPersian.ToShamsi(item.start_calibration, "yyyy/MM/dd")
+                                                @DateToPersian.ToShamsi(item.StartCalibration, "yyyy/MM/dd")
                                         </td>
                                         <td>
-                                                @DateToPersian.ToShamsi(item.end_calibration, "yyyy/MM/dd")
+                                                @DateToPersian.ToShamsi(item.EndCalibration, "yyyy/MM/dd")
                                         </td>
                                         <td>
                                             <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                <i class="ti ti-edit text-xl leading-none"></i>
+                                                <i class="ti ti-edit Text-xl leading-none"></i>
                                             </a>
                                         </td>
                                     </tr>

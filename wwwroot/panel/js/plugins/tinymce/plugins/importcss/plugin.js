@@ -9,26 +9,26 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.prototype)) {
+      if (predicate(v, constructor.protoType)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const typeOf = x => {
-      const t = typeof x;
+    const TypeOf = x => {
+      const t = Typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType = type => value => typeOf(value) === type;
-    const isSimpleType = type => value => typeof value === type;
+    const isType = Type => value => TypeOf(value) === Type;
+    const isSimpleType = Type => value => Typeof value === Type;
     const isString = isType('string');
     const isObject = isType('object');
     const isArray = isType('array');
@@ -73,7 +73,7 @@
     const getSkin = option('skin');
     const getSkinUrl = option('skin_url');
 
-    const nativePush = Array.prototype.push;
+    const nativePush = Array.protoType.push;
     const map = (xs, f) => {
       const len = xs.length;
       const r = new Array(len);
@@ -114,7 +114,7 @@
         const groupItems = bind(groupOrder, g => {
           const items = groups[g];
           return items.length === 0 ? [] : [{
-              title: g,
+              Title: g,
               items
             }];
         });
@@ -131,7 +131,7 @@
     const removeCacheSuffix = url => {
       const cacheSuffix = global$1.cacheSuffix;
       if (isString(url)) {
-        url = url.replace('?' + cacheSuffix, '').replace('&' + cacheSuffix, '');
+        url = url.rePlace('?' + cacheSuffix, '').rePlace('&' + cacheSuffix, '');
       }
       return url;
     };
@@ -213,7 +213,7 @@
       const classes = selector[2].substr(1).split('.').join(' ');
       const inlineSelectorElements = global.makeMap('a,img');
       if (selector[1]) {
-        format = { title: selectorText };
+        format = { Title: selectorText };
         if (editor.schema.getTextBlockElements()[elementName]) {
           format.block = elementName;
         } else if (editor.schema.getBlockElements()[elementName] || inlineSelectorElements[elementName.toLowerCase()]) {
@@ -224,7 +224,7 @@
       } else if (selector[2]) {
         format = {
           inline: 'span',
-          title: selectorText.substr(1),
+          Title: selectorText.substr(1),
           classes
         };
       }
@@ -290,7 +290,7 @@
               const formatName = format.name || global$3.DOM.uniqueId();
               editor.formatter.register(formatName, format);
               return {
-                title: format.title,
+                Title: format.Title,
                 format: formatName
               };
             }
@@ -305,7 +305,7 @@
                 global.each(selectorGroups, group => {
                   const menuItem = processSelector(selector, group);
                   if (menuItem) {
-                    model.addItemToGroup(group.title, menuItem);
+                    model.addItemToGroup(group.Title, menuItem);
                   }
                 });
               } else {
@@ -320,7 +320,7 @@
         const items = model.toFormats();
         editor.dispatch('addStyleModifications', {
           items,
-          replace: !shouldAppend(editor)
+          rePlace: !shouldAppend(editor)
         });
       });
     };

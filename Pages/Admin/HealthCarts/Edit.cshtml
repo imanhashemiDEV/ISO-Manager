@@ -27,18 +27,18 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="HealthCart.Id" />
+                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <input Type="hidden" asp-for="HealthCart.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 
                                 <div class="col-span-12 md:col-span-6 mb-4">
-                                    <label asp-for="HealthCart.end_date" class="control-label"></label>
-                                    <input asp-for="HealthCart.end_date" class="form-control" />
-                                    <span asp-validation-for="HealthCart.end_date" class="text-danger"></span>
+                                    <label asp-for="HealthCart.EndDate" class="control-label"></label>
+                                    <input asp-for="HealthCart.EndDate" class="form-control" />
+                                    <span asp-validation-for="HealthCart.EndDate" class="Text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
-                                    <label asp-for="HealthCart.user_id" class="control-label"></label>
-                                    <select id="users" asp-for="HealthCart.user_id" class="form-select">
+                                    <label asp-for="HealthCart.UserId" class="control-label"></label>
+                                    <select id="users" asp-for="HealthCart.UserId" class="form-select">
                                         @foreach (var item in ViewBag.users)
                                         {
                                             <option value="@item.id">@item.name</option>
@@ -46,16 +46,16 @@
                                     </select>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
-                                    <label asp-for="HealthCart.workplace_id" class="control-label"></label>
-                                    <select id="workplaces" asp-for="HealthCart.workplace_id" class="form-select">
-                                        @foreach (var item in ViewBag.workplaces)
+                                    <label asp-for="HealthCart.WorkPlaceId" class="control-label"></label>
+                                    <select id="workPlaces" asp-for="HealthCart.WorkPlaceId" class="form-select">
+                                        @foreach (var item in ViewBag.workPlaces)
                                         {
-                                            <option value="@item.id">@item.title</option>
+                                            <option value="@item.id">@item.Title</option>
                                         }
                                     </select>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">ویرایش</button>
+                            <button Type="submit" class="btn btn-success">ویرایش</button>
                         </form>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
     <script>
 
         var users = new Choices(document.getElementById('users'));
-        var workplaces = new Choices(document.getElementById('workplaces'));
+        var workPlaces = new Choices(document.getElementById('workPlaces'));
 
     </script>
 }

@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Calibrations
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<Calibration> Calibration { get;set; } = default!;
@@ -29,7 +29,7 @@ namespace ISO_Manager.Pages.Admin.Calibrations
 
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _context.Calibrations.Count();
+            var ItemCount = _conText.Calibrations.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -43,16 +43,16 @@ namespace ISO_Manager.Pages.Admin.Calibrations
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            Calibration = await _context.Calibrations
-                .OrderBy(m=>m.end_calibration)
+            Calibration = await _conText.Calibrations
+                .OrderBy(m=>m.EndCalibration)
                 .Skip(skip).Take(Take)
                 .ToListAsync();
         }
 
         public async Task OnPostAsync()
         {
-            Calibration = await _context.Calibrations
-                .Where(m =>  m.asset_number.Contains(Search) || m.serial_number.Contains(Search))
+            Calibration = await _conText.Calibrations
+                .Where(m =>  m.AssetNumber.Contains(Search) || m.SerialNumber.Contains(Search))
                 .ToListAsync();
 
 

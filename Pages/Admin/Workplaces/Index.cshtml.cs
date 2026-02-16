@@ -9,24 +9,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ISO_Manager.Pages.Admin.Workplace
+namespace ISO_Manager.Pages.Admin.WorkPlace
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
-        public IList<Models.Workplace> Workplace { get;set; } = default!;
+        public IList<Models.WorkPlace> WorkPlace { get;set; } = default!;
 
         public async Task OnGetAsync(int pageId=1)
         {
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _context.Workplaces.Count();
+            var ItemCount = _conText.WorkPlaces.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -40,7 +40,7 @@ namespace ISO_Manager.Pages.Admin.Workplace
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            Workplace = await _context.Workplaces.Skip(skip).Take(Take).ToListAsync();
+            WorkPlace = await _conText.WorkPlaces.Skip(skip).Take(Take).ToListAsync();
         }
     }
 }

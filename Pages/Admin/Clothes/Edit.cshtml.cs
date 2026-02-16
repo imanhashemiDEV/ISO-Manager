@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Clothes
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,14 +30,14 @@ namespace ISO_Manager.Pages.Admin.Clothes
                 return NotFound();
             }
 
-            var cloth =  await _context.Clothes.FirstOrDefaultAsync(m => m.Id == id);
+            var cloth =  await _conText.Clothes.FirstOrDefaultAsync(m => m.Id == id);
             if (cloth == null)
             {
                 return NotFound();
             }
             Cloth = cloth;
-           ViewData["organization_id"] = new SelectList(_context.Organizations, "id", "id");
-           ViewData["user_id"] = new SelectList(_context.Users, "id", "id");
+           ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "id");
+           ViewData["UserId"] = new SelectList(_conText.Users, "id", "id");
             return Page();
         }
 
@@ -50,11 +50,11 @@ namespace ISO_Manager.Pages.Admin.Clothes
                 return Page();
             }
 
-            _context.Attach(Cloth).State = EntityState.Modified;
+            _conText.Attach(Cloth).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -73,7 +73,7 @@ namespace ISO_Manager.Pages.Admin.Clothes
 
         private bool ClothExists(long id)
         {
-            return _context.Clothes.Any(e => e.Id == id);
+            return _conText.Clothes.Any(e => e.Id == id);
         }
     }
 }

@@ -53,12 +53,12 @@
       }
     });
 
-    // Maximum size
+    // Maximum Size
     var maxCheckbox = document.getElementById('max-checkbox');
     var maxInputs = [
       document.getElementById('max-input-width'),
       document.getElementById('max-input-height'),
-      document.getElementById('max-input-unit')
+      document.getElementById('max-input-Unit')
     ];
 
     maxCheckbox.addEventListener('change', function (event) {
@@ -83,7 +83,7 @@
       croppr.options.maxSize = {
         width: Number(values[0]),
         height: Number(values[1]),
-        unit: values[2]
+        Unit: values[2]
       };
       croppr.reset();
     });
@@ -92,12 +92,12 @@
       el.addEventListener('input', handleChange(croppr, 'maxSize', maxInputs));
     });
 
-    // Minimum size
+    // Minimum Size
     var minCheckbox = document.getElementById('min-checkbox');
     var minInputs = [
       document.getElementById('min-input-width'),
       document.getElementById('min-input-height'),
-      document.getElementById('min-input-unit')
+      document.getElementById('min-input-Unit')
     ];
 
     minCheckbox.addEventListener('change', function (event) {
@@ -122,7 +122,7 @@
       croppr.options.minSize = {
         width: Number(values[0]),
         height: Number(values[1]),
-        unit: values[2]
+        Unit: values[2]
       };
       croppr.reset();
     });
@@ -178,7 +178,7 @@
       croppr.options[option] = {
         width: Number(values[0]),
         height: Number(values[1]),
-        unit: values[2]
+        Unit: values[2]
 
         // Convert to pixels
       };

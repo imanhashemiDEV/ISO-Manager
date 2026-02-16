@@ -14,26 +14,26 @@ namespace ISO_Manager.Pages.Admin.User_infos
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
         
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<Models.Organization> UserOrganizations { get; set; } = default!;
         public IList<Models.Occupation> UserOccupations { get; set; } = default!;
-        public IList<Models.Workplace> UserWorkplaces { get; set; } = default!;
+        public IList<Models.WorkPlace> UserWorkPlaces { get; set; } = default!;
 
         public long selectedUserId { get; set; }
 
-        public IActionResult OnGetAsync(long user_id)
+        public IActionResult OnGetAsync(long UserId)
         {
-            UserOrganizations = _context.Organizations.ToList();
-            UserOccupations = _context.Occupations.ToList();
-            UserWorkplaces = _context.Workplaces.ToList();
-            selectedUserId = (long)user_id;
+            UserOrganizations = _conText.Organizations.ToList();
+            UserOccupations = _conText.Occupations.ToList();
+            UserWorkPlaces = _conText.WorkPlaces.ToList();
+            selectedUserId = (long)UserId;
             return Page();
         }
 
@@ -49,9 +49,9 @@ namespace ISO_Manager.Pages.Admin.User_infos
         public async Task<IActionResult> OnPostAsync()
         {
 
-            UserOrganizations = _context.Organizations.ToList();
-            UserOccupations = _context.Occupations.ToList();
-            UserWorkplaces = _context.Workplaces.ToList();
+            UserOrganizations = _conText.Organizations.ToList();
+            UserOccupations = _conText.Occupations.ToList();
+            UserWorkPlaces = _conText.WorkPlaces.ToList();
 
             if (!ModelState.IsValid)
             {
@@ -61,8 +61,8 @@ namespace ISO_Manager.Pages.Admin.User_infos
             User_info.birthday = DateToMiladi.ToMiladi(BirthDay);
             User_info.employment_date= DateToMiladi.ToMiladi(EmploymentDate);
 
-            _context.UserInfos.Add(User_info);
-            await _context.SaveChangesAsync();
+            _conText.UserInfos.Add(User_info);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("/Admin/Users/Index");
         }

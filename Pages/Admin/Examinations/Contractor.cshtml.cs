@@ -12,24 +12,24 @@ namespace ISO_Manager.Pages.Admin.Examinations
 {
     public class ContractorModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public ContractorModel(ISO_Manager.Data.ApplicationDbContext context)
+        public ContractorModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<Examination> Examination { get;set; } = default!;
         public long ContractorId { get; set; }
 
-        public async Task OnGetAsync(long contractor_id , int pageId = 1)
+        public async Task OnGetAsync(long ContractorId , int pageId = 1)
         {
 
-            ContractorId = contractor_id;
+            ContractorId = ContractorId;
 
             var Take = 100;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _context.Examinations.Count(m => m.contractor_id == contractor_id);
+            var ItemCount = _conText.Examinations.Count(m => m.ContractorId == ContractorId);
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -43,11 +43,11 @@ namespace ISO_Manager.Pages.Admin.Examinations
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            Examination = await _context.Examinations
+            Examination = await _conText.Examinations
                 .Include(e => e.Contractor)
                 .Include(e => e.User)
-                .Where(m=>m.contractor_id == contractor_id)
-                .OrderBy(m=>m.examination_result)
+                .Where(m=>m.ContractorId == ContractorId)
+                .OrderBy(m=>m.ExaminationResult)
                 .Skip(skip).Take(Take)
                 .ToListAsync();
         }

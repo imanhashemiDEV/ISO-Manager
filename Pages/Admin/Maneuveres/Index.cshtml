@@ -38,28 +38,28 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Maneuver[0].title)
+                                            @Html.DisplayNameFor(model => model.Maneuver[0].Title)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Maneuver[0].place)
+                                            @Html.DisplayNameFor(model => model.Maneuver[0].Place)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Maneuver[0].year)
+                                            @Html.DisplayNameFor(model => model.Maneuver[0].Year)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Maneuver[0].type)
+                                            @Html.DisplayNameFor(model => model.Maneuver[0].Type)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Maneuver[0].level)
+                                            @Html.DisplayNameFor(model => model.Maneuver[0].Level)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Maneuver[0].status)
+                                            @Html.DisplayNameFor(model => model.Maneuver[0].Status)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Maneuver[0].act_time)
+                                            @Html.DisplayNameFor(model => model.Maneuver[0].ActTime)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Maneuver[0].equipment)
+                                            @Html.DisplayNameFor(model => model.Maneuver[0].Equipment)
                                         </th>
                                         <th>عملیات</th>
                                     </tr>
@@ -70,32 +70,32 @@
                                         <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.title)
+                                                @Html.DisplayFor(modelItem => item.Title)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.place)
+                                                @Html.DisplayFor(modelItem => item.Place)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.year)
+                                                @Html.DisplayFor(modelItem => item.Year)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.type)
+                                                @Html.DisplayFor(modelItem => item.Type)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.level)
+                                                @Html.DisplayFor(modelItem => item.Level)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.status)
+                                                @Html.DisplayFor(modelItem => item.Status)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.act_time)
+                                                @Html.DisplayFor(modelItem => item.ActTime)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.equipment)
+                                                @Html.DisplayFor(modelItem => item.Equipment)
                                             </td>
                                             <td>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

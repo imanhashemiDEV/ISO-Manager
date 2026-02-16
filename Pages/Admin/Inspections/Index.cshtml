@@ -41,13 +41,13 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Inspection[0].inspection_date)
+                                            @Html.DisplayNameFor(model => model.Inspection[0].InspectionDate)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.Inspection[0].User)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Inspection[0].Workplace)
+                                            @Html.DisplayNameFor(model => model.Inspection[0].WorkPlace)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.Inspection[0].InspectionPlace)
@@ -61,23 +61,23 @@
                                         <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
                                             <td>
-                                                @DateToPersian.ToShamsi(item.inspection_date, "yyyy/MM/dd")
+                                                @DateToPersian.ToShamsi(item.InspectionDate, "yyyy/MM/dd")
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.User.Name)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Workplace.title)
+                                                @Html.DisplayFor(modelItem => item.WorkPlace.Title)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.InspectionPlace.title)
+                                                @Html.DisplayFor(modelItem => item.InspectionPlace.Title)
                                             </td>
                                             <td>
                                                 <a asp-page="./Details" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-eye text-xl leading-none"></i>
+                                                    <i class="ti ti-eye Text-xl leading-none"></i>
                                                 </a>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

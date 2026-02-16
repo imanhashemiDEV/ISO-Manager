@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Duties
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IActionResult OnGet()
@@ -35,8 +35,8 @@ namespace ISO_Manager.Pages.Admin.Duties
                 return Page();
             }
 
-            _context.Duties.Add(Duty);
-            await _context.SaveChangesAsync();
+            _conText.Duties.Add(Duty);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

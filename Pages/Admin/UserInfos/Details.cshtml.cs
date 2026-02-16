@@ -14,32 +14,32 @@ namespace ISO_Manager.Pages.Admin.User_infos
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
         public UserInfo User_info { get; set; } = default!;
         public User SelectedUser { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(long? user_id)
+        public async Task<IActionResult> OnGetAsync(string UserId)
         {
 
-            if (user_id == null)
+            if (UserId == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Users.FirstOrDefaultAsync(m => Equals(m.Id, user_id));
+            var user = await _conText.Users.FirstOrDefaultAsync(m => Equals(m.Id, UserId));
             SelectedUser = user;
-            ViewData["occupation_id"] = new SelectList(_context.Occupations, "id", "title");
-            var user_info = await _context.UserInfos
+            ViewData["OccupationId"] = new SelectList(_conText.Occupations, "id", "Title");
+            var user_info = await _conText.UserInfos
                 .Include(r=>r.User)
                 .Include(r=>r.Occupation)
-                .FirstOrDefaultAsync(m => Equals(m.user_id , user_id));
+                .FirstOrDefaultAsync(m => Equals(m.UserId , UserId));
             
             if (user_info is not null)
             {
@@ -48,7 +48,7 @@ namespace ISO_Manager.Pages.Admin.User_infos
                 return Page();
             }
 
-            return RedirectToPage("./Create", new {user_id = user_id});
+            return RedirectToPage("./Create", new {UserId = UserId});
         }
 
 
@@ -62,9 +62,9 @@ namespace ISO_Manager.Pages.Admin.User_infos
                 return Page();
             }
 
-            _context.Attach(User).State = EntityState.Modified;
+            _conText.Attach(User).State = EntityState.Modified;
 
-            await _context.SaveChangesAsync();
+            await _conText.SaveChangesAsync();
            
 
             return Page();

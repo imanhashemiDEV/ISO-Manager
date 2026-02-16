@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Inspections
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public Inspection Inspection { get; set; } = default!;
@@ -35,12 +35,12 @@ namespace ISO_Manager.Pages.Admin.Inspections
 
             selectedInspection = (long)id;
 
-            var inspection = await _context.Inspections.FirstOrDefaultAsync(m => m.Id == id);
-            var inspectionDetails = await _context.InspectionDetails
-                .Where(m => m.inspection_id == id)
+            var inspection = await _conText.Inspections.FirstOrDefaultAsync(m => m.Id == id);
+            var inspectionDetails = await _conText.InspectionDetails
+                .Where(m => m.InspectionId == id)
                 .ToListAsync();
-            //var inspectionTexts = await _context.InspectionTexts
-            //    .Where(m => m.inspection_place_id == inspection.inspection_place_id)
+            //var inspectionTexts = await _conText.InspectionTexts
+            //    .Where(m => m.InspectionPlaceId == inspection.InspectionPlaceId)
             //    .ToListAsync();
 
 
@@ -71,14 +71,14 @@ namespace ISO_Manager.Pages.Admin.Inspections
         public async Task<IActionResult> OnPostAsync()
         {
 
-            var item = await _context.InspectionDetails.FindAsync(EditDetailId);
+            var item = await _conText.InspectionDetails.FindAsync(EditDetailId);
 
-            item.description = InspectionDesc;
-            _context.InspectionDetails.Update(item);
-            await _context.SaveChangesAsync();
+            item.Description = InspectionDesc;
+            _conText.InspectionDetails.Update(item);
+            await _conText.SaveChangesAsync();
 
 
-            return RedirectToPage("./Details", new {id = item.inspection_id.ToString()});
+            return RedirectToPage("./Details", new {id = item.InspectionId.ToString()});
         }
     }
 }

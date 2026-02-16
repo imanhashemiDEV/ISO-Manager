@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Users
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -26,7 +26,7 @@ namespace ISO_Manager.Pages.Admin.Users
         public async Task<IActionResult> OnGetAsync(string id)
         {
 
-            var user =  await _context.Users.FirstOrDefaultAsync(m => Equals(m.Id , id));
+            var user =  await _conText.Users.FirstOrDefaultAsync(m => Equals(m.Id , id));
             if (user == null)
             {
                 return NotFound();
@@ -42,9 +42,9 @@ namespace ISO_Manager.Pages.Admin.Users
                 return Page();
             }
 
-            _context.Attach(User).State = EntityState.Modified;
+            _conText.Attach(User).State = EntityState.Modified;
 
-            await _context.SaveChangesAsync();
+            await _conText.SaveChangesAsync();
         
 
             return RedirectToPage("./Index");
@@ -52,7 +52,7 @@ namespace ISO_Manager.Pages.Admin.Users
 
         private bool UserExists(string id)
         {
-            return _context.Users.Any(e => Equals(e.Id == id));
+            return _conText.Users.Any(e => Equals(e.Id == id));
         }
     }
 }

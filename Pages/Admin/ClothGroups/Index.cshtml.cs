@@ -12,18 +12,18 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<ClothGroup> ClothGroup { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            ClothGroup = await _context.ClothGroups.ToListAsync();
+            ClothGroup = await _conText.ClothGroups.ToListAsync();
         }
     }
 }

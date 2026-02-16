@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
 {
     public class DeleteModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DeleteModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DeleteModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -29,7 +29,7 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
                 return NotFound();
             }
 
-            var occupationharmful = await _context.OccupationHarmfuls.FirstOrDefaultAsync(m => m.Id == id);
+            var occupationharmful = await _conText.OccupationHarmfuls.FirstOrDefaultAsync(m => m.Id == id);
 
             if (occupationharmful is not null)
             {
@@ -48,12 +48,12 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
                 return NotFound();
             }
 
-            var occupationharmful = await _context.OccupationHarmfuls.FindAsync(id);
+            var occupationharmful = await _conText.OccupationHarmfuls.FindAsync(id);
             if (occupationharmful != null)
             {
                 OccupationHarmful = occupationharmful;
-                _context.OccupationHarmfuls.Remove(OccupationHarmful);
-                await _context.SaveChangesAsync();
+                _conText.OccupationHarmfuls.Remove(OccupationHarmful);
+                await _conText.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");

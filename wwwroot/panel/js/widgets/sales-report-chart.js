@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var options20 = {
       chart: {
-        type: 'bar',
+        Type: 'bar',
         height: 430,
         toolbar: {
           show: false

@@ -38,16 +38,16 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OperationPlan[0].title)
+                                            @Html.DisplayNameFor(model => model.OperationPlan[0].Title)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OperationPlan[0].estimate)
+                                            @Html.DisplayNameFor(model => model.OperationPlan[0].Estimate)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.OperationPlan[0].done)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OperationPlan[0].unit)
+                                            @Html.DisplayNameFor(model => model.OperationPlan[0].Unit)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.OperationPlan[0].plan_percent)
@@ -62,10 +62,10 @@
                                             @Html.DisplayNameFor(model => model.OperationPlan[0].accept_percent)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OperationPlan[0].status)
+                                            @Html.DisplayNameFor(model => model.OperationPlan[0].Status)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.OperationPlan[0].description)
+                                            @Html.DisplayNameFor(model => model.OperationPlan[0].Description)
                                         </th>
                                         <th>عملیات</th>
                                     </tr>
@@ -76,16 +76,16 @@
                                         <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.title)
+                                                @Html.DisplayFor(modelItem => item.Title)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.estimate)
+                                                @Html.DisplayFor(modelItem => item.Estimate)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.done)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.unit)
+                                                @Html.DisplayFor(modelItem => item.Unit)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.plan_percent)
@@ -100,14 +100,14 @@
                                                 @Html.DisplayFor(modelItem => item.accept_percent)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.status)
+                                                @Html.DisplayFor(modelItem => item.Status)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.description)
+                                                @Html.DisplayFor(modelItem => item.Description)
                                             </td>
                                             <td>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

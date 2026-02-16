@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public Inspection Inspection { get; set; } = default!;
@@ -30,9 +30,9 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
         {
             selectedInspection = inspectionId;
 
-            var inspection = await _context.Inspections.FirstOrDefaultAsync(m => m.Id == inspectionId);
-            var inspectionTexts = await _context.InspectionTexts
-                .Where(m=>m.inspection_place_id==inspection.inspection_place_id)
+            var inspection = await _conText.Inspections.FirstOrDefaultAsync(m => m.Id == inspectionId);
+            var inspectionTexts = await _conText.InspectionTexts
+                .Where(m=>m.InspectionPlaceId==inspection.InspectionPlaceId)
                 .ToListAsync();
 
             if (inspection is not null)
@@ -52,25 +52,25 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var inspection = await _context.Inspections.FirstOrDefaultAsync(m => m.Id == selectedInspection);
+            var inspection = await _conText.Inspections.FirstOrDefaultAsync(m => m.Id == selectedInspection);
 
             foreach (var item in Checked)
             {
                 
-                var selected = await _context.InspectionTexts.FindAsync(item);
+                var selected = await _conText.InspectionTexts.FindAsync(item);
 
                 var detail = new InspectionDetail
                 {
-                    inspection_id = selectedInspection,
-                    inspection_date = inspection.inspection_date,
-                    workplace_id = inspection.workplace_id,
-                    text_id = (int) item,
-                    text = selected.text,
-                    //description = InspectionDescription
+                    InspectionId = selectedInspection,
+                    InspectionDate = inspection!.InspectionDate,
+                    WorkPlaceId = inspection.WorkPlaceId,
+                    TextId = (int) item,
+                    Text = selected!.Text,
+                    //Description = InspectionDescription
                 };
 
-                _context.InspectionDetails.Add(detail);
-                await _context.SaveChangesAsync();
+                _conText.InspectionDetails.Add(detail);
+                await _conText.SaveChangesAsync();
             }
 
 

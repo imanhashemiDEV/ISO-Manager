@@ -10,46 +10,53 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "نوع تجهیز")]
-        public string? type { get; set; }
+        public string? Type { get; set; }
 
         [Display(Name = "نام تجهیز")]
-        public string? unit { get; set; }
+        public string? Unit { get; set; }
 
         [Display(Name = "محل قرارگیری")]
-        public string? location { get; set; }
+        public string? Location { get; set; }
 
         [Display(Name = "وضعیت")]
-        public string? status { get; set; }
+        public string? Status { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
 
         // relations
 
-
-        
         [ForeignKey("RigBoss")]
         [Display(Name = "رئیس دستگاه")]
-        public string? rig_boss_id { get; set; }
+        public string? RigBossId { get; set; }
         [Display(Name = "رئیس دستگاه")]
-        public User? RigBoss { get; set; }
+        public virtual User? RigBoss { get; set; }
 
 
         [ForeignKey("CampBoss")]
         [Display(Name = "سرپرست اردوگاه")]
-        public string? camp_boss_id { get; set; }
+        public string? CampBossId { get; set; }
         [Display(Name = "سرپرست اردوگاه")]
-        public User? CampBoss { get; set; }
+        public virtual User? CampBoss { get; set; }
 
 
         [ForeignKey("Doctor")]
         [Display(Name = "پزشک")]
-        public string? doctor_id { get; set; }
+        public string? DoctorId { get; set; }
         [Display(Name = "پزشک")]
-        public User? Doctor { get; set; }
+        public virtual User? Doctor { get; set; }
+
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
 
 
     }

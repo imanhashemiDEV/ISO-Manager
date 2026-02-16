@@ -37,7 +37,7 @@
 
                                     <tr>
                                         <th>ردیف</th>
-                                        <th>@Html.DisplayNameFor(model => model.Organization[0].title)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Organization[0].Title)</th>
                                         <th>عملیات</th>
                                     </tr>
                                 </thead>
@@ -46,10 +46,10 @@
                                     {
                                         <tr>
                                             <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                                            <td> @Html.DisplayFor(modelItem => item.title)</td>
+                                            <td> @Html.DisplayFor(modelItem => item.Title)</td>
                                             <td>
                                                 <a asp-page="/Admin/Organizations/Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit Text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

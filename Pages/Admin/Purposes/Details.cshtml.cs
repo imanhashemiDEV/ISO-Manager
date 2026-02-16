@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Purposes
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public Purpose Purpose { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.Purposes
                 return NotFound();
             }
 
-            var purpose = await _context.Purposes.FirstOrDefaultAsync(m => m.Id == id);
+            var purpose = await _conText.Purposes.FirstOrDefaultAsync(m => m.Id == id);
 
             if (purpose is not null)
             {

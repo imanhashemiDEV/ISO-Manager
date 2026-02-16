@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var options = {
       chart: {
-        type: 'area',
+        Type: 'area',
         height: 250,
         toolbar: {
           show: false
@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
         position: 'top'
       },
       markers: {
-        size: 1,
+        Size: 1,
         colors: ['#fff', '#fff', '#fff'],
         strokeColors: ['#e58a00', '#4680ff'],
         strokeWidth: 1,
         shape: 'circle',
         hover: {
-          size: 4
+          Size: 4
         }
       },
       stroke: {
@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
         curve: 'smooth'
       },
       fill: {
-        type: 'gradient',
+        Type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          type: 'vertical',
+          Type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0

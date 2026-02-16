@@ -9,15 +9,15 @@
 
     const applyListFormat = (editor, listName, styleValue) => {
       const cmd = listName === 'UL' ? 'InsertUnorderedList' : 'InsertOrderedList';
-      editor.execCommand(cmd, false, styleValue === false ? null : { 'list-style-type': styleValue });
+      editor.execCommand(cmd, false, styleValue === false ? null : { 'list-style-Type': styleValue });
     };
 
     const register$2 = editor => {
       editor.addCommand('ApplyUnorderedListStyle', (ui, value) => {
-        applyListFormat(editor, 'UL', value['list-style-type']);
+        applyListFormat(editor, 'UL', value['list-style-Type']);
       });
       editor.addCommand('ApplyOrderedListStyle', (ui, value) => {
-        applyListFormat(editor, 'OL', value['list-style-type']);
+        applyListFormat(editor, 'OL', value['list-style-Type']);
       });
     };
 
@@ -92,11 +92,11 @@
           return Optional.none();
         }
       }
-      getOr(replacement) {
-        return this.tag ? this.value : replacement;
+      getOr(rePlacement) {
+        return this.tag ? this.value : rePlacement;
       }
-      or(replacement) {
-        return this.tag ? this : replacement;
+      or(rePlacement) {
+        return this.tag ? this : rePlacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -175,7 +175,7 @@
     };
 
     const styleValueToText = styleValue => {
-      return styleValue.replace(/\-/g, ' ').replace(/\b\w/g, chr => {
+      return styleValue.rePlace(/\-/g, ' ').rePlace(/\b\w/g, chr => {
         return chr.toUpperCase();
       });
     };
@@ -202,10 +202,10 @@
             const itemValue = normalizeStyleValue(styleValue);
             const displayText = styleValueToText(styleValue);
             return {
-              type: 'choiceitem',
+              Type: 'choiceitem',
               value: itemValue,
               icon: 'list-' + iconStyle + '-' + iconName,
-              text: displayText
+              Text: displayText
             };
           });
           callback(items);

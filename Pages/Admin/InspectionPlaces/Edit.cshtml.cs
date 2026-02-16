@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.InspectionPlaces
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,13 +30,13 @@ namespace ISO_Manager.Pages.Admin.InspectionPlaces
                 return NotFound();
             }
 
-            var inspectionplace =  await _context.InspectionPlaces.FirstOrDefaultAsync(m => m.Id == id);
-            if (inspectionplace == null)
+            var inspectionPlace =  await _conText.InspectionPlaces.FirstOrDefaultAsync(m => m.Id == id);
+            if (inspectionPlace == null)
             {
                 return NotFound();
             }
-            InspectionPlace = inspectionplace;
-           ViewData["organization_id"] = new SelectList(_context.Organizations, "id", "id");
+            InspectionPlace = inspectionPlace;
+           ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "id");
             return Page();
         }
 
@@ -49,11 +49,11 @@ namespace ISO_Manager.Pages.Admin.InspectionPlaces
                 return Page();
             }
 
-            _context.Attach(InspectionPlace).State = EntityState.Modified;
+            _conText.Attach(InspectionPlace).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +72,7 @@ namespace ISO_Manager.Pages.Admin.InspectionPlaces
 
         private bool InspectionPlaceExists(long id)
         {
-            return _context.InspectionPlaces.Any(e => e.Id == id);
+            return _conText.InspectionPlaces.Any(e => e.Id == id);
         }
     }
 }

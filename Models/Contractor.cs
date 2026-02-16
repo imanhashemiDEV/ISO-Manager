@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISO_Manager.Models
 {
@@ -9,58 +10,70 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "عنوان پیمان")]
-        public string? title { get; set; }
+        public string? Title { get; set; }
 
         [Display(Name = "شرکت")]
-        public string? company { get; set; }
+        public string? Company { get; set; }
 
         [Display(Name = "کارفرما")]
-        public string? employer { get; set; }
+        public string? Employer { get; set; }
 
         [Display(Name = "موبایل کارفرما")]
-        public string? employer_mobile { get; set; }
+        public string? EmployerMobile { get; set; }
 
         [Display(Name = "پیمانکار")]
-        public string? manager { get; set; }
+        public string? Manager { get; set; }
 
         [Display(Name = "موبایل پیمانکار")]
-        public string? manager_mobile { get; set; }
+        public string? ManagerMobile { get; set; }
 
         [Display(Name = "نماینده پیمانکار")]
-        public string? manager_agent { get; set; }
+        public string? ManagerAgent { get; set; }
 
         [Display(Name = "موبایل نماینده پیمانکار")]
-        public string? manager_agent_mobile { get; set; }
+        public string? ManagerAgentMobile { get; set; }
 
         [Display(Name = "نماینده HSE")]
-        public string? hse_agent { get; set; }
+        public string? HseAgent { get; set; }
 
         [Display(Name = "نماینده HSE موبایل")]
-        public string? hse_agent_mobile { get; set; }
+        public string? HseAgentMobile { get; set; }
 
         [Display(Name = "تعداد پرسنل")]
-        public int? personnel_count { get; set; }
+        public int? PersonnelCount { get; set; }
 
         [Display(Name = "شماره قرارداد")]
-        public string? contract_number { get; set; }
+        public string? ContractNumber { get; set; }
 
         [Display(Name = "تاریخ شروع")]
-        public DateTime start_date { get; set; }=DateTime.Now;
+        public DateTime StartDate { get; set; }=DateTime.Now;
 
         [Display(Name = "تاریخ پایان")]
-        public DateTime end_date { get; set; }= DateTime.Now;
+        public DateTime EndDate { get; set; }= DateTime.Now;
 
         [Display(Name = "توضیحات")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "وضعیت")]
-        public string? status { get; set; }
+        public string? Status { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+
+
+
+        //relations
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
 
     }
 }

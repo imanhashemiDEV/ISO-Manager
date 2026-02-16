@@ -9,24 +9,25 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "عنوان هدف")]
-        public string? title { get; set; }
+        public string? Title { get; set; }
 
         [Display(Name = "سال")]
-        public string? year { get; set; }
+        public string? Year { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
 
-        // relations
+        //relations
 
-
-        //[ForeignKey("Organization")]
-        //public long? organization_id { get; set; }
-        //public Organization? Organization { get; set; }
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
 
     }
 }

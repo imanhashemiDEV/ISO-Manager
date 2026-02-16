@@ -5,7 +5,7 @@
   const info = document.querySelector('#tree-msg');
 
   const tree = new VanillaTree(main, {
-    contextmenu: [
+    conTextmenu: [
       {
         label: 'Hey',
         action: function (id) {

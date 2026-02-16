@@ -15,16 +15,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Duty[0].title)
+                @Html.DisplayNameFor(model => model.Duty[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Duty[0].step)
+                @Html.DisplayNameFor(model => model.Duty[0].Step)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Duty[0].created_at)
+                @Html.DisplayNameFor(model => model.Duty[0].CreatedAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Duty[0].updated_at)
+                @Html.DisplayNameFor(model => model.Duty[0].UpdatedAt)
             </th>
             <th></th>
         </tr>
@@ -33,16 +33,16 @@
 @foreach (var item in Model.Duty) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.title)
+                @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.step)
+                @Html.DisplayFor(modelItem => item.Step)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.created_at)
+                @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.updated_at)
+                @Html.DisplayFor(modelItem => item.UpdatedAt)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

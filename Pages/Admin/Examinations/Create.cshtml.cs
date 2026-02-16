@@ -12,20 +12,20 @@ namespace ISO_Manager.Pages.Admin.Examinations
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public long ContractorId { get; set; }
 
-        public IActionResult OnGet(long? contractor_id)
+        public IActionResult OnGet(long? ContractorId)
         {
-            ContractorId = (long)contractor_id;
-            ViewData["contractor_id"] = new SelectList(_context.Contractors, "id", "company");
-        ViewData["user_id"] = new SelectList(_context.Users, "id", "name");
+            ContractorId = (long)ContractorId;
+            ViewData["ContractorId"] = new SelectList(_conText.Contractors, "id", "Company");
+        ViewData["UserId"] = new SelectList(_conText.Users, "id", "name");
             return Page();
         }
 
@@ -40,12 +40,12 @@ namespace ISO_Manager.Pages.Admin.Examinations
                 return Page();
             }
 
-            _context.Examinations.Add(Examination);
-            await _context.SaveChangesAsync();
+            _conText.Examinations.Add(Examination);
+            await _conText.SaveChangesAsync();
 
-            if (Examination.contractor_id != null)
+            if (Examination.ContractorId != null)
             {
-                return RedirectToPage("./Contractor", new { contractor_id = Examination.contractor_id.ToString() });
+                return RedirectToPage("./Contractor", new { ContractorId = Examination.ContractorId.ToString() });
             }
 
             return RedirectToPage("./Index");

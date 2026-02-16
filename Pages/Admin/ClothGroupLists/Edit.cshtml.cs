@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,14 +30,14 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
                 return NotFound();
             }
 
-            var clothgrouplist =  await _context.ClothGroupLists.FirstOrDefaultAsync(m => m.Id == id);
+            var clothgrouplist =  await _conText.ClothGroupLists.FirstOrDefaultAsync(m => m.Id == id);
             if (clothgrouplist == null)
             {
                 return NotFound();
             }
             ClothGroupList = clothgrouplist;
-           ViewData["cloth_groups"] = _context.ClothGroups.ToList();
-           ViewData["users"] = _context.Users.Where(m => m.EmploymentType == "rasmi" || m.EmploymentType == "gharardadi").ToList();
+           ViewData["cloth_groups"] = _conText.ClothGroups.ToList();
+           ViewData["users"] = _conText.Users.Where(m => m.EmploymentType == "rasmi" || m.EmploymentType == "gharardadi").ToList();
             return Page();
         }
 
@@ -50,11 +50,11 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
                 return Page();
             }
 
-            _context.Attach(ClothGroupList).State = EntityState.Modified;
+            _conText.Attach(ClothGroupList).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -73,7 +73,7 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
 
         private bool ClothGroupListExists(long id)
         {
-            return _context.ClothGroupLists.Any(e => e.Id == id);
+            return _conText.ClothGroupLists.Any(e => e.Id == id);
         }
     }
 }

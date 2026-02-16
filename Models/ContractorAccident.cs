@@ -9,84 +9,93 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "شماره حادثه")]
-        public string? accident_number { get; set; }
+        public string? AccidentNumber { get; set; }
 
         [Display(Name = "تاریخ حادثه")]
-        public DateTime? accident_date { get; set; }
+        public DateTime? AccidentDate { get; set; }
 
         [Display(Name = "ساعت حادثه")]
-        public TimeOnly? accident_hour { get; set; }
+        public TimeOnly? AccidentHour { get; set; }
 
         [Display(Name = "وضعیت تاهل")]
-        public string? marriage { get; set; }
+        public string? Marriage { get; set; }
 
         [Display(Name = "محل حادثه")]
-        public string? accident_place { get; set; }
+        public string? AccidentPlace { get; set; }
 
         [Display(Name = "فعالیت حین حادثه")]
-        public string? activity_in_accident { get; set; }
+        public string? ActivityInAccident { get; set; }
 
         [Display(Name = "علت مستقیم حادثه")]
-        public string? direct_accident_causes { get; set; }
+        public string? DirectAccidentCauses { get; set; }
 
         [Display(Name = "عمل ناایمن")]
-        public string? unsafe_action_causes { get; set; }
+        public string? UnsafeActionCauses { get; set; }
 
         [Display(Name = "شرایط ناایمن")]
-        public string? unsafe_condition_causes { get; set; }
+        public string? UnsafeConditionCauses { get; set; }
 
         [Display(Name = "شرح حادثه")]
-        public string? accident_description { get; set; }
+        public string? AccidentDescription { get; set; }
 
         [Display(Name = "رئیس اداره")]
-        public string? accident_boss { get; set; }
+        public string? AccidentBoss { get; set; }
 
         [Display(Name = "نظریه HSE")]
-        public string? hse_description { get; set; }
+        public string? HseDescription { get; set; }
 
         [Display(Name = "آیا مقصر بوده؟")]
-        public Int16? is_guilty { get; set; }
+        public Int16? IsGuilty { get; set; }
 
         [Display(Name = "پیامد حادثه")]
-        public string? accident_consequence { get; set; }
+        public string? AccidentConsequence { get; set; }
      
         [Display(Name = "عوارض ناشی از حادثه")]
-        public string? accident_complication { get; set; }
+        public string? AccidentComplication { get; set; }
 
         [Display(Name = "عضو آسیب دیده")]
-        public string? accident_injured_part { get; set; }
+        public string? AccidentInjuredPart { get; set; }
 
         [Display(Name = "رئیس HSE")]
-        public string? hse_boss { get; set; }
+        public string? HseBoss { get; set; }
 
         [Display(Name = "اسکن گزارش")]
-        public string? scan { get; set; }
+        public string? Scan { get; set; }
 
         [Display(Name = "روزهای از دست رفته")]
-        public int? lost_days { get; set; }
+        public int? LostDays { get; set; }
 
         [Display(Name = "تاریخ دریافت گزارش")]
-        public DateTime? receive_report_date { get; set; }
+        public DateTime? ReceiveReportDate { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         // relations
 
 
         [ForeignKey("User")]
         [Display(Name = "نام و نام خانوادگی")]
-        public string? user_id { get; set; }
+        public string? UserId { get; set; }
         [Display(Name = "نام و نام خانوادگی")]
-        public User? User { get; set; }
+        public virtual User? User { get; set; }
+
 
         [ForeignKey("Contractor")]
         [Display(Name = "نام شرکت پیمانکاری")]
-        public int? contractor_id { get; set; }
+        public int? ContractorId { get; set; }
         [Display(Name = "نام شرکت پیمانکاری")]
-        public Contractor? Contractor { get; set; }
+        public virtual Contractor? Contractor { get; set; }
+
+
+        [ForeignKey("Organization")]
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
     }
 }

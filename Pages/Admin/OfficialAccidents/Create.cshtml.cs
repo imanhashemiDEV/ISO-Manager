@@ -12,16 +12,16 @@ namespace ISO_Manager.Pages.Admin.OfficialAccidents
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IActionResult OnGet()
         {
-            ViewData["users"] = _context.Users.Where(m => m.EmploymentType == "rasmi").ToList();
+            ViewData["users"] = _conText.Users.Where(m => m.EmploymentType == "rasmi").ToList();
             return Page();
         }
 
@@ -39,8 +39,8 @@ namespace ISO_Manager.Pages.Admin.OfficialAccidents
                 return Page();
             }
 
-            _context.OfficialAccidents.Add(OfficialAccident);
-            await _context.SaveChangesAsync();
+            _conText.OfficialAccidents.Add(OfficialAccident);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       ],
       chart: {
-        type: 'bar',
+        Type: 'bar',
         height: 350,
         stacked: true,
         toolbar: {

@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ISO_Manager.Data;
 using ISO_Manager.Models;
 
-namespace ISO_Manager.Pages.Admin.Workplace
+namespace ISO_Manager.Pages.Admin.WorkPlace
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IActionResult OnGet()
@@ -25,7 +25,7 @@ namespace ISO_Manager.Pages.Admin.Workplace
         }
 
         [BindProperty]
-        public Models.Workplace Workplace { get; set; } = default!;
+        public Models.WorkPlace WorkPlace { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -35,8 +35,8 @@ namespace ISO_Manager.Pages.Admin.Workplace
                 return Page();
             }
 
-            _context.Workplaces.Add(Workplace);
-            await _context.SaveChangesAsync();
+            _conText.WorkPlaces.Add(WorkPlace);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

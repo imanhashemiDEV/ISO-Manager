@@ -1,10 +1,10 @@
 html {
-  font-size: 14px;
+  font-Size: 14px;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-Size: 16px;
   }
 }
 
@@ -21,11 +21,11 @@ body {
   margin-bottom: 60px;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+.form-floating > .form-control-plainText::Placeholder, .form-floating > .form-control::Placeholder {
   color: var(--bs-secondary-color);
-  text-align: end;
+  Text-align: end;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.form-floating > .form-control-plainText:focus::Placeholder, .form-floating > .form-control:focus::Placeholder {
+  Text-align: start;
 }

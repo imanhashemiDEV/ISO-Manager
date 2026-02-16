@@ -229,6 +229,6 @@ jsVectorMap.addMap('us_merc_en', {
     }
   },
   height: 552.5549153301214,
-  projection: { type: 'merc', centralMeridian: -10.0 },
+  projection: { Type: 'merc', centralMeridian: -10.0 },
   width: 900.0
 });

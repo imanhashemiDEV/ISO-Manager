@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var total_revenue_line_2_chart_options = {
       chart: {
-        type: 'line',
+        Type: 'line',
         height: 60,
         sparkline: {
           enabled: true
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
           show: false
         },
         y: {
-          title: {
+          Title: {
             formatter: function (seriesName) {
               return '';
             }

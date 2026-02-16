@@ -1,7 +1,7 @@
-// Exports the "searchreplace" plugin for usage with module loaders
+// Exports the "searchrePlace" plugin for usage with module loaders
 // Usage:
 //   CommonJS:
-//     require('tinymce/plugins/searchreplace')
+//     require('tinymce/plugins/searchrePlace')
 //   ES2015:
-//     import 'tinymce/plugins/searchreplace'
+//     import 'tinymce/plugins/searchrePlace'
 require('./plugin.js');

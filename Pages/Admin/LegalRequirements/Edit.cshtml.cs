@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.LegalRequirements
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace ISO_Manager.Pages.Admin.LegalRequirements
                 return NotFound();
             }
 
-            var legalrequirement =  await _context.LegalRequirements.FirstOrDefaultAsync(m => m.Id == id);
+            var legalrequirement =  await _conText.LegalRequirements.FirstOrDefaultAsync(m => m.Id == id);
             if (legalrequirement == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace ISO_Manager.Pages.Admin.LegalRequirements
                 return Page();
             }
 
-            _context.Attach(LegalRequirement).State = EntityState.Modified;
+            _conText.Attach(LegalRequirement).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace ISO_Manager.Pages.Admin.LegalRequirements
 
         private bool LegalRequirementExists(long id)
         {
-            return _context.LegalRequirements.Any(e => e.Id == id);
+            return _conText.LegalRequirements.Any(e => e.Id == id);
         }
     }
 }

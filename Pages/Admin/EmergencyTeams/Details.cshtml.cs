@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.EmergencyTeams
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public EmergencyTeam EmergencyTeam { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.EmergencyTeams
                 return NotFound();
             }
 
-            var emergencyteam = await _context.EmergencyTeams.FirstOrDefaultAsync(m => m.Id == id);
+            var emergencyteam = await _conText.EmergencyTeams.FirstOrDefaultAsync(m => m.Id == id);
 
             if (emergencyteam is not null)
             {

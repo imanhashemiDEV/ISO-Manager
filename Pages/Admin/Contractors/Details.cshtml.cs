@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Contractors
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public Contractor Contractor { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.Contractors
                 return NotFound();
             }
 
-            var contractor = await _context.Contractors.FirstOrDefaultAsync(m => m.Id == id);
+            var contractor = await _conText.Contractors.FirstOrDefaultAsync(m => m.Id == id);
 
             if (contractor is not null)
             {

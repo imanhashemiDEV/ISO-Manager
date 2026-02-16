@@ -12,18 +12,18 @@ namespace ISO_Manager.Pages.Admin.ContractorAccidents
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<ContractorAccident> ContractorAccident { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            ContractorAccident = await _context.ContractorAccidents
+            ContractorAccident = await _conText.ContractorAccidents
                 .Include(c => c.User)
                 .Include(c => c.Contractor)
                 .ToListAsync();

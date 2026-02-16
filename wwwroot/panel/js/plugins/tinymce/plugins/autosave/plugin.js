@@ -9,25 +9,25 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.prototype)) {
+      if (predicate(v, constructor.protoType)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const typeOf = x => {
-      const t = typeof x;
+    const TypeOf = x => {
+      const t = Typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType = type => value => typeOf(value) === type;
+    const isType = Type => value => TypeOf(value) === Type;
     const eq = t => a => t === a;
     const isString = isType('string');
     const isUndefined = eq(undefined);
@@ -94,8 +94,8 @@
     const getAutoSaveInterval = option('autosave_interval');
     const getAutoSaveRetention = option('autosave_retention');
     const getAutoSavePrefix = editor => {
-      const location = document.location;
-      return editor.options.get('autosave_prefix').replace(/{path}/g, location.pathname).replace(/{query}/g, location.search).replace(/{hash}/g, location.hash).replace(/{id}/g, editor.id);
+      const Location = document.Location;
+      return editor.options.get('autosave_prefix').rePlace(/{path}/g, Location.pathname).rePlace(/{query}/g, Location.search).rePlace(/{hash}/g, Location.hash).rePlace(/{id}/g, editor.id);
     };
 
     const isEmpty = (editor, html) => {
@@ -106,7 +106,7 @@
         if (trimmedHtml === '') {
           return true;
         } else {
-          const fragment = new DOMParser().parseFromString(trimmedHtml, 'text/html');
+          const fragment = new DOMParser().parseFromString(trimmedHtml, 'Text/html');
           return editor.dom.isEmpty(fragment);
         }
       }
@@ -208,7 +208,7 @@
         onSetup: makeSetupHandler(editor)
       });
       editor.ui.registry.addMenuItem('restoredraft', {
-        text: 'Restore last draft',
+        Text: 'Restore last draft',
         icon: 'restore-draft',
         onAction,
         onSetup: makeSetupHandler(editor)

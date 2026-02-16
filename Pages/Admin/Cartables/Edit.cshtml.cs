@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Cartables
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
+        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace ISO_Manager.Pages.Admin.Cartables
                 return NotFound();
             }
 
-            var cartable =  await _context.Cartables.FirstOrDefaultAsync(m => m.Id == id);
+            var cartable =  await _conText.Cartables.FirstOrDefaultAsync(m => m.Id == id);
             if (cartable == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace ISO_Manager.Pages.Admin.Cartables
                 return Page();
             }
 
-            _context.Attach(Cartable).State = EntityState.Modified;
+            _conText.Attach(Cartable).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _conText.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace ISO_Manager.Pages.Admin.Cartables
 
         private bool CartableExists(long id)
         {
-            return _context.Cartables.Any(e => e.Id == id);
+            return _conText.Cartables.Any(e => e.Id == id);
         }
     }
 }

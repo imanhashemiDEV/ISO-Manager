@@ -12,21 +12,21 @@ namespace ISO_Manager.Pages.Admin.EmergencyTeams
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<EmergencyTeam> EmergencyTeam { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            EmergencyTeam = await _context.EmergencyTeams
+            EmergencyTeam = await _conText.EmergencyTeams
                 .Include(e => e.Duty)
                 .Include(e => e.User)
-                .Include(e => e.Workplace).ToListAsync();
+                .Include(e => e.WorkPlace).ToListAsync();
         }
     }
 }

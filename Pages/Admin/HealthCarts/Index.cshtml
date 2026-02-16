@@ -40,13 +40,13 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.HealthCart[0].end_date)
+                                        @Html.DisplayNameFor(model => model.HealthCart[0].EndDate)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.HealthCart[0].User)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.HealthCart[0].Workplace)
+                                        @Html.DisplayNameFor(model => model.HealthCart[0].WorkPlace)
                                     </th>
                                     <th>عملیات</th>
                                 </tr>
@@ -57,17 +57,17 @@
                                     <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
                                         <td>
-                                                @DateToPersian.ToShamsi(item.end_date, "yyyy/MM/dd")
+                                                @DateToPersian.ToShamsi(item.EndDate, "yyyy/MM/dd")
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.User!.Name)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Workplace!.title)
+                                            @Html.DisplayFor(modelItem => item.WorkPlace!.Title)
                                         </td>
                                         <td>
                                             <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                <i class="ti ti-edit text-xl leading-none"></i>
+                                                <i class="ti ti-edit Text-xl leading-none"></i>
                                             </a>
                                         </td>
                                     </tr>

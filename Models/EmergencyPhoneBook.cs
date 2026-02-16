@@ -10,23 +10,29 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "عنوان محل")]
-        public string? place { get; set; }
+        public string? Place { get; set; }
 
         [Display(Name = "تلفن شهری")]
-        public string? city_phone { get; set; }
+        public string? CityPhone { get; set; }
 
         [Display(Name = "تلفن شرکتی")]
-        public string? company_phone { get; set; }
+        public string? CompanyPhone { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
-        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Display(Name = "تاریخ بروزرسانی")]
-        public DateTime updated_at { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+
+        //relations
 
         [ForeignKey("Organization")]
-        public int? organization_id { get; set; }
-        public Organization? Organization;
+        [Display(Name = "نام سازمان")]
+        public int? OrganizationId { get; set; }
+        [Display(Name = "نام سازمان")]
+        public virtual Organization? Organization { get; set; }
+
 
 
     }

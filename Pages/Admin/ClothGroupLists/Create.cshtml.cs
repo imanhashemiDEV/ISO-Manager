@@ -12,19 +12,19 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public long ClothGroupId { get; set; }
 
         public IActionResult OnGet(long id)
         {
-            ViewData["cloth_groups"] = _context.ClothGroups.ToList();
-            ViewData["users"] = _context.Users.Where(m => m.EmploymentType == "rasmi" || m.EmploymentType == "gharardadi").ToList();
+            ViewData["cloth_groups"] = _conText.ClothGroups.ToList();
+            ViewData["users"] = _conText.Users.Where(m => m.EmploymentType == "rasmi" || m.EmploymentType == "gharardadi").ToList();
             ClothGroupId = id;
             return Page();
         }
@@ -42,8 +42,8 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
                 return Page();
             }
 
-            _context.ClothGroupLists.Add(ClothGroupList);
-            await _context.SaveChangesAsync();
+            _conText.ClothGroupLists.Add(ClothGroupList);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("/Admin/ClothGroups/Index");
         }

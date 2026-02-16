@@ -12,18 +12,18 @@ namespace ISO_Manager.Pages.Admin.EmergencyTeams
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
+        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["duty_id"] = new SelectList(_context.Duties, "id", "id");
-        ViewData["user_id"] = new SelectList(_context.Users, "id", "id");
-        ViewData["workplace_id"] = new SelectList(_context.Workplaces, "id", "id");
+        ViewData["DutyId"] = new SelectList(_conText.Duties, "id", "id");
+        ViewData["UserId"] = new SelectList(_conText.Users, "id", "id");
+        ViewData["WorkPlaceId"] = new SelectList(_conText.WorkPlaces, "id", "id");
             return Page();
         }
 
@@ -38,8 +38,8 @@ namespace ISO_Manager.Pages.Admin.EmergencyTeams
                 return Page();
             }
 
-            _context.EmergencyTeams.Add(EmergencyTeam);
-            await _context.SaveChangesAsync();
+            _conText.EmergencyTeams.Add(EmergencyTeam);
+            await _conText.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

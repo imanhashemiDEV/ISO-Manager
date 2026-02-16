@@ -12,18 +12,18 @@ namespace ISO_Manager.Pages.Admin.Standards
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _context;
+        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
+        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
         {
-            _context = context;
+            _conText = conText;
         }
 
         public IList<Standard> Standard { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Standard = await _context.Standards.ToListAsync();
+            Standard = await _conText.Standards.ToListAsync();
         }
     }
 }
