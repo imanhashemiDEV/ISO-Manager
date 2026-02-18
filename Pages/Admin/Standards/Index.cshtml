@@ -33,17 +33,17 @@
                             <div class="col-span-12 md:col-span-3">
                                 <ul class="flex flex-col w-full Text-center nav-tabs">
                                     <li class="group grow active">
-                                        <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="verticalpills-1" class="w-full inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
+                                        <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="verticalpills-1" class="w-full inline-block px-4 py-2 transition-all Duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
                                             ISO45001
                                         </a>
                                     </li>
                                     <li class="group grow">
-                                        <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="verticalpills-2" class="w-full inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
+                                        <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="verticalpills-2" class="w-full inline-block px-4 py-2 transition-all Duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
                                             ISO14001
                                         </a>
                                     </li>
                                     <li class="group grow ">
-                                        <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="verticalpills-3" class="w-full inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
+                                        <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="verticalpills-3" class="w-full inline-block px-4 py-2 transition-all Duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
                                             ISO9001
                                         </a>
                                     </li>
@@ -57,23 +57,23 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            @Html.DisplayNameFor(model => model.Standard[0].fa_chapter)
+                                                            @Html.DisplayNameFor(model => model.Standard[0].FaChapter)
                                                         </th>
                                                         <th>
-                                                            @Html.DisplayNameFor(model => model.Standard[0].fa_subchapter)
+                                                            @Html.DisplayNameFor(model => model.Standard[0].FaSubchapter)
                                                         </th>
                                                         <th>عملیات</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach (var item in Model.Standard.Where(m => m.standard_name == "iso45001").ToList())
+                                                    @foreach (var item in Model.Standard.Where(m => m.StandardName == "iso45001").ToList())
                                                     {
                                                         <tr>
                                                             <td>
-                                                                @Html.DisplayFor(modelItem => item.fa_chapter)
+                                                                @Html.DisplayFor(modelItem => item.FaChapter)
                                                             </td>
                                                             <td>
-                                                                @Html.DisplayFor(modelItem => item.fa_subchapter)
+                                                                @Html.DisplayFor(modelItem => item.FaSubchapter)
                                                             </td>
                                                             <td>
                                                                 <a asp-page="./Details" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
@@ -92,23 +92,23 @@
                                                 <thead>
                                                 <tr>
                                                     <th>
-                                                        @Html.DisplayNameFor(model => model.Standard[0].fa_chapter)
+                                                        @Html.DisplayNameFor(model => model.Standard[0].FaChapter)
                                                     </th>
                                                     <th>
-                                                        @Html.DisplayNameFor(model => model.Standard[0].fa_subchapter)
+                                                        @Html.DisplayNameFor(model => model.Standard[0].FaSubchapter)
                                                     </th>
                                                     <th>عملیات</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach (var item in Model.Standard.Where(m => m.standard_name == "iso14001").ToList())
+                                                    @foreach (var item in Model.Standard.Where(m => m.StandardName == "iso14001").ToList())
                                                 {
                                                     <tr>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.fa_chapter)
+                                                            @Html.DisplayFor(modelItem => item.FaChapter)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.fa_subchapter)
+                                                            @Html.DisplayFor(modelItem => item.FaSubchapter)
                                                         </td>
                                                         <td>
                                                             <a asp-page="./Details" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
@@ -127,23 +127,23 @@
                                                 <thead>
                                                 <tr>
                                                     <th>
-                                                        @Html.DisplayNameFor(model => model.Standard[0].fa_chapter)
+                                                        @Html.DisplayNameFor(model => model.Standard[0].FaChapter)
                                                     </th>
                                                     <th>
-                                                        @Html.DisplayNameFor(model => model.Standard[0].fa_subchapter)
+                                                        @Html.DisplayNameFor(model => model.Standard[0].FaSubchapter)
                                                     </th>
                                                     <th>عملیات</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach (var item in Model.Standard.Where(m => m.standard_name == "iso9001").ToList())
+                                                    @foreach (var item in Model.Standard.Where(m => m.StandardName == "iso9001").ToList())
                                                 {
                                                     <tr>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.fa_chapter)
+                                                            @Html.DisplayFor(modelItem => item.FaChapter)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.fa_subchapter)
+                                                            @Html.DisplayFor(modelItem => item.FaSubchapter)
                                                         </td>
                                                         <td>
                                                             <a asp-page="./Details" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">

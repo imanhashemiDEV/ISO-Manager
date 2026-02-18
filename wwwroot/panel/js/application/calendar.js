@@ -22,7 +22,7 @@ Description:  this file will contains code for build and handle calender applica
   var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
     headerToolbar: {
       left: 'prev,next today',
-      center: 'Title',
+      center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
     },
     themeSystem: 'bootstrap',
@@ -35,18 +35,18 @@ Description:  this file will contains code for build and handle calender applica
     selectMirror: true,
     editable: true,
     dayMaxEvents: true,
-    handleWindowReSize: true,
+    handleWindowResize: true,
     select: function (info) {
       var sdt = new Date(info.start);
       var edt = new Date(info.end);
       document.getElementById('pc-e-sdate').value = sdt.getFullYear() + '-' + getRound(sdt.getMonth() + 1) + '-' + getRound(sdt.getDate());
       document.getElementById('pc-e-edate').value = edt.getFullYear() + '-' + getRound(edt.getMonth() + 1) + '-' + getRound(edt.getDate());
 
-      document.getElementById('pc-e-Title').value = '';
+      document.getElementById('pc-e-title').value = '';
       document.getElementById('pc-e-venue').value = '';
-      document.getElementById('pc-e-Description').value = '';
-      document.getElementById('pc-e-Type').value = '';
-      document.getElementById('pc-e-btn-Text').innerHTML = '<i class="align-Text-bottom me-1 ti ti-calendar-plus"></i> Add';
+      document.getElementById('pc-e-description').value = '';
+      document.getElementById('pc-e-type').value = '';
+      document.getElementById('pc-e-btn-text').innerHTML = '<i class="align-text-bottom me-1 ti ti-calendar-plus"></i> Add';
       document.querySelector('#pc_event_add').setAttribute('data-pc-action', 'add');
 
       calendaroffcanvas.classList.add('show');
@@ -62,16 +62,16 @@ Description:  this file will contains code for build and handle calender applica
     eventClick: function (info) {
       calendevent = info.event;
       var clickedevent = info.event;
-      var ETitle = clickedevent.Title === undefined ? '' : clickedevent.Title;
-      var e_desc = clickedevent.extendedProps.Description === undefined ? '' : clickedevent.extendedProps.Description;
+      var e_title = clickedevent.title === undefined ? '' : clickedevent.title;
+      var e_desc = clickedevent.extendedProps.description === undefined ? '' : clickedevent.extendedProps.description;
       var e_date_start = clickedevent.start === null ? '' : dateformat(clickedevent.start);
-      var e_date_end = clickedevent.end === null ? '' : " <i class='Text-sm'>to</i> " + dateformat(clickedevent.end);
+      var e_date_end = clickedevent.end === null ? '' : " <i class='text-sm'>to</i> " + dateformat(clickedevent.end);
       e_date_end = clickedevent.end === null ? '' : e_date_end;
-      var e_venue = clickedevent.extendedProps.Description === undefined ? '' : clickedevent.extendedProps.venue;
+      var e_venue = clickedevent.extendedProps.description === undefined ? '' : clickedevent.extendedProps.venue;
 
-      document.querySelector('.calendar-modal-Title').innerHTML = ETitle;
-      document.querySelector('.pc-event-Title').innerHTML = ETitle;
-      document.querySelector('.pc-event-Description').innerHTML = e_desc;
+      document.querySelector('.calendar-modal-title').innerHTML = e_title;
+      document.querySelector('.pc-event-title').innerHTML = e_title;
+      document.querySelector('.pc-event-description').innerHTML = e_desc;
       document.querySelector('.pc-event-date').innerHTML = e_date_start + e_date_end;
       document.querySelector('.pc-event-venue').innerHTML = e_venue;
 
@@ -90,115 +90,115 @@ Description:  this file will contains code for build and handle calender applica
     },
     events: [
       {
-        Title: 'All Day Event',
+        title: 'All Day Event',
         start: new Date(y, m, 1),
         allDay: true,
-        Description:
-          'Lorem Ipsum is simply dummy Text of the printing and Typesetting industry. Lorem Ipsum has been the industry standard dummy Text ever since the 1500s.',
+        description:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
         venue: 'City Town',
         className: 'event-warning'
       },
       {
-        Title: 'Long Event',
+        title: 'Long Event',
         start: new Date(y, m, 7),
         end: new Date(y, m, 10),
         allDay: true,
-        Description:
-          'It has survived not only five centuries, but also the leap into electronic Typesetting, remaining essentially unchanged.',
+        description:
+          'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
         venue: 'City Town',
         className: 'event-primary'
       },
       {
         groupId: 999,
-        Title: 'Repeating Event',
+        title: 'Repeating Event',
         start: new Date(y, m, 9, 16, 0),
         allDay: false,
-        Description:
-          'Lorem Ipsum is simply dummy Text of the printing and Typesetting industry. Lorem Ipsum has been the industry standard dummy Text ever since the 1500s.',
+        description:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
         venue: 'City Town',
         className: 'event-danger'
       },
       {
         groupId: 999,
-        Title: 'Repeating Event',
+        title: 'Repeating Event',
         start: new Date(y, m, 16, 16, 0),
         allDay: false,
-        Description:
-          'It has survived not only five centuries, but also the leap into electronic Typesetting, remaining essentially unchanged.',
+        description:
+          'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
         venue: 'City Town',
         className: 'event-danger'
       },
       {
-        Title: 'Conference',
+        title: 'Conference',
         start: new Date(y, m, 11),
         end: new Date(y, m, 13),
         allDay: true,
-        Description:
-          'Lorem Ipsum is simply dummy Text of the printing and Typesetting industry. Lorem Ipsum has been the industry standard dummy Text ever since the 1500s.',
+        description:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
         venue: 'City Town',
         className: 'event-info'
       },
       {
-        Title: 'Meeting',
+        title: 'Meeting',
         start: new Date(y, m, 12, 10, 30),
         end: new Date(y, m, 12, 12, 30),
         allDay: false,
-        Description:
-          'It has survived not only five centuries, but also the leap into electronic Typesetting, remaining essentially unchanged.',
+        description:
+          'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
         venue: 'City Town',
         className: 'event-danger'
       },
       {
-        Title: 'Lunch',
+        title: 'Lunch',
         start: new Date(y, m, 12, 12, 30),
         allDay: false,
-        Description:
-          'Lorem Ipsum is simply dummy Text of the printing and Typesetting industry. Lorem Ipsum has been the industry standard dummy Text ever since the 1500s.',
+        description:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
         venue: 'City Town',
         className: 'event-success'
       },
       {
-        Title: 'Meeting',
+        title: 'Meeting',
         start: new Date(y, m, 14, 14, 30),
         allDay: false,
-        Description:
-          'It has survived not only five centuries, but also the leap into electronic Typesetting, remaining essentially unchanged.',
+        description:
+          'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
         venue: 'City Town',
         className: 'event-warning'
       },
       {
-        Title: 'Happy Hour',
+        title: 'Happy Hour',
         start: new Date(y, m, 14, 17, 30),
         allDay: false,
-        Description:
-          'Lorem Ipsum is simply dummy Text of the printing and Typesetting industry. Lorem Ipsum has been the industry standard dummy Text ever since the 1500s.',
+        description:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
         venue: 'City Town',
         className: 'event-info'
       },
       {
-        Title: 'Dinner',
+        title: 'Dinner',
         start: new Date(y, m, 15, 20, 0),
         allDay: false,
-        Description:
-          'It has survived not only five centuries, but also the leap into electronic Typesetting, remaining essentially unchanged.',
+        description:
+          'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
         venue: 'City Town',
         className: 'event-primary'
       },
       {
-        Title: 'Birthday Party',
+        title: 'Birthday Party',
         start: new Date(y, m, 13, 0, 0),
         allDay: false,
-        Description:
-          'Lorem Ipsum is simply dummy Text of the printing and Typesetting industry. Lorem Ipsum has been the industry standard dummy Text ever since the 1500s.',
+        description:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
         venue: 'City Town',
         className: 'event-success'
       },
       {
-        Title: 'Click for Google',
+        title: 'Click for Google',
         url: 'http://google.com/',
         allDay: true,
-        Description:
-          'It has survived not only five centuries, but also the leap into electronic Typesetting, remaining essentially unchanged.',
+        description:
+          'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
         venue: 'City Town',
         start: new Date(y, m, 28)
       }
@@ -227,8 +227,8 @@ Description:  this file will contains code for build and handle calender applica
       });
       swalWithBootstrapButtons
         .fire({
-          Title: 'Are you sure?',
-          Text: 'you want to delete this event?',
+          title: 'Are you sure?',
+          text: 'you want to delete this event?',
           icon: 'warning',
           showCancelButton: true,
           confirmButtonText: 'Yes, delete it!',
@@ -258,13 +258,13 @@ Description:  this file will contains code for build and handle calender applica
         end = new Date(e_date_end);
       }
       calendar.addEvent({
-        Title: document.getElementById('pc-e-Title').value,
+        title: document.getElementById('pc-e-title').value,
         start: new Date(e_date_start),
         end: end,
         allDay: day,
-        Description: document.getElementById('pc-e-Description').value,
+        description: document.getElementById('pc-e-description').value,
         venue: document.getElementById('pc-e-venue').value,
-        className: document.getElementById('pc-e-Type').value
+        className: document.getElementById('pc-e-type').value
       });
       if (pc_event_add.getAttribute('data-pc-action') == 'add') {
         Swal.fire({
@@ -273,12 +273,12 @@ Description:  this file will contains code for build and handle calender applica
           },
           buttonsStyling: false,
           icon: 'success',
-          Title: 'Success',
-          Text: 'Event added successfully'
+          title: 'Success',
+          text: 'Event added successfully'
         });
       } else {
         calendevent.remove();
-        document.getElementById('pc-e-btn-Text').innerHTML = '<i class="align-Text-bottom me-1 ti ti-calendar-plus"></i> Add';
+        document.getElementById('pc-e-btn-text').innerHTML = '<i class="align-text-bottom me-1 ti ti-calendar-plus"></i> Add';
         document.querySelector('#pc_event_add').setAttribute('data-pc-action', 'add');
         Swal.fire({
           customClass: {
@@ -286,8 +286,8 @@ Description:  this file will contains code for build and handle calender applica
           },
           buttonsStyling: false,
           icon: 'success',
-          Title: 'Success',
-          Text: 'Event Updated successfully'
+          title: 'Success',
+          text: 'Event Updated successfully'
         });
       }
       offcanvasclose();
@@ -297,23 +297,23 @@ Description:  this file will contains code for build and handle calender applica
   var pc_event_edit = document.querySelector('#pc_event_edit');
   if (pc_event_edit) {
     pc_event_edit.addEventListener('click', function () {
-      var ETitle = calendevent.Title === undefined ? '' : calendevent.Title;
-      var e_desc = calendevent.extendedProps.Description === undefined ? '' : calendevent.extendedProps.Description;
+      var e_title = calendevent.title === undefined ? '' : calendevent.title;
+      var e_desc = calendevent.extendedProps.description === undefined ? '' : calendevent.extendedProps.description;
       var e_date_start = calendevent.start === null ? '' : dateformat(calendevent.start);
-      var e_date_end = calendevent.end === null ? '' : " <i class='Text-sm'>to</i> " + dateformat(calendevent.end);
+      var e_date_end = calendevent.end === null ? '' : " <i class='text-sm'>to</i> " + dateformat(calendevent.end);
       e_date_end = calendevent.end === null ? '' : e_date_end;
-      var e_venue = calendevent.extendedProps.Description === undefined ? '' : calendevent.extendedProps.venue;
-      var e_Type = calendevent.classNames[0] === undefined ? '' : calendevent.classNames[0];
+      var e_venue = calendevent.extendedProps.description === undefined ? '' : calendevent.extendedProps.venue;
+      var e_type = calendevent.classNames[0] === undefined ? '' : calendevent.classNames[0];
 
-      document.getElementById('pc-e-Title').value = ETitle;
+      document.getElementById('pc-e-title').value = e_title;
       document.getElementById('pc-e-venue').value = e_venue;
-      document.getElementById('pc-e-Description').value = e_desc;
-      document.getElementById('pc-e-Type').value = e_Type;
+      document.getElementById('pc-e-description').value = e_desc;
+      document.getElementById('pc-e-type').value = e_type;
       var sdt = new Date(e_date_start);
       var edt = new Date(e_date_end);
       document.getElementById('pc-e-sdate').value = sdt.getFullYear() + '-' + getRound(sdt.getMonth() + 1) + '-' + getRound(sdt.getDate());
       document.getElementById('pc-e-edate').value = edt.getFullYear() + '-' + getRound(edt.getMonth() + 1) + '-' + getRound(edt.getDate());
-      document.getElementById('pc-e-btn-Text').innerHTML = '<i class="align-Text-bottom me-1 ti ti-calendar-stats"></i> Update';
+      document.getElementById('pc-e-btn-text').innerHTML = '<i class="align-text-bottom me-1 ti ti-calendar-stats"></i> Update';
       document.querySelector('#pc_event_add').setAttribute('data-pc-action', 'edit');
       modalclose();
       calendaroffcanvas.classList.add('show');
@@ -353,10 +353,10 @@ Description:  this file will contains code for build and handle calender applica
     var d = new Date(dt),
       month = '' + mn[d.getMonth()],
       day = '' + d.getDate(),
-      Year = d.getFullYear();
+      year = d.getFullYear();
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
-    return [day + ' ' + month, Year].join(',');
+    return [day + ' ' + month, year].join(',');
   }
 
   //  get full date

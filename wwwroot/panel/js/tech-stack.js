@@ -15,7 +15,7 @@ function getQueryStringParameters() {
 
   try {
     // Get the query string from the current URL
-    const queryString = window.Location.search;
+    const queryString = window.location.search;
     const params = new URLSearchParams(queryString);
 
     // Check if the 'isp' parameter is present and equals '1'

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var earning_courses_line_chart_options = {
       chart: {
-        Type: 'line',
+        type: 'line',
         height: 230,
         toolbar: {
           show: false
@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
         enabled: false
       },
       markers: {
-        Size: 1,
+        size: 1,
         colors: ['#fff', '#fff', '#fff'],
         strokeColors: ['#e58a00', '#4680ff'],
         strokeWidth: 1,
         shape: 'circle',
         hover: {
-          Size: 4
+          size: 4
         }
       },
       stroke: {

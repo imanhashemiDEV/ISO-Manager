@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var cashflow_bar_chart_options = {
       chart: {
-        Type: 'bar',
+        type: 'bar',
         height: 210,
         toolbar: {
           show: false

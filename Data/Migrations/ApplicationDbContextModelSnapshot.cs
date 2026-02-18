@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ISO_Manager.Data.Migrations
 {
-    [DbConText(Typeof(ApplicationDbConText))]
-    partial class ApplicationDbConTextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ApplicationDbContext))]
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -45,6 +45,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Owner")
                         .HasColumnType("nvarchar(max)");
 
@@ -70,6 +73,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("UserId");
 
@@ -104,8 +109,11 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("InspectionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("inspector")
+                    b.Property<string>("Inspector")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("SerialNumber")
                         .HasColumnType("nvarchar(max)");
@@ -120,6 +128,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Assets");
                 });
@@ -153,6 +163,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("EndCalibration")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("SerialNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -169,6 +182,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Calibrations");
                 });
@@ -187,6 +202,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
@@ -197,6 +215,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Cartables");
                 });
@@ -218,6 +238,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("ReceiveDate")
                         .HasColumnType("datetime2");
 
@@ -235,6 +258,8 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrganizationId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Clothes");
@@ -251,13 +276,18 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("name")
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("ClothGroups");
                 });
@@ -279,6 +309,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Shoes")
                         .HasColumnType("nvarchar(max)");
 
@@ -291,6 +324,8 @@ namespace ISO_Manager.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClothGroupId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("UserId");
 
@@ -344,6 +379,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("ManagerMobile")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("PersonnelCount")
                         .HasColumnType("int");
 
@@ -360,6 +398,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Contractors");
                 });
@@ -393,7 +433,7 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("AccidentInjuredPart")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("accident_number")
+                    b.Property<string>("AccidentNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AccidentPlace")
@@ -426,10 +466,13 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Marriage")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("ReceiveReportDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("scan")
+                    b.Property<string>("Scan")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UnsafeActionCauses")
@@ -447,6 +490,8 @@ namespace ISO_Manager.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ContractorId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("UserId");
 
@@ -473,6 +518,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("RigBossId")
                         .HasColumnType("nvarchar(450)");
 
@@ -494,6 +542,8 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasIndex("DoctorId");
 
+                    b.HasIndex("OrganizationId");
+
                     b.HasIndex("RigBossId");
 
                     b.ToTable("DailyReports");
@@ -510,6 +560,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<double?>("Step")
                         .HasColumnType("float");
 
@@ -520,6 +573,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Duties");
                 });
@@ -552,6 +607,8 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrganizationId");
+
                     b.ToTable("EmergencyPhoneBooks");
                 });
 
@@ -566,10 +623,13 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Duty")
+                    b.Property<int?>("DutyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DutyTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DutyId")
+                    b.Property<int?>("OrganizationId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -584,6 +644,8 @@ namespace ISO_Manager.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DutyId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("UserId");
 
@@ -615,6 +677,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("ExaminationResult")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -624,6 +689,8 @@ namespace ISO_Manager.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ContractorId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("UserId");
 
@@ -641,6 +708,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -648,6 +718,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("HarmfulFactor");
                 });
@@ -666,6 +738,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<int?>("HarmfulFactorId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -675,6 +750,8 @@ namespace ISO_Manager.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("HarmfulFactorId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("HarmfulItem");
                 });
@@ -693,6 +770,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -703,6 +783,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("UserId");
 
@@ -728,6 +810,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<int?>("InspectionPlaceId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -740,6 +825,8 @@ namespace ISO_Manager.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("InspectionPlaceId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("UserId");
 
@@ -768,6 +855,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<int?>("InspectionId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
@@ -783,6 +873,8 @@ namespace ISO_Manager.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("InspectionId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("TextId");
 
@@ -802,6 +894,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -809,6 +904,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("InspectionPlaces");
                 });
@@ -827,6 +924,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<int?>("InspectionPlaceId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Step")
                         .HasColumnType("int");
 
@@ -839,6 +939,8 @@ namespace ISO_Manager.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("InspectionPlaceId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("InspectionTexts");
                 });
@@ -854,8 +956,10 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("RegulationDate")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RegulationOrganization")
@@ -868,6 +972,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("LegalRequirements");
                 });
@@ -892,6 +998,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Level")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Place")
                         .HasColumnType("nvarchar(max)");
 
@@ -912,6 +1021,8 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrganizationId");
+
                     b.ToTable("Maneuvers");
                 });
 
@@ -925,6 +1036,9 @@ namespace ISO_Manager.Data.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ReceiverId")
                         .HasColumnType("nvarchar(450)");
@@ -942,6 +1056,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("ReceiverId");
 
@@ -967,6 +1083,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("OccupationType")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -974,6 +1093,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Occupations");
                 });
@@ -985,9 +1106,6 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("HarmfulItemId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -1016,6 +1134,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<int?>("OccupationId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
@@ -1024,11 +1145,13 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HarmfulItemId");
-
                     b.HasIndex("HarmfulFactorId");
 
+                    b.HasIndex("HarmfulItemId");
+
                     b.HasIndex("OccupationId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("OccupationHarmfuls");
                 });
@@ -1044,20 +1167,20 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("OrganizationId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Office");
+                    b.ToTable("Offices");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.OfficialAccident", b =>
@@ -1089,7 +1212,7 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("AccidentInjuredPart")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("accident_number")
+                    b.Property<string>("AccidentNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AccidentPlace")
@@ -1125,10 +1248,13 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Marriage")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("ReceiveReportDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("scan")
+                    b.Property<string>("Scan")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UnsafeActionCauses")
@@ -1145,6 +1271,8 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrganizationId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("OfficialAccidents");
@@ -1158,7 +1286,7 @@ namespace ISO_Manager.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal?>("accept_percent")
+                    b.Property<decimal?>("AcceptPercent")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -1167,22 +1295,25 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("done")
+                    b.Property<int?>("Done")
                         .HasColumnType("int");
 
                     b.Property<int?>("Estimate")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("plan_percent")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("plan_realization_percent")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("purpose_id")
+                    b.Property<int?>("OrganizationId")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("realization_percent")
+                    b.Property<decimal?>("PlanPercent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("PlanRealizationPercent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("PurposeId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("RealizationPercent")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Status")
@@ -1199,7 +1330,9 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("purpose_id");
+                    b.HasIndex("OrganizationId");
+
+                    b.HasIndex("PurposeId");
 
                     b.ToTable("OperationPlans");
                 });
@@ -1240,34 +1373,39 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("duration")
+                    b.Property<string>("Duration")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Owner")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("permit_attachment_Type")
+                    b.Property<string>("PermitAttachmentType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("permit_date")
+                    b.Property<DateTime?>("PermitDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("permit_number")
+                    b.Property<string>("PermitNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("permit_Type")
+                    b.Property<string>("PermitType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Place")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("responsible")
+                    b.Property<string>("Responsible")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Permits");
                 });
@@ -1283,7 +1421,58 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Title")
+                    b.Property<int?>("OfficeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProcessActitvities")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessDocuments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ProcessEditDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProcessExport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessGroup")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessInputs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessIntrested")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessOwner")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessProviders")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessPurpose")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessRequirement")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessResources")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessResponsible")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessReviewNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcessTitle")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -1293,6 +1482,10 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OfficeId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Processes");
                 });
@@ -1305,22 +1498,25 @@ namespace ISO_Manager.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal?>("accept_percent")
+                    b.Property<decimal?>("AcceptPercent")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("deviation")
+                    b.Property<string>("Deviation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("plan_percent")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("process_id")
+                    b.Property<int?>("OrganizationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("requests")
+                    b.Property<decimal?>("PlanPercent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("ProcessId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Requests")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
@@ -1334,7 +1530,9 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("process_id");
+                    b.HasIndex("OrganizationId");
+
+                    b.HasIndex("ProcessId");
 
                     b.ToTable("ProcessPlans");
                 });
@@ -1350,6 +1548,9 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -1360,6 +1561,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Purposes");
                 });
@@ -1375,7 +1578,10 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("reminder_date")
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ReminderDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
@@ -1392,6 +1598,8 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrganizationId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Reminders");
@@ -1405,37 +1613,43 @@ namespace ISO_Manager.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("asset_name")
+                    b.Property<string>("AssetName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("count_Unit")
+                    b.Property<string>("CountUnit")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("default_count")
+                    b.Property<string>("DefaultCount")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("exist_count")
+                    b.Property<string>("ExistCount")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Place")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("position_name")
+                    b.Property<string>("PositionName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("region")
+                    b.Property<string>("Region")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("RigAssets");
                 });
@@ -1451,22 +1665,27 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("fa_chapter")
+                    b.Property<string>("FaChapter")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("fa_subchapter")
+                    b.Property<string>("FaSubchapter")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("fa_Text")
+                    b.Property<string>("FaText")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("standard_name")
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StandardName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Standards");
                 });
@@ -1479,16 +1698,16 @@ namespace ISO_Manager.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("birthday")
+                    b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("degree")
+                    b.Property<string>("Degree")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("employment_date")
+                    b.Property<DateTime>("EmploymentDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("OccupationId")
@@ -1532,8 +1751,11 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("expire_date")
+                    b.Property<DateTime>("ExpireDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -1542,6 +1764,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("UserId");
 
@@ -1559,8 +1783,8 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("OrganizationId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -1569,6 +1793,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("WorkPlaces");
                 });
@@ -1802,17 +2028,26 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("NationalCode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("RegisterCode")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.HasIndex("OrganizationId");
+
                     b.HasDiscriminator().HasValue("User");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.Ambulance", b =>
                 {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
@@ -1821,18 +2056,62 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("WorkPlaceId");
 
+                    b.Navigation("Organization");
+
                     b.Navigation("User");
 
                     b.Navigation("WorkPlace");
                 });
 
+            modelBuilder.Entity("ISO_Manager.Models.Asset", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.Calibration", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.Cartable", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
+                });
+
             modelBuilder.Entity("ISO_Manager.Models.Cloth", b =>
                 {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
+                    b.Navigation("Organization");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.ClothGroup", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.ClothGroupList", b =>
@@ -1841,13 +2120,28 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ClothGroupId");
 
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("ClothGroup");
 
+                    b.Navigation("Organization");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.Contractor", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.ContractorAccident", b =>
@@ -1856,11 +2150,17 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ContractorId");
 
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Contractor");
+
+                    b.Navigation("Organization");
 
                     b.Navigation("User");
                 });
@@ -1875,6 +2175,10 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("DoctorId");
 
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "RigBoss")
                         .WithMany()
                         .HasForeignKey("RigBossId");
@@ -1883,7 +2187,27 @@ namespace ISO_Manager.Data.Migrations
 
                     b.Navigation("Doctor");
 
+                    b.Navigation("Organization");
+
                     b.Navigation("RigBoss");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.Duty", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.EmergencyPhoneBook", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.EmergencyTeam", b =>
@@ -1891,6 +2215,10 @@ namespace ISO_Manager.Data.Migrations
                     b.HasOne("ISO_Manager.Models.Duty", "Duty")
                         .WithMany()
                         .HasForeignKey("DutyId");
+
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
 
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
@@ -1901,6 +2229,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasForeignKey("WorkPlaceId");
 
                     b.Navigation("Duty");
+
+                    b.Navigation("Organization");
 
                     b.Navigation("User");
 
@@ -1913,13 +2243,28 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ContractorId");
 
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Contractor");
 
+                    b.Navigation("Organization");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.HarmfulFactor", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.HarmfulItem", b =>
@@ -1928,11 +2273,21 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("HarmfulFactorId");
 
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.Navigation("HarmfulFactor");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.HealthCart", b =>
                 {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
@@ -1940,6 +2295,8 @@ namespace ISO_Manager.Data.Migrations
                     b.HasOne("ISO_Manager.Models.WorkPlace", "WorkPlace")
                         .WithMany()
                         .HasForeignKey("WorkPlaceId");
+
+                    b.Navigation("Organization");
 
                     b.Navigation("User");
 
@@ -1952,6 +2309,10 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("InspectionPlaceId");
 
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
@@ -1961,6 +2322,8 @@ namespace ISO_Manager.Data.Migrations
                         .HasForeignKey("WorkPlaceId");
 
                     b.Navigation("InspectionPlace");
+
+                    b.Navigation("Organization");
 
                     b.Navigation("User");
 
@@ -1972,6 +2335,10 @@ namespace ISO_Manager.Data.Migrations
                     b.HasOne("ISO_Manager.Models.Inspection", "Inspection")
                         .WithMany("InspectionDetails")
                         .HasForeignKey("InspectionId");
+
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
 
                     b.HasOne("ISO_Manager.Models.InspectionText", "InspectionText")
                         .WithMany()
@@ -1985,7 +2352,18 @@ namespace ISO_Manager.Data.Migrations
 
                     b.Navigation("InspectionText");
 
+                    b.Navigation("Organization");
+
                     b.Navigation("WorkPlace");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.InspectionPlace", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.InspectionText", b =>
@@ -1994,11 +2372,39 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("InspectionPlaceId");
 
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.Navigation("InspectionPlace");
+
+                    b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.LegalRequirement", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.Maneuver", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.Message", b =>
                 {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "Receiver")
                         .WithMany()
                         .HasForeignKey("ReceiverId");
@@ -2007,32 +2413,47 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("SenderId");
 
+                    b.Navigation("Organization");
+
                     b.Navigation("Receiver");
 
                     b.Navigation("Sender");
                 });
 
+            modelBuilder.Entity("ISO_Manager.Models.Occupation", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
+                });
+
             modelBuilder.Entity("ISO_Manager.Models.OccupationHarmful", b =>
                 {
-                    b.HasOne("ISO_Manager.Models.HarmfulItem", "HarmfulItem")
-                        .WithMany()
-                        .HasForeignKey("HarmfulItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ISO_Manager.Models.HarmfulFactor", "HarmfulFactor")
                         .WithMany()
                         .HasForeignKey("HarmfulFactorId");
 
+                    b.HasOne("ISO_Manager.Models.HarmfulItem", "HarmfulItem")
+                        .WithMany()
+                        .HasForeignKey("HarmfulItemId");
+
                     b.HasOne("ISO_Manager.Models.Occupation", "Occupation")
                         .WithMany()
                         .HasForeignKey("OccupationId");
+
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
 
                     b.Navigation("HarmfulFactor");
 
                     b.Navigation("HarmfulItem");
 
                     b.Navigation("Occupation");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.Office", b =>
@@ -2046,38 +2467,113 @@ namespace ISO_Manager.Data.Migrations
 
             modelBuilder.Entity("ISO_Manager.Models.OfficialAccident", b =>
                 {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+
+                    b.Navigation("Organization");
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.OperationPlan", b =>
                 {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.Purpose", "Purpose")
                         .WithMany()
-                        .HasForeignKey("purpose_id");
+                        .HasForeignKey("PurposeId");
+
+                    b.Navigation("Organization");
 
                     b.Navigation("Purpose");
                 });
 
+            modelBuilder.Entity("ISO_Manager.Models.Permit", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.Process", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Office", "Office")
+                        .WithMany()
+                        .HasForeignKey("OfficeId");
+
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Office");
+
+                    b.Navigation("Organization");
+                });
+
             modelBuilder.Entity("ISO_Manager.Models.ProcessPlan", b =>
                 {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.Process", "Process")
                         .WithMany()
-                        .HasForeignKey("process_id");
+                        .HasForeignKey("ProcessId");
+
+                    b.Navigation("Organization");
 
                     b.Navigation("Process");
                 });
 
+            modelBuilder.Entity("ISO_Manager.Models.Purpose", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
+                });
+
             modelBuilder.Entity("ISO_Manager.Models.Reminder", b =>
                 {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
+                    b.Navigation("Organization");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.RigAsset", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.Standard", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.UserInfo", b =>
@@ -2109,11 +2605,26 @@ namespace ISO_Manager.Data.Migrations
 
             modelBuilder.Entity("ISO_Manager.Models.UserPermit", b =>
                 {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
+                    b.Navigation("Organization");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.WorkPlace", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -2165,6 +2676,15 @@ namespace ISO_Manager.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ISO_Manager.Models.User", b =>
+                {
+                    b.HasOne("ISO_Manager.Models.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.Inspection", b =>

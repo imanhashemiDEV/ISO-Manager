@@ -12,9 +12,9 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
 {
     public class DeleteModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
 
-        public DeleteModel(ISO_Manager.Data.ApplicationDbConText conText)
+        public DeleteModel(ISO_Manager.Data.ApplicationDbContext conText)
         {
             _conText = conText;
         }

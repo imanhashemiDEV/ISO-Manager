@@ -14,7 +14,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.de',
   '  <dt>Benachrichtigung fokussieren</dt>\n' +
   '  <dd>Windows oder Linux: ALT+F12</dd>\n' +
   '  <dd>macOS: &#x2325;F12</dd>\n' +
-  '  <dt>Fokus auf konTextbezogene Symbolleiste</dt>\n' +
+  '  <dt>Fokus auf kontextbezogene Symbolleiste</dt>\n' +
   '  <dd>Windows, Linux oder macOS: STRG+F9</dd>\n' +
   '</dl>\n' +
   '\n' +

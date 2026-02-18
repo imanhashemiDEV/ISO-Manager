@@ -235,6 +235,6 @@ jsVectorMap.addMap('us_aea_en', {
     }
   },
   height: 589.0572567800147,
-  projection: { Type: 'aea', centralMeridian: -100.0 },
+  projection: { type: 'aea', centralMeridian: -100.0 },
   width: 900.0
 });

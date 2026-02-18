@@ -8,10 +8,10 @@
   font-weight: 400;
   src: url(tabler/tabler-icons.eot);
   src:
-    url(tabler/tabler-icons.eot?#iefix) format('embedded-openType'),
+    url(tabler/tabler-icons.eot?#iefix) format('embedded-opentype'),
     url(tabler/tabler-icons.woff2) format('woff2'),
     url(tabler/tabler-icons.woff) format('woff'),
-    url(tabler/tabler-icons.ttf) format('trueType'),
+    url(tabler/tabler-icons.ttf) format('truetype'),
     url(tabler/tabler-icons.svg#tabler-icons) format('svg');
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
@@ -26,7 +26,7 @@
   font-style: normal;
   font-weight: 400;
   font-variant: normal;
-  Text-transform: none;
+  text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -940,7 +940,7 @@
 .ti-building-church:before {
   content: '\ea4c';
 }
-.ti-building-commUnity:before {
+.ti-building-community:before {
   content: '\ebf6';
 }
 .ti-building-cottage:before {
@@ -1561,10 +1561,10 @@
 .ti-currency-zloty:before {
   content: '\ee6c';
 }
-.ti-current-Location:before {
+.ti-current-location:before {
   content: '\ecef';
 }
-.ti-cursor-Text:before {
+.ti-cursor-text:before {
   content: '\ee6d';
 }
 .ti-cut:before {
@@ -1882,7 +1882,7 @@
 .ti-file-symlink:before {
   content: '\ed53';
 }
-.ti-file-Text:before {
+.ti-file-text:before {
   content: '\eaa2';
 }
 .ti-file-upload:before {
@@ -2449,7 +2449,7 @@
 .ti-loader-quarter:before {
   content: '\eca2';
 }
-.ti-Location:before {
+.ti-location:before {
   content: '\eae0';
 }
 .ti-lock:before {
@@ -3040,7 +3040,7 @@
 .ti-repeat-once:before {
   content: '\eb71';
 }
-.ti-rePlace:before {
+.ti-replace:before {
   content: '\ebc7';
 }
 .ti-report:before {
@@ -3055,7 +3055,7 @@
 .ti-report-money:before {
   content: '\eecd';
 }
-.ti-reSize:before {
+.ti-resize:before {
   content: '\eecf';
 }
 .ti-ripple:before {
@@ -3427,10 +3427,10 @@
 .ti-steering-wheel:before {
   content: '\ec7b';
 }
-.ti-Step-into:before {
+.ti-step-into:before {
   content: '\ece0';
 }
-.ti-Step-out:before {
+.ti-step-out:before {
   content: '\ece1';
 }
 .ti-stethoscope:before {
@@ -3553,16 +3553,16 @@
 .ti-test-pipe:before {
   content: '\eb3a';
 }
-.ti-Text-direction-ltr:before {
+.ti-text-direction-ltr:before {
   content: '\eefc';
 }
-.ti-Text-direction-rtl:before {
+.ti-text-direction-rtl:before {
   content: '\eefd';
 }
-.ti-Text-wrap:before {
+.ti-text-wrap:before {
   content: '\ebdd';
 }
-.ti-Text-wrap-disabled:before {
+.ti-text-wrap-disabled:before {
   content: '\eca7';
 }
 .ti-thumb-down:before {

@@ -2,7 +2,7 @@
   font-family: 'Phosphor-Duotone';
   src:
     url('./Phosphor-Duotone.woff') format('woff'),
-    url('./Phosphor-Duotone.ttf') format('trueType'),
+    url('./Phosphor-Duotone.ttf') format('truetype'),
     url('./Phosphor-Duotone.svg#Phosphor-Duotone') format('svg');
   font-weight: normal;
   font-style: normal;
@@ -16,7 +16,7 @@
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
-  Text-transform: none;
+  text-transform: none;
   line-height: 1;
 
   /* Better Font Rendering =========== */
@@ -1624,11 +1624,11 @@
   content: '\ea8f';
   margin-left: -1em;
 }
-.ph-duotone.ph-book-open-Text:before {
+.ph-duotone.ph-book-open-text:before {
   content: '\ea90';
   opacity: 0.2;
 }
-.ph-duotone.ph-book-open-Text:after {
+.ph-duotone.ph-book-open-text:after {
   content: '\ea91';
   margin-left: -1em;
 }
@@ -2347,11 +2347,11 @@
   content: '\eb44';
   margin-left: -1em;
 }
-.ph-duotone.ph-chat-centered-Text:before {
+.ph-duotone.ph-chat-centered-text:before {
   content: '\eb45';
   opacity: 0.2;
 }
-.ph-duotone.ph-chat-centered-Text:after {
+.ph-duotone.ph-chat-centered-text:after {
   content: '\eb46';
   margin-left: -1em;
 }
@@ -2371,11 +2371,11 @@
   content: '\eb4a';
   margin-left: -1em;
 }
-.ph-duotone.ph-chat-circle-Text:before {
+.ph-duotone.ph-chat-circle-text:before {
   content: '\eb4b';
   opacity: 0.2;
 }
-.ph-duotone.ph-chat-circle-Text:after {
+.ph-duotone.ph-chat-circle-text:after {
   content: '\eb4c';
   margin-left: -1em;
 }
@@ -2435,19 +2435,19 @@
   content: '\eb5a';
   margin-left: -1em;
 }
-.ph-duotone.ph-chat-teardrop-Text:before {
+.ph-duotone.ph-chat-teardrop-text:before {
   content: '\eb5b';
   opacity: 0.2;
 }
-.ph-duotone.ph-chat-teardrop-Text:after {
+.ph-duotone.ph-chat-teardrop-text:after {
   content: '\eb5c';
   margin-left: -1em;
 }
-.ph-duotone.ph-chat-Text:before {
+.ph-duotone.ph-chat-text:before {
   content: '\eb5d';
   opacity: 0.2;
 }
-.ph-duotone.ph-chat-Text:after {
+.ph-duotone.ph-chat-text:after {
   content: '\eb5e';
   margin-left: -1em;
 }
@@ -2587,11 +2587,11 @@
   content: '\eb80';
   margin-left: -1em;
 }
-.ph-duotone.ph-clipboard-Text:before {
+.ph-duotone.ph-clipboard-text:before {
   content: '\eb81';
   opacity: 0.2;
 }
-.ph-duotone.ph-clipboard-Text:after {
+.ph-duotone.ph-clipboard-text:after {
   content: '\eb82';
   margin-left: -1em;
 }
@@ -3195,11 +3195,11 @@
   content: '\ec18';
   margin-left: -1em;
 }
-.ph-duotone.ph-cursor-Text:before {
+.ph-duotone.ph-cursor-text:before {
   content: '\ec19';
   opacity: 0.2;
 }
-.ph-duotone.ph-cursor-Text:after {
+.ph-duotone.ph-cursor-text:after {
   content: '\ec1a';
   margin-left: -1em;
 }
@@ -4095,11 +4095,11 @@
   content: '\ecf8';
   margin-left: -1em;
 }
-.ph-duotone.ph-file-Text:before {
+.ph-duotone.ph-file-text:before {
   content: '\ecf9';
   opacity: 0.2;
 }
-.ph-duotone.ph-file-Text:after {
+.ph-duotone.ph-file-text:after {
   content: '\ecfa';
   margin-left: -1em;
 }
@@ -7155,11 +7155,11 @@
   content: '\eff4';
   margin-left: -1em;
 }
-.ph-duotone.ph-Placeholder:before {
+.ph-duotone.ph-placeholder:before {
   content: '\eff5';
   opacity: 0.2;
 }
-.ph-duotone.ph-Placeholder:after {
+.ph-duotone.ph-placeholder:after {
   content: '\eff6';
   margin-left: -1em;
 }
@@ -8597,11 +8597,11 @@
   content: '\f15a';
   margin-left: -1em;
 }
-.ph-duotone.ph-Steps:before {
+.ph-duotone.ph-steps:before {
   content: '\f15b';
   opacity: 0.2;
 }
-.ph-duotone.ph-Steps:after {
+.ph-duotone.ph-steps:after {
   content: '\f15c';
   margin-left: -1em;
 }
@@ -8677,11 +8677,11 @@
   content: '\f16e';
   margin-left: -1em;
 }
-.ph-duotone.ph-subTitles:before {
+.ph-duotone.ph-subtitles:before {
   content: '\f16f';
   opacity: 0.2;
 }
-.ph-duotone.ph-subTitles:after {
+.ph-duotone.ph-subtitles:after {
   content: '\f170';
   margin-left: -1em;
 }
@@ -8925,181 +8925,181 @@
   content: '\f1ac';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-aa:before {
+.ph-duotone.ph-text-aa:before {
   content: '\f1ad';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-aa:after {
+.ph-duotone.ph-text-aa:after {
   content: '\f1ae';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-align-center:before {
+.ph-duotone.ph-text-align-center:before {
   content: '\f1af';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-align-center:after {
+.ph-duotone.ph-text-align-center:after {
   content: '\f1b0';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-align-justify:before {
+.ph-duotone.ph-text-align-justify:before {
   content: '\f1b1';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-align-justify:after {
+.ph-duotone.ph-text-align-justify:after {
   content: '\f1b2';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-align-left:before {
+.ph-duotone.ph-text-align-left:before {
   content: '\f1b3';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-align-left:after {
+.ph-duotone.ph-text-align-left:after {
   content: '\f1b4';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-align-right:before {
+.ph-duotone.ph-text-align-right:before {
   content: '\f1b5';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-align-right:after {
+.ph-duotone.ph-text-align-right:after {
   content: '\f1b6';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-a-underline:before {
+.ph-duotone.ph-text-a-underline:before {
   content: '\f1b7';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-a-underline:after {
+.ph-duotone.ph-text-a-underline:after {
   content: '\f1b8';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-b:before,
-.ph-duotone.ph-Text-bolder:before {
+.ph-duotone.ph-text-b:before,
+.ph-duotone.ph-text-bolder:before {
   content: '\f1b9';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-b:after,
-.ph-duotone.ph-Text-bolder:after {
+.ph-duotone.ph-text-b:after,
+.ph-duotone.ph-text-bolder:after {
   content: '\f1ba';
   margin-left: -1em;
 }
-.ph-duotone.ph-Textbox:before {
+.ph-duotone.ph-textbox:before {
   content: '\f1bb';
   opacity: 0.2;
 }
-.ph-duotone.ph-Textbox:after {
+.ph-duotone.ph-textbox:after {
   content: '\f1bc';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-columns:before {
+.ph-duotone.ph-text-columns:before {
   content: '\f1bd';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-columns:after {
+.ph-duotone.ph-text-columns:after {
   content: '\f1be';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-h:before {
+.ph-duotone.ph-text-h:before {
   content: '\f1bf';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-h:after {
+.ph-duotone.ph-text-h:after {
   content: '\f1c0';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-h-five:before {
+.ph-duotone.ph-text-h-five:before {
   content: '\f1c1';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-h-five:after {
+.ph-duotone.ph-text-h-five:after {
   content: '\f1c2';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-h-four:before {
+.ph-duotone.ph-text-h-four:before {
   content: '\f1c3';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-h-four:after {
+.ph-duotone.ph-text-h-four:after {
   content: '\f1c4';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-h-one:before {
+.ph-duotone.ph-text-h-one:before {
   content: '\f1c5';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-h-one:after {
+.ph-duotone.ph-text-h-one:after {
   content: '\f1c6';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-h-six:before {
+.ph-duotone.ph-text-h-six:before {
   content: '\f1c7';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-h-six:after {
+.ph-duotone.ph-text-h-six:after {
   content: '\f1c8';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-h-three:before {
+.ph-duotone.ph-text-h-three:before {
   content: '\f1c9';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-h-three:after {
+.ph-duotone.ph-text-h-three:after {
   content: '\f1ca';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-h-two:before {
+.ph-duotone.ph-text-h-two:before {
   content: '\f1cb';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-h-two:after {
+.ph-duotone.ph-text-h-two:after {
   content: '\f1cc';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-indent:before {
+.ph-duotone.ph-text-indent:before {
   content: '\f1cd';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-indent:after {
+.ph-duotone.ph-text-indent:after {
   content: '\f1ce';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-italic:before {
+.ph-duotone.ph-text-italic:before {
   content: '\f1cf';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-italic:after {
+.ph-duotone.ph-text-italic:after {
   content: '\f1d0';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-outdent:before {
+.ph-duotone.ph-text-outdent:before {
   content: '\f1d1';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-outdent:after {
+.ph-duotone.ph-text-outdent:after {
   content: '\f1d2';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-strikethrough:before {
+.ph-duotone.ph-text-strikethrough:before {
   content: '\f1d3';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-strikethrough:after {
+.ph-duotone.ph-text-strikethrough:after {
   content: '\f1d4';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-t:before {
+.ph-duotone.ph-text-t:before {
   content: '\f1d5';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-t:after {
+.ph-duotone.ph-text-t:after {
   content: '\f1d6';
   margin-left: -1em;
 }
-.ph-duotone.ph-Text-underline:before {
+.ph-duotone.ph-text-underline:before {
   content: '\f1d7';
   opacity: 0.2;
 }
-.ph-duotone.ph-Text-underline:after {
+.ph-duotone.ph-text-underline:after {
   content: '\f1d8';
   margin-left: -1em;
 }
@@ -9471,19 +9471,19 @@
   content: '\f234';
   margin-left: -1em;
 }
-.ph-duotone.ph-Unite:before {
+.ph-duotone.ph-unite:before {
   content: '\f235';
   opacity: 0.2;
 }
-.ph-duotone.ph-Unite:after {
+.ph-duotone.ph-unite:after {
   content: '\f236';
   margin-left: -1em;
 }
-.ph-duotone.ph-Unite-square:before {
+.ph-duotone.ph-unite-square:before {
   content: '\f237';
   opacity: 0.2;
 }
-.ph-duotone.ph-Unite-square:after {
+.ph-duotone.ph-unite-square:after {
   content: '\f238';
   margin-left: -1em;
 }

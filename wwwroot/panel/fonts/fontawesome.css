@@ -9,71 +9,71 @@
   display: inline-block;
   font-style: normal;
   font-variant: normal;
-  Text-rendering: auto;
+  text-rendering: auto;
   line-height: 1;
 }
 
 .fa-lg {
-  font-Size: 1.33333em;
+  font-size: 1.33333em;
   line-height: 0.75em;
   vertical-align: -0.0667em;
 }
 
 .fa-xs {
-  font-Size: 0.75em;
+  font-size: 0.75em;
 }
 
 .fa-sm {
-  font-Size: 0.875em;
+  font-size: 0.875em;
 }
 
 .fa-1x {
-  font-Size: 1em;
+  font-size: 1em;
 }
 
 .fa-2x {
-  font-Size: 2em;
+  font-size: 2em;
 }
 
 .fa-3x {
-  font-Size: 3em;
+  font-size: 3em;
 }
 
 .fa-4x {
-  font-Size: 4em;
+  font-size: 4em;
 }
 
 .fa-5x {
-  font-Size: 5em;
+  font-size: 5em;
 }
 
 .fa-6x {
-  font-Size: 6em;
+  font-size: 6em;
 }
 
 .fa-7x {
-  font-Size: 7em;
+  font-size: 7em;
 }
 
 .fa-8x {
-  font-Size: 8em;
+  font-size: 8em;
 }
 
 .fa-9x {
-  font-Size: 9em;
+  font-size: 9em;
 }
 
 .fa-10x {
-  font-Size: 10em;
+  font-size: 10em;
 }
 
 .fa-fw {
-  Text-align: center;
+  text-align: center;
   width: 1.25em;
 }
 
 .fa-ul {
-  list-style-Type: none;
+  list-style-type: none;
   margin-left: 2.5em;
   padding-left: 0;
 }
@@ -84,7 +84,7 @@
 .fa-li {
   left: -2em;
   position: absolute;
-  Text-align: center;
+  text-align: center;
   width: 2em;
   line-height: inherit;
 }
@@ -124,7 +124,7 @@
 }
 
 .fa-pulse {
-  animation: fa-spin 1s infinite Steps(8);
+  animation: fa-spin 1s infinite steps(8);
 }
 
 @keyframes fa-spin {
@@ -189,7 +189,7 @@
 .fa-stack-2x {
   left: 0;
   position: absolute;
-  Text-align: center;
+  text-align: center;
   width: 100%;
 }
 
@@ -198,7 +198,7 @@
 }
 
 .fa-stack-2x {
-  font-Size: 2em;
+  font-size: 2em;
 }
 
 .fa-inverse {
@@ -497,7 +497,7 @@
   content: '';
 }
 
-.fa-audio-Description:before {
+.fa-audio-description:before {
   content: '';
 }
 
@@ -1833,7 +1833,7 @@
   content: '';
 }
 
-.fa-envelope-open-Text:before {
+.fa-envelope-open-text:before {
   content: '';
 }
 
@@ -3121,11 +3121,11 @@
   content: '';
 }
 
-.fa-Level-down-alt:before {
+.fa-level-down-alt:before {
   content: '';
 }
 
-.fa-Level-up-alt:before {
+.fa-level-up-alt:before {
   content: '';
 }
 
@@ -3181,7 +3181,7 @@
   content: '';
 }
 
-.fa-Location-arrow:before {
+.fa-location-arrow:before {
   content: '';
 }
 
@@ -3849,7 +3849,7 @@
   content: '';
 }
 
-.fa-Place-of-worship:before {
+.fa-place-of-worship:before {
   content: '';
 }
 
@@ -4277,7 +4277,7 @@
   content: '';
 }
 
-.fa-search-Location:before {
+.fa-search-location:before {
   content: '';
 }
 
@@ -4725,11 +4725,11 @@
   content: '';
 }
 
-.fa-Step-backward:before {
+.fa-step-backward:before {
   content: '';
 }
 
-.fa-Step-forward:before {
+.fa-step-forward:before {
   content: '';
 }
 
@@ -4961,11 +4961,11 @@
   content: '';
 }
 
-.fa-Text-height:before {
+.fa-text-height:before {
   content: '';
 }
 
-.fa-Text-width:before {
+.fa-text-width:before {
   content: '';
 }
 
@@ -5768,10 +5768,10 @@
   font-weight: 400;
   src: url('fontawesome/fa-regular-400.eot');
   src:
-    url('fontawesome/fa-regular-400.eot?#iefix') format('embedded-openType'),
+    url('fontawesome/fa-regular-400.eot?#iefix') format('embedded-opentype'),
     url('fontawesome/fa-regular-400.woff2') format('woff2'),
     url('fontawesome/fa-regular-400.woff') format('woff'),
-    url('fontawesome/fa-regular-400.ttf') format('trueType'),
+    url('fontawesome/fa-regular-400.ttf') format('truetype'),
     url('fontawesome/fa-regular-400.svg#fontawesome') format('svg');
 }
 .far {
@@ -5784,10 +5784,10 @@
   font-weight: 900;
   src: url('fontawesome/fa-solid-900.eot');
   src:
-    url('fontawesome/fa-solid-900.eot?#iefix') format('embedded-openType'),
+    url('fontawesome/fa-solid-900.eot?#iefix') format('embedded-opentype'),
     url('fontawesome/fa-solid-900.woff2') format('woff2'),
     url('fontawesome/fa-solid-900.woff') format('woff'),
-    url('fontawesome/fa-solid-900.ttf') format('trueType'),
+    url('fontawesome/fa-solid-900.ttf') format('truetype'),
     url('fontawesome/fa-solid-900.svg#fontawesome') format('svg');
 }
 .fa,
@@ -5801,10 +5801,10 @@
   font-weight: normal;
   src: url('fontawesome/fa-brands-400.eot');
   src:
-    url('fontawesome/fa-brands-400.eot?#iefix') format('embedded-openType'),
+    url('fontawesome/fa-brands-400.eot?#iefix') format('embedded-opentype'),
     url('fontawesome/fa-brands-400.woff2') format('woff2'),
     url('fontawesome/fa-brands-400.woff') format('woff'),
-    url('fontawesome/fa-brands-400.ttf') format('trueType'),
+    url('fontawesome/fa-brands-400.ttf') format('truetype'),
     url('fontawesome/fa-brands-400.svg#fontawesome') format('svg');
 }
 .fab {

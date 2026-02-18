@@ -38,7 +38,7 @@
   // [ current-Slider ]
   var slider = new Slider('#ex6');
   slider.on('slide', function (sliderValue) {
-    document.getElementById('ex6SliderVal').TextContent = sliderValue;
+    document.getElementById('ex6SliderVal').textContent = sliderValue;
   });
 
   // [ Enable-Slider ]
@@ -65,9 +65,9 @@
   // [ handlers-slider ]
   var slider = new Slider('#ex10', {});
 
-  // [ Step-slider ]
+  // [ step-slider ]
   var slider = new Slider('#ex11', {
-    Step: 20000,
+    step: 20000,
     min: 0,
     max: 200000
   });
@@ -114,7 +114,7 @@
     min: 1000,
     max: 10000000,
     scale: 'logarithmic',
-    Step: 10
+    step: 10
   });
 
   // [ Focus-slider ]
@@ -165,7 +165,7 @@
     id: 'slider22',
     min: 0,
     max: 20,
-    Step: 1,
+    step: 1,
     value: 14,
     rangeHighlights: [
       {
@@ -202,7 +202,7 @@
       return 'value: ' + value;
     },
     ticks_tooltip: true,
-    Step: 0.01
+    step: 0.01
   });
 
   // [ auto-slider ]

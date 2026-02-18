@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const dropdownMenu = targetElement.parentNode.querySelector('.dropdown-menu');
       const isMenuEnd = dropdownMenu.classList.contains('dropdown-menu-end');
-      const Placement = isMenuEnd ? 'bottom-end' : 'bottom-start';
+      const placement = isMenuEnd ? 'bottom-end' : 'bottom-start';
 
       if (targetElement.parentNode.classList.contains('drp-show')) {
         drpclose();
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (drpopen) {
           drpclose();
         }
-        Popper.createPopper(targetElement, dropdownMenu, { Placement });
+        Popper.createPopper(targetElement, dropdownMenu, { placement });
         targetElement.parentNode.classList.add('drp-show');
         setTimeout(() => {
           drpopen = true;
@@ -355,14 +355,14 @@ tooltipElements.forEach(element => {
   element.addEventListener('mouseenter', event => {
     const targetElement = event.target;
 
-    // Get the tooltip Text and Placement from the element's attributes
-    const tooltipText = targetElement.getAttribute('data-pc-Title');
-    const tooltipPlacement = targetElement.getAttribute('data-pc-Placement');
+    // Get the tooltip text and placement from the element's attributes
+    const tooltipText = targetElement.getAttribute('data-pc-title');
+    const tooltipPlacement = targetElement.getAttribute('data-pc-placement');
 
     // Create the tooltip template
     const tooltipTemplate = `
       <div class="flex items-center p-1 z-[1024]" role="tooltip">
-        <span class="relative max-w-48 rounded-lg  py-1 px-2 Text-xs Text-white whitespace-normal Text-center bg-dark-500">
+        <span class="relative max-w-48 rounded-lg  py-1 px-2 text-xs text-white whitespace-normal text-center bg-dark-500">
           ${tooltipText}
         </span>
       </div>
@@ -376,7 +376,7 @@ tooltipElements.forEach(element => {
 
     // Initialize the tooltip with Popper.js for positioning
     Popper.createPopper(targetElement, tooltip, {
-      Placement: tooltipPlacement,
+      placement: tooltipPlacement,
       delay: 0, // No delay for showing the tooltip
       animation: true, // Enables animation for the tooltip
       boundary: 'clippingParents' // Restricts tooltip to visible boundaries

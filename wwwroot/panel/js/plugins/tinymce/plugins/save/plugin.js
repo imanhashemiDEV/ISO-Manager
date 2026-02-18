@@ -7,7 +7,7 @@
 
     var global$2 = tinymce.util.Tools.resolve('tinymce.PluginManager');
 
-    const isSimpleType = Type => value => Typeof value === Type;
+    const isSimpleType = type => value => typeof value === type;
     const isFunction = isSimpleType('function');
 
     var global$1 = tinymce.util.Tools.resolve('tinymce.dom.DOMUtils');
@@ -30,8 +30,8 @@
 
     const displayErrorMessage = (editor, message) => {
       editor.notificationManager.open({
-        Text: message,
-        Type: 'error'
+        text: message,
+        type: 'error'
       });
     };
     const save = editor => {
@@ -49,7 +49,7 @@
       if (formObj) {
         editor.setDirty(false);
         if (!formObj.onsubmit || formObj.onsubmit()) {
-          if (Typeof formObj.submit === 'function') {
+          if (typeof formObj.submit === 'function') {
             formObj.submit();
           } else {
             displayErrorMessage(editor, 'Error: Form submit field collision.');

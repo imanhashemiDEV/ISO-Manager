@@ -12,9 +12,9 @@ namespace ISO_Manager.Pages.Admin.Permits
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
         {
             _conText = conText;
         }

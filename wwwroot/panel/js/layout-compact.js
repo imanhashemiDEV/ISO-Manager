@@ -26,7 +26,7 @@ Description:  this file will contains defining code for build compact layouts
     });
   }
 
-  // add tooltip and open/close it's submenu list for first Level icon
+  // add tooltip and open/close it's submenu list for first level icon
   var pc_link_click = document.querySelectorAll('.pc-navbar > li:not(.pc-caption)');
   for (var i = 0; i < pc_link_click.length; i++) {
 
@@ -53,7 +53,7 @@ Description:  this file will contains defining code for build compact layouts
   // remove active menu item (for compact active class remove when it's url match)
   var elem = document.querySelectorAll('.pc-sidebar .pc-navbar a');
   for (var l = 0; l < elem.length; l++) {
-    var pageUrl = window.Location.href.split(/[?#]/)[0];
+    var pageUrl = window.location.href.split(/[?#]/)[0];
     if (elem[l].href == pageUrl && elem[l].getAttribute('href') != '') {
       elem[l].parentNode.classList.remove('active');
 

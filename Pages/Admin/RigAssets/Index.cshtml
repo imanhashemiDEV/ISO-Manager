@@ -52,17 +52,17 @@
         <div class="card-body">
             <ul class="flex flex-wrap w-full Text-center nav-tabs my-4 p-4">
                 <li class="group active">
-                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-1" class="inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
+                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-1" class="inline-block px-4 py-2 transition-all Duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
                         دکل
                     </a>
                 </li>
                 <li class="group">
-                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-2" class="inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
+                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-2" class="inline-block px-4 py-2 transition-all Duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
                         اردوگاه
                     </a>
                 </li>
                 <li class="group">
-                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-3" class="inline-block px-4 py-2 transition-all duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
+                    <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="basicpills-3" class="inline-block px-4 py-2 transition-all Duration-300 ease-linear rounded-lg Text-primary-500 group-[.active]:bg-primary-500 group-[.active]:Text-white">
                         درمانگاه
                     </a>
                 </li>
@@ -76,19 +76,19 @@
                             <tr>
                                 <th>ردیف</th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].asset_name)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].AssetName)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].default_count)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].DefaultCount)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].exist_count)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].ExistCount)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].count_Unit)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].CountUnit)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].position_name)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].PositionName)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.RigAsset[0].Description)
@@ -97,33 +97,33 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model.RigAsset.Where(m => m.region == "rig").ToList())
+                            @foreach (var item in Model.RigAsset.Where(m => m.Region == "rig").ToList())
                             {
                                 <tr>
                                     <td>@(row++)</td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.asset_name)
+                                        @Html.DisplayFor(modelItem => item.AssetName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.default_count)
+                                        @Html.DisplayFor(modelItem => item.DefaultCount)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.exist_count)
+                                        @Html.DisplayFor(modelItem => item.ExistCount)
                                     </td>
                                     <td>
-                                        @if (item.count_Unit.Equals("number"))
+                                        @if (item.CountUnit.Equals("number"))
                                         {
                                             <span class="badge Text-white bg-success-500">عدد</span>
                                         }
-                                        else if (item.count_Unit.Equals("loop"))
+                                        else if (item.CountUnit.Equals("loop"))
                                         {
                                             <span class="badge Text-white bg-danger-500">حلقه</span>
                                         }
-                                        else if (item.count_Unit.Equals("set"))
+                                        else if (item.CountUnit.Equals("set"))
                                         {
                                             <span class="badge Text-white bg-secondary-500">دست</span>
                                         }
-                                        else if (item.count_Unit.Equals("device"))
+                                        else if (item.CountUnit.Equals("device"))
                                         {
                                             <span class="badge Text-white bg-primary-500">دستگاه</span>
                                         }
@@ -133,7 +133,7 @@
                                         }
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.position_name)
+                                        @Html.DisplayFor(modelItem => item.PositionName)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Description)
@@ -158,19 +158,19 @@
                             <tr>
                                 <th>ردیف</th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].asset_name)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].AssetName)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].default_count)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].DefaultCount)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].exist_count)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].ExistCount)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].count_Unit)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].CountUnit)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].position_name)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].PositionName)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.RigAsset[0].Description)
@@ -179,33 +179,33 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model.RigAsset.Where(m => m.region == "camp").ToList())
+                            @foreach (var item in Model.RigAsset.Where(m => m.Region == "camp").ToList())
                             {
                                 <tr>
                                                     <td>@(row2++)</td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.asset_name)
+                                        @Html.DisplayFor(modelItem => item.AssetName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.default_count)
+                                        @Html.DisplayFor(modelItem => item.DefaultCount)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.exist_count)
+                                        @Html.DisplayFor(modelItem => item.ExistCount)
                                     </td>
                                     <td>
-                                        @if (item.count_Unit.Equals("number"))
+                                        @if (item.CountUnit.Equals("number"))
                                         {
                                             <span class="badge Text-white bg-success-500">عدد</span>
                                         }
-                                        else if (item.count_Unit.Equals("loop"))
+                                        else if (item.CountUnit.Equals("loop"))
                                         {
                                             <span class="badge Text-white bg-danger-500">حلقه</span>
                                         }
-                                        else if (item.count_Unit.Equals("set"))
+                                        else if (item.CountUnit.Equals("set"))
                                         {
                                             <span class="badge Text-white bg-secondary-500">دست</span>
                                         }
-                                        else if (item.count_Unit.Equals("device"))
+                                        else if (item.CountUnit.Equals("device"))
                                         {
                                             <span class="badge Text-white bg-primary-500">دستگاه</span>
                                         }
@@ -215,7 +215,7 @@
                                         }
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.position_name)
+                                        @Html.DisplayFor(modelItem => item.PositionName)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Description)
@@ -239,19 +239,19 @@
                             <tr>
                                 <th>ردیف</th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].asset_name)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].AssetName)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].default_count)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].DefaultCount)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].exist_count)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].ExistCount)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].count_Unit)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].CountUnit)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.RigAsset[0].position_name)
+                                    @Html.DisplayNameFor(model => model.RigAsset[0].PositionName)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.RigAsset[0].Description)
@@ -260,33 +260,33 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model.RigAsset.Where(m => m.region == "clinic").ToList())
+                            @foreach (var item in Model.RigAsset.Where(m => m.Region == "clinic").ToList())
                             {
                                 <tr>
                                                     <td>@(row3++)</td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.asset_name)
+                                        @Html.DisplayFor(modelItem => item.AssetName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.default_count)
+                                        @Html.DisplayFor(modelItem => item.DefaultCount)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.exist_count)
+                                        @Html.DisplayFor(modelItem => item.ExistCount)
                                     </td>
                                     <td>
-                                        @if (item.count_Unit.Equals("number"))
+                                        @if (item.CountUnit.Equals("number"))
                                         {
                                             <span class="badge Text-white bg-success-500">عدد</span>
                                         }
-                                        else if (item.count_Unit.Equals("loop"))
+                                        else if (item.CountUnit.Equals("loop"))
                                         {
                                             <span class="badge Text-white bg-danger-500">حلقه</span>
                                         }
-                                        else if (item.count_Unit.Equals("set"))
+                                        else if (item.CountUnit.Equals("set"))
                                         {
                                             <span class="badge Text-white bg-secondary-500">دست</span>
                                         }
-                                        else if (item.count_Unit.Equals("device"))
+                                        else if (item.CountUnit.Equals("device"))
                                         {
                                             <span class="badge Text-white bg-primary-500">دستگاه</span>
                                         }
@@ -296,7 +296,7 @@
                                         }
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.position_name)
+                                        @Html.DisplayFor(modelItem => item.PositionName)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Description)

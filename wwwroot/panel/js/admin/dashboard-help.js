@@ -3,7 +3,7 @@
 (function () {
   var options1 = {
     chart: {
-      Type: 'area',
+      type: 'area',
       height: 100,
       sparkline: {
         enabled: true
@@ -28,7 +28,7 @@
         show: false
       },
       y: {
-        Title: {
+        title: {
           formatter: function (seriesName) {
             return '';
           }
@@ -46,7 +46,7 @@
 (function () {
   var options1 = {
     chart: {
-      Type: 'area',
+      type: 'area',
       height: 100,
       sparkline: {
         enabled: true
@@ -71,7 +71,7 @@
         show: false
       },
       y: {
-        Title: {
+        title: {
           formatter: function (seriesName) {
             return '';
           }
@@ -89,7 +89,7 @@
 (function () {
   var options1 = {
     chart: {
-      Type: 'area',
+      type: 'area',
       height: 100,
       sparkline: {
         enabled: true
@@ -114,7 +114,7 @@
         show: false
       },
       y: {
-        Title: {
+        title: {
           formatter: function (seriesName) {
             return '';
           }
@@ -134,7 +134,7 @@
   var options = {
     chart: {
       height: 260,
-      Type: 'pie'
+      type: 'pie'
     },
     series: [66, 50, 40, 30],
     labels: ['Very Poor', 'Satisfied', 'Very Satisfied', 'Poor'],

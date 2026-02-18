@@ -13,7 +13,7 @@ function floatchart() {
   (function () {
     var total_invoice_1_chart_options = {
       chart: {
-        Type: 'area',
+        type: 'area',
         height: 55,
         sparkline: {
           enabled: true
@@ -21,10 +21,10 @@ function floatchart() {
       },
       colors: ['#2ca87f'],
       fill: {
-        Type: 'gradient',
+        type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          Type: 'vertical',
+          type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -47,7 +47,7 @@ function floatchart() {
           show: false
         },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return 'Ticket ';
             }
@@ -63,7 +63,7 @@ function floatchart() {
 
     var total_invoice_2_chart_options = {
       chart: {
-        Type: 'area',
+        type: 'area',
         height: 55,
         sparkline: {
           enabled: true
@@ -71,10 +71,10 @@ function floatchart() {
       },
       colors: ['#e58a00'],
       fill: {
-        Type: 'gradient',
+        type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          Type: 'vertical',
+          type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -97,7 +97,7 @@ function floatchart() {
           show: false
         },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return 'Ticket ';
             }
@@ -113,7 +113,7 @@ function floatchart() {
 
     var total_invoice_3_chart_options = {
       chart: {
-        Type: 'area',
+        type: 'area',
         height: 55,
         sparkline: {
           enabled: true
@@ -121,10 +121,10 @@ function floatchart() {
       },
       colors: ['#dc2626'],
       fill: {
-        Type: 'gradient',
+        type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          Type: 'vertical',
+          type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -147,7 +147,7 @@ function floatchart() {
           show: false
         },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return 'Ticket ';
             }

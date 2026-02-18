@@ -29,25 +29,25 @@
 
   const hasProto = (v, constructor, predicate) => {
     var _a;
-    if (predicate(v, constructor.protoType)) {
+    if (predicate(v, constructor.prototype)) {
       return true;
     } else {
       return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
     }
   };
-  const TypeOf = x => {
-    const t = Typeof x;
+  const typeOf = x => {
+    const t = typeof x;
     if (x === null) {
       return 'null';
     } else if (t === 'object' && Array.isArray(x)) {
       return 'array';
-    } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
+    } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
       return 'string';
     } else {
       return t;
     }
   };
-  const isType = Type => value => TypeOf(value) === Type;
+  const isType = type => value => typeOf(value) === type;
   const eq = t => a => t === a;
   const isString = isType('string');
   const isUndefined = eq(undefined);
@@ -74,7 +74,7 @@
 
   const zeroWidth = '\uFEFF';
   const isZwsp = char => char === zeroWidth;
-  const removeZwsp = s => s.rePlace(/\uFEFF/g, '');
+  const removeZwsp = s => s.replace(/\uFEFF/g, '');
 
   var global = tinymce.util.Tools.resolve('tinymce.dom.TextSeeker');
 
@@ -83,9 +83,9 @@
   const isBracketOrSpace = char => /^[(\[{ \u00a0]$/.test(char);
   const hasProtocol = url => /^([A-Za-z][A-Za-z\d.+-]*:\/\/)|mailto:/.test(url);
   const isPunctuation = char => /[?!,.;:]/.test(char);
-  const findChar = (Text, index, predicate) => {
+  const findChar = (text, index, predicate) => {
     for (let i = index - 1; i >= 0; i--) {
-      const char = Text.charAt(i);
+      const char = text.charAt(i);
       if (!isZwsp(char) && predicate(char)) {
         return i;
       }
@@ -114,7 +114,7 @@
       return null;
     }
     const rng = selection.getRng();
-    const TextSeeker = global(dom, node => {
+    const textSeeker = global(dom, node => {
       return dom.isBlock(node) || has(voidElements, node.nodeName.toLowerCase()) || dom.getContentEditable(node) === 'false';
     });
     const {
@@ -122,16 +122,16 @@
       offset: endOffset
     } = freefallRtl(rng.endContainer, rng.endOffset);
     const root = (_a = dom.getParent(endContainer, dom.isBlock)) !== null && _a !== void 0 ? _a : dom.getRoot();
-    const endSpot = TextSeeker.backwards(endContainer, endOffset + offset, (node, offset) => {
-      const Text = node.data;
-      const idx = findChar(Text, offset, not(isBracketOrSpace));
-      return idx === -1 || isPunctuation(Text[idx]) ? idx : idx + 1;
+    const endSpot = textSeeker.backwards(endContainer, endOffset + offset, (node, offset) => {
+      const text = node.data;
+      const idx = findChar(text, offset, not(isBracketOrSpace));
+      return idx === -1 || isPunctuation(text[idx]) ? idx : idx + 1;
     }, root);
     if (!endSpot) {
       return null;
     }
     let lastTextNode = endSpot.container;
-    const startSpot = TextSeeker.backwards(endSpot.container, endSpot.offset, (node, offset) => {
+    const startSpot = textSeeker.backwards(endSpot.container, endSpot.offset, (node, offset) => {
       lastTextNode = node;
       const idx = findChar(node.data, offset, isBracketOrSpace);
       return idx === -1 ? idx : idx + 1;

@@ -12,7 +12,7 @@ namespace ISO_Manager.Models
         public DateTime Birthday { get; set; }
 
         [Display(Name = "تاریخ استخدام")]
-        public DateTime Employment_date { get; set; }
+        public DateTime EmploymentDate { get; set; }
 
         [Display(Name = "مدرک تحصیلی")]
         public string? Degree { get; set; }

@@ -1,18 +1,18 @@
 {
 	"name": "tinymce",
-	"Description": "Web based JavaScript HTML WYSIWYG editor control.",
+	"description": "Web based JavaScript HTML WYSIWYG editor control.",
 	"license": "GPL-2.0-or-later",
 	"keywords": [
 		"wysiwyg",
 		"tinymce",
-		"richText",
+		"richtext",
 		"javascript",
 		"html",
-		"Text",
+		"text",
 		"rich editor",
-		"rich Text editor",
+		"rich text editor",
 		"rte",
-		"rich Text",
+		"rich text",
 		"contenteditable",
 		"editing"
 	],

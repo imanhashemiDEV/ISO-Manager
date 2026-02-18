@@ -73,11 +73,11 @@
           return Optional.none();
         }
       }
-      getOr(rePlacement) {
-        return this.tag ? this.value : rePlacement;
+      getOr(replacement) {
+        return this.tag ? this.value : replacement;
       }
-      or(rePlacement) {
-        return this.tag ? this : rePlacement;
+      or(replacement) {
+        return this.tag ? this : replacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -309,7 +309,7 @@
       animals_and_nature: 'Animals and Nature',
       food_and_drink: 'Food and Drink',
       activity: 'Activity',
-      travel_and_Places: 'Travel and Places',
+      travel_and_places: 'Travel and Places',
       objects: 'Objects',
       flags: 'Flags',
       user: 'User Defined'
@@ -329,7 +329,7 @@
       const emojiImagesUrl = getEmojiImageUrl(editor);
       const getEmoji = lib => {
         if (startsWith(lib.char, '<img')) {
-          return lib.char.rePlace(/src="([^"]+)"/, (match, url) => `src="${ emojiImagesUrl }${ url }"`);
+          return lib.char.replace(/src="([^"]+)"/, (match, url) => `src="${ emojiImagesUrl }${ url }"`);
         } else {
           return lib.char;
         }
@@ -337,9 +337,9 @@
       const processEmojis = emojis => {
         const cats = {};
         const everything = [];
-        each(emojis, (lib, Title) => {
+        each(emojis, (lib, title) => {
           const entry = {
-            Title,
+            title,
             keywords: lib.keywords,
             char: getEmoji(lib),
             category: translateCategory(categoryNameMap, lib.category)
@@ -401,16 +401,16 @@
       };
     };
 
-    const emojiMatches = (emoji, lowerCasePattern) => contains(emoji.Title.toLowerCase(), lowerCasePattern) || exists(emoji.keywords, k => contains(k.toLowerCase(), lowerCasePattern));
+    const emojiMatches = (emoji, lowerCasePattern) => contains(emoji.title.toLowerCase(), lowerCasePattern) || exists(emoji.keywords, k => contains(k.toLowerCase(), lowerCasePattern));
     const emojisFrom = (list, pattern, maxResults) => {
       const matches = [];
       const lowerCasePattern = pattern.toLowerCase();
-      const reachedLimit = maxResults.fold(() => never, max => Size => Size >= max);
+      const reachedLimit = maxResults.fold(() => never, max => size => size >= max);
       for (let i = 0; i < list.length; i++) {
         if (pattern.length === 0 || emojiMatches(list[i], lowerCasePattern)) {
           matches.push({
             value: list[i].char,
-            Text: list[i].Title,
+            text: list[i].title,
             icon: list[i].char
           });
           if (reachedLimit(matches.length)) {
@@ -440,18 +440,18 @@
       }, 200);
       const searchField = {
         label: 'Search',
-        Type: 'input',
+        type: 'input',
         name: patternName
       };
       const resultsField = {
-        Type: 'collection',
+        type: 'collection',
         name: 'results'
       };
       const getInitialState = () => {
         const body = {
-          Type: 'tabpanel',
+          type: 'tabpanel',
           tabs: map$1(database.listCategories(), cat => ({
-            Title: cat,
+            title: cat,
             name: cat,
             items: [
               searchField,
@@ -460,8 +460,8 @@
           }))
         };
         return {
-          Title: 'Emojis',
-          Size: 'normal',
+          title: 'Emojis',
+          size: 'normal',
           body,
           initialData: initialState,
           onTabChange: (dialogApi, details) => {
@@ -476,8 +476,8 @@
             }
           },
           buttons: [{
-              Type: 'cancel',
-              Text: 'Close',
+              type: 'cancel',
+              text: 'Close',
               primary: true
             }]
         };
@@ -493,19 +493,19 @@
           dialogApi.unblock();
         }).catch(_err => {
           dialogApi.redial({
-            Title: 'Emojis',
+            title: 'Emojis',
             body: {
-              Type: 'panel',
+              type: 'panel',
               items: [{
-                  Type: 'alertbanner',
-                  Level: 'error',
+                  type: 'alertbanner',
+                  level: 'error',
                   icon: 'warning',
-                  Text: 'Could not load emojis'
+                  text: 'Could not load emojis'
                 }]
             },
             buttons: [{
-                Type: 'cancel',
-                Text: 'Close',
+                type: 'cancel',
+                text: 'Close',
                 primary: true
               }],
             initialData: {
@@ -527,8 +527,8 @@
       editor.on('PreInit', () => {
         editor.parser.addAttributeFilter('data-emoticon', nodes => {
           each$1(nodes, node => {
-            node.attr('data-mce-reSize', 'false');
-            node.attr('data-mce-Placeholder', '1');
+            node.attr('data-mce-resize', 'false');
+            node.attr('data-mce-placeholder', '1');
           });
         });
       });
@@ -570,7 +570,7 @@
         onSetup: onSetupEditable(editor)
       });
       editor.ui.registry.addMenuItem('emoticons', {
-        Text: 'Emojis...',
+        text: 'Emojis...',
         icon: 'emoji',
         onAction,
         onSetup: onSetupEditable(editor)

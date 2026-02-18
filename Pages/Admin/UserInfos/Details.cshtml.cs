@@ -14,9 +14,9 @@ namespace ISO_Manager.Pages.Admin.User_infos
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbConText conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
         {
             _conText = conText;
         }

@@ -3,17 +3,17 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var options6 = {
       chart: {
-        Type: 'area',
+        type: 'area',
         height: 60,
         stacked: true,
         sparkline: { enabled: true }
       },
       colors: ['#4680FF'],
       fill: {
-        Type: 'gradient',
+        type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          Type: 'vertical',
+          type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -26,17 +26,17 @@ document.addEventListener('DOMContentLoaded', function () {
     chart.render();
     var options7 = {
       chart: {
-        Type: 'area',
+        type: 'area',
         height: 60,
         stacked: true,
         sparkline: { enabled: true }
       },
       colors: ['#DC2626'],
       fill: {
-        Type: 'gradient',
+        type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          Type: 'vertical',
+          type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0

@@ -12,16 +12,16 @@ namespace ISO_Manager.Pages.Admin.OperationPlans
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
         {
             _conText = conText;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["purpose_id"] = new SelectList(_conText.Purposes, "id", "id");
+        ViewData["PurposeId"] = new SelectList(_conText.Purposes, "id", "id");
             return Page();
         }
 

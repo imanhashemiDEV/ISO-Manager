@@ -47,19 +47,19 @@
                                             @Html.DisplayNameFor(model => model.ProcessPlan[0].Title)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.ProcessPlan[0].accept_percent)
+                                            @Html.DisplayNameFor(model => model.ProcessPlan[0].AcceptPercent)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.ProcessPlan[0].plan_percent)
+                                            @Html.DisplayNameFor(model => model.ProcessPlan[0].PlanPercent)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.ProcessPlan[0].Status)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.ProcessPlan[0].deviation)
+                                            @Html.DisplayNameFor(model => model.ProcessPlan[0].Deviation)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.ProcessPlan[0].requests)
+                                            @Html.DisplayNameFor(model => model.ProcessPlan[0].Requests)
                                         </th>
                                         <th>عملیات</th>
                                     </tr>
@@ -73,19 +73,19 @@
                                                 @Html.DisplayFor(modelItem => item.Title)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.accept_percent)
+                                                @Html.DisplayFor(modelItem => item.AcceptPercent)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.plan_percent)
+                                                @Html.DisplayFor(modelItem => item.PlanPercent)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Status)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.deviation)
+                                                @Html.DisplayFor(modelItem => item.Deviation)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.requests)
+                                                @Html.DisplayFor(modelItem => item.Requests)
                                             </td>
                                             <td>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">

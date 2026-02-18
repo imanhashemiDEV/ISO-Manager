@@ -26,17 +26,17 @@
 
     const pageBreakClass = 'mce-pagebreak';
     const getPlaceholderHtml = shouldSplitBlock => {
-      const html = `<img src="${ global.transparentSrc }" class="${ pageBreakClass }" data-mce-reSize="false" data-mce-Placeholder />`;
+      const html = `<img src="${ global.transparentSrc }" class="${ pageBreakClass }" data-mce-resize="false" data-mce-placeholder />`;
       return shouldSplitBlock ? `<p>${ html }</p>` : html;
     };
     const setup$1 = editor => {
       const separatorHtml = getSeparatorHtml(editor);
       const shouldSplitBlock$1 = () => shouldSplitBlock(editor);
-      const pageBreakSeparatorRegExp = new RegExp(separatorHtml.rePlace(/[\?\.\*\[\]\(\)\{\}\+\^\$\:]/g, a => {
+      const pageBreakSeparatorRegExp = new RegExp(separatorHtml.replace(/[\?\.\*\[\]\(\)\{\}\+\^\$\:]/g, a => {
         return '\\' + a;
       }), 'gi');
       editor.on('BeforeSetContent', e => {
-        e.content = e.content.rePlace(pageBreakSeparatorRegExp, getPlaceholderHtml(shouldSplitBlock$1()));
+        e.content = e.content.replace(pageBreakSeparatorRegExp, getPlaceholderHtml(shouldSplitBlock$1()));
       });
       editor.on('PreInit', () => {
         editor.serializer.addNodeFilter('img', nodes => {
@@ -47,13 +47,13 @@
             if (className && className.indexOf(pageBreakClass) !== -1) {
               const parentNode = node.parent;
               if (parentNode && editor.schema.getBlockElements()[parentNode.name] && shouldSplitBlock$1()) {
-                parentNode.Type = 3;
+                parentNode.type = 3;
                 parentNode.value = separatorHtml;
                 parentNode.raw = true;
                 node.remove();
                 continue;
               }
-              node.Type = 3;
+              node.type = 3;
               node.value = separatorHtml;
               node.raw = true;
             }
@@ -95,7 +95,7 @@
         onSetup: onSetupEditable(editor)
       });
       editor.ui.registry.addMenuItem('pagebreak', {
-        Text: 'Page break',
+        text: 'Page break',
         icon: 'page-break',
         onAction,
         onSetup: onSetupEditable(editor)

@@ -38,7 +38,7 @@ figure figcaption {
   color: #999;
   display: block;
   margin-top: 0.25rem;
-  Text-align: center;
+  text-align: center;
 }
 hr {
   border-color: #ccc;

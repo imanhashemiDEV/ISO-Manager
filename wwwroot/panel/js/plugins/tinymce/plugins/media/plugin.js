@@ -9,25 +9,25 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.protoType)) {
+      if (predicate(v, constructor.prototype)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const TypeOf = x => {
-      const t = Typeof x;
+    const typeOf = x => {
+      const t = typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType = Type => value => TypeOf(value) === Type;
+    const isType = type => value => typeOf(value) === type;
     const isString = isType('string');
     const isObject = isType('object');
     const isArray = isType('array');
@@ -85,11 +85,11 @@
           return Optional.none();
         }
       }
-      getOr(rePlacement) {
-        return this.tag ? this.value : rePlacement;
+      getOr(replacement) {
+        return this.tag ? this.value : replacement;
       }
-      or(rePlacement) {
-        return this.tag ? this : rePlacement;
+      or(replacement) {
+        return this.tag ? this : replacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -127,7 +127,7 @@
     }
     Optional.singletonNone = new Optional(false);
 
-    const nativePush = Array.protoType.push;
+    const nativePush = Array.prototype.push;
     const each$1 = (xs, f) => {
       for (let i = 0, len = xs.length; i < len; i++) {
         const x = xs[i];
@@ -219,12 +219,12 @@
     var global$3 = tinymce.util.Tools.resolve('tinymce.html.DomParser');
 
     const DOM$1 = global$4.DOM;
-    const trimPx = value => value.rePlace(/px$/, '');
+    const trimPx = value => value.replace(/px$/, '');
     const getEphoxEmbedData = node => {
       const style = node.attr('style');
       const styles = style ? DOM$1.parseStyle(style) : {};
       return {
-        Type: 'ephox-embed-iri',
+        type: 'ephox-embed-iri',
         source: node.attr('data-ephox-embed-iri'),
         altsource: '',
         poster: '',
@@ -240,7 +240,7 @@
       }, schema);
       const rootNode = parser.parse(html);
       for (let node = rootNode; node; node = node.walk()) {
-        if (node.Type === 1) {
+        if (node.type === 1) {
           const name = node.name;
           if (node.attr('data-ephox-embed-iri')) {
             data = getEphoxEmbedData(node);
@@ -250,8 +250,8 @@
               data.source = node.attr('movie');
             }
             if (name === 'iframe' || name === 'object' || name === 'embed' || name === 'video' || name === 'audio') {
-              if (!data.Type) {
-                data.Type = name;
+              if (!data.type) {
+                data.type = name;
               }
               data = global$5.extend(node.attributes.map, data);
             }
@@ -324,7 +324,7 @@
       parser.addNodeFilter('source', nodes => numSources = nodes.length);
       const rootNode = parser.parse(html);
       for (let node = rootNode; node; node = node.walk()) {
-        if (node.Type === 1) {
+        if (node.type === 1) {
           const name = node.name;
           if (node.attr('data-ephox-embed-iri')) {
             updateEphoxEmbed(data, node);
@@ -351,7 +351,7 @@
                   if (data[sources[index]]) {
                     const source = new global$2('source', 1);
                     source.attr('src', data[sources[index]]);
-                    source.attr('Type', data[sources[index] + 'mime'] || null);
+                    source.attr('type', data[sources[index] + 'mime'] || null);
                     node.append(source);
                   }
                 }
@@ -373,7 +373,7 @@
               case 'source':
                 if (sourceCount < 2) {
                   node.attr('src', data[sources[sourceCount]]);
-                  node.attr('Type', data[sources[sourceCount] + 'mime'] || null);
+                  node.attr('type', data[sources[sourceCount] + 'mime'] || null);
                   if (!data[sources[sourceCount]]) {
                     node.remove();
                     continue;
@@ -397,7 +397,7 @@
     const urlPatterns = [
       {
         regex: /youtu\.be\/([\w\-_\?&=.]+)/i,
-        Type: 'iframe',
+        type: 'iframe',
         w: 560,
         h: 314,
         url: 'www.youtube.com/embed/$1',
@@ -405,7 +405,7 @@
       },
       {
         regex: /youtube\.com(.+)v=([^&]+)(&([a-z0-9&=\-_]+))?/i,
-        Type: 'iframe',
+        type: 'iframe',
         w: 560,
         h: 314,
         url: 'www.youtube.com/embed/$2?$4',
@@ -413,7 +413,7 @@
       },
       {
         regex: /youtube.com\/embed\/([a-z0-9\?&=\-_]+)/i,
-        Type: 'iframe',
+        type: 'iframe',
         w: 560,
         h: 314,
         url: 'www.youtube.com/embed/$1',
@@ -421,39 +421,39 @@
       },
       {
         regex: /vimeo\.com\/([0-9]+)\?h=(\w+)/,
-        Type: 'iframe',
+        type: 'iframe',
         w: 425,
         h: 350,
-        url: 'player.vimeo.com/video/$1?h=$2&Title=0&byline=0&portrait=0&color=8dc7dc',
+        url: 'player.vimeo.com/video/$1?h=$2&title=0&byline=0&portrait=0&color=8dc7dc',
         allowFullscreen: true
       },
       {
         regex: /vimeo\.com\/(.*)\/([0-9]+)\?h=(\w+)/,
-        Type: 'iframe',
+        type: 'iframe',
         w: 425,
         h: 350,
-        url: 'player.vimeo.com/video/$2?h=$3&Title=0&amp;byline=0',
+        url: 'player.vimeo.com/video/$2?h=$3&title=0&amp;byline=0',
         allowFullscreen: true
       },
       {
         regex: /vimeo\.com\/([0-9]+)/,
-        Type: 'iframe',
+        type: 'iframe',
         w: 425,
         h: 350,
-        url: 'player.vimeo.com/video/$1?Title=0&byline=0&portrait=0&color=8dc7dc',
+        url: 'player.vimeo.com/video/$1?title=0&byline=0&portrait=0&color=8dc7dc',
         allowFullscreen: true
       },
       {
         regex: /vimeo\.com\/(.*)\/([0-9]+)/,
-        Type: 'iframe',
+        type: 'iframe',
         w: 425,
         h: 350,
-        url: 'player.vimeo.com/video/$2?Title=0&amp;byline=0',
+        url: 'player.vimeo.com/video/$2?title=0&amp;byline=0',
         allowFullscreen: true
       },
       {
         regex: /maps\.google\.([a-z]{2,3})\/maps\/(.+)msid=(.+)/,
-        Type: 'iframe',
+        type: 'iframe',
         w: 425,
         h: 350,
         url: 'maps.google.com/maps/ms?msid=$2&output=embed"',
@@ -461,7 +461,7 @@
       },
       {
         regex: /dailymotion\.com\/video\/([^_]+)/,
-        Type: 'iframe',
+        type: 'iframe',
         w: 480,
         h: 270,
         url: 'www.dailymotion.com/embed/video/$1',
@@ -469,7 +469,7 @@
       },
       {
         regex: /dai\.ly\/([^_]+)/,
-        Type: 'iframe',
+        type: 'iframe',
         w: 480,
         h: 270,
         url: 'www.dailymotion.com/embed/video/$1',
@@ -490,10 +490,10 @@
       let newUrl = protocol + pattern.url;
       if (isNonNullable(match)) {
         for (let i = 0; i < match.length; i++) {
-          newUrl = newUrl.rePlace('$' + i, () => match[i] ? match[i] : '');
+          newUrl = newUrl.replace('$' + i, () => match[i] ? match[i] : '');
         }
       }
-      return newUrl.rePlace(/\?$/, '');
+      return newUrl.replace(/\?$/, '');
     };
     const matchPattern = url => {
       const patterns = urlPatterns.filter(pattern => pattern.regex.test(url));
@@ -513,7 +513,7 @@
       }
     };
     const getFlashHtml = data => {
-      let html = '<object data="' + data.source + '" width="' + data.width + '" height="' + data.height + '" Type="application/x-shockwave-flash">';
+      let html = '<object data="' + data.source + '" width="' + data.width + '" height="' + data.height + '" type="application/x-shockwave-flash">';
       if (data.poster) {
         html += '<img src="' + data.poster + '" width="' + data.width + '" height="' + data.height + '" />';
       }
@@ -524,14 +524,14 @@
       if (audioTemplateCallback) {
         return audioTemplateCallback(data);
       } else {
-        return '<audio controls="controls" src="' + data.source + '">' + (data.altsource ? '\n<source src="' + data.altsource + '"' + (data.altsourcemime ? ' Type="' + data.altsourcemime + '"' : '') + ' />\n' : '') + '</audio>';
+        return '<audio controls="controls" src="' + data.source + '">' + (data.altsource ? '\n<source src="' + data.altsource + '"' + (data.altsourcemime ? ' type="' + data.altsourcemime + '"' : '') + ' />\n' : '') + '</audio>';
       }
     };
     const getVideoHtml = (data, videoTemplateCallback) => {
       if (videoTemplateCallback) {
         return videoTemplateCallback(data);
       } else {
-        return '<video width="' + data.width + '" height="' + data.height + '"' + (data.poster ? ' poster="' + data.poster + '"' : '') + ' controls="controls">\n' + '<source src="' + data.source + '"' + (data.sourcemime ? ' Type="' + data.sourcemime + '"' : '') + ' />\n' + (data.altsource ? '<source src="' + data.altsource + '"' + (data.altsourcemime ? ' Type="' + data.altsourcemime + '"' : '') + ' />\n' : '') + '</video>';
+        return '<video width="' + data.width + '" height="' + data.height + '"' + (data.poster ? ' poster="' + data.poster + '"' : '') + ' controls="controls">\n' + '<source src="' + data.source + '"' + (data.sourcemime ? ' type="' + data.sourcemime + '"' : '') + ' />\n' + (data.altsource ? '<source src="' + data.altsource + '"' + (data.altsourcemime ? ' type="' + data.altsourcemime + '"' : '') + ' />\n' : '') + '</video>';
       }
     };
     const dataToHtml = (editor, dataIn) => {
@@ -557,7 +557,7 @@
       const pattern = matchPattern(data.source);
       if (pattern) {
         data.source = pattern.url;
-        data.Type = pattern.Type;
+        data.type = pattern.type;
         data.allowfullscreen = pattern.allowFullscreen;
         data.width = data.width || String(pattern.w);
         data.height = data.height || String(pattern.h);
@@ -573,7 +573,7 @@
         global$5.each(data, (value, key) => {
           data[key] = editor.dom.encode('' + value);
         });
-        if (data.Type === 'iframe') {
+        if (data.type === 'iframe') {
           return getIframeHtml(data, iframeTemplateCallback);
         } else if (data.sourcemime === 'application/x-shockwave-flash') {
           return getFlashHtml(data);
@@ -601,7 +601,7 @@
           }
         }
       });
-      editor.on('ObjectReSized', e => {
+      editor.on('ObjectResized', e => {
         const target = e.target;
         if (target.getAttribute('data-mce-object')) {
           let html = target.getAttribute('data-mce-html');
@@ -700,8 +700,8 @@
     const handleError = editor => error => {
       const errorMessage = error && error.msg ? 'Media embed handler error: ' + error.msg : 'Media embed handler threw unknown error.';
       editor.notificationManager.open({
-        Type: 'error',
-        Text: errorMessage
+        type: 'error',
+        text: errorMessage
       });
     };
     const getEditorData = editor => {
@@ -709,11 +709,11 @@
       const snippet = isMediaElement(element) ? editor.serializer.serialize(element, { selection: true }) : '';
       const data = htmlToData(snippet, editor.schema);
       const getDimensionsOfElement = () => {
-        if (isEmbedIframe(data.source, data.Type)) {
+        if (isEmbedIframe(data.source, data.type)) {
           const rect = editor.dom.getRect(element);
           return {
-            width: rect.w.toString().rePlace(/px$/, ''),
-            height: rect.h.toString().rePlace(/px$/, '')
+            width: rect.w.toString().replace(/px$/, ''),
+            height: rect.h.toString().replace(/px$/, '')
           };
         } else {
           return {};
@@ -758,7 +758,7 @@
     const isEmbedIframe = (url, mediaDataType) => isNonNullable(mediaDataType) && mediaDataType === 'ephox-embed-iri' && isNonNullable(matchPattern(url));
     const shouldInsertAsNewIframe = (prevData, newData) => {
       const hasDimensionsChanged = (prevData, newData) => prevData.width !== newData.width || prevData.height !== newData.height;
-      return hasDimensionsChanged(prevData, newData) && isEmbedIframe(newData.source, prevData.Type);
+      return hasDimensionsChanged(prevData, newData) && isEmbedIframe(newData.source, prevData.type);
     };
     const submitForm = (prevData, newData, editor) => {
       var _a;
@@ -808,53 +808,53 @@
       };
       const mediaInput = [{
           name: 'source',
-          Type: 'urlinput',
-          fileType: 'media',
+          type: 'urlinput',
+          filetype: 'media',
           label: 'Source',
-          picker_Text: 'Browse files'
+          picker_text: 'Browse files'
         }];
-      const SizeInput = !hasDimensions(editor) ? [] : [{
-          Type: 'Sizeinput',
+      const sizeInput = !hasDimensions(editor) ? [] : [{
+          type: 'sizeinput',
           name: 'dimensions',
           label: 'Constrain proportions',
           constrain: true
         }];
       const generalTab = {
-        Title: 'General',
+        title: 'General',
         name: 'general',
         items: flatten([
           mediaInput,
-          SizeInput
+          sizeInput
         ])
       };
       const embedTextarea = {
-        Type: 'Textarea',
+        type: 'textarea',
         name: 'embed',
         label: 'Paste your embed code below:'
       };
       const embedTab = {
-        Title: 'Embed',
+        title: 'Embed',
         items: [embedTextarea]
       };
       const advancedFormItems = [];
       if (hasAltSource(editor)) {
         advancedFormItems.push({
           name: 'altsource',
-          Type: 'urlinput',
-          fileType: 'media',
+          type: 'urlinput',
+          filetype: 'media',
           label: 'Alternative source URL'
         });
       }
       if (hasPoster(editor)) {
         advancedFormItems.push({
           name: 'poster',
-          Type: 'urlinput',
-          fileType: 'image',
+          type: 'urlinput',
+          filetype: 'image',
           label: 'Media poster (Image URL)'
         });
       }
       const advancedTab = {
-        Title: 'Advanced',
+        title: 'Advanced',
         name: 'advanced',
         items: advancedFormItems
       };
@@ -866,23 +866,23 @@
         tabs.push(advancedTab);
       }
       const body = {
-        Type: 'tabpanel',
+        type: 'tabpanel',
         tabs
       };
       const win = editor.windowManager.open({
-        Title: 'Insert/Edit Media',
-        Size: 'normal',
+        title: 'Insert/Edit Media',
+        size: 'normal',
         body,
         buttons: [
           {
-            Type: 'cancel',
+            type: 'cancel',
             name: 'cancel',
-            Text: 'Cancel'
+            text: 'Cancel'
           },
           {
-            Type: 'submit',
+            type: 'submit',
             name: 'save',
-            Text: 'Save',
+            text: 'Save',
             primary: true
           }
         ],
@@ -957,23 +957,23 @@
       });
     };
     const appendNodeContent = (editor, nodeName, previewNode, html) => {
-      const newNode = Parser(editor.schema).parse(html, { conText: nodeName });
+      const newNode = Parser(editor.schema).parse(html, { context: nodeName });
       while (newNode.firstChild) {
         previewNode.append(newNode.firstChild);
       }
     };
     const createPlaceholderNode = (editor, node) => {
       const name = node.name;
-      const PlaceHolder = new global$2('img', 1);
-      retainAttributesAndInnerHtml(editor, node, PlaceHolder);
-      setDimensions(node, PlaceHolder, {});
-      PlaceHolder.attr({
+      const placeHolder = new global$2('img', 1);
+      retainAttributesAndInnerHtml(editor, node, placeHolder);
+      setDimensions(node, placeHolder, {});
+      placeHolder.attr({
         'style': node.attr('style'),
         'src': global.transparentSrc,
         'data-mce-object': name,
         'class': 'mce-object mce-object-' + name
       });
-      return PlaceHolder;
+      return placeHolder;
     };
     const createPreviewNode = (editor, node) => {
       var _a;
@@ -1061,7 +1061,7 @@
       }
       return false;
     };
-    const PlaceHolderConverter = editor => nodes => {
+    const placeHolderConverter = editor => nodes => {
       let i = nodes.length;
       let node;
       while (i--) {
@@ -1074,24 +1074,24 @@
         }
         if (isLiveEmbedNode(node) && hasLiveEmbeds(editor)) {
           if (!isWithinEmbedWrapper(node)) {
-            node.rePlace(createPreviewNode(editor, node));
+            node.replace(createPreviewNode(editor, node));
           }
         } else {
           if (!isWithinEmbedWrapper(node)) {
-            node.rePlace(createPlaceholderNode(editor, node));
+            node.replace(createPlaceholderNode(editor, node));
           }
         }
       }
     };
 
-    const parseAndSanitize = (editor, conText, html) => {
+    const parseAndSanitize = (editor, context, html) => {
       const getEditorOption = editor.options.get;
       const sanitize = getEditorOption('xss_sanitization');
       const validate = shouldFilterHtml(editor);
       return Parser(editor.schema, {
         sanitize,
         validate
-      }).parse(html, { conText });
+      }).parse(html, { context });
     };
 
     const setup$1 = editor => {
@@ -1110,7 +1110,7 @@
             });
           }
         });
-        parser.addNodeFilter('iframe,video,audio,object,embed', PlaceHolderConverter(editor));
+        parser.addNodeFilter('iframe,video,audio,object,embed', placeHolderConverter(editor));
         serializer.addAttributeFilter('data-mce-object', (nodes, name) => {
           var _a;
           let i = nodes.length;
@@ -1149,7 +1149,7 @@
               const fragment = parseAndSanitize(editor, realElmName, unescape(innerHtml));
               each$1(fragment.children(), child => realElm.append(child));
             }
-            node.rePlace(realElm);
+            node.replace(realElm);
           }
         });
       });
@@ -1201,7 +1201,7 @@
       });
       editor.ui.registry.addMenuItem('media', {
         icon: 'embed',
-        Text: 'Media...',
+        text: 'Media...',
         onAction,
         onSetup: onSetupEditable(editor)
       });

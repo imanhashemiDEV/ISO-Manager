@@ -9,8 +9,9 @@ namespace ISO_Manager.Models
         [Key]
         public int Id { get; set; }
 
+        [Required]
         [Display(Name = "عنوان  فارسی")]
-        public string? AssetName { get; set; }
+        public string AssetName { get; set; }
 
         [Display(Name = "تعداد پیشفرض")]
         public string? DefaultCount { get; set; }

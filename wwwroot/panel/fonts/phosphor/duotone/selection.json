@@ -4644,14 +4644,14 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["book-open-Text-duotone"],
+        "tags": ["book-open-text-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
       "properties": {
         "order": 30933,
         "id": 1047,
-        "name": "book-open-Text-duotone",
+        "name": "book-open-text-duotone",
         "prevSize": 16,
         "code": 60048,
         "codes": [60048, 60049]
@@ -6603,14 +6603,14 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["chat-centered-Text-duotone"],
+        "tags": ["chat-centered-text-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
       "properties": {
         "order": 31024,
         "id": 956,
-        "name": "chat-centered-Text-duotone",
+        "name": "chat-centered-text-duotone",
         "prevSize": 16,
         "code": 60229,
         "codes": [60229, 60230]
@@ -6674,14 +6674,14 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["chat-circle-Text-duotone"],
+        "tags": ["chat-circle-text-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
       "properties": {
         "order": 31027,
         "id": 953,
-        "name": "chat-circle-Text-duotone",
+        "name": "chat-circle-text-duotone",
         "prevSize": 16,
         "code": 60235,
         "codes": [60235, 60236]
@@ -6840,14 +6840,14 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["chat-teardrop-Text-duotone"],
+        "tags": ["chat-teardrop-text-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
       "properties": {
         "order": 31035,
         "id": 945,
-        "name": "chat-teardrop-Text-duotone",
+        "name": "chat-teardrop-text-duotone",
         "prevSize": 16,
         "code": 60251,
         "codes": [60251, 60252]
@@ -6866,11 +6866,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["chat-Text-duotone"],
+        "tags": ["chat-text-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31036, "id": 944, "name": "chat-Text-duotone", "prevSize": 16, "code": 60253, "codes": [60253, 60254] },
+      "properties": { "order": 31036, "id": 944, "name": "chat-text-duotone", "prevSize": 16, "code": 60253, "codes": [60253, 60254] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 303
@@ -7229,11 +7229,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["clipboard-Text-duotone"],
+        "tags": ["clipboard-text-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31054, "id": 926, "name": "clipboard-Text-duotone", "prevSize": 16, "code": 60289, "codes": [60289, 60290] },
+      "properties": { "order": 31054, "id": 926, "name": "clipboard-text-duotone", "prevSize": 16, "code": 60289, "codes": [60289, 60290] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 321
@@ -8771,11 +8771,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["cursor-Text-duotone"],
+        "tags": ["cursor-text-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31130, "id": 850, "name": "cursor-Text-duotone", "prevSize": 16, "code": 60441, "codes": [60441, 60442] },
+      "properties": { "order": 31130, "id": 850, "name": "cursor-text-duotone", "prevSize": 16, "code": 60441, "codes": [60441, 60442] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 397
@@ -11032,11 +11032,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["file-Text-duotone"],
+        "tags": ["file-text-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31242, "id": 738, "name": "file-Text-duotone", "prevSize": 16, "code": 60665, "codes": [60665, 60666] },
+      "properties": { "order": 31242, "id": 738, "name": "file-text-duotone", "prevSize": 16, "code": 60665, "codes": [60665, 60666] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 509
@@ -18990,11 +18990,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Placeholder-duotone"],
+        "tags": ["placeholder-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31624, "id": 356, "name": "Placeholder-duotone", "prevSize": 16, "code": 61429, "codes": [61429, 61430] },
+      "properties": { "order": 31624, "id": 356, "name": "placeholder-duotone", "prevSize": 16, "code": 61429, "codes": [61429, 61430] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 891
@@ -22601,11 +22601,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Steps-duotone"],
+        "tags": ["steps-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31803, "id": 177, "name": "Steps-duotone", "prevSize": 16, "code": 61787, "codes": [61787, 61788] },
+      "properties": { "order": 31803, "id": 177, "name": "steps-duotone", "prevSize": 16, "code": 61787, "codes": [61787, 61788] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1070
@@ -22791,11 +22791,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["subTitles-duotone"],
+        "tags": ["subtitles-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31813, "id": 167, "name": "subTitles-duotone", "prevSize": 16, "code": 61807, "codes": [61807, 61808] },
+      "properties": { "order": 31813, "id": 167, "name": "subtitles-duotone", "prevSize": 16, "code": 61807, "codes": [61807, 61808] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1080
@@ -23415,11 +23415,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-aa-duotone"],
+        "tags": ["text-aa-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31844, "id": 136, "name": "Text-aa-duotone", "prevSize": 16, "code": 61869, "codes": [61869, 61870] },
+      "properties": { "order": 31844, "id": 136, "name": "text-aa-duotone", "prevSize": 16, "code": 61869, "codes": [61869, 61870] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1111
@@ -23434,14 +23434,14 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-align-center-duotone"],
+        "tags": ["text-align-center-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
       "properties": {
         "order": 31845,
         "id": 135,
-        "name": "Text-align-center-duotone",
+        "name": "text-align-center-duotone",
         "prevSize": 16,
         "code": 61871,
         "codes": [61871, 61872]
@@ -23460,14 +23460,14 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-align-justify-duotone"],
+        "tags": ["text-align-justify-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
       "properties": {
         "order": 31846,
         "id": 134,
-        "name": "Text-align-justify-duotone",
+        "name": "text-align-justify-duotone",
         "prevSize": 16,
         "code": 61873,
         "codes": [61873, 61874]
@@ -23486,14 +23486,14 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-align-left-duotone"],
+        "tags": ["text-align-left-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
       "properties": {
         "order": 31847,
         "id": 133,
-        "name": "Text-align-left-duotone",
+        "name": "text-align-left-duotone",
         "prevSize": 16,
         "code": 61875,
         "codes": [61875, 61876]
@@ -23512,14 +23512,14 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-align-right-duotone"],
+        "tags": ["text-align-right-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
       "properties": {
         "order": 31848,
         "id": 132,
-        "name": "Text-align-right-duotone",
+        "name": "text-align-right-duotone",
         "prevSize": 16,
         "code": 61877,
         "codes": [61877, 61878]
@@ -23538,14 +23538,14 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-a-underline-duotone"],
+        "tags": ["text-a-underline-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
       "properties": {
         "order": 31849,
         "id": 131,
-        "name": "Text-a-underline-duotone",
+        "name": "text-a-underline-duotone",
         "prevSize": 16,
         "code": 61879,
         "codes": [61879, 61880]
@@ -23564,11 +23564,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-b-duotone"],
+        "tags": ["text-b-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31850, "id": 130, "name": "Text-b-duotone", "prevSize": 16, "code": 61881, "codes": [61881, 61882] },
+      "properties": { "order": 31850, "id": 130, "name": "text-b-duotone", "prevSize": 16, "code": 61881, "codes": [61881, 61882] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1117
@@ -23583,11 +23583,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Textbox-duotone"],
+        "tags": ["textbox-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31851, "id": 129, "name": "Textbox-duotone", "prevSize": 16, "code": 61883, "codes": [61883, 61884] },
+      "properties": { "order": 31851, "id": 129, "name": "textbox-duotone", "prevSize": 16, "code": 61883, "codes": [61883, 61884] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1118
@@ -23602,11 +23602,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-columns-duotone"],
+        "tags": ["text-columns-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31852, "id": 128, "name": "Text-columns-duotone", "prevSize": 16, "code": 61885, "codes": [61885, 61886] },
+      "properties": { "order": 31852, "id": 128, "name": "text-columns-duotone", "prevSize": 16, "code": 61885, "codes": [61885, 61886] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1119
@@ -23621,11 +23621,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-h-duotone"],
+        "tags": ["text-h-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31853, "id": 127, "name": "Text-h-duotone", "prevSize": 16, "code": 61887, "codes": [61887, 61888] },
+      "properties": { "order": 31853, "id": 127, "name": "text-h-duotone", "prevSize": 16, "code": 61887, "codes": [61887, 61888] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1120
@@ -23640,11 +23640,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-h-five-duotone"],
+        "tags": ["text-h-five-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31854, "id": 126, "name": "Text-h-five-duotone", "prevSize": 16, "code": 61889, "codes": [61889, 61890] },
+      "properties": { "order": 31854, "id": 126, "name": "text-h-five-duotone", "prevSize": 16, "code": 61889, "codes": [61889, 61890] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1121
@@ -23659,11 +23659,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-h-four-duotone"],
+        "tags": ["text-h-four-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31855, "id": 125, "name": "Text-h-four-duotone", "prevSize": 16, "code": 61891, "codes": [61891, 61892] },
+      "properties": { "order": 31855, "id": 125, "name": "text-h-four-duotone", "prevSize": 16, "code": 61891, "codes": [61891, 61892] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1122
@@ -23678,11 +23678,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-h-one-duotone"],
+        "tags": ["text-h-one-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31856, "id": 124, "name": "Text-h-one-duotone", "prevSize": 16, "code": 61893, "codes": [61893, 61894] },
+      "properties": { "order": 31856, "id": 124, "name": "text-h-one-duotone", "prevSize": 16, "code": 61893, "codes": [61893, 61894] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1123
@@ -23697,11 +23697,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-h-six-duotone"],
+        "tags": ["text-h-six-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31857, "id": 123, "name": "Text-h-six-duotone", "prevSize": 16, "code": 61895, "codes": [61895, 61896] },
+      "properties": { "order": 31857, "id": 123, "name": "text-h-six-duotone", "prevSize": 16, "code": 61895, "codes": [61895, 61896] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1124
@@ -23716,11 +23716,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-h-three-duotone"],
+        "tags": ["text-h-three-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31858, "id": 122, "name": "Text-h-three-duotone", "prevSize": 16, "code": 61897, "codes": [61897, 61898] },
+      "properties": { "order": 31858, "id": 122, "name": "text-h-three-duotone", "prevSize": 16, "code": 61897, "codes": [61897, 61898] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1125
@@ -23735,11 +23735,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-h-two-duotone"],
+        "tags": ["text-h-two-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31859, "id": 121, "name": "Text-h-two-duotone", "prevSize": 16, "code": 61899, "codes": [61899, 61900] },
+      "properties": { "order": 31859, "id": 121, "name": "text-h-two-duotone", "prevSize": 16, "code": 61899, "codes": [61899, 61900] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1126
@@ -23754,11 +23754,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-indent-duotone"],
+        "tags": ["text-indent-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31860, "id": 120, "name": "Text-indent-duotone", "prevSize": 16, "code": 61901, "codes": [61901, 61902] },
+      "properties": { "order": 31860, "id": 120, "name": "text-indent-duotone", "prevSize": 16, "code": 61901, "codes": [61901, 61902] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1127
@@ -23773,11 +23773,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-italic-duotone"],
+        "tags": ["text-italic-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31861, "id": 119, "name": "Text-italic-duotone", "prevSize": 16, "code": 61903, "codes": [61903, 61904] },
+      "properties": { "order": 31861, "id": 119, "name": "text-italic-duotone", "prevSize": 16, "code": 61903, "codes": [61903, 61904] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1128
@@ -23792,11 +23792,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-outdent-duotone"],
+        "tags": ["text-outdent-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31862, "id": 118, "name": "Text-outdent-duotone", "prevSize": 16, "code": 61905, "codes": [61905, 61906] },
+      "properties": { "order": 31862, "id": 118, "name": "text-outdent-duotone", "prevSize": 16, "code": 61905, "codes": [61905, 61906] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1129
@@ -23811,14 +23811,14 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-strikethrough-duotone"],
+        "tags": ["text-strikethrough-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
       "properties": {
         "order": 31863,
         "id": 117,
-        "name": "Text-strikethrough-duotone",
+        "name": "text-strikethrough-duotone",
         "prevSize": 16,
         "code": 61907,
         "codes": [61907, 61908]
@@ -23837,11 +23837,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-t-duotone"],
+        "tags": ["text-t-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31864, "id": 116, "name": "Text-t-duotone", "prevSize": 16, "code": 61909, "codes": [61909, 61910] },
+      "properties": { "order": 31864, "id": 116, "name": "text-t-duotone", "prevSize": 16, "code": 61909, "codes": [61909, 61910] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1131
@@ -23856,11 +23856,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Text-underline-duotone"],
+        "tags": ["text-underline-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31865, "id": 115, "name": "Text-underline-duotone", "prevSize": 16, "code": 61911, "codes": [61911, 61912] },
+      "properties": { "order": 31865, "id": 115, "name": "text-underline-duotone", "prevSize": 16, "code": 61911, "codes": [61911, 61912] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1132
@@ -24777,11 +24777,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Unite-duotone"],
+        "tags": ["unite-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31912, "id": 68, "name": "Unite-duotone", "prevSize": 16, "code": 62005, "codes": [62005, 62006] },
+      "properties": { "order": 31912, "id": 68, "name": "unite-duotone", "prevSize": 16, "code": 62005, "codes": [62005, 62006] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1179
@@ -24796,11 +24796,11 @@
         "isMulticolor": true,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": ["Unite-square-duotone"],
+        "tags": ["unite-square-duotone"],
         "colorPermutations": { "16868681": [{ "f": 1 }, { "f": 1 }] }
       },
       "attrs": [{ "fill": "rgb(68, 68, 68)", "opacity": 0.2 }, { "fill": "rgb(68, 68, 68)" }],
-      "properties": { "order": 31913, "id": 67, "name": "Unite-square-duotone", "prevSize": 16, "code": 62007, "codes": [62007, 62008] },
+      "properties": { "order": 31913, "id": 67, "name": "unite-square-duotone", "prevSize": 16, "code": 62007, "codes": [62007, 62008] },
       "setIdx": 5,
       "setId": 5,
       "iconIdx": 1180

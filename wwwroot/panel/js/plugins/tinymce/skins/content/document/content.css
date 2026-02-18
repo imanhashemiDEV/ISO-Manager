@@ -47,7 +47,7 @@ table[border]:not([border="0"]):not([style*="border-color"]) td {
 figure figcaption {
   color: #999;
   margin-top: 0.25rem;
-  Text-align: center;
+  text-align: center;
 }
 hr {
   border-color: #ccc;

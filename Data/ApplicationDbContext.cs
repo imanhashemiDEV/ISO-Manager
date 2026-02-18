@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ISO_Manager.Data
 {
-    public class ApplicationDbConText(DbConTextOptions<ApplicationDbConText> options) : IdentityDbConText(options)
+    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext(options)
     {
 
         public DbSet<User> Users { get; set; }
@@ -45,7 +45,7 @@ namespace ISO_Manager.Data
         public DbSet<UserPermit> UserPermits { get; set; } = default!;
         public DbSet<InspectionDetail> InspectionDetails { get; set; } = default!;
         public DbSet<RigAsset> RigAssets { get; set; } = default!;
-        public DbSet<ISO_Manager.Models.Office> Offices { get; set; } = default!;
+        public DbSet<Office> Offices { get; set; } = default!;
 
     }
 }

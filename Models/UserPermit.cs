@@ -10,7 +10,7 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "تاریخ انقضا")]
-        public DateTime Expire_date { get; set; }
+        public DateTime ExpireDate { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
         public DateTime CreatedAt { get; set; } = DateTime.Now;

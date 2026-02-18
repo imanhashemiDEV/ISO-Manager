@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', function () {
       series: [30],
       chart: {
         height: 150,
-        Type: 'radialBar'
+        type: 'radialBar'
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            Size: '60%',
+            size: '60%',
             background: 'transparent',
             imageOffsetX: 0,
             imageOffsetY: 0,
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       colors: ['#4680FF'],
       fill: {
-        Type: 'solid'
+        type: 'solid'
       },
       stroke: {
         lineCap: 'round'

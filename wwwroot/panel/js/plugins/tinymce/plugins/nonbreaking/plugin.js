@@ -7,7 +7,7 @@
 
     var global$1 = tinymce.util.Tools.resolve('tinymce.PluginManager');
 
-    const isSimpleType = Type => value => Typeof value === Type;
+    const isSimpleType = type => value => typeof value === type;
     const isBoolean = isSimpleType('boolean');
     const isNumber = isSimpleType('number');
 
@@ -103,7 +103,7 @@
       });
       editor.ui.registry.addMenuItem('nonbreaking', {
         icon: 'non-breaking',
-        Text: 'Nonbreaking space',
+        text: 'Nonbreaking space',
         onAction,
         onSetup: onSetupEditable(editor)
       });

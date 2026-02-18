@@ -60,39 +60,39 @@
         icon: 'help',
         tooltip: 'Help',
         onAction: dialogOpener,
-        conText: 'any'
+        context: 'any'
       });
       editor.ui.registry.addMenuItem('help', {
-        Text: 'Help',
+        text: 'Help',
         icon: 'help',
         shortcut: 'Alt+0',
         onAction: dialogOpener,
-        conText: 'any'
+        context: 'any'
       });
     };
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.protoType)) {
+      if (predicate(v, constructor.prototype)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const TypeOf = x => {
-      const t = Typeof x;
+    const typeOf = x => {
+      const t = typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType = Type => value => TypeOf(value) === Type;
-    const isSimpleType = Type => value => Typeof value === Type;
+    const isType = type => value => typeOf(value) === type;
+    const isSimpleType = type => value => typeof value === type;
     const eq = t => a => t === a;
     const isString = isType('string');
     const isUndefined = eq(undefined);
@@ -158,11 +158,11 @@
           return Optional.none();
         }
       }
-      getOr(rePlacement) {
-        return this.tag ? this.value : rePlacement;
+      getOr(replacement) {
+        return this.tag ? this.value : replacement;
       }
-      or(rePlacement) {
-        return this.tag ? this : rePlacement;
+      or(replacement) {
+        return this.tag ? this : replacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -200,8 +200,8 @@
     }
     Optional.singletonNone = new Optional(false);
 
-    const nativeSlice = Array.protoType.slice;
-    const nativeIndexOf = Array.protoType.indexOf;
+    const nativeSlice = Array.prototype.slice;
+    const nativeIndexOf = Array.prototype.indexOf;
     const rawIndexOf = (ts, t) => nativeIndexOf.call(ts, t);
     const contains = (xs, x) => rawIndexOf(xs, x) > -1;
     const map = (xs, f) => {
@@ -275,13 +275,13 @@
 
     const pTab = async pluginUrl => {
       const body = {
-        Type: 'htmlpanel',
+        type: 'htmlpanel',
         presets: 'document',
         html: await pLoadI18nHtml(pluginUrl)
       };
       return {
         name: 'keyboardnav',
-        Title: 'Keyboard Navigation',
+        title: 'Keyboard Navigation',
         items: [body]
       };
     };
@@ -301,13 +301,13 @@
         meta: 'Ctrl ',
         access: 'Shift + Alt '
       };
-      const rePlace = isMac ? mac : other;
+      const replace = isMac ? mac : other;
       const shortcut = source.split('+');
       const updated = map(shortcut, segment => {
         const search = segment.toLowerCase().trim();
-        return has(rePlace, search) ? rePlace[search] : segment;
+        return has(replace, search) ? replace[search] : segment;
       });
-      return isMac ? updated.join('').rePlace(/\s/, '') : updated.join('+');
+      return isMac ? updated.join('').replace(/\s/, '') : updated.join('+');
     };
 
     const shortcuts = [
@@ -396,7 +396,7 @@
       },
       {
         shortcuts: ['Ctrl + F9'],
-        action: 'Focus to conTextual toolbar'
+        action: 'Focus to contextual toolbar'
       },
       {
         shortcuts: ['Shift + Enter'],
@@ -412,7 +412,7 @@
       },
       {
         shortcuts: ['Meta + F'],
-        action: 'Find (if searchrePlace plugin activated)'
+        action: 'Find (if searchreplace plugin activated)'
       },
       {
         shortcuts: ['Meta + Shift + F'],
@@ -429,7 +429,7 @@
         ];
       });
       const tablePanel = {
-        Type: 'table',
+        type: 'table',
         header: [
           'Action',
           'Shortcut'
@@ -438,7 +438,7 @@
       };
       return {
         name: 'shortcuts',
-        Title: 'Handy Shortcuts',
+        title: 'Handy Shortcuts',
         items: [tablePanel]
       };
     };
@@ -457,8 +457,8 @@
         name: 'Autolink'
       },
       {
-        key: 'autoreSize',
-        name: 'AutoreSize'
+        key: 'autoresize',
+        name: 'Autoresize'
       },
       {
         key: 'autosave',
@@ -545,15 +545,15 @@
         name: 'Save'
       },
       {
-        key: 'searchrePlace',
-        name: 'Search and RePlace'
+        key: 'searchreplace',
+        name: 'Search and Replace'
       },
       {
         key: 'table',
         name: 'Table'
       },
       {
-        key: 'Textcolor',
+        key: 'textcolor',
         name: 'Text Color'
       },
       {
@@ -571,171 +571,171 @@
       {
         key: 'a11ychecker',
         name: 'Accessibility Checker',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'typography',
         name: 'Advanced Typography',
-        Type: 'premium',
+        type: 'premium',
         slug: 'advanced-typography'
       },
       {
         key: 'ai',
         name: 'AI Assistant',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'casechange',
         name: 'Case Change',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'checklist',
         name: 'Checklist',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'advcode',
         name: 'Enhanced Code Editor',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'mediaembed',
         name: 'Enhanced Media Embed',
-        Type: 'premium',
+        type: 'premium',
         slug: 'introduction-to-mediaembed'
       },
       {
         key: 'advtable',
         name: 'Enhanced Tables',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'exportpdf',
         name: 'Export to PDF',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'exportword',
         name: 'Export to Word',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'footnotes',
         name: 'Footnotes',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'formatpainter',
         name: 'Format Painter',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'editimage',
         name: 'Image Editing',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'importword',
         name: 'Import from Word',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'inlinecss',
         name: 'Inline CSS',
-        Type: 'premium',
+        type: 'premium',
         slug: 'inline-css'
       },
       {
         key: 'linkchecker',
         name: 'Link Checker',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'math',
         name: 'Math',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'markdown',
         name: 'Markdown',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'mentions',
         name: 'Mentions',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'mergetags',
         name: 'Merge Tags',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'pageembed',
         name: 'Page Embed',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'permanentpen',
         name: 'Permanent Pen',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'powerpaste',
         name: 'PowerPaste',
-        Type: 'premium',
+        type: 'premium',
         slug: 'introduction-to-powerpaste'
       },
       {
         key: 'revisionhistory',
         name: 'Revision History',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'tinymcespellchecker',
         name: 'Spell Checker',
-        Type: 'premium',
+        type: 'premium',
         slug: 'introduction-to-tiny-spellchecker'
       },
       {
         key: 'autocorrect',
         name: 'Spelling Autocorrect',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'tableofcontents',
         name: 'Table of Contents',
-        Type: 'premium'
+        type: 'premium'
       },
       {
         key: 'advtemplate',
         name: 'Templates',
-        Type: 'premium',
+        type: 'premium',
         slug: 'advanced-templates'
       },
       {
         key: 'tinycomments',
         name: 'Tiny Comments',
-        Type: 'premium',
+        type: 'premium',
         slug: 'introduction-to-tiny-comments'
       },
       {
         key: 'tinydrive',
         name: 'Tiny Drive',
-        Type: 'premium',
+        type: 'premium',
         slug: 'tinydrive-introduction'
       }
     ], item => ({
       ...item,
-      Type: item.Type || 'opensource',
+      type: item.type || 'opensource',
       slug: item.slug || item.key
     }));
 
     const tab$1 = editor => {
       const availablePlugins = () => {
-        const premiumPlugins = filter(urls, ({Type}) => {
-          return Type === 'premium';
+        const premiumPlugins = filter(urls, ({type}) => {
+          return type === 'premium';
         });
         const sortedPremiumPlugins = sort(map(premiumPlugins, p => p.name), (s1, s2) => s1.localeCompare(s2));
         const premiumPluginList = map(sortedPremiumPlugins, pluginName => `<li>${ pluginName }</li>`).join('');
@@ -762,7 +762,7 @@
       }).fold(() => {
         return identifyUnknownPlugin(editor, key);
       }, x => {
-        const name = x.Type === 'premium' ? `${ x.name }*` : x.name;
+        const name = x.type === 'premium' ? `${ x.name }*` : x.name;
         const html = makeLink({
           name,
           url: `https://www.tiny.cloud/docs/tinymce/7/${ x.slug }/`
@@ -798,7 +798,7 @@
         return '<div>' + pluginLister(editor) + '</div>';
       };
       const htmlPanel = {
-        Type: 'htmlpanel',
+        type: 'htmlpanel',
         presets: 'document',
         html: [
           installedPlugins(editor),
@@ -807,7 +807,7 @@
       };
       return {
         name: 'plugins',
-        Title: 'Plugins',
+        title: 'Plugins',
         items: [htmlPanel]
       };
     };
@@ -819,7 +819,7 @@
       const version = getVersion(global.majorVersion, global.minorVersion);
       const changeLogLink = '<a data-alloy-tabstop="true" tabindex="-1" href="https://www.tiny.cloud/docs/tinymce/7/changelog/?utm_campaign=help_dialog_version_tab&utm_source=tiny&utm_medium=referral" rel="noopener" target="_blank">TinyMCE ' + version + '</a>';
       const htmlPanel = {
-        Type: 'htmlpanel',
+        type: 'htmlpanel',
         html: '<p>' + global$2.translate([
           'You are using {0}',
           changeLogLink
@@ -828,7 +828,7 @@
       };
       return {
         name: 'versions',
-        Title: 'Version',
+        title: 'Version',
         items: [htmlPanel]
       };
     };
@@ -884,17 +884,17 @@
         const foundTabs = map(names, name => get(tabs, name));
         const dialogTabs = cat(foundTabs);
         const body = {
-          Type: 'tabpanel',
+          type: 'tabpanel',
           tabs: dialogTabs
         };
         editor.windowManager.open({
-          Title: 'Help',
-          Size: 'medium',
+          title: 'Help',
+          size: 'medium',
           body,
           buttons: [{
-              Type: 'cancel',
+              type: 'cancel',
               name: 'close',
-              Text: 'Close',
+              text: 'Close',
               primary: true
             }],
           initialData: {}

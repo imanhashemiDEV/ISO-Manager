@@ -31,7 +31,7 @@
     'bouncerFormValid',
     function () {
       alert('Form submitted successfully!');
-      window.Location.reload();
+      window.location.reload();
     },
     false
   );

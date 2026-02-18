@@ -10,9 +10,9 @@ namespace ISO_Manager.Pages.Admin.Users
 {
     public class IndexModel : PageModel
     {
-        public readonly ApplicationDbConText _conText;
+        public readonly ApplicationDbContext _conText;
 
-        public IndexModel(ApplicationDbConText conText)
+        public IndexModel(ApplicationDbContext conText)
         {
             _conText = conText;
         }

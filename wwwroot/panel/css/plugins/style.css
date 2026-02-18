@@ -59,7 +59,7 @@
 	margin-left: 2px;
 	padding: 6px 12px;
 	position: relative;
-	Text-decoration: none;
+	text-decoration: none;
 	color: #333;
     cursor: pointer;
 }
@@ -126,23 +126,23 @@
 
 .datatable-table > thead > tr > th {
 	vertical-align: bottom;
-	Text-align: left;
+	text-align: left;
 	border-bottom: 1px solid #d9d9d9;
 }
 
 .datatable-table > tfoot > tr > th {
 	vertical-align: bottom;
-	Text-align: left;
+	text-align: left;
 	border-top: 1px solid #d9d9d9;
 }
 
 .datatable-table th {
 	vertical-align: bottom;
-	Text-align: left;
+	text-align: left;
 }
 
 .datatable-table th a {
-	Text-decoration: none;
+	text-decoration: none;
 	color: inherit;
 }
 
@@ -152,10 +152,10 @@
     border: 0;
     background-color: inherit;
     cursor: pointer;
-    Text-align: inherit;
+    text-align: inherit;
     font-family: inherit;
     font-weight: inherit;
-    font-Size: inherit;
+    font-size: inherit;
 }
 
 .datatable-sorter, .datatable-filter {
@@ -215,7 +215,7 @@
 }
 
 .datatable-empty {
-	Text-align: center;
+	text-align: center;
 }
 
 .datatable-top::after, .datatable-bottom::after {

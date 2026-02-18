@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var total_line_2_chart_options = {
       chart: {
-        Type: 'line',
+        type: 'line',
         height: 60,
         sparkline: {
           enabled: true
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
           show: false
         },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return '';
             }

@@ -12,9 +12,9 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
         {
             _conText = conText;
         }
@@ -39,7 +39,7 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
             ProcessPlan = await _conText.ProcessPlans
-                .Where(m=>m.process_id == id)
+                .Where(m=>m.ProcessId == id)
                 .Include(p => p.Process)
                 .Skip(skip).Take(Take)
                 .ToListAsync();

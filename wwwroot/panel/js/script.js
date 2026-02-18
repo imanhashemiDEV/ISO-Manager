@@ -29,7 +29,7 @@ function menu_click() {
     elem[j].style.display = 'none';
   }
 
-  // Add click event listeners to main menu items (for first menu Level collapse)
+  // Add click event listeners to main menu items (for first menu level collapse)
   var pc_link_click = document.querySelectorAll('.pc-navbar > li:not(.pc-caption).pc-hasmenu');
   for (var i = 0; i < pc_link_click.length; i++) {
     pc_link_click[i].addEventListener('click', function (event) {
@@ -120,10 +120,10 @@ document.addEventListener('DOMContentLoaded', menu_click);
 // Initialize various components on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function () {
   // feather icon start
-  feather.rePlace();
+  feather.replace();
   // feather icon end
 
-  // Check for specific layout and add scrollbar if necessary(add scrollbar from 1024 screen Size in horizontal layout)
+  // Check for specific layout and add scrollbar if necessary(add scrollbar from 1024 screen size in horizontal layout)
   if (document.querySelector('html').hasAttribute('data-pc-layout')) {
     if (document.querySelector('html').getAttribute('data-pc-layout') == 'horizontal') {
       var docW = window.innerWidth;
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
     preset_layout.forEach(function (element) {
       element.addEventListener('click', function () {
         // Reload the page after setting the layout for the first time to sync in all open tabs
-        Location.reload();
+        location.reload();
 
         document.querySelectorAll('.theme-main-layout > a').forEach(function (el) {
           el.classList.remove('active');
@@ -342,7 +342,7 @@ window.addEventListener('load', function () {
 var elem = document.querySelectorAll('.pc-sidebar .pc-navbar a');
 for (var l = 0; l < elem.length; l++) {
   // Check if current URL matches menu item URL
-  var pageUrl = window.Location.href.split(/[?#]/)[0];
+  var pageUrl = window.location.href.split(/[?#]/)[0];
   if (elem[l].href == pageUrl && elem[l].getAttribute('href') != '') {
     // Add active class to matching menu item and its parent elements
     elem[l].parentNode.classList.add('active');

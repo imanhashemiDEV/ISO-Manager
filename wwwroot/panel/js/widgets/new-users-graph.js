@@ -2,16 +2,16 @@
 document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var options10 = {
-      chart: { Type: 'area', height: 80, sparkline: { enabled: true } },
+      chart: { type: 'area', height: 80, sparkline: { enabled: true } },
       colors: ['#2CA87F'],
       stroke: {
         width: 1
       },
       fill: {
-        Type: 'gradient',
+        type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          Type: 'vertical',
+          type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return '';
             }

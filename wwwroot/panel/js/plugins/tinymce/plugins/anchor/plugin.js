@@ -94,27 +94,27 @@
     const open = editor => {
       const currentId = getId(editor);
       editor.windowManager.open({
-        Title: 'Anchor',
-        Size: 'normal',
+        title: 'Anchor',
+        size: 'normal',
         body: {
-          Type: 'panel',
+          type: 'panel',
           items: [{
               name: 'id',
-              Type: 'input',
+              type: 'input',
               label: 'ID',
-              Placeholder: 'example'
+              placeholder: 'example'
             }]
         },
         buttons: [
           {
-            Type: 'cancel',
+            type: 'cancel',
             name: 'cancel',
-            Text: 'Cancel'
+            text: 'Cancel'
           },
           {
-            Type: 'submit',
+            type: 'submit',
             name: 'save',
-            Text: 'Save',
+            text: 'Save',
             primary: true
           }
         ],
@@ -191,7 +191,7 @@
       });
       editor.ui.registry.addMenuItem('anchor', {
         icon: 'bookmark',
-        Text: 'Anchor...',
+        text: 'Anchor...',
         onAction,
         onSetup: onSetupEditable(editor)
       });

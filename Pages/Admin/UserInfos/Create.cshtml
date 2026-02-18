@@ -27,7 +27,7 @@
                     <div class="card-body !py-0">
                         <ul class="flex flex-wrap w-full font-medium Text-center nav-tabs">
                             <li class="group">
-                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-1" class="inline-flex items-center mr-6 py-4 transition-all duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-1" class="inline-flex items-center mr-6 py-4 transition-all Duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
                                     <i class="ti ti-id ltr:mr-2 rtl:ml-2 Text-lg leading-none"></i>
                                     ثبت اطلاعات 
                                 </a>
@@ -57,7 +57,7 @@
                                                                 <option value="@item.Id">@item.Title</option>
                                                             }
                                                         </select>
-                                                        <span asp-validation-for="User_info.degree" class="Text-danger"></span>
+                                                        <span asp-validation-for="User_info.Degree" class="Text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-span-12 sm:col-span-6">
@@ -69,7 +69,7 @@
                                                                 <option value="@item.Id">@item.Title</option>
                                                             }
                                                         </select>
-                                                        <span asp-validation-for="User_info.degree" class="Text-danger"></span>
+                                                        <span asp-validation-for="User_info.Degree" class="Text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-span-12 sm:col-span-6">
@@ -81,31 +81,31 @@
                                                                 <option value="@item.Id">@item.Title</option>
                                                             }
                                                         </select>
-                                                        <span asp-validation-for="User_info.degree" class="Text-danger"></span>
+                                                        <span asp-validation-for="User_info.Degree" class="Text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-span-12 sm:col-span-6">
                                                     <div class="mb-3">
-                                                        <label asp-for="User_info.birthday" class="form-label"></label>
+                                                        <label asp-for="User_info.Birthday" class="form-label"></label>
                                                         <input data-jdp Type="Text"
-                                                               asp-for="BirthDay"
+                                                               asp-for="Birthday"
                                                                class="form-control Text-right" dir="rtl">
-                                                        <span asp-validation-for="User_info.birthday" class="Text-danger"></span>
+                                                        <span asp-validation-for="User_info.Birthday" class="Text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-span-12 sm:col-span-6">
                                                     <div class="mb-3">
-                                                        <label asp-for="User_info.employment_date" class="form-label"></label>
+                                                        <label asp-for="User_info.EmploymentDate" class="form-label"></label>
                                                         <input data-jdp Type="Text"
                                                                asp-for="EmploymentDate"
                                                                class="form-control Text-right" dir="rtl">
-                                                        <span asp-validation-for="User_info.employment_date" class="Text-danger"></span>
+                                                        <span asp-validation-for="User_info.EmploymentDate" class="Text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-span-12 sm:col-span-6">
                                                     <div class="mb-3">
-                                                        <label asp-for="User_info.degree" class="form-label"></label>
-                                                        <select asp-for="User_info.degree" class="form-select">
+                                                        <label asp-for="User_info.Degree" class="form-label"></label>
+                                                        <select asp-for="User_info.Degree" class="form-select">
                                                             <option value="highschool">زیر دیپلم</option>
                                                             <option value="diploma">دیپلم</option>
                                                             <option value="associate">فوق دیپلم</option>
@@ -113,7 +113,7 @@
                                                             <option value="master">فوق لیسانس</option>
                                                             <option value="doctorate">دکتری</option>
                                                         </select>
-                                                        <span asp-validation-for="User_info.degree" class="Text-danger"></span>
+                                                        <span asp-validation-for="User_info.Degree" class="Text-danger"></span>
                                                     </div>
                                                 </div>
                                             </div>

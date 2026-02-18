@@ -28,25 +28,25 @@
                     <div class="card-body !py-0">
                         <ul class="flex flex-wrap w-full font-medium Text-center nav-tabs">
                             <li class="group active">
-                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-1" class="inline-flex items-center mr-6 py-4 transition-all duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-1" class="inline-flex items-center mr-6 py-4 transition-all Duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
                                     <i class="ti ti-user ltr:mr-2 rtl:ml-2 Text-lg leading-none"></i>
                                     پروفایل
                                 </a>
                             </li>
                             <li class="group">
-                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-2" class="inline-flex items-center mr-6 py-4 transition-all duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-2" class="inline-flex items-center mr-6 py-4 transition-all Duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
                                     <i class="ti ti-id ltr:mr-2 rtl:ml-2 Text-lg leading-none"></i>
                                     ویرایش اطلاعات 
                                 </a>
                             </li>
                             <li class="group">
-                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-3" class="inline-flex items-center mr-6 py-4 transition-all duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-3" class="inline-flex items-center mr-6 py-4 transition-all Duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
                                     <i class="ti ti-lock ltr:mr-2 rtl:ml-2 Text-lg leading-none"></i>
                                     تغییر رمز 
                                 </a>
                             </li>
                             <li class="group">
-                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-4" class="inline-flex items-center mr-6 py-4 transition-all duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-4" class="inline-flex items-center mr-6 py-4 transition-all Duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
                                     <i class="ti ti-users ltr:mr-2 rtl:ml-2 Text-lg leading-none"></i>
                                     نقش
                                 </a>
@@ -105,7 +105,7 @@
                                                     </div>
                                                     <div class="col-span-12 md:col-span-6">
                                                         <p class="mb-1 Text-muted">مدرک تحصیلی</p>
-                                                        <p class="mb-0">@Model.User_info.degree</p>
+                                                        <p class="mb-0">@Model.User_info.Degree</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -113,11 +113,11 @@
                                                 <div class="grid grid-cols-12 gap-6">
                                                     <div class="col-span-12 md:col-span-6">
                                                         <p class="mb-1 Text-muted">تاریخ تولد</p>
-                                                        <p class="mb-0">@DateToPersian.ToShamsi(@Model.User_info.birthday, "yyyy/MM/dd")</p>
+                                                        <p class="mb-0">@DateToPersian.ToShamsi(@Model.User_info.Birthday, "yyyy/MM/dd")</p>
                                                     </div>
                                                     <div class="col-span-12 md:col-span-6">
                                                         <p class="mb-1 Text-muted">تاریخ استخدام</p>
-                                                        <p class="mb-0">@DateToPersian.ToShamsi(@Model.User_info.employment_date, "yyyy/MM/dd")</p>
+                                                        <p class="mb-0">@DateToPersian.ToShamsi(@Model.User_info.EmploymentDate, "yyyy/MM/dd")</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -129,7 +129,7 @@
                                                     </div>
                                                     <div class="col-span-12 md:col-span-6">
                                                         @* <p class="mb-1 Text-muted">تاریخ استخدام</p>
-                                                        <p class="mb-0">@Model.User_info.employment_date</p> *@
+                                                        <p class="mb-0">@Model.User_info.EmploymentDate</p> *@
                                                     </div>
                                                 </div>
                                             </li>

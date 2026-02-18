@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var options = {
       chart: {
         height: 260,
-        Type: 'pie'
+        type: 'pie'
       },
       series: [66, 50, 40, 30],
       datalabel:false,

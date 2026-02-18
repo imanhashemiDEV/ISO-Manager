@@ -14,10 +14,10 @@ namespace ISO_Manager.Pages.Admin.User_infos
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
 
         
-        public CreateModel(ISO_Manager.Data.ApplicationDbConText conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
         {
             _conText = conText;
         }
@@ -41,7 +41,7 @@ namespace ISO_Manager.Pages.Admin.User_infos
         public UserInfo User_info { get; set; } = default!;
 
         [BindProperty]
-        public DateTime BirthDay { get; set; }
+        public DateTime Birthday { get; set; }
 
         [BindProperty]
         public DateTime EmploymentDate { get; set; }
@@ -58,8 +58,8 @@ namespace ISO_Manager.Pages.Admin.User_infos
                 return Page();
             }
 
-            User_info.birthday = DateToMiladi.ToMiladi(BirthDay);
-            User_info.employment_date= DateToMiladi.ToMiladi(EmploymentDate);
+            User_info.Birthday = DateToMiladi.ToMiladi(Birthday);
+            User_info.EmploymentDate= DateToMiladi.ToMiladi(EmploymentDate);
 
             _conText.UserInfos.Add(User_info);
             await _conText.SaveChangesAsync();

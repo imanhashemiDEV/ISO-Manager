@@ -14,7 +14,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.nl',
   '  <dt>Focus op de melding instellen</dt>\n' +
   '  <dd>Windows of Linux: Alt+F12</dd>\n' +
   '  <dd>macOS: &#x2325;F12</dd>\n' +
-  '  <dt>Focus op een conTextuele werkbalk instellen</dt>\n' +
+  '  <dt>Focus op een contextuele werkbalk instellen</dt>\n' +
   '  <dd>Windows, Linux of macOS: Ctrl+F9</dd>\n' +
   '</dl>\n' +
   '\n' +

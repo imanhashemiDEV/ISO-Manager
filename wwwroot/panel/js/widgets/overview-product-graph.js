@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var options16 = {
       chart: {
         height: 350,
-        Type: 'pie'
+        type: 'pie'
       },
       labels: ['Components', 'Widgets', 'Pages', 'Forms', 'Other', 'Apps'],
       series: [40, 20, 10, 15, 5, 10],

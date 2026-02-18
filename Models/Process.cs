@@ -9,6 +9,15 @@ namespace ISO_Manager.Models
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "شماره فرایند")]
+        public string? ProcessNumber { get; set; }
+
+        [Display(Name = "شماره بازنگری")]
+        public string? ProcessReviewNumber { get; set; }
+
+        [Display(Name = "تاریخ ویرایش")]
+        public DateTime ProcessEditDate { get; set; } = DateTime.Now;
+
         [Display(Name = "عنوان فرایند")]
         public string? ProcessTitle { get; set; }
 
@@ -60,13 +69,13 @@ namespace ISO_Manager.Models
 
         // relations
 
-        [ForeignKey("Organization")]
+        [ForeignKey("Office")]
         public int? OfficeId { get; set; }
-        public Office? Office { get; set; }
+        public virtual Office? Office { get; set; }
 
         [ForeignKey("Organization")]
         public int? OrganizationId { get; set; }
-        public Organization? Organization { get; set; }
+        public virtual Organization? Organization { get; set; }
 
     }
 }

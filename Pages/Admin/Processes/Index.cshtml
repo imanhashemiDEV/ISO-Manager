@@ -39,7 +39,7 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Process[0].Title)
+                                            @Html.DisplayNameFor(model => model.Process[0].ProcessTitle)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.Process[0].Year)
@@ -54,7 +54,7 @@
                                         <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Title)
+                                                @Html.DisplayFor(modelItem => item.ProcessTitle)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Year)

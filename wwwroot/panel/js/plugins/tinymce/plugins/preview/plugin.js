@@ -25,10 +25,10 @@
       headHtml += '<base href="' + encode(editor.documentBaseURI.getURI()) + '">';
       const cors = shouldUseContentCssCors(editor) ? ' crossorigin="anonymous"' : '';
       global.each(editor.contentCSS, url => {
-        headHtml += '<link Type="Text/css" rel="stylesheet" href="' + encode(editor.documentBaseURI.toAbsolute(url)) + '"' + cors + '>';
+        headHtml += '<link type="text/css" rel="stylesheet" href="' + encode(editor.documentBaseURI.toAbsolute(url)) + '"' + cors + '>';
       });
       if (contentStyle) {
-        headHtml += '<style Type="Text/css">' + contentStyle + '</style>';
+        headHtml += '<style type="text/css">' + contentStyle + '</style>';
       }
       const bodyId = getBodyId(editor);
       const bodyClass = getBodyClass(editor);
@@ -36,28 +36,28 @@
       const preventClicksOnLinksScript = '<script>' + 'document.addEventListener && document.addEventListener("click", function(e) {' + 'for (var elm = e.target; elm; elm = elm.parentNode) {' + 'if (elm.nodeName === "A" && !(' + isMetaKeyPressed + ')) {' + 'e.preventDefault();' + '}' + '}' + '}, false);' + '</script> ';
       const directionality = editor.getBody().dir;
       const dirAttr = directionality ? ' dir="' + encode(directionality) + '"' : '';
-      const previewHtml = '<!DOCType html>' + '<html>' + '<head>' + headHtml + '</head>' + '<body id="' + encode(bodyId) + '" class="mce-content-body ' + encode(bodyClass) + '"' + dirAttr + '>' + editor.getContent() + preventClicksOnLinksScript + '</body>' + '</html>';
+      const previewHtml = '<!DOCTYPE html>' + '<html>' + '<head>' + headHtml + '</head>' + '<body id="' + encode(bodyId) + '" class="mce-content-body ' + encode(bodyClass) + '"' + dirAttr + '>' + editor.getContent() + preventClicksOnLinksScript + '</body>' + '</html>';
       return previewHtml;
     };
 
     const open = editor => {
       const content = getPreviewHtml(editor);
       const dataApi = editor.windowManager.open({
-        Title: 'Preview',
-        Size: 'large',
+        title: 'Preview',
+        size: 'large',
         body: {
-          Type: 'panel',
+          type: 'panel',
           items: [{
               name: 'preview',
-              Type: 'iframe',
+              type: 'iframe',
               sandboxed: true,
               transparent: false
             }]
         },
         buttons: [{
-            Type: 'cancel',
+            type: 'cancel',
             name: 'close',
-            Text: 'Close',
+            text: 'Close',
             primary: true
           }],
         initialData: { preview: content }
@@ -77,13 +77,13 @@
         icon: 'preview',
         tooltip: 'Preview',
         onAction,
-        conText: 'any'
+        context: 'any'
       });
       editor.ui.registry.addMenuItem('preview', {
         icon: 'preview',
-        Text: 'Preview',
+        text: 'Preview',
         onAction,
-        conText: 'any'
+        context: 'any'
       });
     };
 

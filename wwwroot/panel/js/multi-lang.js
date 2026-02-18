@@ -13,7 +13,7 @@ Description:  this file will contains snippet code
 'use strict';
 const DEFAULT_OPTIONS = {
   flagList: {
-    en: 'flag-United-kingdom',
+    en: 'flag-united-kingdom',
     pl: 'flag-poland',
     ja: 'flag-japan',
     de: 'flag-germany',

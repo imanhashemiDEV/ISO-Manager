@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function floatchart() {
   (function () {
     var options1 = {
-      chart: { Type: 'bar', height: 80, sparkline: { enabled: true } },
+      chart: { type: 'bar', height: 80, sparkline: { enabled: true } },
       colors: ['#4680FF'],
       plotOptions: { bar: { columnWidth: '80%' } },
       series: [
@@ -21,7 +21,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -33,17 +33,17 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#new-orders-graph'), options1);
     chart.render();
     var options2 = {
-      chart: { Type: 'area', height: 80, sparkline: { enabled: true } },
+      chart: { type: 'area', height: 80, sparkline: { enabled: true } },
       colors: ['#2CA87F'],
       stroke: {
         curve: 'straight',
         width: 2
       },
       fill: {
-        Type: 'gradient',
+        type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          Type: 'vertical',
+          type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -61,7 +61,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -108,7 +108,7 @@ function floatchart() {
         }
       ],
       chart: {
-        Type: 'rangeBar',
+        type: 'rangeBar',
         height: 80,
         sparkline: { enabled: true },
         toolbar: {
@@ -160,7 +160,7 @@ function floatchart() {
     var options4 = {
       chart: {
         height: 250,
-        Type: 'bar',
+        type: 'bar',
         toolbar: {
           show: false
         }
@@ -222,7 +222,7 @@ function floatchart() {
     var options5 = {
       chart: {
         height: 250,
-        Type: 'bar',
+        type: 'bar',
         toolbar: {
           show: false
         }
@@ -282,7 +282,7 @@ function floatchart() {
     var chart1 = new ApexCharts(document.querySelector('#overview-chart-4'), options5);
     chart1.render();
     var options6 = {
-      chart: { Type: 'bar', height: 80, sparkline: { enabled: true } },
+      chart: { type: 'bar', height: 80, sparkline: { enabled: true } },
       colors: ['#2CA87F'],
       plotOptions: { bar: { columnWidth: '80%' } },
       series: [
@@ -295,7 +295,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -307,7 +307,7 @@ function floatchart() {
     var chart = new ApexCharts(document.querySelector('#income-graph'), options6);
     chart.render();
     var options7 = {
-      chart: { Type: 'area', height: 130, sparkline: { enabled: true } },
+      chart: { type: 'area', height: 130, sparkline: { enabled: true } },
       colors: ['#1890ff'],
       plotOptions: { bar: { columnWidth: '80%' } },
       series: [
@@ -324,7 +324,7 @@ function floatchart() {
         fixed: { enabled: false },
         x: { show: false },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -338,7 +338,7 @@ function floatchart() {
     var options8 = {
       chart: {
         height: 350,
-        Type: 'pie'
+        type: 'pie'
       },
       labels: ['Components', 'Widgets', 'Pages', 'Forms', 'Other', 'Apps'],
       series: [40, 20, 10, 15, 5, 10],
@@ -375,13 +375,13 @@ function floatchart() {
       series: [30],
       chart: {
         height: 150,
-        Type: 'radialBar'
+        type: 'radialBar'
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            Size: '60%',
+            size: '60%',
             background: 'transparent',
             imageOffsetX: 0,
             imageOffsetY: 0,
@@ -412,7 +412,7 @@ function floatchart() {
       },
       colors: ['#4680FF'],
       fill: {
-        Type: 'solid'
+        type: 'solid'
       },
       stroke: {
         lineCap: 'round'
@@ -424,13 +424,13 @@ function floatchart() {
       series: [30],
       chart: {
         height: 150,
-        Type: 'radialBar'
+        type: 'radialBar'
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            Size: '60%',
+            size: '60%',
             background: 'transparent',
             imageOffsetX: 0,
             imageOffsetY: 0,
@@ -461,7 +461,7 @@ function floatchart() {
       },
       colors: ['#DC2626'],
       fill: {
-        Type: 'solid'
+        type: 'solid'
       },
       stroke: {
         lineCap: 'round'

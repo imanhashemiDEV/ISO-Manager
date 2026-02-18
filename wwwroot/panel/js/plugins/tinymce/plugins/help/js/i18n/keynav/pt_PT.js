@@ -14,7 +14,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.pt_PT',
   '  <dt>Focar a notificação</dt>\n' +
   '  <dd>Windows ou Linux: Alt+F12</dd>\n' +
   '  <dd>macOS: &#x2325;F12</dd>\n' +
-  '  <dt>Foco numa barra de ferramentas conTextual</dt>\n' +
+  '  <dt>Foco numa barra de ferramentas contextual</dt>\n' +
   '  <dd>Windows, Linux ou macOS: Ctrl+F9</dd>\n' +
   '</dl>\n' +
   '\n' +

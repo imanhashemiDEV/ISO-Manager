@@ -11,9 +11,9 @@ namespace ISO_Manager.Pages.Admin
     public class IndexModel : PageModel
     {
 
-        public readonly ApplicationDbConText _conText;
+        public readonly ApplicationDbContext _conText;
 
-        public IndexModel(ApplicationDbConText conText)
+        public IndexModel(ApplicationDbContext conText)
         {
             _conText = conText;
         }
@@ -45,7 +45,7 @@ namespace ISO_Manager.Pages.Admin
         {
            // long id = 30;
            //// var user = _conText.UserInfos.First(m => Equals(m.UserId , id));
-            // var B = user.birthday;
+            // var B = user.Birthday;
             // var diff = DateTime.Now - B;
             // Age = ((diff.Days%365)/30)-1;
             //Age = (12 - B.Month)+1;

@@ -12,9 +12,9 @@ namespace ISO_Manager.Pages.Admin.UserPermits
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
         {
             _conText = conText;
         }
@@ -42,7 +42,7 @@ namespace ISO_Manager.Pages.Admin.UserPermits
 
             UserPermit = await _conText.UserPermits
                 .Include(u => u.User)
-                .OrderBy(m=>m.expire_date)
+                //.OrderBy(m=>m.ExpireDate)
                 .Skip(skip).Take(Take)
                 .ToListAsync();
         }

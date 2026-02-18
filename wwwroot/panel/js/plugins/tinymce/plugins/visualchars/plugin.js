@@ -34,26 +34,26 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.protoType)) {
+      if (predicate(v, constructor.prototype)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const TypeOf = x => {
-      const t = Typeof x;
+    const typeOf = x => {
+      const t = typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType$1 = Type => value => TypeOf(value) === Type;
-    const isSimpleType = Type => value => Typeof value === Type;
+    const isType$1 = type => value => typeOf(value) === type;
+    const isSimpleType = type => value => typeof value === type;
     const eq = t => a => t === a;
     const isString = isType$1('string');
     const isObject = isType$1('object');
@@ -114,11 +114,11 @@
           return Optional.none();
         }
       }
-      getOr(rePlacement) {
-        return this.tag ? this.value : rePlacement;
+      getOr(replacement) {
+        return this.tag ? this.value : replacement;
       }
-      or(rePlacement) {
-        return this.tag ? this : rePlacement;
+      or(replacement) {
+        return this.tag ? this : replacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -192,7 +192,7 @@
       }
     };
 
-    const Global = Typeof window !== 'undefined' ? window : Function('return this;')();
+    const Global = typeof window !== 'undefined' ? window : Function('return this;')();
 
     const path = (parts, scope) => {
       let o = scope !== undefined && scope !== null ? scope : Global;
@@ -217,24 +217,24 @@
       return actual;
     };
 
-    const getProtoTypeOf = Object.getProtoTypeOf;
+    const getPrototypeOf = Object.getPrototypeOf;
     const sandHTMLElement = scope => {
       return getOrDie('HTMLElement', scope);
     };
-    const isProtoTypeOf = x => {
-      const scope = resolve('OwnerDocument.defaultView', x);
-      return isObject(x) && (sandHTMLElement(scope).protoType.isProtoTypeOf(x) || /^HTML\w*Element$/.test(getProtoTypeOf(x).constructor.name));
+    const isPrototypeOf = x => {
+      const scope = resolve('ownerDocument.defaultView', x);
+      return isObject(x) && (sandHTMLElement(scope).prototype.isPrototypeOf(x) || /^HTML\w*Element$/.test(getPrototypeOf(x).constructor.name));
     };
 
     const ELEMENT = 1;
-    const Text = 3;
+    const TEXT = 3;
 
-    const Type = element => element.dom.nodeType;
+    const type = element => element.dom.nodeType;
     const value = element => element.dom.nodeValue;
-    const isType = t => element => Type(element) === t;
-    const isHTMLElement = element => isElement(element) && isProtoTypeOf(element.dom);
+    const isType = t => element => type(element) === t;
+    const isHTMLElement = element => isElement(element) && isPrototypeOf(element.dom);
     const isElement = isType(ELEMENT);
-    const isText = isType(Text);
+    const isText = isType(TEXT);
 
     const rawSet = (dom, key, value) => {
       if (isString(value) || isBoolean(value) || isNumber(value)) {
@@ -319,9 +319,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (Text, scope) => {
+    const fromText = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(Text);
+      const node = doc.createTextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -408,7 +408,7 @@
       }
       return undefined;
     };
-    const rePlaceWithSpans = Text => Text.rePlace(regExpGlobal, wrapCharWithSpan);
+    const replaceWithSpans = text => text.replace(regExpGlobal, wrapCharWithSpan);
 
     const show = (editor, rootElm) => {
       const dom = editor.dom;
@@ -419,7 +419,7 @@
         if (isWrappedNbsp(parent)) {
           add(SugarElement.fromDom(parent), nbspClass);
         } else {
-          const withSpans = rePlaceWithSpans(dom.encode((_a = value(n)) !== null && _a !== void 0 ? _a : ''));
+          const withSpans = replaceWithSpans(dom.encode((_a = value(n)) !== null && _a !== void 0 ? _a : ''));
           const div = dom.create('div', {}, withSpans);
           let node;
           while (node = div.lastChild) {
@@ -534,14 +534,14 @@
         icon: 'visualchars',
         onAction,
         onSetup: toggleActiveState(editor, toggleState),
-        conText: 'any'
+        context: 'any'
       });
       editor.ui.registry.addToggleMenuItem('visualchars', {
-        Text: 'Show invisible characters',
+        text: 'Show invisible characters',
         icon: 'visualchars',
         onAction,
         onSetup: toggleActiveState(editor, toggleState),
-        conText: 'any'
+        context: 'any'
       });
     };
 

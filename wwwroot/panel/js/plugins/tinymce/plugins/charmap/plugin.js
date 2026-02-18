@@ -18,26 +18,26 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.protoType)) {
+      if (predicate(v, constructor.prototype)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const TypeOf = x => {
-      const t = Typeof x;
+    const typeOf = x => {
+      const t = typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType = Type => value => TypeOf(value) === Type;
-    const isSimpleType = Type => value => Typeof value === Type;
+    const isType = type => value => typeOf(value) === type;
+    const isSimpleType = type => value => typeof value === type;
     const eq = t => a => t === a;
     const isArray$1 = isType('array');
     const isNull = eq(null);
@@ -104,11 +104,11 @@
           return Optional.none();
         }
       }
-      getOr(rePlacement) {
-        return this.tag ? this.value : rePlacement;
+      getOr(replacement) {
+        return this.tag ? this.value : replacement;
       }
-      or(rePlacement) {
-        return this.tag ? this : rePlacement;
+      or(replacement) {
+        return this.tag ? this : replacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -146,7 +146,7 @@
     }
     Optional.singletonNone = new Optional(false);
 
-    const nativePush = Array.protoType.push;
+    const nativePush = Array.prototype.push;
     const map = (xs, f) => {
       const len = xs.length;
       const r = new Array(len);
@@ -1402,7 +1402,7 @@
       if (isArray(optionValue)) {
         return charmapFilter(optionValue);
       }
-      if (Typeof optionValue === 'function') {
+      if (typeof optionValue === 'function') {
         return optionValue();
       }
       return [];
@@ -1502,7 +1502,7 @@
       if (contains(fromCodePoint(charCode).toLowerCase(), lowerCasePattern)) {
         return true;
       } else {
-        return contains(name.toLowerCase(), lowerCasePattern) || contains(name.toLowerCase().rePlace(/\s+/g, ''), lowerCasePattern);
+        return contains(name.toLowerCase(), lowerCasePattern) || contains(name.toLowerCase().replace(/\s+/g, ''), lowerCasePattern);
       }
     };
     const scan = (group, pattern) => {
@@ -1514,7 +1514,7 @@
         }
       });
       return map(matches, m => ({
-        Text: m[1],
+        text: m[1],
         value: fromCodePoint(m[0]),
         icon: fromCodePoint(m[0])
       }));
@@ -1525,25 +1525,25 @@
       const makeGroupItems = () => [
         {
           label: 'Search',
-          Type: 'input',
+          type: 'input',
           name: patternName
         },
         {
-          Type: 'collection',
+          type: 'collection',
           name: 'results'
         }
       ];
       const makeTabs = () => map(charMap, charGroup => ({
-        Title: charGroup.name,
+        title: charGroup.name,
         name: charGroup.name,
         items: makeGroupItems()
       }));
       const makePanel = () => ({
-        Type: 'panel',
+        type: 'panel',
         items: makeGroupItems()
       });
       const makeTabPanel = () => ({
-        Type: 'tabpanel',
+        type: 'tabpanel',
         tabs: makeTabs()
       });
       const currentTab = charMap.length === 1 ? Cell(UserDefined) : Cell('All');
@@ -1564,13 +1564,13 @@
         results: scan(charMap[0], '')
       };
       const bridgeSpec = {
-        Title: 'Special Character',
-        Size: 'normal',
+        title: 'Special Character',
+        size: 'normal',
         body,
         buttons: [{
-            Type: 'cancel',
+            type: 'cancel',
             name: 'close',
-            Text: 'Close',
+            text: 'Close',
             primary: true
           }],
         initialData,
@@ -1636,7 +1636,7 @@
       });
       editor.ui.registry.addMenuItem('charmap', {
         icon: 'insert-character',
-        Text: 'Special character...',
+        text: 'Special character...',
         onAction,
         onSetup: onSetupEditable(editor)
       });

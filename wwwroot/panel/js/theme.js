@@ -18,7 +18,7 @@ var rtl_flag = false;
 var dark_flag = false;
 
 document.addEventListener('DOMContentLoaded', function () {
-  if (Typeof Storage !== 'undefined') {
+  if (typeof Storage !== 'undefined') {
     layout_change(localStorage.getItem('theme'));
   }
 });
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (layout_reset) {
     layout_reset.addEventListener('click', function (e) {
       localStorage.clear();
-      Location.reload();
+      location.reload();
       localStorage.setItem('layout', 'vertical');
     });
   }

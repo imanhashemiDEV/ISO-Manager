@@ -20,26 +20,26 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.protoType)) {
+      if (predicate(v, constructor.prototype)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const TypeOf = x => {
-      const t = Typeof x;
+    const typeOf = x => {
+      const t = typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType$1 = Type => value => TypeOf(value) === Type;
-    const isSimpleType = Type => value => Typeof value === Type;
+    const isType$1 = type => value => typeOf(value) === type;
+    const isSimpleType = type => value => typeof value === type;
     const isString = isType$1('string');
     const isBoolean = isSimpleType('boolean');
     const isNullable = a => a === null || a === undefined;
@@ -109,11 +109,11 @@
           return Optional.none();
         }
       }
-      getOr(rePlacement) {
-        return this.tag ? this.value : rePlacement;
+      getOr(replacement) {
+        return this.tag ? this.value : replacement;
       }
-      or(rePlacement) {
-        return this.tag ? this : rePlacement;
+      or(replacement) {
+        return this.tag ? this : replacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -151,7 +151,7 @@
     }
     Optional.singletonNone = new Optional(false);
 
-    const nativeIndexOf = Array.protoType.indexOf;
+    const nativeIndexOf = Array.prototype.indexOf;
     const rawIndexOf = (ts, t) => nativeIndexOf.call(ts, t);
     const contains = (xs, x) => rawIndexOf(xs, x) > -1;
     const map = (xs, f) => {
@@ -196,23 +196,23 @@
       }
     };
 
-    Typeof window !== 'undefined' ? window : Function('return this;')();
+    typeof window !== 'undefined' ? window : Function('return this;')();
 
     const COMMENT = 8;
     const DOCUMENT = 9;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const Text = 3;
+    const TEXT = 3;
 
     const name = element => {
       const r = element.dom.nodeName;
       return r.toLowerCase();
     };
-    const Type = element => element.dom.nodeType;
-    const isType = t => element => Type(element) === t;
-    const isComment = element => Type(element) === COMMENT || name(element) === '#comment';
+    const type = element => element.dom.nodeType;
+    const isType = t => element => type(element) === t;
+    const isComment = element => type(element) === COMMENT || name(element) === '#comment';
     const isElement = isType(ELEMENT);
-    const isText = isType(Text);
+    const isText = isType(TEXT);
     const isDocument = isType(DOCUMENT);
     const isDocumentFragment = isType(DOCUMENT_FRAGMENT);
 
@@ -262,9 +262,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (Text, scope) => {
+    const fromText = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(Text);
+      const node = doc.createTextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -316,13 +316,13 @@
 
     const is = (lhs, rhs, comparator = tripleEquals) => lhs.exists(left => comparator(left, rhs));
 
-    const blank = r => s => s.rePlace(r, '');
+    const blank = r => s => s.replace(r, '');
     const trim = blank(/^\s+|\s+$/g);
 
     const isSupported = dom => dom.style !== undefined && isFunction(dom.style.getPropertyValue);
 
-    const Owner = element => SugarElement.fromDom(element.dom.OwnerDocument);
-    const documentOrOwner = dos => isDocument(dos) ? dos : Owner(dos);
+    const owner = element => SugarElement.fromDom(element.dom.ownerDocument);
+    const documentOrOwner = dos => isDocument(dos) ? dos : owner(dos);
     const parent = element => Optional.from(element.dom.parentNode).map(SugarElement.fromDom);
     const parents = (element, isRoot) => {
       const stop = isFunction(isRoot) ? isRoot : never;
@@ -359,10 +359,10 @@
 
     const inBody = element => {
       const dom = isText(element) ? element.dom.parentNode : element.dom;
-      if (dom === undefined || dom === null || dom.OwnerDocument === null) {
+      if (dom === undefined || dom === null || dom.ownerDocument === null) {
         return false;
       }
-      const doc = dom.OwnerDocument;
+      const doc = dom.ownerDocument;
       return getShadowRoot(SugarElement.fromDom(dom)).fold(() => doc.body.contains(dom), compose1(inBody, getShadowHost));
     };
 
@@ -529,7 +529,7 @@
       };
     };
 
-    const api = NodeValue(isText, 'Text');
+    const api = NodeValue(isText, 'text');
     const get = element => api.get(element);
     const set = (element, value) => api.set(element, value);
 
@@ -608,9 +608,9 @@
           'iframe',
           'noframes',
           'noembed',
-          'Title',
+          'title',
           'style',
-          'Textarea',
+          'textarea',
           'xmp'
         ], tag);
       };
@@ -654,7 +654,7 @@
         create: constant({
           nu: SugarElement.fromTag,
           clone: clone$1,
-          Text: SugarElement.fromText
+          text: SugarElement.fromText
         }),
         query: constant({
           comparePosition,
@@ -1020,7 +1020,7 @@
       });
       editor.ui.registry.addMenuItem('accordion', {
         icon: 'accordion',
-        Text: 'Accordion',
+        text: 'Accordion',
         onSetup: onSetup(editor),
         onAction
       });
@@ -1034,7 +1034,7 @@
         tooltip: 'Delete accordion',
         onAction: () => editor.execCommand('RemoveAccordion')
       });
-      editor.ui.registry.addConTextToolbar('accordion', {
+      editor.ui.registry.addContextToolbar('accordion', {
         predicate: accordion => editor.dom.is(accordion, 'details') && editor.getBody().contains(accordion) && editor.dom.isEditable(accordion.parentNode),
         items: 'accordiontoggle accordionremove',
         scope: 'node',

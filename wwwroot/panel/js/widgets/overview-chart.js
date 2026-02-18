@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var options12 = {
       chart: {
         height: 250,
-        Type: 'bar',
+        type: 'bar',
         toolbar: {
           show: false
         }
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var options13 = {
       chart: {
         height: 250,
-        Type: 'bar',
+        type: 'bar',
         toolbar: {
           show: false
         }

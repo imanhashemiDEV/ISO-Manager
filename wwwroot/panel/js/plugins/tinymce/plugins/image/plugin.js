@@ -7,31 +7,31 @@
 
     var global$4 = tinymce.util.Tools.resolve('tinymce.PluginManager');
 
-    const getProtoTypeOf = Object.getProtoTypeOf;
+    const getPrototypeOf = Object.getPrototypeOf;
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.protoType)) {
+      if (predicate(v, constructor.prototype)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const TypeOf = x => {
-      const t = Typeof x;
+    const typeOf = x => {
+      const t = typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType = Type => value => TypeOf(value) === Type;
-    const isSimpleType = Type => value => Typeof value === Type;
+    const isType = type => value => typeOf(value) === type;
+    const isSimpleType = type => value => typeof value === type;
     const eq = t => a => t === a;
-    const is = (value, constructor) => isObject(value) && hasProto(value, constructor, (o, proto) => getProtoTypeOf(o) === proto);
+    const is = (value, constructor) => isObject(value) && hasProto(value, constructor, (o, proto) => getPrototypeOf(o) === proto);
     const isString = isType('string');
     const isObject = isType('object');
     const isPlainObject = value => is(value, Object);
@@ -108,11 +108,11 @@
           return Optional.none();
         }
       }
-      getOr(rePlacement) {
-        return this.tag ? this.value : rePlacement;
+      getOr(replacement) {
+        return this.tag ? this.value : replacement;
       }
-      or(rePlacement) {
-        return this.tag ? this : rePlacement;
+      or(replacement) {
+        return this.tag ? this : replacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -176,7 +176,7 @@
     const has = (obj, key) => hasOwnProperty.call(obj, key);
     const hasNonNullableKey = (obj, key) => has(obj, key) && obj[key] !== undefined && obj[key] !== null;
 
-    const nativePush = Array.protoType.push;
+    const nativePush = Array.prototype.push;
     const flatten = xs => {
       const r = [];
       for (let i = 0, len = xs.length; i < len; ++i) {
@@ -199,7 +199,7 @@
       return Optional.none();
     };
 
-    Typeof window !== 'undefined' ? window : Function('return this;')();
+    typeof window !== 'undefined' ? window : Function('return this;')();
 
     const rawSet = (dom, key, value) => {
       if (isString(value) || isBoolean(value) || isNumber(value)) {
@@ -232,9 +232,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (Text, scope) => {
+    const fromText = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(Text);
+      const node = doc.createTextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -278,11 +278,11 @@
         default: ''
       });
       registerOption('image_class_list', { processor: 'object[]' });
-      registerOption('image_Description', {
+      registerOption('image_description', {
         processor: 'boolean',
         default: true
       });
-      registerOption('imagETitle', {
+      registerOption('image_title', {
         processor: 'boolean',
         default: false
       });
@@ -309,8 +309,8 @@
     const hasUploadTab = option('image_uploadtab');
     const getPrependUrl = option('image_prepend_url');
     const getClassList = option('image_class_list');
-    const hasDescription = option('image_Description');
-    const hasImageTitle = option('imagETitle');
+    const hasDescription = option('image_description');
+    const hasImageTitle = option('image_title');
     const hasImageCaption = option('image_caption');
     const getImageList = option('image_list');
     const showAccessibilityOptions = option('a11y_advanced_options');
@@ -350,7 +350,7 @@
     });
     const removePixelSuffix = value => {
       if (value) {
-        value = value.rePlace(/px$/, '');
+        value = value.replace(/px$/, '');
       }
       return value;
     };
@@ -436,7 +436,7 @@
       };
       reader.readAsDataURL(blob);
     });
-    const isPlaceholderImage = imgElm => imgElm.nodeName === 'IMG' && (imgElm.hasAttribute('data-mce-object') || imgElm.hasAttribute('data-mce-Placeholder'));
+    const isPlaceholderImage = imgElm => imgElm.nodeName === 'IMG' && (imgElm.hasAttribute('data-mce-object') || imgElm.hasAttribute('data-mce-placeholder'));
     const isSafeImageUrl = (editor, src) => {
       const getOption = editor.options.get;
       return global$2.isDomSafe(src, 'img', {
@@ -565,7 +565,7 @@
     const defaultData = () => ({
       src: '',
       alt: '',
-      Title: '',
+      title: '',
       width: '',
       height: '',
       class: '',
@@ -615,7 +615,7 @@
     const read = (normalizeCss, image) => ({
       src: getAttrib(image, 'src'),
       alt: getAlt(image),
-      Title: getAttrib(image, 'Title'),
+      title: getAttrib(image, 'title'),
       width: getSize(image, 'width'),
       height: getSize(image, 'height'),
       class: getAttrib(image, 'class'),
@@ -663,7 +663,7 @@
       const oldData = read(normalizeCss, image);
       updateProp(image, oldData, newData, 'caption', (image, _name, _value) => toggleCaption(image));
       updateProp(image, oldData, newData, 'src', updateAttrib);
-      updateProp(image, oldData, newData, 'Title', updateAttrib);
+      updateProp(image, oldData, newData, 'title', updateAttrib);
       updateProp(image, oldData, newData, 'width', setSize('width', normalizeCss));
       updateProp(image, oldData, newData, 'height', setSize('height', normalizeCss));
       updateProp(image, oldData, newData, 'class', updateAttrib);
@@ -695,10 +695,10 @@
     const splitTextBlock = (editor, figure) => {
       var _a;
       const dom = editor.dom;
-      const TextBlockElements = filter(editor.schema.getTextBlockElements(), (_, parentElm) => !editor.schema.isValidChild(parentElm, 'figure'));
-      const TextBlock = dom.getParent(figure.parentNode, node => hasNonNullableKey(TextBlockElements, node.nodeName), editor.getBody());
-      if (TextBlock) {
-        return (_a = dom.split(TextBlock, figure)) !== null && _a !== void 0 ? _a : figure;
+      const textBlockElements = filter(editor.schema.getTextBlockElements(), (_, parentElm) => !editor.schema.isValidChild(parentElm, 'figure'));
+      const textBlock = dom.getParent(figure.parentNode, node => hasNonNullableKey(textBlockElements, node.nodeName), editor.getBody());
+      if (textBlock) {
+        return (_a = dom.split(textBlock, figure)) !== null && _a !== void 0 ? _a : figure;
       } else {
         return figure;
       }
@@ -809,10 +809,10 @@
 
     const getValue = item => isString(item.value) ? item.value : '';
     const getText = item => {
-      if (isString(item.Text)) {
-        return item.Text;
-      } else if (isString(item.Title)) {
-        return item.Title;
+      if (isString(item.text)) {
+        return item.text;
+      } else if (isString(item.title)) {
+        return item.title;
       } else {
         return '';
       }
@@ -820,17 +820,17 @@
     const sanitizeList = (list, extractValue) => {
       const out = [];
       global.each(list, item => {
-        const Text = getText(item);
+        const text = getText(item);
         if (item.menu !== undefined) {
           const items = sanitizeList(item.menu, extractValue);
           out.push({
-            Text,
+            text,
             items
           });
         } else {
           const value = extractValue(item);
           out.push({
-            Text,
+            text,
             value
           });
         }
@@ -863,77 +863,77 @@
     };
 
     const makeTab$2 = _info => ({
-      Title: 'Advanced',
+      title: 'Advanced',
       name: 'advanced',
       items: [{
-          Type: 'grid',
+          type: 'grid',
           columns: 2,
           items: [
             {
-              Type: 'input',
+              type: 'input',
               label: 'Vertical space',
               name: 'vspace',
               inputMode: 'numeric'
             },
             {
-              Type: 'input',
+              type: 'input',
               label: 'Horizontal space',
               name: 'hspace',
               inputMode: 'numeric'
             },
             {
-              Type: 'input',
+              type: 'input',
               label: 'Border width',
               name: 'border',
               inputMode: 'numeric'
             },
             {
-              Type: 'listbox',
+              type: 'listbox',
               name: 'borderstyle',
               label: 'Border style',
               items: [
                 {
-                  Text: 'Select...',
+                  text: 'Select...',
                   value: ''
                 },
                 {
-                  Text: 'Solid',
+                  text: 'Solid',
                   value: 'solid'
                 },
                 {
-                  Text: 'Dotted',
+                  text: 'Dotted',
                   value: 'dotted'
                 },
                 {
-                  Text: 'Dashed',
+                  text: 'Dashed',
                   value: 'dashed'
                 },
                 {
-                  Text: 'Double',
+                  text: 'Double',
                   value: 'double'
                 },
                 {
-                  Text: 'Groove',
+                  text: 'Groove',
                   value: 'groove'
                 },
                 {
-                  Text: 'Ridge',
+                  text: 'Ridge',
                   value: 'ridge'
                 },
                 {
-                  Text: 'Inset',
+                  text: 'Inset',
                   value: 'inset'
                 },
                 {
-                  Text: 'Outset',
+                  text: 'Outset',
                   value: 'outset'
                 },
                 {
-                  Text: 'None',
+                  text: 'None',
                   value: 'none'
                 },
                 {
-                  Text: 'Hidden',
+                  text: 'Hidden',
                   value: 'hidden'
                 }
               ]
@@ -949,7 +949,7 @@
         createImageList(editor, imageList => {
           completer(urlListSanitizer(imageList).map(items => flatten([
             [{
-                Text: 'None',
+                text: 'None',
                 value: ''
               }],
             items
@@ -990,60 +990,60 @@
     const makeItems = info => {
       const imageUrl = {
         name: 'src',
-        Type: 'urlinput',
-        fileType: 'image',
+        type: 'urlinput',
+        filetype: 'image',
         label: 'Source',
-        picker_Text: 'Browse files'
+        picker_text: 'Browse files'
       };
       const imageList = info.imageList.map(items => ({
         name: 'images',
-        Type: 'listbox',
+        type: 'listbox',
         label: 'Image list',
         items
       }));
       const imageDescription = {
         name: 'alt',
-        Type: 'input',
-        label: 'Alternative Description',
+        type: 'input',
+        label: 'Alternative description',
         enabled: !(info.hasAccessibilityOptions && info.image.isDecorative)
       };
       const imageTitle = {
-        name: 'Title',
-        Type: 'input',
-        label: 'Image Title'
+        name: 'title',
+        type: 'input',
+        label: 'Image title'
       };
       const imageDimensions = {
         name: 'dimensions',
-        Type: 'Sizeinput'
+        type: 'sizeinput'
       };
       const isDecorative = {
-        Type: 'label',
+        type: 'label',
         label: 'Accessibility',
         items: [{
             name: 'isDecorative',
-            Type: 'checkbox',
+            type: 'checkbox',
             label: 'Image is decorative'
           }]
       };
       const classList = info.classList.map(items => ({
         name: 'classes',
-        Type: 'listbox',
+        type: 'listbox',
         label: 'Class',
         items
       }));
       const caption = {
-        Type: 'label',
+        type: 'label',
         label: 'Caption',
         items: [{
-            Type: 'checkbox',
+            type: 'checkbox',
             name: 'caption',
             label: 'Show caption'
           }]
       };
       const getDialogContainerType = useColumns => useColumns ? {
-        Type: 'grid',
+        type: 'grid',
         columns: 2
-      } : { Type: 'panel' };
+      } : { type: 'panel' };
       return flatten([
         [imageUrl],
         imageList.toArray(),
@@ -1061,7 +1061,7 @@
       ]);
     };
     const makeTab$1 = info => ({
-      Title: 'General',
+      title: 'General',
       name: 'general',
       items: makeItems(info)
     });
@@ -1072,11 +1072,11 @@
 
     const makeTab = _info => {
       const items = [{
-          Type: 'dropzone',
+          type: 'dropzone',
           name: 'fileinput'
         }];
       return {
-        Title: 'Upload',
+        title: 'Upload',
         name: 'upload',
         items
       };
@@ -1095,7 +1095,7 @@
       },
       images: image.src,
       alt: image.alt,
-      Title: image.Title,
+      title: image.title,
       dimensions: {
         width: image.width,
         height: image.height
@@ -1113,7 +1113,7 @@
     const toImageData = (data, removeEmptyAlt) => ({
       src: data.src.value,
       alt: (data.alt === null || data.alt.length === 0) && removeEmptyAlt ? null : data.alt,
-      Title: data.Title,
+      title: data.title,
       width: data.dimensions.width,
       height: data.dimensions.height,
       class: data.classes,
@@ -1154,8 +1154,8 @@
       if (info.hasAccessibilityOptions) {
         data.isDecorative = meta.isDecorative || data.isDecorative || false;
       }
-      if (info.hasImageTitle && isString(meta.Title)) {
-        data.Title = meta.Title;
+      if (info.hasImageTitle && isString(meta.title)) {
+        data.title = meta.title;
       }
       if (info.hasDimensions) {
         if (isString(meta.width)) {
@@ -1208,9 +1208,9 @@
       const meta = data.src.meta || {};
       if (!meta.width && !meta.height && info.hasDimensions) {
         if (isNotEmpty(url)) {
-          helpers.imageSize(url).then(Size => {
+          helpers.imageSize(url).then(size => {
             if (state.open) {
-              api.setData({ dimensions: Size });
+              api.setData({ dimensions: size });
             }
           }).catch(e => console.error(e));
         } else {
@@ -1239,7 +1239,7 @@
       const data = api.getData();
       const image = ListUtils.findEntry(info.imageList, data.images);
       image.each(img => {
-        const updateAlt = data.alt === '' || state.prevImage.map(image => image.Text === data.alt).getOr(false);
+        const updateAlt = data.alt === '' || state.prevImage.map(image => image.text === data.alt).getOr(false);
         if (updateAlt) {
           if (img.value === '') {
             api.setData({
@@ -1249,7 +1249,7 @@
           } else {
             api.setData({
               src: img,
-              alt: img.Text
+              alt: img.text
             });
           }
         } else {
@@ -1320,7 +1320,7 @@
     const makeDialogBody = info => {
       if (info.hasAdvTab || info.hasUploadUrl || info.hasUploadHandler) {
         const tabPanel = {
-          Type: 'tabpanel',
+          type: 'tabpanel',
           tabs: flatten([
             [MainTab.makeTab(info)],
             info.hasAdvTab ? [AdvTab.makeTab(info)] : [],
@@ -1330,7 +1330,7 @@
         return tabPanel;
       } else {
         const panel = {
-          Type: 'panel',
+          type: 'panel',
           items: MainTab.makeItems(info)
         };
         return panel;
@@ -1364,7 +1364,7 @@
       return editor.editorUpload.blobCache.create({
         blob: file,
         blobUri,
-        name: (_a = file.name) === null || _a === void 0 ? void 0 : _a.rePlace(/\.[^\.]+$/, ''),
+        name: (_a = file.name) === null || _a === void 0 ? void 0 : _a.replace(/\.[^\.]+$/, ''),
         filename: file.name,
         base64: dataUrl.split(',')[1]
       });
@@ -1382,7 +1382,7 @@
       var _a;
       if (results.length === 0) {
         return Promise.reject('Failed to upload image');
-      } else if (results[0].Status === false) {
+      } else if (results[0].status === false) {
         return Promise.reject((_a = results[0].error) === null || _a === void 0 ? void 0 : _a.message);
       } else {
         return results[0];
@@ -1403,19 +1403,19 @@
         collect(editor).then(info => {
           const state = createState(info);
           return {
-            Title: 'Insert/Edit Image',
-            Size: 'normal',
+            title: 'Insert/Edit Image',
+            size: 'normal',
             body: makeDialogBody(info),
             buttons: [
               {
-                Type: 'cancel',
+                type: 'cancel',
                 name: 'cancel',
-                Text: 'Cancel'
+                text: 'Cancel'
               },
               {
-                Type: 'submit',
+                type: 'submit',
                 name: 'save',
-                Text: 'Save',
+                text: 'Save',
                 primary: true
               }
             ],
@@ -1477,7 +1477,7 @@
         onAction: Dialog(editor).open,
         onSetup: buttonApi => {
           buttonApi.setActive(isNonNullable(getSelectedImage(editor)));
-          const unbindSelectorChanged = editor.selection.selectorChangedWithUnbind('img:not([data-mce-object]):not([data-mce-Placeholder]),figure.image', buttonApi.setActive).unbind;
+          const unbindSelectorChanged = editor.selection.selectorChangedWithUnbind('img:not([data-mce-object]):not([data-mce-placeholder]),figure.image', buttonApi.setActive).unbind;
           const unbindEditable = onSetupEditable(editor)(buttonApi);
           return () => {
             unbindSelectorChanged();
@@ -1487,11 +1487,11 @@
       });
       editor.ui.registry.addMenuItem('image', {
         icon: 'image',
-        Text: 'Image...',
+        text: 'Image...',
         onAction: Dialog(editor).open,
         onSetup: onSetupEditable(editor)
       });
-      editor.ui.registry.addConTextMenu('image', { update: element => editor.selection.isEditable() && (isFigure(element) || isImage(element) && !isPlaceholderImage(element)) ? ['image'] : [] });
+      editor.ui.registry.addContextMenu('image', { update: element => editor.selection.isEditable() && (isFigure(element) || isImage(element) && !isPlaceholderImage(element)) ? ['image'] : [] });
     };
 
     var Plugin = () => {

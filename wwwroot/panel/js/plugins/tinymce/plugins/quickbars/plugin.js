@@ -9,26 +9,26 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.protoType)) {
+      if (predicate(v, constructor.prototype)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const TypeOf = x => {
-      const t = Typeof x;
+    const typeOf = x => {
+      const t = typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType = Type => value => TypeOf(value) === Type;
-    const isSimpleType = Type => value => Typeof value === Type;
+    const isType = type => value => typeOf(value) === type;
+    const isSimpleType = type => value => typeof value === type;
     const isString = isType('string');
     const isBoolean = isSimpleType('boolean');
     const isNullable = a => a === null || a === undefined;
@@ -118,7 +118,7 @@
     const pickFile = editor => new Promise(resolve => {
       let resolved = false;
       const fileInput = document.createElement('input');
-      fileInput.Type = 'file';
+      fileInput.type = 'file';
       fileInput.accept = 'image/*';
       fileInput.style.position = 'fixed';
       fileInput.style.left = '0';
@@ -134,7 +134,7 @@
         }
       };
       const changeHandler = e => {
-        resolveFileInput(Array.protoType.slice.call(e.target.files));
+        resolveFileInput(Array.prototype.slice.call(e.target.files));
       };
       fileInput.addEventListener('input', changeHandler);
       fileInput.addEventListener('change', changeHandler);
@@ -143,7 +143,7 @@
           resolveFileInput([]);
         };
         if (!resolved) {
-          if (e.Type === 'focusin') {
+          if (e.type === 'focusin') {
             global.setEditorTimeout(editor, cleanup, 1000);
           } else {
             cleanup();
@@ -237,11 +237,11 @@
           return Optional.none();
         }
       }
-      getOr(rePlacement) {
-        return this.tag ? this.value : rePlacement;
+      getOr(replacement) {
+        return this.tag ? this.value : replacement;
       }
-      or(rePlacement) {
-        return this.tag ? this : rePlacement;
+      or(replacement) {
+        return this.tag ? this : replacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -279,7 +279,7 @@
     }
     Optional.singletonNone = new Optional(false);
 
-    Typeof window !== 'undefined' ? window : Function('return this;')();
+    typeof window !== 'undefined' ? window : Function('return this;')();
 
     const ELEMENT = 1;
 
@@ -319,9 +319,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (Text, scope) => {
+    const fromText = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(Text);
+      const node = doc.createTextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -389,12 +389,12 @@
     const addToEditor$1 = editor => {
       const insertToolbarItems = getInsertToolbarItems(editor);
       if (insertToolbarItems.length > 0) {
-        editor.ui.registry.addConTextToolbar('quickblock', {
+        editor.ui.registry.addContextToolbar('quickblock', {
           predicate: node => {
             const sugarNode = SugarElement.fromDom(node);
-            const TextBlockElementsMap = editor.schema.getTextBlockElements();
+            const textBlockElementsMap = editor.schema.getTextBlockElements();
             const isRoot = elem => elem.dom === editor.getBody();
-            return !has$1(sugarNode, 'data-mce-bogus') && closest(sugarNode, 'table,[data-mce-bogus="all"]', isRoot).fold(() => closest$1(sugarNode, elem => name(elem) in TextBlockElementsMap && editor.dom.isEmpty(elem.dom), isRoot), never);
+            return !has$1(sugarNode, 'data-mce-bogus') && closest(sugarNode, 'table,[data-mce-bogus="all"]', isRoot).fold(() => closest$1(sugarNode, elem => name(elem) in textBlockElementsMap && editor.dom.isEmpty(elem.dom), isRoot), never);
           },
           items: insertToolbarItems,
           position: 'line',
@@ -409,26 +409,26 @@
 
     const addToEditor = editor => {
       const isEditable = node => editor.dom.isEditable(node);
-      const isInEditableConText = el => isEditable(el.parentElement);
+      const isInEditableContext = el => isEditable(el.parentElement);
       const isImage = node => {
         const isImageFigure = node.nodeName === 'FIGURE' && /image/i.test(node.className);
         const isImage = node.nodeName === 'IMG' || isImageFigure;
         const isPagebreak = has(SugarElement.fromDom(node), 'mce-pagebreak');
-        return isImage && isInEditableConText(node) && !isPagebreak;
+        return isImage && isInEditableContext(node) && !isPagebreak;
       };
       const imageToolbarItems = getImageToolbarItems(editor);
       if (imageToolbarItems.length > 0) {
-        editor.ui.registry.addConTextToolbar('imageselection', {
+        editor.ui.registry.addContextToolbar('imageselection', {
           predicate: isImage,
           items: imageToolbarItems,
           position: 'node'
         });
       }
-      const TextToolbarItems = getTextSelectionToolbarItems(editor);
-      if (TextToolbarItems.length > 0) {
-        editor.ui.registry.addConTextToolbar('Textselection', {
+      const textToolbarItems = getTextSelectionToolbarItems(editor);
+      if (textToolbarItems.length > 0) {
+        editor.ui.registry.addContextToolbar('textselection', {
           predicate: node => !isImage(node) && !editor.selection.isCollapsed() && isEditable(node),
-          items: TextToolbarItems,
+          items: textToolbarItems,
           position: 'selection',
           scope: 'editor'
         });

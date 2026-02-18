@@ -9,7 +9,7 @@ function floatchart() {
   (function () {
     var options = {
       chart: {
-        Type: 'area',
+        type: 'area',
         height: 300,
         toolbar: {
           show: false
@@ -24,13 +24,13 @@ function floatchart() {
         position: 'top'
       },
       markers: {
-        Size: 1,
+        size: 1,
         colors: ['#fff', '#fff', '#fff'],
         strokeColors: ['#e58a00', '#4680ff'],
         strokeWidth: 1,
         shape: 'circle',
         hover: {
-          Size: 4
+          size: 4
         }
       },
       stroke: {
@@ -38,10 +38,10 @@ function floatchart() {
         curve: 'smooth'
       },
       fill: {
-        Type: 'gradient',
+        type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          Type: 'vertical',
+          type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -78,7 +78,7 @@ function floatchart() {
     var membership_state_chart_option = {
       series: [76],
       chart: {
-        Type: 'radialBar',
+        type: 'radialBar',
         offsetY: -20,
         sparkline: {
           enabled: true
@@ -91,7 +91,7 @@ function floatchart() {
           endAngle: 95,
           hollow: {
             margin: 15,
-            Size: '40%'
+            size: '40%'
           },
           track: {
             background: '#4680ff25',
@@ -124,7 +124,7 @@ function floatchart() {
 
     var activity_line_chart_options = {
       chart: {
-        Type: 'line',
+        type: 'line',
         height: 150,
         toolbar: {
           show: false
@@ -139,13 +139,13 @@ function floatchart() {
         position: 'top'
       },
       markers: {
-        Size: 1,
+        size: 1,
         colors: ['#fff', '#fff'],
         strokeColors: ['#2ca87f', '#2ca87f'],
         strokeWidth: 1,
         shape: 'circle',
         hover: {
-          Size: 4
+          size: 4
         }
       },
       fill: {

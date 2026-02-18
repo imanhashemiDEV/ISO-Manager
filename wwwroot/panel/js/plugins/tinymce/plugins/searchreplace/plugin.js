@@ -23,26 +23,26 @@
 
     const hasProto = (v, constructor, predicate) => {
       var _a;
-      if (predicate(v, constructor.protoType)) {
+      if (predicate(v, constructor.prototype)) {
         return true;
       } else {
         return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
       }
     };
-    const TypeOf = x => {
-      const t = Typeof x;
+    const typeOf = x => {
+      const t = typeof x;
       if (x === null) {
         return 'null';
       } else if (t === 'object' && Array.isArray(x)) {
         return 'array';
-      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isProtoTypeOf(o))) {
+      } else if (t === 'object' && hasProto(x, String, (o, proto) => proto.isPrototypeOf(o))) {
         return 'string';
       } else {
         return t;
       }
     };
-    const isType$1 = Type => value => TypeOf(value) === Type;
-    const isSimpleType = Type => value => Typeof value === Type;
+    const isType$1 = type => value => typeOf(value) === type;
+    const isSimpleType = type => value => typeof value === type;
     const isString = isType$1('string');
     const isArray = isType$1('array');
     const isBoolean = isSimpleType('boolean');
@@ -114,11 +114,11 @@
           return Optional.none();
         }
       }
-      getOr(rePlacement) {
-        return this.tag ? this.value : rePlacement;
+      getOr(replacement) {
+        return this.tag ? this.value : replacement;
       }
-      or(rePlacement) {
-        return this.tag ? this : rePlacement;
+      or(replacement) {
+        return this.tag ? this : replacement;
       }
       getOrThunk(thunk) {
         return this.tag ? this.value : thunk();
@@ -162,8 +162,8 @@
 
     var global$1 = tinymce.util.Tools.resolve('tinymce.util.Tools');
 
-    const nativeSlice = Array.protoType.slice;
-    const nativePush = Array.protoType.push;
+    const nativeSlice = Array.prototype.slice;
+    const nativePush = Array.prototype.push;
     const map = (xs, f) => {
       const len = xs.length;
       const r = new Array(len);
@@ -194,12 +194,12 @@
         let group = [];
         for (let i = 0, len = xs.length; i < len; i++) {
           const x = xs[i];
-          const Type = f(x);
-          if (Type !== wasType) {
+          const type = f(x);
+          if (type !== wasType) {
             r.push(group);
             group = [];
           }
-          wasType = Type;
+          wasType = type;
           group.push(x);
         }
         if (group.length !== 0) {
@@ -234,16 +234,16 @@
     const hasOwnProperty = Object.hasOwnProperty;
     const has = (obj, key) => hasOwnProperty.call(obj, key);
 
-    Typeof window !== 'undefined' ? window : Function('return this;')();
+    typeof window !== 'undefined' ? window : Function('return this;')();
 
     const DOCUMENT = 9;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const Text = 3;
+    const TEXT = 3;
 
-    const Type = element => element.dom.nodeType;
-    const isType = t => element => Type(element) === t;
-    const isText$1 = isType(Text);
+    const type = element => element.dom.nodeType;
+    const isType = t => element => type(element) === t;
+    const isText$1 = isType(TEXT);
 
     const rawSet = (dom, key, value) => {
       if (isString(value) || isBoolean(value) || isNumber(value)) {
@@ -273,9 +273,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (Text, scope) => {
+    const fromText = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(Text);
+      const node = doc.createTextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -345,7 +345,7 @@
       };
     };
 
-    const api = NodeValue(isText$1, 'Text');
+    const api = NodeValue(isText$1, 'text');
     const get$1 = element => api.get(element);
 
     const compareDocumentPosition = (a, b, match) => {
@@ -388,7 +388,7 @@
             break;
           }
         } else if (isText(next)) {
-          callbacks.Text(next);
+          callbacks.text(next);
         }
         if (next === endNode) {
           break;
@@ -408,7 +408,7 @@
       walk(dom, walkerFn, node, {
         boundary: always,
         cef: always,
-        Text: next => {
+        text: next => {
           if (forwards) {
             section.fOffset += next.length;
           } else {
@@ -439,10 +439,10 @@
           }
           return false;
         },
-        Text: next => {
+        text: next => {
           current.elements.push(SugarElement.fromDom(next));
           if (callbacks) {
-            callbacks.Text(next, current);
+            callbacks.text(next, current);
           }
         }
       }, endNode, skipStart);
@@ -458,7 +458,7 @@
       const end = toLeaf(rng.endContainer, rng.endOffset);
       const endNode = end.element.dom;
       return collect(dom, rng.commonAncestorContainer, startNode, endNode, {
-        Text: (node, section) => {
+        text: (node, section) => {
           if (node === endNode) {
             section.fOffset += node.length - end.offset;
           } else if (node === startNode) {
@@ -482,12 +482,12 @@
     };
     const fromNodes = (dom, nodes) => bind(nodes, node => fromNode(dom, node));
 
-    const find$2 = (Text, pattern, start = 0, finish = Text.length) => {
+    const find$2 = (text, pattern, start = 0, finish = text.length) => {
       const regex = pattern.regex;
       regex.lastIndex = start;
       const results = [];
       let match;
-      while (match = regex.exec(Text)) {
+      while (match = regex.exec(text)) {
         const matchedText = match[pattern.matchIndex];
         const matchStart = match.index + match[0].indexOf(matchedText);
         const matchFinish = matchStart + matchedText.length;
@@ -536,36 +536,36 @@
       const positions = find$2(content, pattern, section.sOffset, content.length - section.fOffset);
       return extract(elements, positions);
     });
-    const mark = (matches, rePlacementNode) => {
+    const mark = (matches, replacementNode) => {
       eachr(matches, (match, idx) => {
         eachr(match, pos => {
-          const wrapper = SugarElement.fromDom(rePlacementNode.cloneNode(false));
+          const wrapper = SugarElement.fromDom(replacementNode.cloneNode(false));
           set(wrapper, 'data-mce-index', idx);
-          const TextNode = pos.element.dom;
-          if (TextNode.length === pos.finish && pos.start === 0) {
+          const textNode = pos.element.dom;
+          if (textNode.length === pos.finish && pos.start === 0) {
             wrap(pos.element, wrapper);
           } else {
-            if (TextNode.length !== pos.finish) {
-              TextNode.splitText(pos.finish);
+            if (textNode.length !== pos.finish) {
+              textNode.splitText(pos.finish);
             }
-            const matchNode = TextNode.splitText(pos.start);
+            const matchNode = textNode.splitText(pos.start);
             wrap(SugarElement.fromDom(matchNode), wrapper);
           }
         });
       });
     };
-    const findAndMark = (dom, pattern, node, rePlacementNode) => {
-      const TextSections = fromNode(dom, node);
-      const matches = find$1(pattern, TextSections);
-      mark(matches, rePlacementNode);
+    const findAndMark = (dom, pattern, node, replacementNode) => {
+      const textSections = fromNode(dom, node);
+      const matches = find$1(pattern, textSections);
+      mark(matches, replacementNode);
       return matches.length;
     };
-    const findAndMarkInSelection = (dom, pattern, selection, rePlacementNode) => {
+    const findAndMarkInSelection = (dom, pattern, selection, replacementNode) => {
       const bookmark = selection.getBookmark();
       const nodes = dom.select('td[data-mce-selected],th[data-mce-selected]');
-      const TextSections = nodes.length > 0 ? fromNodes(dom, nodes) : fromRng(dom, selection.getRng());
-      const matches = find$1(pattern, TextSections);
-      mark(matches, rePlacementNode);
+      const textSections = nodes.length > 0 ? fromNodes(dom, nodes) : fromRng(dom, selection.getRng());
+      const matches = find$1(pattern, textSections);
+      mark(matches, replacementNode);
       selection.moveToBookmark(bookmark);
       return matches.length;
     };
@@ -641,14 +641,14 @@
         dom.remove(parent);
       }
     };
-    const escapeSearchText = (Text, wholeWord) => {
-      const escapedText = Text.rePlace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&').rePlace(/\s/g, '[^\\S\\r\\n\\uFEFF]');
+    const escapeSearchText = (text, wholeWord) => {
+      const escapedText = text.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&').replace(/\s/g, '[^\\S\\r\\n\\uFEFF]');
       const wordRegex = '(' + escapedText + ')';
       return wholeWord ? `(?:^|\\s|${ punctuation() })` + wordRegex + `(?=$|\\s|${ punctuation() })` : wordRegex;
     };
-    const find = (editor, currentSearchState, Text, matchCase, wholeWord, inSelection) => {
+    const find = (editor, currentSearchState, text, matchCase, wholeWord, inSelection) => {
       const selection = editor.selection;
-      const escapedText = escapeSearchText(Text, wholeWord);
+      const escapedText = escapeSearchText(text, wholeWord);
       const isForwardSelection = selection.isForward();
       const pattern = {
         regex: new RegExp(escapedText, matchCase ? 'g' : 'gi'),
@@ -663,7 +663,7 @@
         currentSearchState.set({
           index: newIndex,
           count,
-          Text,
+          text,
           matchCase,
           wholeWord,
           inSelection
@@ -689,7 +689,7 @@
       const matchIndex = getElmIndex(node);
       return matchIndex !== null && matchIndex.length > 0;
     };
-    const rePlace = (editor, currentSearchState, Text, forward, all) => {
+    const replace = (editor, currentSearchState, text, forward, all) => {
       const searchState = currentSearchState.get();
       const currentIndex = searchState.index;
       let currentMatchIndex, nextIndex = currentIndex;
@@ -700,8 +700,8 @@
         const nodeIndex = getElmIndex(nodes[i]);
         let matchIndex = currentMatchIndex = parseInt(nodeIndex, 10);
         if (all || matchIndex === searchState.index) {
-          if (Text.length) {
-            nodes[i].innerText = Text;
+          if (text.length) {
+            nodes[i].innerText = text;
             unwrap(nodes[i]);
           } else {
             removeNode(editor.dom, nodes[i]);
@@ -755,7 +755,7 @@
         ...searchState,
         index: -1,
         count: 0,
-        Text: ''
+        text: ''
       });
       if (startContainer && endContainer) {
         const rng = editor.dom.createRng();
@@ -776,8 +776,8 @@
       const done$1 = keepEditorSelection => {
         return done(editor, currentState, keepEditorSelection);
       };
-      const find$1 = (Text, matchCase, wholeWord, inSelection = false) => {
-        return find(editor, currentState, Text, matchCase, wholeWord, inSelection);
+      const find$1 = (text, matchCase, wholeWord, inSelection = false) => {
+        return find(editor, currentState, text, matchCase, wholeWord, inSelection);
       };
       const next$1 = () => {
         return next(editor, currentState);
@@ -785,15 +785,15 @@
       const prev$1 = () => {
         return prev(editor, currentState);
       };
-      const rePlace$1 = (Text, forward, all) => {
-        return rePlace(editor, currentState, Text, forward, all);
+      const replace$1 = (text, forward, all) => {
+        return replace(editor, currentState, text, forward, all);
       };
       return {
         done: done$1,
         find: find$1,
         next: next$1,
         prev: prev$1,
-        rePlace: rePlace$1
+        replace: replace$1
       };
     };
 
@@ -829,7 +829,7 @@
     const open = (editor, currentSearchState) => {
       const dialogApi = value();
       editor.undoManager.add();
-      const selectedText = global$1.trim(editor.selection.getContent({ format: 'Text' }));
+      const selectedText = global$1.trim(editor.selection.getContent({ format: 'text' }));
       const updateButtonStates = api => {
         api.setEnabled('next', hasNext(editor, currentSearchState));
         api.setEnabled('prev', hasPrev(editor, currentSearchState));
@@ -846,8 +846,8 @@
       };
       const disableAll = (api, disable) => {
         const buttons = [
-          'rePlace',
-          'rePlaceall',
+          'replace',
+          'replaceall',
           'prev',
           'next'
         ];
@@ -858,7 +858,7 @@
         api.redial(getDialogSpec(isVisible, api.getData()));
       };
       const focusButtonIfRequired = (api, name) => {
-        if (global$2.browser.isSafari() && global$2.deviceType.isTouch() && (name === 'find' || name === 'rePlace' || name === 'rePlaceall')) {
+        if (global$2.browser.isSafari() && global$2.deviceType.isTouch() && (name === 'find' || name === 'replace' || name === 'replaceall')) {
           api.focus(name);
         }
       };
@@ -870,14 +870,14 @@
       const doFind = api => {
         const data = api.getData();
         const last = currentSearchState.get();
-        if (!data.findText.length) {
+        if (!data.findtext.length) {
           reset(api);
           return;
         }
-        if (last.Text === data.findText && last.matchCase === data.matchcase && last.wholeWord === data.wholewords) {
+        if (last.text === data.findtext && last.matchCase === data.matchcase && last.wholeWord === data.wholewords) {
           next(editor, currentSearchState);
         } else {
-          const count = find(editor, currentSearchState, data.findText, data.matchcase, data.wholewords, data.inselection);
+          const count = find(editor, currentSearchState, data.findtext, data.matchcase, data.wholewords, data.inselection);
           if (count <= 0) {
             toggleNotFoundAlert(true, api);
           }
@@ -887,8 +887,8 @@
       };
       const initialState = currentSearchState.get();
       const initialData = {
-        findText: selectedText,
-        rePlaceText: '',
+        findtext: selectedText,
+        replacetext: '',
         wholewords: initialState.wholeWord,
         matchcase: initialState.matchCase,
         inselection: initialState.inSelection
@@ -896,30 +896,30 @@
       const getPanelItems = error => {
         const items = [
           {
-            Type: 'label',
+            type: 'label',
             label: 'Find',
-            for: 'findText',
+            for: 'findtext',
             items: [{
-                Type: 'bar',
+                type: 'bar',
                 items: [
                   {
-                    Type: 'input',
-                    name: 'findText',
+                    type: 'input',
+                    name: 'findtext',
                     maximized: true,
                     inputMode: 'search'
                   },
                   {
-                    Type: 'button',
+                    type: 'button',
                     name: 'prev',
-                    Text: 'Previous',
+                    text: 'Previous',
                     icon: 'action-prev',
                     enabled: false,
                     borderless: true
                   },
                   {
-                    Type: 'button',
+                    type: 'button',
                     name: 'next',
-                    Text: 'Next',
+                    text: 'Next',
                     icon: 'action-next',
                     enabled: false,
                     borderless: true
@@ -928,70 +928,70 @@
               }]
           },
           {
-            Type: 'input',
-            name: 'rePlaceText',
-            label: 'RePlace with',
+            type: 'input',
+            name: 'replacetext',
+            label: 'Replace with',
             inputMode: 'search'
           }
         ];
         if (error) {
           items.push({
-            Type: 'alertbanner',
-            Level: 'error',
-            Text: 'Could not find the specified string.',
+            type: 'alertbanner',
+            level: 'error',
+            text: 'Could not find the specified string.',
             icon: 'warning'
           });
         }
         return items;
       };
       const getDialogSpec = (showNoMatchesAlertBanner, initialData) => ({
-        Title: 'Find and RePlace',
-        Size: 'normal',
+        title: 'Find and Replace',
+        size: 'normal',
         body: {
-          Type: 'panel',
+          type: 'panel',
           items: getPanelItems(showNoMatchesAlertBanner)
         },
         buttons: [
           {
-            Type: 'menu',
+            type: 'menu',
             name: 'options',
             icon: 'preferences',
             tooltip: 'Preferences',
             align: 'start',
             items: [
               {
-                Type: 'togglemenuitem',
+                type: 'togglemenuitem',
                 name: 'matchcase',
-                Text: 'Match case'
+                text: 'Match case'
               },
               {
-                Type: 'togglemenuitem',
+                type: 'togglemenuitem',
                 name: 'wholewords',
-                Text: 'Find whole words only'
+                text: 'Find whole words only'
               },
               {
-                Type: 'togglemenuitem',
+                type: 'togglemenuitem',
                 name: 'inselection',
-                Text: 'Find in selection'
+                text: 'Find in selection'
               }
             ]
           },
           {
-            Type: 'custom',
+            type: 'custom',
             name: 'find',
-            Text: 'Find',
+            text: 'Find',
             primary: true
           },
           {
-            Type: 'custom',
-            name: 'rePlace',
-            Text: 'RePlace',
+            type: 'custom',
+            name: 'replace',
+            text: 'Replace',
             enabled: false
           },
           {
-            Type: 'custom',
-            name: 'rePlaceall',
-            Text: 'RePlace all',
+            type: 'custom',
+            name: 'replaceall',
+            text: 'Replace all',
             enabled: false
           }
         ],
@@ -1000,7 +1000,7 @@
           if (showNoMatchesAlertBanner) {
             toggleNotFoundAlert(false, api);
           }
-          if (details.name === 'findText' && currentSearchState.get().count > 0) {
+          if (details.name === 'findtext' && currentSearchState.get().count > 0) {
             reset(api);
           }
         },
@@ -1010,15 +1010,15 @@
           case 'find':
             doFind(api);
             break;
-          case 'rePlace':
-            if (!rePlace(editor, currentSearchState, data.rePlaceText)) {
+          case 'replace':
+            if (!replace(editor, currentSearchState, data.replacetext)) {
               reset(api);
             } else {
               updateButtonStates(api);
             }
             break;
-          case 'rePlaceall':
-            rePlace(editor, currentSearchState, data.rePlaceText, true, true);
+          case 'replaceall':
+            replace(editor, currentSearchState, data.replacetext, true, true);
             reset(api);
             break;
           case 'prev':
@@ -1053,7 +1053,7 @@
     };
 
     const register$1 = (editor, currentSearchState) => {
-      editor.addCommand('SearchRePlace', () => {
+      editor.addCommand('SearchReplace', () => {
         open(editor, currentSearchState);
       });
     };
@@ -1062,14 +1062,14 @@
       open(editor, currentSearchState);
     };
     const register = (editor, currentSearchState) => {
-      editor.ui.registry.addMenuItem('searchrePlace', {
-        Text: 'Find and rePlace...',
+      editor.ui.registry.addMenuItem('searchreplace', {
+        text: 'Find and replace...',
         shortcut: 'Meta+F',
         onAction: showDialog(editor, currentSearchState),
         icon: 'search'
       });
-      editor.ui.registry.addButton('searchrePlace', {
-        tooltip: 'Find and rePlace',
+      editor.ui.registry.addButton('searchreplace', {
+        tooltip: 'Find and replace',
         onAction: showDialog(editor, currentSearchState),
         icon: 'search',
         shortcut: 'Meta+F'
@@ -1078,11 +1078,11 @@
     };
 
     var Plugin = () => {
-      global$3.add('searchrePlace', editor => {
+      global$3.add('searchreplace', editor => {
         const currentSearchState = Cell({
           index: -1,
           count: 0,
-          Text: '',
+          text: '',
           matchCase: false,
           wholeWord: false,
           inSelection: false

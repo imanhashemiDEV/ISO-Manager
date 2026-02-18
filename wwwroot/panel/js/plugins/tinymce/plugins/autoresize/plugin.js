@@ -23,24 +23,24 @@
 
     var global = tinymce.util.Tools.resolve('tinymce.Env');
 
-    const fireReSizeEditor = editor => editor.dispatch('ReSizeEditor');
+    const fireResizeEditor = editor => editor.dispatch('ResizeEditor');
 
     const option = name => editor => editor.options.get(name);
     const register$1 = editor => {
       const registerOption = editor.options.register;
-      registerOption('autoreSize_overflow_padding', {
+      registerOption('autoresize_overflow_padding', {
         processor: 'number',
         default: 1
       });
-      registerOption('autoreSize_bottom_margin', {
+      registerOption('autoresize_bottom_margin', {
         processor: 'number',
         default: 50
       });
     };
     const getMinHeight = option('min_height');
     const getMaxHeight = option('max_height');
-    const getAutoReSizeOverflowPadding = option('autoreSize_overflow_padding');
-    const getAutoReSizeBottomMargin = option('autoreSize_bottom_margin');
+    const getAutoResizeOverflowPadding = option('autoresize_overflow_padding');
+    const getAutoResizeBottomMargin = option('autoresize_bottom_margin');
 
     const isFullscreen = editor => editor.plugins.fullscreen && editor.plugins.fullscreen.isFullscreen();
     const toggleScrolling = (editor, state) => {
@@ -58,14 +58,14 @@
       return isNaN(value) ? 0 : value;
     };
     const shouldScrollIntoView = trigger => {
-      if ((trigger === null || trigger === void 0 ? void 0 : trigger.Type.toLowerCase()) === 'setcontent') {
+      if ((trigger === null || trigger === void 0 ? void 0 : trigger.type.toLowerCase()) === 'setcontent') {
         const setContentEvent = trigger;
         return setContentEvent.selection === true || setContentEvent.paste === true;
       } else {
         return false;
       }
     };
-    const reSize = (editor, oldSize, trigger, geTextraMarginBottom) => {
+    const resize = (editor, oldSize, trigger, getExtraMarginBottom) => {
       var _a;
       const dom = editor.dom;
       const doc = editor.getDoc();
@@ -77,12 +77,12 @@
         return;
       }
       const docEle = doc.documentElement;
-      const reSizeBottomMargin = geTextraMarginBottom ? geTextraMarginBottom() : getAutoReSizeOverflowPadding(editor);
+      const resizeBottomMargin = getExtraMarginBottom ? getExtraMarginBottom() : getAutoResizeOverflowPadding(editor);
       const minHeight = (_a = getMinHeight(editor)) !== null && _a !== void 0 ? _a : editor.getElement().offsetHeight;
-      let reSizeHeight = minHeight;
+      let resizeHeight = minHeight;
       const marginTop = parseCssValueToInt(dom, docEle, 'margin-top', true);
       const marginBottom = parseCssValueToInt(dom, docEle, 'margin-bottom', true);
-      let contentHeight = docEle.offsetHeight + marginTop + marginBottom + reSizeBottomMargin;
+      let contentHeight = docEle.offsetHeight + marginTop + marginBottom + resizeBottomMargin;
       if (contentHeight < 0) {
         contentHeight = 0;
       }
@@ -90,11 +90,11 @@
       const contentAreaHeight = editor.getContentAreaContainer().offsetHeight;
       const chromeHeight = containerHeight - contentAreaHeight;
       if (contentHeight + chromeHeight > minHeight) {
-        reSizeHeight = contentHeight + chromeHeight;
+        resizeHeight = contentHeight + chromeHeight;
       }
       const maxHeight = getMaxHeight(editor);
-      if (maxHeight && reSizeHeight > maxHeight) {
-        reSizeHeight = maxHeight;
+      if (maxHeight && resizeHeight > maxHeight) {
+        resizeHeight = maxHeight;
         toggleScrolling(editor, true);
       } else {
         toggleScrolling(editor, false);
@@ -104,15 +104,15 @@
         editor.dom.setStyles(editor.getDoc().documentElement, { 'min-height': 0 });
         editor.dom.setStyles(editor.getBody(), { 'min-height': 'inherit' });
       }
-      if (reSizeHeight !== old.totalHeight && (contentHeight - reSizeBottomMargin !== old.contentHeight || !old.set)) {
-        const deltaSize = reSizeHeight - old.totalHeight;
-        dom.setStyle(editor.getContainer(), 'height', reSizeHeight + 'px');
+      if (resizeHeight !== old.totalHeight && (contentHeight - resizeBottomMargin !== old.contentHeight || !old.set)) {
+        const deltaSize = resizeHeight - old.totalHeight;
+        dom.setStyle(editor.getContainer(), 'height', resizeHeight + 'px');
         oldSize.set({
-          totalHeight: reSizeHeight,
+          totalHeight: resizeHeight,
           contentHeight,
           set: true
         });
-        fireReSizeEditor(editor);
+        fireResizeEditor(editor);
         if (global.browser.isSafari() && (global.os.isMacOS() || global.os.isiOS())) {
           const win = editor.getWin();
           win.scrollTo(win.pageXOffset, win.pageYOffset);
@@ -121,14 +121,14 @@
           editor.selection.scrollIntoView();
         }
         if ((global.browser.isSafari() || global.browser.isChromium()) && deltaSize < 0) {
-          reSize(editor, oldSize, trigger, geTextraMarginBottom);
+          resize(editor, oldSize, trigger, getExtraMarginBottom);
         }
       }
     };
     const setup = (editor, oldSize) => {
-      const geTextraMarginBottom = () => getAutoReSizeBottomMargin(editor);
+      const getExtraMarginBottom = () => getAutoResizeBottomMargin(editor);
       editor.on('init', e => {
-        const overflowPadding = getAutoReSizeOverflowPadding(editor);
+        const overflowPadding = getAutoResizeOverflowPadding(editor);
         const dom = editor.dom;
         dom.setStyles(editor.getDoc().documentElement, { height: 'auto' });
         if (global.browser.isEdge() || global.browser.isIE()) {
@@ -143,24 +143,24 @@
             paddingRight: overflowPadding
           });
         }
-        reSize(editor, oldSize, e, geTextraMarginBottom);
+        resize(editor, oldSize, e, getExtraMarginBottom);
       });
-      editor.on('NodeChange SetContent keyup FullscreenStateChanged ReSizeContent', e => {
-        reSize(editor, oldSize, e, geTextraMarginBottom);
+      editor.on('NodeChange SetContent keyup FullscreenStateChanged ResizeContent', e => {
+        resize(editor, oldSize, e, getExtraMarginBottom);
       });
     };
 
     const register = (editor, oldSize) => {
-      editor.addCommand('mceAutoReSize', () => {
-        reSize(editor, oldSize);
+      editor.addCommand('mceAutoResize', () => {
+        resize(editor, oldSize);
       });
     };
 
     var Plugin = () => {
-      global$1.add('autoreSize', editor => {
+      global$1.add('autoresize', editor => {
         register$1(editor);
-        if (!editor.options.isSet('reSize')) {
-          editor.options.set('reSize', false);
+        if (!editor.options.isSet('resize')) {
+          editor.options.set('resize', false);
         }
         if (!editor.inline) {
           const oldSize = Cell({

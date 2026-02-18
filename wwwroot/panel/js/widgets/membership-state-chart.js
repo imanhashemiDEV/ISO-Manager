@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var membership_state_chart_option = {
       series: [76],
       chart: {
-        Type: 'radialBar',
+        type: 'radialBar',
         offsetY: -20,
         sparkline: {
           enabled: true
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
           endAngle: 95,
           hollow: {
             margin: 15,
-            Size: '40%'
+            size: '40%'
           },
           track: {
             background: '#4680ff25',

@@ -14,7 +14,7 @@
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
                     <li class="breadcrumb-item"><a asp-page="./Index">لیست استاندارد ها</a></li>
-                    <li class="breadcrumb-item" aria-current="page">@Html.DisplayFor(model => model.Standard.fa_chapter)</li>
+                    <li class="breadcrumb-item" aria-current="page">@Html.DisplayFor(model => model.Standard.FaChapter)</li>
                 </ul>
             </div>
         </div>
@@ -24,11 +24,11 @@
             <div class="col-span-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>@Html.DisplayFor(model => model.Standard.fa_subchapter)</h5>
+                        <h5>@Html.DisplayFor(model => model.Standard.FaSubchapter)</h5>
                     </div>
                     <div class="card-body Text-blue-400">
                         <h6 class="Text-white">
-                            @Html.Raw(Model.Standard.fa_Text)
+                            @Html.Raw(Model.Standard.FaText)
                         </h6>
                     </div>
                 </div>

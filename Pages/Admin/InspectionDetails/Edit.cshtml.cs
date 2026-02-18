@@ -13,9 +13,9 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbConText conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
         {
             _conText = conText;
         }

@@ -14,9 +14,9 @@ namespace ISO_Manager.Pages.Admin.RigAssets
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbConText _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbConText conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
         {
             _conText = conText;
         }
@@ -34,7 +34,7 @@ namespace ISO_Manager.Pages.Admin.RigAssets
 
             RigAsset = await _conText.RigAssets
                 .Where(m => m.Place == "rig-102")
-                .OrderBy(x => x.asset_name)
+                .OrderBy(x => x.AssetName)
                 .ToListAsync();
         }
 

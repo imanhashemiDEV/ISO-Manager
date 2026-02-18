@@ -235,6 +235,6 @@ jsVectorMap.addMap('us_lcc_en', {
     }
   },
   height: 606.2089664780622,
-  projection: { Type: 'lcc', centralMeridian: -100.0 },
+  projection: { type: 'lcc', centralMeridian: -100.0 },
   width: 900.0
 });

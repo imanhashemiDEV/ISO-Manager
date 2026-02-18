@@ -1,261 +1,261 @@
 [
   {
-    "Year": "1961",
+    "year": "1961",
     "value": "West Side Story",
     "tokens": ["West", "Side", "Story"]
   },
   {
-    "Year": "1962",
+    "year": "1962",
     "value": "Lawrence of Arabia",
     "tokens": ["Lawrence", "of", "Arabia"]
   },
   {
-    "Year": "1963",
+    "year": "1963",
     "value": "Tom Jones",
     "tokens": ["Tom", "Jones"]
   },
   {
-    "Year": "1964",
+    "year": "1964",
     "value": "My Fair Lady",
     "tokens": ["My", "Fair", "Lady"]
   },
   {
-    "Year": "1965",
+    "year": "1965",
     "value": "The Sound of Music",
     "tokens": ["The", "Sound", "of", "Music"]
   },
   {
-    "Year": "1966",
+    "year": "1966",
     "value": "A Man for All Seasons",
     "tokens": ["A", "Man", "for", "All", "Seasons"]
   },
   {
-    "Year": "1967",
+    "year": "1967",
     "value": "In the Heat of the Night",
     "tokens": ["In", "the", "Heat", "of", "the", "Night"]
   },
   {
-    "Year": "1968",
+    "year": "1968",
     "value": "Oliver!",
     "tokens": ["Oliver!"]
   },
   {
-    "Year": "1969",
+    "year": "1969",
     "value": "Midnight Cowboy",
     "tokens": ["Midnight", "Cowboy"]
   },
   {
-    "Year": "1970",
+    "year": "1970",
     "value": "Patton",
     "tokens": ["Patton"]
   },
   {
-    "Year": "1971",
+    "year": "1971",
     "value": "The French Connection",
     "tokens": ["The", "French", "Connection"]
   },
   {
-    "Year": "1972",
+    "year": "1972",
     "value": "The Godfather",
     "tokens": ["The", "Godfather"]
   },
   {
-    "Year": "1973",
+    "year": "1973",
     "value": "The Sting",
     "tokens": ["The", "Sting"]
   },
   {
-    "Year": "1974",
+    "year": "1974",
     "value": "The Godfather Part II",
     "tokens": ["The", "Godfather", "Part", "II"]
   },
   {
-    "Year": "1975",
+    "year": "1975",
     "value": "One Flew over the Cuckoo's Nest",
     "tokens": ["One", "Flew", "over", "the", "Cuckoo's", "Nest"]
   },
   {
-    "Year": "1976",
+    "year": "1976",
     "value": "Rocky",
     "tokens": ["Rocky"]
   },
   {
-    "Year": "1977",
+    "year": "1977",
     "value": "Annie Hall",
     "tokens": ["Annie", "Hall"]
   },
   {
-    "Year": "1978",
+    "year": "1978",
     "value": "The Deer Hunter",
     "tokens": ["The", "Deer", "Hunter"]
   },
   {
-    "Year": "1979",
+    "year": "1979",
     "value": "Kramer vs. Kramer",
     "tokens": ["Kramer", "vs.", "Kramer"]
   },
   {
-    "Year": "1980",
+    "year": "1980",
     "value": "Ordinary People",
     "tokens": ["Ordinary", "People"]
   },
   {
-    "Year": "1981",
+    "year": "1981",
     "value": "Chariots of Fire",
     "tokens": ["Chariots", "of", "Fire"]
   },
   {
-    "Year": "1982",
+    "year": "1982",
     "value": "Gandhi",
     "tokens": ["Gandhi"]
   },
   {
-    "Year": "1983",
+    "year": "1983",
     "value": "Terms of Endearment",
     "tokens": ["Terms", "of", "Endearment"]
   },
   {
-    "Year": "1984",
+    "year": "1984",
     "value": "Amadeus",
     "tokens": ["Amadeus"]
   },
   {
-    "Year": "1985",
+    "year": "1985",
     "value": "Out of Africa",
     "tokens": ["Out", "of", "Africa"]
   },
   {
-    "Year": "1986",
+    "year": "1986",
     "value": "Platoon",
     "tokens": ["Platoon"]
   },
   {
-    "Year": "1987",
+    "year": "1987",
     "value": "The Last Emperor",
     "tokens": ["The", "Last", "Emperor"]
   },
   {
-    "Year": "1988",
+    "year": "1988",
     "value": "Rain Man",
     "tokens": ["Rain", "Man"]
   },
   {
-    "Year": "1989",
+    "year": "1989",
     "value": "Driving Miss Daisy",
     "tokens": ["Driving", "Miss", "Daisy"]
   },
   {
-    "Year": "1990",
+    "year": "1990",
     "value": "Dances With Wolves",
     "tokens": ["Dances", "With", "Wolves"]
   },
   {
-    "Year": "1991",
+    "year": "1991",
     "value": "The Silence of the Lambs",
     "tokens": ["The", "Silence", "of", "the", "Lambs"]
   },
   {
-    "Year": "1992",
+    "year": "1992",
     "value": "Unforgiven",
     "tokens": ["Unforgiven"]
   },
   {
-    "Year": "1993",
+    "year": "1993",
     "value": "Schindler’s List",
     "tokens": ["Schindler’s", "List"]
   },
   {
-    "Year": "1994",
+    "year": "1994",
     "value": "Forrest Gump",
     "tokens": ["Forrest", "Gump"]
   },
   {
-    "Year": "1995",
+    "year": "1995",
     "value": "Braveheart",
     "tokens": ["Braveheart"]
   },
   {
-    "Year": "1996",
+    "year": "1996",
     "value": "The English Patient",
     "tokens": ["The", "English", "Patient"]
   },
   {
-    "Year": "1997",
+    "year": "1997",
     "value": "Titanic",
     "tokens": ["Titanic"]
   },
   {
-    "Year": "1998",
+    "year": "1998",
     "value": "Shakespeare in Love",
     "tokens": ["Shakespeare", "in", "Love"]
   },
   {
-    "Year": "1999",
+    "year": "1999",
     "value": "American Beauty",
     "tokens": ["American", "Beauty"]
   },
   {
-    "Year": "2000",
+    "year": "2000",
     "value": "Gladiator",
     "tokens": ["Gladiator"]
   },
   {
-    "Year": "2001",
+    "year": "2001",
     "value": "A Beautiful Mind",
     "tokens": ["A", "Beautiful", "Mind"]
   },
   {
-    "Year": "2002",
+    "year": "2002",
     "value": "Chicago",
     "tokens": ["Chicago"]
   },
   {
-    "Year": "2003",
+    "year": "2003",
     "value": "The Lord of the Rings: The Return of the King",
     "tokens": ["The", "Lord", "of", "the", "Rings:", "The", "Return", "of", "the", "King"]
   },
   {
-    "Year": "2004",
+    "year": "2004",
     "value": "Million Dollar Baby",
     "tokens": ["Million", "Dollar", "Baby"]
   },
   {
-    "Year": "2005",
+    "year": "2005",
     "value": "Crash",
     "tokens": ["Crash"]
   },
   {
-    "Year": "2006",
+    "year": "2006",
     "value": "The Departed",
     "tokens": ["The", "Departed"]
   },
   {
-    "Year": "2007",
+    "year": "2007",
     "value": "No Country for Old Men",
     "tokens": ["No", "Country", "for", "Old", "Men"]
   },
   {
-    "Year": "2008",
+    "year": "2008",
     "value": "Slumdog Millionaire",
     "tokens": ["Slumdog", "Millionaire"]
   },
   {
-    "Year": "2009",
+    "year": "2009",
     "value": "The Hurt Locker",
     "tokens": ["The", "Hurt", "Locker"]
   },
   {
-    "Year": "2010",
+    "year": "2010",
     "value": "The King's Speech",
     "tokens": ["The", "King's", "Speech"]
   },
   {
-    "Year": "2011",
+    "year": "2011",
     "value": "The Artist",
     "tokens": ["The", "Artist"]
   },
   {
-    "Year": "2012",
+    "year": "2012",
     "value": "Argo",
     "tokens": ["Argo"]
   }

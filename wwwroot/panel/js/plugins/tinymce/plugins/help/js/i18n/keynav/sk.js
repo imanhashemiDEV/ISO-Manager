@@ -14,7 +14,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sk',
   '  <dt>Zaostriť na oznámenie</dt>\n' +
   '  <dd>Windows alebo Linux: Alt+F12</dd>\n' +
   '  <dd>macOS: &#x2325;F12</dd>\n' +
-  '  <dt>Prejsť na konTextový panel nástrojov</dt>\n' +
+  '  <dt>Prejsť na kontextový panel nástrojov</dt>\n' +
   '  <dd>Windows, Linux alebo macOS: Ctrl+F9</dd>\n' +
   '</dl>\n' +
   '\n' +
@@ -61,12 +61,12 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sk',
   '\n' +
   '<ul>\n' +
   '  <li>umožňujú presun medzi položkami ponuky,</li>\n' +
-  '  <li>umožňujú presun medzi položkami v konTextovej ponuke panela nástrojov.</li>\n' +
+  '  <li>umožňujú presun medzi položkami v kontextovej ponuke panela nástrojov.</li>\n' +
   '</ul>\n' +
   '\n' +
   '<p>Klávesy so <strong>šípkami</strong> vykonávajú prepínanie v rámci vybranej časti používateľského rozhrania.</p>\n' +
   '\n' +
-  '<p>Ak chcete zatvoriť otvorenú ponuku, otvorenú podponuku alebo otvorenú konTextovú ponuku, stlačte kláves <strong>Esc</strong>.</p>\n' +
+  '<p>Ak chcete zatvoriť otvorenú ponuku, otvorenú podponuku alebo otvorenú kontextovú ponuku, stlačte kláves <strong>Esc</strong>.</p>\n' +
   '\n' +
   '<p>Ak je aktuálne vybratá horná časť konkrétneho používateľského rozhrania, stlačením klávesu <strong>Esc</strong> úplne ukončíte tiež\n' +
   '  navigáciu pomocou klávesnice.</p>\n' +

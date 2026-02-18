@@ -27,7 +27,7 @@ function floatchart() {
   (function () {
     var options = {
       chart: {
-        Type: 'area',
+        type: 'area',
         height: 250,
         toolbar: {
           show: false
@@ -42,13 +42,13 @@ function floatchart() {
         position: 'top'
       },
       markers: {
-        Size: 1,
+        size: 1,
         colors: ['#fff', '#fff', '#fff'],
         strokeColors: ['#e58a00', '#4680ff'],
         strokeWidth: 1,
         shape: 'circle',
         hover: {
-          Size: 4
+          size: 4
         }
       },
       stroke: {
@@ -56,10 +56,10 @@ function floatchart() {
         curve: 'smooth'
       },
       fill: {
-        Type: 'gradient',
+        type: 'gradient',
         gradient: {
           shadeIntensity: 1,
-          Type: 'vertical',
+          type: 'vertical',
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0
@@ -95,7 +95,7 @@ function floatchart() {
     var invites_goal_chart_option = {
       series: [76],
       chart: {
-        Type: 'radialBar',
+        type: 'radialBar',
         offsetY: -20,
         sparkline: {
           enabled: true
@@ -108,7 +108,7 @@ function floatchart() {
           endAngle: 95,
           hollow: {
             margin: 15,
-            Size: '50%'
+            size: '50%'
           },
           track: {
             background: '#eaeaea',
@@ -141,7 +141,7 @@ function floatchart() {
 
     var course_report_bar_chart_options = {
       chart: {
-        Type: 'bar',
+        type: 'bar',
         height: 210,
         toolbar: {
           show: false
@@ -206,7 +206,7 @@ function floatchart() {
 
     var total_revenue_line_1_chart_options = {
       chart: {
-        Type: 'line',
+        type: 'line',
         height: 60,
         sparkline: {
           enabled: true
@@ -240,7 +240,7 @@ function floatchart() {
           show: false
         },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -256,7 +256,7 @@ function floatchart() {
 
     var total_revenue_line_2_chart_options = {
       chart: {
-        Type: 'line',
+        type: 'line',
         height: 60,
         sparkline: {
           enabled: true
@@ -290,7 +290,7 @@ function floatchart() {
           show: false
         },
         y: {
-          Title: {
+          title: {
             formatter: function (seriesName) {
               return '';
             }
@@ -307,7 +307,7 @@ function floatchart() {
     var student_states_chart_options = {
       chart: {
         height: 250,
-        Type: 'donut'
+        type: 'donut'
       },
       dataLabels: {
         enabled: false
@@ -315,7 +315,7 @@ function floatchart() {
       plotOptions: {
         pie: {
           donut: {
-            Size: '65%'
+            size: '65%'
           }
         }
       },
@@ -335,7 +335,7 @@ function floatchart() {
 
     var activity_line_chart_options = {
       chart: {
-        Type: 'line',
+        type: 'line',
         height: 300,
         toolbar: {
           show: false
@@ -350,13 +350,13 @@ function floatchart() {
         position: 'top'
       },
       markers: {
-        Size: 1,
+        size: 1,
         colors: ['#fff', '#fff', '#fff'],
         strokeColors: ['#2ca87f', '#4680ff'],
         strokeWidth: 1,
         shape: 'circle',
         hover: {
-          Size: 4
+          size: 4
         }
       },
       stroke: {
@@ -393,7 +393,7 @@ function floatchart() {
 
     var visitors_bar_chart_options = {
       chart: {
-        Type: 'bar',
+        type: 'bar',
         height: 220,
         toolbar: {
           show: false
@@ -412,13 +412,13 @@ function floatchart() {
       states: {
         normal: {
           filter: {
-            Type: 'lighten',
+            type: 'lighten',
             value: 0.5
           }
         },
         hover: {
           filter: {
-            Type: 'lighten',
+            type: 'lighten',
             value: 0
           }
         }
@@ -441,7 +441,7 @@ function floatchart() {
 
     var earning_courses_line_chart_options = {
       chart: {
-        Type: 'line',
+        type: 'line',
         height: 230,
         toolbar: {
           show: false
@@ -452,13 +452,13 @@ function floatchart() {
         enabled: false
       },
       markers: {
-        Size: 1,
+        size: 1,
         colors: ['#fff', '#fff', '#fff'],
         strokeColors: ['#e58a00', '#4680ff'],
         strokeWidth: 1,
         shape: 'circle',
         hover: {
-          Size: 4
+          size: 4
         }
       },
       stroke: {

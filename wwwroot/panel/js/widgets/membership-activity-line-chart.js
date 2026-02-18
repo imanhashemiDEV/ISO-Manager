@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     var activity_line_chart_options = {
       chart: {
-        Type: 'line',
+        type: 'line',
         height: 150,
         toolbar: {
           show: false
@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
         position: 'top'
       },
       markers: {
-        Size: 1,
+        size: 1,
         colors: ['#fff', '#fff'],
         strokeColors: ['#2ca87f', '#2ca87f'],
         strokeWidth: 1,
         shape: 'circle',
         hover: {
-          Size: 4
+          size: 4
         }
       },
       fill: {
