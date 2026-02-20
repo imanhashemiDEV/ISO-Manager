@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.EmergencyPhoneBooks
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public EmergencyPhoneBook EmergencyPhoneBook { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.EmergencyPhoneBooks
                 return NotFound();
             }
 
-            var emergencyphonebook = await _conText.EmergencyPhoneBooks.FirstOrDefaultAsync(m => m.Id == id);
+            var emergencyphonebook = await _context.EmergencyPhoneBooks.FirstOrDefaultAsync(m => m.Id == id);
 
             if (emergencyphonebook is not null)
             {

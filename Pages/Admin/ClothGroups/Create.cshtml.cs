@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IActionResult OnGet()
@@ -35,8 +35,8 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
                 return Page();
             }
 
-            _conText.ClothGroups.Add(ClothGroup);
-            await _conText.SaveChangesAsync();
+            _context.ClothGroups.Add(ClothGroup);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

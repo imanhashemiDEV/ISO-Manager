@@ -2,8 +2,7 @@
 @model ISO_Manager.Pages.Admin.Processes.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "ویرایش فرایند";
 }
 
 
@@ -14,7 +13,7 @@
             <div class="page-block">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
-                    <li class="breadcrumb-item" aria-current="page">ایجاد</li>
+                    <li class="breadcrumb-item" aria-current="page">ویرایش</li>
                 </ul>
             </div>
         </div>
@@ -24,92 +23,92 @@
             <div class="col-span-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>ایجاد آمبولانس</h5>
+                        <h5>ویرایش فرایند</h5>
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input Type="hidden" asp-for="Process.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Process.ProcessNumber" class="control-label"></label>
                                     <input asp-for="Process.ProcessNumber" class="form-control" />
-                                    <span asp-validation-for="Process.ProcessNumber" class="Text-danger"></span>
+                                    <span asp-validation-for="Process.ProcessNumber" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Process.ProcessReviewNumber" class="control-label"></label>
                                     <input asp-for="Process.ProcessReviewNumber" class="form-control" />
-                                    <span asp-validation-for="Process.ProcessReviewNumber" class="Text-danger"></span>
+                                    <span asp-validation-for="Process.ProcessReviewNumber" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Process.ProcessEditDate" class="control-label"></label>
                                     <input asp-for="Process.ProcessEditDate" class="form-control" />
-                                    <span asp-validation-for="Process.ProcessEditDate" class="Text-danger"></span>
+                                    <span asp-validation-for="Process.ProcessEditDate" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Process.ProcessTitle" class="control-label"></label>
                                     <input asp-for="Process.ProcessTitle" class="form-control" />
-                                    <span asp-validation-for="Process.ProcessTitle" class="Text-danger"></span>
+                                    <span asp-validation-for="Process.ProcessTitle" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Process.ProcessPurpose" class="control-label"></label>
                                     <input asp-for="Process.ProcessPurpose" class="form-control" />
-                                    <span asp-validation-for="Process.ProcessPurpose" class="Text-danger"></span>
+                                    <span asp-validation-for="Process.ProcessPurpose" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Process.ProcessOwner" class="control-label"></label>
                                     <input asp-for="Process.ProcessOwner" class="form-control" />
-                                    <span asp-validation-for="Process.ProcessOwner" class="Text-danger"></span>
+                                    <span asp-validation-for="Process.ProcessOwner" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Process.ProcessResources" class="control-label"></label>
                                     <input asp-for="Process.ProcessResources" class="form-control" />
-                                    <span asp-validation-for="Process.ProcessResources" class="Text-danger"></span>
+                                    <span asp-validation-for="Process.ProcessResources" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Process.ProcessGroup" class="control-label"></label>
                                     <input asp-for="Process.ProcessGroup" class="form-control" />
-                                    <span asp-validation-for="Process.ProcessGroup" class="Text-danger"></span>
+                                    <span asp-validation-for="Process.ProcessGroup" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Process.ProcessRequirement" class="control-label"></label>
                                     <input asp-for="Process.ProcessRequirement" class="form-control" />
-                                    <span asp-validation-for="Process.ProcessRequirement" class="Text-danger"></span>
+                                    <span asp-validation-for="Process.ProcessRequirement" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 mb-4">
                                     <label asp-for="Process.ProcessProviders" class="control-label"></label>
-                                    <textarea id="editor" asp-for="Process.ProcessProviders" class="form-control" rows="10" dir="rtl"></textarea>
-                                    <span asp-validation-for="Process.ProcessProviders" class="Text-danger"></span>
+                                    <textarea asp-for="Process.ProcessProviders" class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                                    <span asp-validation-for="Process.ProcessProviders" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 mb-4">
                                     <label asp-for="Process.ProcessInputs" class="control-label"></label>
-                                    <textarea asp-for="Process.ProcessInputs" class="form-control editor" rows="10" dir="rtl"></textarea>
-                                    <span asp-validation-for="Process.ProcessInputs" class="Text-danger"></span>
+                                    <textarea asp-for="Process.ProcessInputs" class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                                    <span asp-validation-for="Process.ProcessInputs" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 mb-4">
                                     <label asp-for="Process.ProcessActitvities" class="control-label"></label>
-                                    <textarea asp-for="Process.ProcessActitvities" class="form-control editor" rows="10" dir="rtl"></textarea>
-                                    <span asp-validation-for="Process.ProcessActitvities" class="Text-danger"></span>
+                                    <textarea asp-for="Process.ProcessActitvities" class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                                    <span asp-validation-for="Process.ProcessActitvities" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 mb-4">
                                     <label asp-for="Process.ProcessResponsible" class="control-label"></label>
-                                    <textarea asp-for="Process.ProcessResponsible" class="form-control editor" rows="10" dir="rtl"></textarea>
-                                    <span asp-validation-for="Process.ProcessResponsible" class="Text-danger"></span>
+                                    <textarea asp-for="Process.ProcessResponsible" class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                                    <span asp-validation-for="Process.ProcessResponsible" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 mb-4">
                                     <label asp-for="Process.ProcessDocuments" class="control-label"></label>
-                                    <textarea asp-for="Process.ProcessResponsible" class="form-control editor" rows="10" dir="rtl"></textarea>
-                                    <span asp-validation-for="Process.ProcessDocuments" class="Text-danger"></span>
+                                    <textarea asp-for="Process.ProcessResponsible" class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                                    <span asp-validation-for="Process.ProcessDocuments" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 mb-4">
                                     <label asp-for="Process.ProcessExport" class="control-label"></label>
-                                    <textarea asp-for="Process.ProcessResponsible" class="form-control editor" rows="10" dir="rtl"></textarea>
-                                    <span asp-validation-for="Process.ProcessExport" class="Text-danger"></span>
+                                    <textarea asp-for="Process.ProcessResponsible" class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                                    <span asp-validation-for="Process.ProcessExport" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 mb-4">
                                     <label asp-for="Process.ProcessIntrested" class="control-label"></label>
-                                    <textarea asp-for="Process.ProcessResponsible" class="form-control editor" rows="10" dir="rtl"></textarea>
-                                    <span asp-validation-for="Process.ProcessIntrested" class="Text-danger"></span>
+                                    <textarea asp-for="Process.ProcessResponsible" class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                                    <span asp-validation-for="Process.ProcessIntrested" class="text-danger"></span>
                                 </div>
 
                             </div>
@@ -127,71 +126,5 @@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
-
-        <script src="~/js/ckeditor.js"></script>
-
-        <script>
-            ClassicEditor
-                .create(document.querySelector('.editor'), {
-                                fontSize: {
-                                    options: [
-                                        9,
-                                        11,
-                                        13,
-                                        'default',
-                                        18,
-                                        20,
-                                        22
-                                    ]
-                                },
-                                fontFamily: {
-                                    options: [
-                                        'default',
-                                        'B Koodak',
-                                    ]
-                                },
-                                toolbar: {
-                                    items: [
-                                        'heading',
-                                        '|',
-                                        'bold',
-                                        'italic',
-                                        'link',
-                                        '|',
-                                        'fontSize',
-                                        'fontFamily',
-                                        'fontColor',
-                                        '|',
-                                        'imageUpload',
-                                        'blockQuote',
-                                        'insertTable',
-                                        'undo',
-                                        'redo',
-                                        '|',
-                                        'bulletedList',
-                                        'numberedList',
-                                        'alignment'
-                                    ]
-                                },
-                                language: {
-                                    ui: 'fa',
-                                    content: 'fa'
-                                },
-                                table: {
-                                    contentToolbar: [
-                                        'tableColumn',
-                                        'tableRow',
-                                        'mergeTableCells'
-                                    ]
-                                },
-
-                            })
-                            .then(editor => {
-
-                            })
-                            .catch(error => {
-                                console.error(error.stack);
-                            });
-        </script>
     }
 }

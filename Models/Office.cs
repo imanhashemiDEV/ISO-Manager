@@ -8,6 +8,7 @@ namespace ISO_Manager.Models
         [Key]
         public int Id { get; set; }
 
+        [Required(ErrorMessage ="نام اداره الزامی است")]
         [Display(Name = "نام اداره")]
         public string? Title { get; set; }
 

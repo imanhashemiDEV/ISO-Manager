@@ -324,7 +324,7 @@
     mouseenter: 'mouseover',
     mouseleave: 'mouseout'
   };
-  const nativeEvents = new Set(['click', 'dblclick', 'mouseup', 'mousedown', 'conTextmenu', 'mousewheel', 'DOMMouseScroll', 'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend', 'keydown', 'keypress', 'keyup', 'orientationchange', 'touchstart', 'touchmove', 'touchend', 'touchcancel', 'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel', 'gesturestart', 'gesturechange', 'gestureend', 'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout', 'load', 'unload', 'beforeunload', 'reSize', 'move', 'DOMContentLoaded', 'readystatechange', 'error', 'abort', 'scroll']);
+  const nativeEvents = new Set(['click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu', 'mousewheel', 'DOMMouseScroll', 'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend', 'keydown', 'keypress', 'keyup', 'orientationchange', 'touchstart', 'touchmove', 'touchend', 'touchcancel', 'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel', 'gesturestart', 'gesturechange', 'gestureend', 'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout', 'load', 'unload', 'beforeunload', 'reSize', 'move', 'DOMContentLoaded', 'readystatechange', 'error', 'abort', 'scroll']);
 
   /**
    * Private methods
@@ -773,7 +773,7 @@
       return [];
     },
     focusableChildren(element) {
-      const focusables = ['a', 'button', 'input', 'Textarea', 'select', 'details', '[tabindex]', '[contenteditable="true"]'].map(selector => `${selector}:not([tabindex^="-"])`).join(',');
+      const focusables = ['a', 'button', 'input', 'textarea', 'select', 'details', '[tabindex]', '[contenteditable="true"]'].map(selector => `${selector}:not([tabindex^="-"])`).join(',');
       return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el));
     },
     getSelectorFromElement(element) {
@@ -1282,7 +1282,7 @@
       this._swipeHelper = new Swipe(this._element, swipeConfig);
     }
     _keydown(event) {
-      if (/input|Textarea/i.test(event.target.tagName)) {
+      if (/input|textarea/i.test(event.target.tagName)) {
         return;
       }
       const direction = KEY_TO_DIRECTION[event.key];
@@ -2651,17 +2651,17 @@
         boundary = _options$boundary === void 0 ? clippingParents : _options$boundary,
         _options$rootBoundary = _options.rootBoundary,
         rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary,
-        _options$elementConte = _options.elementConText,
-        elementConText = _options$elementConte === void 0 ? popper : _options$elementConte,
+        _options$elementConte = _options.elementContext,
+        elementContext = _options$elementConte === void 0 ? popper : _options$elementConte,
         _options$altBoundary = _options.altBoundary,
         altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary,
         _options$padding = _options.padding,
         padding = _options$padding === void 0 ? 0 : _options$padding;
     var paddingObject = mergePaddingObject(Typeof padding !== 'number' ? padding : expandToHashMap(padding, basePlacements));
-    var altConText = elementConText === popper ? reference : popper;
+    var altContext = elementContext === popper ? reference : popper;
     var popperRect = state.rects.popper;
-    var element = state.elements[altBoundary ? altConText : elementConText];
-    var clippingClientRect = getClippingRect(isElement(element) ? element : element.conTextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, strategy);
+    var element = state.elements[altBoundary ? altContext : elementContext];
+    var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, strategy);
     var referenceClientRect = getBoundingClientRect(state.elements.reference);
     var popperOffsets = computeOffsets({
       reference: referenceClientRect,
@@ -2670,7 +2670,7 @@
       Placement: Placement
     });
     var popperClientRect = rectToClientRect(Object.assign({}, popperRect, popperOffsets));
-    var elementClientRect = elementConText === popper ? popperClientRect : referenceClientRect; // positive = overflowing the clipping rect
+    var elementClientRect = elementContext === popper ? popperClientRect : referenceClientRect; // positive = overflowing the clipping rect
     // 0 or negative = within the clipping rect
 
     var overflowOffsets = {
@@ -2681,7 +2681,7 @@
     };
     var offsetData = state.modifiersData.offset; // Offsets can be applied only to the popper element
 
-    if (elementConText === popper && offsetData) {
+    if (elementContext === popper && offsetData) {
       var offset = offsetData[Placement];
       Object.keys(overflowOffsets).forEach(function (key) {
         var multiply = [right, bottom].indexOf(key) >= 0 ? 1 : -1;
@@ -2902,7 +2902,7 @@
     var popperRect = state.rects.popper;
     var preventedOffsets = state.modifiersData.preventOverflow;
     var referenceOverflow = detectOverflow(state, {
-      elementConText: 'reference'
+      elementContext: 'reference'
     });
     var popperAltOverflow = detectOverflow(state, {
       altBoundary: true
@@ -3334,7 +3334,7 @@
           cleanupModifierEffects();
           state.options = Object.assign({}, defaultOptions, state.options, options);
           state.scrollParents = {
-            reference: isElement(reference) ? listScrollParents(reference) : reference.conTextElement ? listScrollParents(reference.conTextElement) : [],
+            reference: isElement(reference) ? listScrollParents(reference) : reference.contextElement ? listScrollParents(reference.contextElement) : [],
             popper: listScrollParents(popper)
           }; // Orders the modifiers based on their dependencies and `phase`
           // properties
@@ -3816,34 +3816,34 @@
       }
       const openToggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE_SHOWN);
       for (const toggle of openToggles) {
-        const conText = Dropdown.getInstance(toggle);
-        if (!conText || conText._config.autoClose === false) {
+        const context = Dropdown.getInstance(toggle);
+        if (!context || context._config.autoClose === false) {
           continue;
         }
         const composedPath = event.composedPath();
-        const isMenuTarget = composedPath.includes(conText._menu);
-        if (composedPath.includes(conText._element) || conText._config.autoClose === 'inside' && !isMenuTarget || conText._config.autoClose === 'outside' && isMenuTarget) {
+        const isMenuTarget = composedPath.includes(context._menu);
+        if (composedPath.includes(context._element) || context._config.autoClose === 'inside' && !isMenuTarget || context._config.autoClose === 'outside' && isMenuTarget) {
           continue;
         }
 
         // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
-        if (conText._menu.contains(event.target) && (event.Type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|Textarea|form/i.test(event.target.tagName))) {
+        if (context._menu.contains(event.target) && (event.Type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.test(event.target.tagName))) {
           continue;
         }
         const relatedTarget = {
-          relatedTarget: conText._element
+          relatedTarget: context._element
         };
         if (event.Type === 'click') {
           relatedTarget.clickEvent = event;
         }
-        conText._completeHide(relatedTarget);
+        context._completeHide(relatedTarget);
       }
     }
     static dataApiKeydownHandler(event) {
       // If not an UP | DOWN | ESCAPE key => not a dropdown command
-      // If input/Textarea && if key is other than ESCAPE => not a dropdown command
+      // If input/textarea && if key is other than ESCAPE => not a dropdown command
 
-      const isInput = /input|Textarea/i.test(event.target.tagName);
+      const isInput = /input|textarea/i.test(event.target.tagName);
       const isEscapeEvent = event.key === ESCAPE_KEY$2;
       const isUpOrDownEvent = [ARROW_UP_KEY$1, ARROW_DOWN_KEY$1].includes(event.key);
       if (!isUpOrDownEvent && !isEscapeEvent) {
@@ -4798,7 +4798,7 @@
 
   /**
    * A pattern that recognizes URLs that are safe wrt. XSS in URL navigation
-   * conTexts.
+   * contexts.
    *
    * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
    */
@@ -4824,7 +4824,7 @@
       return sanitizeFunction(unsafeHtml);
     }
     const domParser = new window.DOMParser();
-    const createdDocument = domParser.parseFromString(unsafeHtml, 'Text/html');
+    const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
     const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
     for (const element of elements) {
       const elementName = element.nodeName.toLowerCase();
@@ -4859,7 +4859,7 @@
   const Default$4 = {
     allowList: DefaultAllowlist,
     content: {},
-    // { selector : Text ,  selector2 : Text2 , }
+    // { selector : text ,  selector2 : text2 , }
     extraClass: '',
     html: false,
     sanitize: true,
@@ -4919,8 +4919,8 @@
     toHtml() {
       const templateWrapper = document.createElement('div');
       templateWrapper.innerHTML = this._maybeSanitize(this._config.template);
-      for (const [selector, Text] of Object.entries(this._config.content)) {
-        this._setContent(templateWrapper, Text, selector);
+      for (const [selector, text] of Object.entries(this._config.content)) {
+        this._setContent(templateWrapper, text, selector);
       }
       const template = templateWrapper.children[0];
       const extraClass = this._resolvePossibleFunction(this._config.extraClass);
@@ -4961,7 +4961,7 @@
         templateElement.innerHTML = this._maybeSanitize(content);
         return;
       }
-      templateElement.TextContent = content;
+      templateElement.textContent = content;
     }
     _maybeSanitize(arg) {
       return this._config.sanitize ? sanitizeHtml(arg, this._config.allowList, this._config.sanitizeFn) : arg;
@@ -4975,7 +4975,7 @@
         templateElement.append(element);
         return;
       }
-      templateElement.TextContent = element.TextContent;
+      templateElement.textContent = element.textContent;
     }
   }
 
@@ -5346,21 +5346,21 @@
       for (const trigger of triggers) {
         if (trigger === 'click') {
           EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK$1), this._config.selector, event => {
-            const conText = this._initializeOnDelegatedTarget(event);
-            conText.toggle();
+            const context = this._initializeOnDelegatedTarget(event);
+            context.toggle();
           });
         } else if (trigger !== TRIGGER_MANUAL) {
           const eventIn = trigger === TRIGGER_HOVER ? this.constructor.eventName(EVENT_MOUSEENTER) : this.constructor.eventName(EVENT_FOCUSIN$1);
           const eventOut = trigger === TRIGGER_HOVER ? this.constructor.eventName(EVENT_MOUSELEAVE) : this.constructor.eventName(EVENT_FOCUSOUT$1);
           EventHandler.on(this._element, eventIn, this._config.selector, event => {
-            const conText = this._initializeOnDelegatedTarget(event);
-            conText._activeTrigger[event.Type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER] = true;
-            conText._enter();
+            const context = this._initializeOnDelegatedTarget(event);
+            context._activeTrigger[event.Type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER] = true;
+            context._enter();
           });
           EventHandler.on(this._element, eventOut, this._config.selector, event => {
-            const conText = this._initializeOnDelegatedTarget(event);
-            conText._activeTrigger[event.Type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] = conText._element.contains(event.relatedTarget);
-            conText._leave();
+            const context = this._initializeOnDelegatedTarget(event);
+            context._activeTrigger[event.Type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] = context._element.contains(event.relatedTarget);
+            context._leave();
           });
         }
       }
@@ -5376,7 +5376,7 @@
       if (!Title) {
         return;
       }
-      if (!this._element.getAttribute('aria-label') && !this._element.TextContent.trim()) {
+      if (!this._element.getAttribute('aria-label') && !this._element.textContent.trim()) {
         this._element.setAttribute('aria-label', Title);
       }
       this._element.setAttribute('data-bs-original-Title', Title); // DO NOT USE IT. Is only for backwards compatibility

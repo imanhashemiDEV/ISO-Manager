@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.DailyReports
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,15 +30,15 @@ namespace ISO_Manager.Pages.Admin.DailyReports
                 return NotFound();
             }
 
-            var dailyreport =  await _conText.DailyReports.FirstOrDefaultAsync(m => m.Id == id);
+            var dailyreport =  await _context.DailyReports.FirstOrDefaultAsync(m => m.Id == id);
             if (dailyreport == null)
             {
                 return NotFound();
             }
             DailyReport = dailyreport;
-           ViewData["CampBossId"] = new SelectList(_conText.Users, "id", "name");
-           ViewData["DoctorId"] = new SelectList(_conText.Users, "id", "name");
-           ViewData["RigBossId"] = new SelectList(_conText.Users, "id", "name");
+           ViewData["CampBossId"] = new SelectList(_context.Users, "id", "name");
+           ViewData["DoctorId"] = new SelectList(_context.Users, "id", "name");
+           ViewData["RigBossId"] = new SelectList(_context.Users, "id", "name");
             return Page();
         }
 
@@ -51,11 +51,11 @@ namespace ISO_Manager.Pages.Admin.DailyReports
                 return Page();
             }
 
-            _conText.Attach(DailyReport).State = EntityState.Modified;
+            _context.Attach(DailyReport).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -74,7 +74,7 @@ namespace ISO_Manager.Pages.Admin.DailyReports
 
         private bool DailyReportExists(long id)
         {
-            return _conText.DailyReports.Any(e => e.Id == id);
+            return _context.DailyReports.Any(e => e.Id == id);
         }
     }
 }

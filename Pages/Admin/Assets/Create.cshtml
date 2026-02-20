@@ -27,42 +27,42 @@ ViewData["Title"] = "ایجاد اموال";
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Asset.Title" class="control-label"></label>
                                     <input asp-for="Asset.Title" class="form-control" />
-                                    <span asp-validation-for="Asset.Title" class="Text-danger"></span>
+                                    <span asp-validation-for="Asset.Title" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Asset.ETitle" class="control-label"></label>
                                     <input asp-for="Asset.ETitle" class="form-control" />
-                                    <span asp-validation-for="Asset.ETitle" class="Text-danger"></span>
+                                    <span asp-validation-for="Asset.ETitle" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Asset.AssetNumber" class="control-label"></label>
                                     <input asp-for="Asset.AssetNumber" class="form-control" />
-                                    <span asp-validation-for="Asset.AssetNumber" class="Text-danger"></span>
+                                    <span asp-validation-for="Asset.AssetNumber" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Asset.SerialNumber" class="control-label"></label>
                                     <input asp-for="Asset.SerialNumber" class="form-control" />
-                                    <span asp-validation-for="Asset.SerialNumber" class="Text-danger"></span>
+                                    <span asp-validation-for="Asset.SerialNumber" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Asset.DeviceUser" class="control-label"></label>
                                     <input asp-for="Asset.DeviceUser" class="form-control" />
-                                    <span asp-validation-for="Asset.DeviceUser" class="Text-danger"></span>
+                                    <span asp-validation-for="Asset.DeviceUser" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Asset.Description" class="control-label"></label>
                                     <input asp-for="Asset.Description" class="form-control" />
-                                    <span asp-validation-for="Asset.Description" class="Text-danger"></span>
+                                    <span asp-validation-for="Asset.Description" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Asset.InspectionDate" class="control-label"></label>
                                     <input asp-for="Asset.InspectionDate" class="form-control" />
-                                    <span asp-validation-for="Asset.InspectionDate" class="Text-danger"></span>
+                                    <span asp-validation-for="Asset.InspectionDate" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Asset.Status" class="control-label"></label>
@@ -70,7 +70,7 @@ ViewData["Title"] = "ایجاد اموال";
                                         <option value="active">فعال</option>
                                         <option value="deactive">غیر فعال</option>
                                     </select>
-                                    <span asp-validation-for="Asset.Status" class="Text-danger"></span>
+                                    <span asp-validation-for="Asset.Status" class="text-danger"></span>
                                 </div>
                             </div>
                             <button Type="submit" class="btn btn-success">ثبت</button>

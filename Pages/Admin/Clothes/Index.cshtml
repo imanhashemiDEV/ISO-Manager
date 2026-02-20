@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <form method="post" class="flex w-full items-center">
                             <div class=" w-1/2 ml-4">
-                                <input Type="Text" class="form-control" asp-for="Search">
+                                <input Type="text" class="form-control" asp-for="Search">
                             </div>
                             <div class="">
                                 <button Type="submit" class="btn btn-primary">جستجو</button>
@@ -74,59 +74,59 @@
                                 {
                                     <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
-                                            <td class="Text-start">
+                                            <td class="text-start">
                                                 @if (item.ClothType.Equals("Shoes"))
                                                 {
-                                                    <span class="badge Text-white bg-rose-500">کفش ایمنی</span>
+                                                    <span class="badge text-white bg-rose-500">کفش ایمنی</span>
                                                 }
                                                 else if (item.ClothType.Equals("boot"))
                                                 {
-                                                    <span class="badge Text-white bg-danger-500">کفش ساق بلند</span>
+                                                    <span class="badge text-white bg-danger-500">کفش ساق بلند</span>
                                                 }
                                                 else if (item.ClothType.Equals("boot-Shoes"))
                                                 {
-                                                    <span class="badge Text-white bg-info-500">چکمه ایمنی</span>
+                                                    <span class="badge text-white bg-info-500">چکمه ایمنی</span>
                                                 }
                                                 else if (item.ClothType.Equals("boiler-suit"))
                                                 {
-                                                    <span class="badge Text-white bg-secondary-500">لباس کار</span>
+                                                    <span class="badge text-white bg-secondary-500">لباس کار</span>
                                                 }
                                                 else if (item.ClothType.Equals("glasses"))
                                                 {
-                                                    <span class="badge Text-white bg-success-500">عینک ایمنی</span>
+                                                    <span class="badge text-white bg-success-500">عینک ایمنی</span>
                                                 }
                                                 else if (item.ClothType.Equals("earmuff"))
                                                 {
-                                                    <span class="badge Text-white bg-blue-500">گوشی ایمنی</span>
+                                                    <span class="badge text-white bg-blue-500">گوشی ایمنی</span>
                                                 }
                                                 else if (item.ClothType.Equals("safety-helmet"))
                                                 {
-                                                    <span class="badge Text-white bg-yellow-500">کلاه ایمنی</span>
+                                                    <span class="badge text-white bg-yellow-500">کلاه ایمنی</span>
                                                 }
                                                 else if (item.ClothType.Equals("rain-coat"))
                                                 {
-                                                    <span class="badge Text-white bg-black-500">بارانی</span>
+                                                    <span class="badge text-white bg-black-500">بارانی</span>
                                                 }
                                             </td>
                                             <td>
                                                 @DateToPersian.ToShamsi(item.ReceiveDate)
                                             </td>
-                                        <td class="Text-start">
+                                        <td class="text-start">
                                                 @if (item.ReceiveType.Equals("usual"))
                                             {
-                                                <span class="badge Text-white bg-success-500">سهمیه</span>
+                                                <span class="badge text-white bg-success-500">سهمیه</span>
                                             }
                                                 else if (item.ReceiveType.Equals("emergency"))
                                             {
-                                                <span class="badge Text-white bg-danger-500">اضطراری</span>
+                                                <span class="badge text-white bg-danger-500">اضطراری</span>
                                             }
                                                 else if (item.ReceiveType.Equals("BossOrder"))
                                                 {
-                                                    <span class="badge Text-white bg-yellow-500">دستور رئیس</span>
+                                                    <span class="badge text-white bg-yellow-500">دستور رئیس</span>
                                                 }
                                                 else if (item.ReceiveType.Equals("guest"))
                                                 {
-                                                    <span class="badge Text-white bg-info-500">مهمان</span>
+                                                    <span class="badge text-white bg-info-500">مهمان</span>
                                                 }
                                         </td>
                                         <td>
@@ -137,7 +137,7 @@
                                         </td>
                                         <td>
                                             <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                <i class="ti ti-edit Text-xl leading-none"></i>
+                                                <i class="ti ti-edit text-xl leading-none"></i>
                                             </a>
                                         </td>
                                     </tr>

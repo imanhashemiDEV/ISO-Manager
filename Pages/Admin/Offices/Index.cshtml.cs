@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Offices
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<Office> Office { get;set; } = default!;
@@ -27,7 +27,7 @@ namespace ISO_Manager.Pages.Admin.Offices
 
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _conText.Offices.Count();
+            var ItemCount = _context.Offices.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -40,7 +40,7 @@ namespace ISO_Manager.Pages.Admin.Offices
             {
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
-            Office = await _conText.Offices.Skip(skip).Take(Take)
+            Office = await _context.Offices.Skip(skip).Take(Take)
                 .Include(o => o.Organization).ToListAsync();
         }
     }

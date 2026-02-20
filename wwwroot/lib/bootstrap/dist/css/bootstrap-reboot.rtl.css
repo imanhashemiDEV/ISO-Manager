@@ -44,14 +44,14 @@
   --bs-danger-rgb: 220, 53, 69;
   --bs-light-rgb: 248, 249, 250;
   --bs-dark-rgb: 33, 37, 41;
-  --bs-primary-Text-emphasis: #052c65;
-  --bs-secondary-Text-emphasis: #2b2f32;
-  --bs-success-Text-emphasis: #0a3622;
-  --bs-info-Text-emphasis: #055160;
-  --bs-warning-Text-emphasis: #664d03;
-  --bs-danger-Text-emphasis: #58151c;
-  --bs-light-Text-emphasis: #495057;
-  --bs-dark-Text-emphasis: #495057;
+  --bs-primary-text-emphasis: #052c65;
+  --bs-secondary-text-emphasis: #2b2f32;
+  --bs-success-text-emphasis: #0a3622;
+  --bs-info-text-emphasis: #055160;
+  --bs-warning-text-emphasis: #664d03;
+  --bs-danger-text-emphasis: #58151c;
+  --bs-light-text-emphasis: #495057;
+  --bs-dark-text-emphasis: #495057;
   --bs-primary-bg-subtle: #cfe2ff;
   --bs-secondary-bg-subtle: #e2e3e5;
   --bs-success-bg-subtle: #d1e7dd;
@@ -140,14 +140,14 @@
   --bs-tertiary-color-rgb: 222, 226, 230;
   --bs-tertiary-bg: #2b3035;
   --bs-tertiary-bg-rgb: 43, 48, 53;
-  --bs-primary-Text-emphasis: #6ea8fe;
-  --bs-secondary-Text-emphasis: #a7acb1;
-  --bs-success-Text-emphasis: #75b798;
-  --bs-info-Text-emphasis: #6edff6;
-  --bs-warning-Text-emphasis: #ffda6a;
-  --bs-danger-Text-emphasis: #ea868f;
-  --bs-light-Text-emphasis: #f8f9fa;
-  --bs-dark-Text-emphasis: #dee2e6;
+  --bs-primary-text-emphasis: #6ea8fe;
+  --bs-secondary-text-emphasis: #a7acb1;
+  --bs-success-text-emphasis: #75b798;
+  --bs-info-text-emphasis: #6edff6;
+  --bs-warning-text-emphasis: #ffda6a;
+  --bs-danger-text-emphasis: #ea868f;
+  --bs-light-text-emphasis: #f8f9fa;
+  --bs-dark-text-emphasis: #dee2e6;
   --bs-primary-bg-subtle: #031633;
   --bs-secondary-bg-subtle: #161719;
   --bs-success-bg-subtle: #051b11;
@@ -199,9 +199,9 @@ body {
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
-  Text-align: var(--bs-body-Text-align);
+  text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
-  -webkit-Text-Size-adjust: 100%;
+  -webkit-text-Size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -271,11 +271,11 @@ p {
 }
 
 abbr[Title] {
-  -webkit-Text-decoration: underline dotted;
-  Text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+  text-decoration: underline dotted;
   cursor: help;
-  -webkit-Text-decoration-skip-ink: none;
-  Text-decoration-skip-ink: none;
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
 }
 
 address {
@@ -349,7 +349,7 @@ sup {
 
 a {
   color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
-  Text-decoration: underline;
+  text-decoration: underline;
 }
 a:hover {
   --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
@@ -357,7 +357,7 @@ a:hover {
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
   color: inherit;
-  Text-decoration: none;
+  text-decoration: none;
 }
 
 pre,
@@ -420,12 +420,12 @@ caption {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   color: var(--bs-secondary-color);
-  Text-align: right;
+  text-align: right;
 }
 
 th {
-  Text-align: inherit;
-  Text-align: -webkit-match-parent;
+  text-align: inherit;
+  text-align: -webkit-match-parent;
 }
 
 thead,
@@ -455,7 +455,7 @@ input,
 button,
 select,
 optgroup,
-Textarea {
+textarea {
   margin: 0;
   font-family: inherit;
   font-Size: inherit;
@@ -464,7 +464,7 @@ Textarea {
 
 button,
 select {
-  Text-transform: none;
+  text-transform: none;
 }
 
 [role=button] {
@@ -500,7 +500,7 @@ button:not(:disabled),
   border-style: none;
 }
 
-Textarea {
+textarea {
   reSize: vertical;
 }
 
@@ -529,7 +529,7 @@ legend + * {
 }
 
 ::-webkit-datetime-edit-fields-wrapper,
-::-webkit-datetime-edit-Text,
+::-webkit-datetime-edit-text,
 ::-webkit-datetime-edit-minute,
 ::-webkit-datetime-edit-hour-field,
 ::-webkit-datetime-edit-day-field,
@@ -543,7 +543,7 @@ legend + * {
 }
 
 [Type=search] {
-  -webkit-appearance: Textfield;
+  -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 

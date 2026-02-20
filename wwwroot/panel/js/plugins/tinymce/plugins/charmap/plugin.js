@@ -366,7 +366,7 @@
           ]
         },
         {
-          name: 'Text',
+          name: 'text',
           characters: [
             [
               169,

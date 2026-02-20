@@ -21,11 +21,11 @@ body {
   margin-bottom: 60px;
 }
 
-.form-floating > .form-control-plainText::Placeholder, .form-floating > .form-control::Placeholder {
+.form-floating > .form-control-plaintext::Placeholder, .form-floating > .form-control::Placeholder {
   color: var(--bs-secondary-color);
-  Text-align: end;
+  text-align: end;
 }
 
-.form-floating > .form-control-plainText:focus::Placeholder, .form-floating > .form-control:focus::Placeholder {
-  Text-align: start;
+.form-floating > .form-control-plaintext:focus::Placeholder, .form-floating > .form-control:focus::Placeholder {
+  text-align: start;
 }

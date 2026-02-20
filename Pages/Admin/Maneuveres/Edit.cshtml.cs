@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Maneuveres
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace ISO_Manager.Pages.Admin.Maneuveres
                 return NotFound();
             }
 
-            var maneuver =  await _conText.Maneuvers.FirstOrDefaultAsync(m => m.Id == id);
+            var maneuver =  await _context.Maneuvers.FirstOrDefaultAsync(m => m.Id == id);
             if (maneuver == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace ISO_Manager.Pages.Admin.Maneuveres
                 return Page();
             }
 
-            _conText.Attach(Maneuver).State = EntityState.Modified;
+            _context.Attach(Maneuver).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace ISO_Manager.Pages.Admin.Maneuveres
 
         private bool ManeuverExists(long id)
         {
-            return _conText.Maneuvers.Any(e => e.Id == id);
+            return _context.Maneuvers.Any(e => e.Id == id);
         }
     }
 }

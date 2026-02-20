@@ -227,14 +227,14 @@
     };
 
     const ELEMENT = 1;
-    const TEXT = 3;
+    const text = 3;
 
     const type = element => element.dom.nodeType;
     const value = element => element.dom.nodeValue;
     const isType = t => element => type(element) === t;
     const isHTMLElement = element => isElement(element) && isPrototypeOf(element.dom);
     const isElement = isType(ELEMENT);
-    const isText = isType(TEXT);
+    const istext = isType(text);
 
     const rawSet = (dom, key, value) => {
       if (isString(value) || isBoolean(value) || isNumber(value)) {
@@ -319,9 +319,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (text, scope) => {
+    const fromtext = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createtextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -334,7 +334,7 @@
     const SugarElement = {
       fromHtml,
       fromTag,
-      fromText,
+      fromtext,
       fromDom,
       fromPoint
     };
@@ -372,7 +372,7 @@
     const isWrappedNbsp = node => node.nodeName.toLowerCase() === 'span' && node.classList.contains('mce-nbsp-wrap');
     const isMatch = n => {
       const value$1 = value(n);
-      return isText(n) && isString(value$1) && regExp.test(value$1);
+      return istext(n) && isString(value$1) && regExp.test(value$1);
     };
     const isContentEditableFalse = node => isHTMLElement(node) && getRaw(node) === 'false';
     const isChildEditable = (node, currentState) => {

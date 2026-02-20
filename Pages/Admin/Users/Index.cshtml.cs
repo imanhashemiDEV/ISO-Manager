@@ -10,11 +10,11 @@ namespace ISO_Manager.Pages.Admin.Users
 {
     public class IndexModel : PageModel
     {
-        public readonly ApplicationDbContext _conText;
+        public readonly ApplicationDbContext _context;
 
-        public IndexModel(ApplicationDbContext conText)
+        public IndexModel(ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<User> Users { get; set; } = default!;
@@ -23,12 +23,12 @@ namespace ISO_Manager.Pages.Admin.Users
         public string Search { get; set; }
         public async Task OnGet()
         {
-            Users = await _conText.Users.OrderByDescending(c=>c.UpdatedAt).Take(10).ToListAsync();
+            Users = await _context.Users.OrderByDescending(c=>c.UpdatedAt).Take(10).ToListAsync();
         }
 
         public async Task OnPostAsync()
         {
-            Users = await _conText.Users
+            Users = await _context.Users
                 .Where(m => m.Mobile == Search || m.Name.Contains(Search) || m.RegisterCode == Search || m.NationalCode == Search)
                 .ToListAsync();
 

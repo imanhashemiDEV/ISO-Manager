@@ -13,7 +13,7 @@ namespace ISO_Manager.Models
         public DateTime? InspectionDate { get; set; }
 
         [Display(Name = "متن بازرسی")]
-        public string? Text { get; set; }
+        public string? text { get; set; }
 
         [Display(Name = "توضیحات")]
         public string? Description { get; set; }
@@ -31,9 +31,9 @@ namespace ISO_Manager.Models
         public int? InspectionId { get; set; }
         public virtual Inspection? Inspection { get; set; }
 
-        [ForeignKey("InspectionText")]
-        public int? TextId { get; set; }
-        public virtual InspectionText? InspectionText { get; set; }
+        [ForeignKey("Inspectiontext")]
+        public int? textId { get; set; }
+        public virtual Inspectiontext? Inspectiontext { get; set; }
 
         [ForeignKey("WorkPlace")]
         [Display(Name = "نام محل")]

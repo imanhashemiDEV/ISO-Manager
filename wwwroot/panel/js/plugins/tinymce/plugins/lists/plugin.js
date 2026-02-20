@@ -271,7 +271,7 @@
     const COMMENT = 8;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const TEXT = 3;
+    const text = 3;
 
     const fromHtml = (html, scope) => {
       const doc = scope || document;
@@ -289,9 +289,9 @@
       const node = doc.createElement(tag);
       return fromDom$1(node);
     };
-    const fromText = (text, scope) => {
+    const fromtext = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createtextNode(text);
       return fromDom$1(node);
     };
     const fromDom$1 = node => {
@@ -304,7 +304,7 @@
     const SugarElement = {
       fromHtml,
       fromTag,
-      fromText,
+      fromtext,
       fromDom: fromDom$1,
       fromPoint
     };
@@ -380,7 +380,7 @@
     const isComment = element => type(element) === COMMENT || name(element) === '#comment';
     const isHTMLElement = element => isElement$1(element) && isPrototypeOf(element.dom);
     const isElement$1 = isType(ELEMENT);
-    const isText = isType(TEXT);
+    const istext = isType(text);
     const isDocumentFragment = isType(DOCUMENT_FRAGMENT);
     const isTag = tag => e => isElement$1(e) && name(e) === tag;
 
@@ -404,7 +404,7 @@
     const getShadowHost = e => SugarElement.fromDom(e.dom.host);
 
     const inBody = element => {
-      const dom = isText(element) ? element.dom.parentNode : element.dom;
+      const dom = istext(element) ? element.dom.parentNode : element.dom;
       if (dom === undefined || dom === null || dom.ownerDocument === null) {
         return false;
       }
@@ -583,7 +583,7 @@
 
     const matchNodeName = name => node => isNonNullable(node) && node.nodeName.toLowerCase() === name;
     const matchNodeNames = regex => node => isNonNullable(node) && regex.test(node.nodeName);
-    const isTextNode$1 = node => isNonNullable(node) && node.nodeType === 3;
+    const istextNode$1 = node => isNonNullable(node) && node.nodeType === 3;
     const isElement = node => isNonNullable(node) && node.nodeType === 1;
     const isListNode = matchNodeNames(/^(OL|UL|DL)$/);
     const isOlUlNode = matchNodeNames(/^(OL|UL)$/);
@@ -596,7 +596,7 @@
       var _a;
       return ((_a = node.parentNode) === null || _a === void 0 ? void 0 : _a.firstChild) === node;
     };
-    const isTextBlock = (editor, node) => isNonNullable(node) && node.nodeName in editor.schema.getTextBlockElements();
+    const istextBlock = (editor, node) => isNonNullable(node) && node.nodeName in editor.schema.gettextBlockElements();
     const isBlock = (node, blockElements) => isNonNullable(node) && node.nodeName in blockElements;
     const isVoid = (editor, node) => isNonNullable(node) && node.nodeName in editor.schema.getVoidElements();
     const isBogusBr = (dom, node) => {
@@ -626,7 +626,7 @@
     const getForcedRootBlock = option('forced_root_block');
     const getForcedRootBlockAttrs = option('forced_root_block_attrs');
 
-    const createTextBlock = (editor, contentNode, attrs = {}) => {
+    const createtextBlock = (editor, contentNode, attrs = {}) => {
       const dom = editor.dom;
       const blockElements = editor.schema.getBlockElements();
       const fragment = dom.createFragment();
@@ -676,7 +676,7 @@
         DOM$2.remove(targetNode);
       };
       const bookmarks = DOM$2.select('span[data-mce-type="bookmark"]', list);
-      const newBlock = createTextBlock(editor, li);
+      const newBlock = createtextBlock(editor, li);
       const tmpRng = DOM$2.createRng();
       tmpRng.setStartAfter(li);
       tmpRng.setEndAfter(list);
@@ -724,24 +724,24 @@
     };
 
     const getNormalizedPoint = (container, offset) => {
-      if (isTextNode$1(container)) {
+      if (istextNode$1(container)) {
         return {
           container,
           offset
         };
       }
       const node = global$6.getNode(container, offset);
-      if (isTextNode$1(node)) {
+      if (istextNode$1(node)) {
         return {
           container: node,
           offset: offset >= container.childNodes.length ? node.data.length : 0
         };
-      } else if (node.previousSibling && isTextNode$1(node.previousSibling)) {
+      } else if (node.previousSibling && istextNode$1(node.previousSibling)) {
         return {
           container: node.previousSibling,
           offset: node.previousSibling.data.length
         };
-      } else if (node.nextSibling && isTextNode$1(node.nextSibling)) {
+      } else if (node.nextSibling && istextNode$1(node.nextSibling)) {
         return {
           container: node.nextSibling,
           offset: 0
@@ -1132,7 +1132,7 @@
       return map(normalizedEntries, entry => {
         const content = !isEntryComment(entry) ? fromElements(entry.content) : fromElements([SugarElement.fromHtml(`<!--${ entry.content }-->`)]);
         const listItemAttrs = isEntryList(entry) ? entry.itemAttributes : {};
-        return SugarElement.fromDom(createTextBlock(editor, content.dom, listItemAttrs));
+        return SugarElement.fromDom(createtextBlock(editor, content.dom, listItemAttrs));
       });
     };
     const indentedComposer = (editor, entries) => {
@@ -1330,33 +1330,33 @@
         }
         return Optional.none();
       };
-      if (start && isTextNode$1(container)) {
+      if (start && istextNode$1(container)) {
         if (isZwsp(container.textContent)) {
           container = findBetterContainer(container, false).getOr(container);
         } else {
           if (container.parentNode !== null && isInline(editor, container.parentNode)) {
             container = container.parentNode;
           }
-          while (container.previousSibling !== null && (isInline(editor, container.previousSibling) || isTextNode$1(container.previousSibling))) {
+          while (container.previousSibling !== null && (isInline(editor, container.previousSibling) || istextNode$1(container.previousSibling))) {
             container = container.previousSibling;
           }
         }
       }
-      if (!start && isTextNode$1(container)) {
+      if (!start && istextNode$1(container)) {
         if (isZwsp(container.textContent)) {
           container = findBetterContainer(container, true).getOr(container);
         } else {
           if (container.parentNode !== null && isInline(editor, container.parentNode)) {
             container = container.parentNode;
           }
-          while (container.nextSibling !== null && (isInline(editor, container.nextSibling) || isTextNode$1(container.nextSibling))) {
+          while (container.nextSibling !== null && (isInline(editor, container.nextSibling) || istextNode$1(container.nextSibling))) {
             container = container.nextSibling;
           }
         }
       }
       while (container.parentNode !== root) {
         const parent = container.parentNode;
-        if (isTextBlock(editor, container)) {
+        if (istextBlock(editor, container)) {
           return container;
         }
         if (/^(TD|TH)$/.test(parent.nodeName)) {
@@ -1366,7 +1366,7 @@
       }
       return container;
     };
-    const getSelectedTextBlocks = (editor, rng, root) => {
+    const getSelectedtextBlocks = (editor, rng, root) => {
       const textBlocks = [];
       const dom = editor.dom;
       const startNode = getEndPointNode(editor, rng, true, root);
@@ -1381,7 +1381,7 @@
       }
       global$2.each(siblings, node => {
         var _a;
-        if (isTextBlock(editor, node)) {
+        if (istextBlock(editor, node)) {
           textBlocks.push(node);
           block = null;
           return;
@@ -1395,7 +1395,7 @@
         }
         const nextSibling = node.nextSibling;
         if (global$1.isBookmarkNode(node)) {
-          if (isListNode(nextSibling) || isTextBlock(editor, nextSibling) || !nextSibling && node.parentNode === root) {
+          if (isListNode(nextSibling) || istextBlock(editor, nextSibling) || !nextSibling && node.parentNode === root) {
             block = null;
             return;
           }
@@ -1437,8 +1437,8 @@
         listItemName = 'DT';
       }
       const bookmark = createBookmark(rng);
-      const selectedTextBlocks = filter$1(getSelectedTextBlocks(editor, rng, root), editor.dom.isEditable);
-      global$2.each(selectedTextBlocks, block => {
+      const selectedtextBlocks = filter$1(getSelectedtextBlocks(editor, rng, root), editor.dom.isEditable);
+      global$2.each(selectedtextBlocks, block => {
         let listBlock;
         const sibling = block.previousSibling;
         const parent = block.parentNode;
@@ -1629,7 +1629,7 @@
     const findNextCaretContainer = (editor, rng, isForward, root) => {
       let node = rng.startContainer;
       const offset = rng.startOffset;
-      if (isTextNode$1(node) && (isForward ? offset < node.data.length : offset > 0)) {
+      if (istextNode$1(node) && (isForward ? offset < node.data.length : offset > 0)) {
         return node;
       }
       const nonEmptyBlocks = editor.schema.getNonEmptyElements();
@@ -1650,7 +1650,7 @@
         if (nonEmptyBlocks[node.nodeName]) {
           return node;
         }
-        if (isTextNode$1(node) && node.data.length > 0) {
+        if (istextNode$1(node) && node.data.length > 0) {
           return node;
         }
       }
@@ -2054,7 +2054,7 @@
 
     var global = tinymce.util.Tools.resolve('tinymce.html.Node');
 
-    const isTextNode = node => node.type === 3;
+    const istextNode = node => node.type === 3;
     const isEmpty = nodeBuffer => nodeBuffer.length === 0;
     const wrapInvalidChildren = list => {
       const insertListItem = (buffer, refNode) => {
@@ -2067,12 +2067,12 @@
         }
       };
       const reducer = (buffer, node) => {
-        if (isTextNode(node)) {
+        if (istextNode(node)) {
           return [
             ...buffer,
             node
           ];
-        } else if (!isEmpty(buffer) && !isTextNode(node)) {
+        } else if (!isEmpty(buffer) && !istextNode(node)) {
           insertListItem(buffer, node);
           return [];
         } else {

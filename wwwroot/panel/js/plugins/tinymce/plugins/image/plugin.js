@@ -232,9 +232,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (text, scope) => {
+    const fromtext = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createtextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -247,7 +247,7 @@
     const SugarElement = {
       fromHtml,
       fromTag,
-      fromText,
+      fromtext,
       fromDom,
       fromPoint
     };
@@ -675,8 +675,8 @@
       updateAlt(image, oldData, newData);
     };
 
-    const normalizeCss$1 = (editor, cssText) => {
-      const css = editor.dom.styles.parse(cssText);
+    const normalizeCss$1 = (editor, csstext) => {
+      const css = editor.dom.styles.parse(csstext);
       const mergedCss = mergeMargins(css);
       const compressed = editor.dom.styles.parse(editor.dom.styles.serialize(mergedCss));
       return editor.dom.styles.serialize(compressed);
@@ -692,10 +692,10 @@
       }
       return imgElm;
     };
-    const splitTextBlock = (editor, figure) => {
+    const splittextBlock = (editor, figure) => {
       var _a;
       const dom = editor.dom;
-      const textBlockElements = filter(editor.schema.getTextBlockElements(), (_, parentElm) => !editor.schema.isValidChild(parentElm, 'figure'));
+      const textBlockElements = filter(editor.schema.gettextBlockElements(), (_, parentElm) => !editor.schema.isValidChild(parentElm, 'figure'));
       const textBlock = dom.getParent(figure.parentNode, node => hasNonNullableKey(textBlockElements, node.nodeName), editor.getBody());
       if (textBlock) {
         return (_a = dom.split(textBlock, figure)) !== null && _a !== void 0 ? _a : figure;
@@ -715,7 +715,7 @@
       const insertedElm = editor.dom.select('*[data-mce-id="__mcenew"]')[0];
       editor.dom.setAttrib(insertedElm, 'data-mce-id', null);
       if (isFigure(insertedElm)) {
-        const figure = splitTextBlock(editor, insertedElm);
+        const figure = splittextBlock(editor, insertedElm);
         editor.selection.select(figure);
       } else {
         editor.selection.select(insertedElm);
@@ -743,7 +743,7 @@
         syncSrcAttr(editor, image);
         if (isFigure(image.parentNode)) {
           const figure = image.parentNode;
-          splitTextBlock(editor, figure);
+          splittextBlock(editor, figure);
           editor.selection.select(image.parentNode);
         } else {
           editor.selection.select(image);
@@ -808,7 +808,7 @@
     var global = tinymce.util.Tools.resolve('tinymce.util.Tools');
 
     const getValue = item => isString(item.value) ? item.value : '';
-    const getText = item => {
+    const gettext = item => {
       if (isString(item.text)) {
         return item.text;
       } else if (isString(item.title)) {
@@ -820,7 +820,7 @@
     const sanitizeList = (list, extractValue) => {
       const out = [];
       global.each(list, item => {
-        const text = getText(item);
+        const text = gettext(item);
         if (item.menu !== undefined) {
           const items = sanitizeList(item.menu, extractValue);
           out.push({
@@ -1375,8 +1375,8 @@
     const alertErr = editor => (message, callback) => {
       editor.windowManager.alert(message, callback);
     };
-    const normalizeCss = editor => cssText => normalizeCss$1(editor, cssText);
-    const parseStyle = editor => cssText => editor.dom.parseStyle(cssText);
+    const normalizeCss = editor => csstext => normalizeCss$1(editor, csstext);
+    const parseStyle = editor => csstext => editor.dom.parseStyle(csstext);
     const serializeStyle = editor => (stylesArg, name) => editor.dom.serializeStyle(stylesArg, name);
     const uploadImage = editor => blobInfo => global$1(editor).upload([blobInfo], false).then(results => {
       var _a;

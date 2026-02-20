@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Users
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IActionResult OnGet()
@@ -35,14 +35,14 @@ namespace ISO_Manager.Pages.Admin.Users
                 return Page();
             }
 
-            if (_conText.Users.Any(i => i.Mobile == User.Mobile))
+            if (_context.Users.Any(i => i.Mobile == User.Mobile))
             {
                 ModelState.AddModelError("Contact.PhoneNumber",
                     "The Phone number is already in use.");
             }
 
-            _conText.Users.Add(User);
-            await _conText.SaveChangesAsync();
+            _context.Users.Add(User);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

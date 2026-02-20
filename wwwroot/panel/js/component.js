@@ -356,14 +356,14 @@ tooltipElements.forEach(element => {
     const targetElement = event.target;
 
     // Get the tooltip text and placement from the element's attributes
-    const tooltipText = targetElement.getAttribute('data-pc-title');
+    const tooltiptext = targetElement.getAttribute('data-pc-title');
     const tooltipPlacement = targetElement.getAttribute('data-pc-placement');
 
     // Create the tooltip template
     const tooltipTemplate = `
       <div class="flex items-center p-1 z-[1024]" role="tooltip">
         <span class="relative max-w-48 rounded-lg  py-1 px-2 text-xs text-white whitespace-normal text-center bg-dark-500">
-          ${tooltipText}
+          ${tooltiptext}
         </span>
       </div>
     `;

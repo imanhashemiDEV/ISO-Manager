@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Assets
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<Asset> Asset { get;set; } = default!;
@@ -26,7 +26,7 @@ namespace ISO_Manager.Pages.Admin.Assets
 
             var Take = 20;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _conText.Assets.Count();
+            var ItemCount = _context.Assets.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -40,7 +40,7 @@ namespace ISO_Manager.Pages.Admin.Assets
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            Asset = await _conText.Assets
+            Asset = await _context.Assets
                 .Skip(skip).Take(Take)
                 .ToListAsync();
         }

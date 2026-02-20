@@ -1,24 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ISO_Manager.Data;
+using ISO_Manager.Models;
+using ISO_Manager.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ISO_Manager.Data;
-using ISO_Manager.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ISO_Manager.Pages.Admin.Clothes
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
+
+        [BindProperty]
+        public DateTime ReceivedDate { get; set; }
 
         [BindProperty]
         public Cloth Cloth { get; set; } = default!;
@@ -30,19 +34,19 @@ namespace ISO_Manager.Pages.Admin.Clothes
                 return NotFound();
             }
 
-            var cloth =  await _conText.Clothes.FirstOrDefaultAsync(m => m.Id == id);
+            var cloth =  await _context.Clothes.FirstOrDefaultAsync(m => m.Id == id);
             if (cloth == null)
             {
                 return NotFound();
             }
             Cloth = cloth;
-           ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "id");
-           ViewData["UserId"] = new SelectList(_conText.Users, "id", "id");
+           ViewData["OrganizationId"] = new SelectList(_context.Organizations, "id", "id");
+           ViewData["UserId"] = new SelectList(_context.Users, "id", "id");
+            ReceivedDate = DateToPersian.ToShamsiDate(cloth.ReceiveDate);
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more information, see https://aka.ms/RazorPagesCRUD.
+      
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -50,30 +54,19 @@ namespace ISO_Manager.Pages.Admin.Clothes
                 return Page();
             }
 
-            _conText.Attach(Cloth).State = EntityState.Modified;
+            Cloth.ReceiveDate = DateToMiladi.ToMiladi(ReceivedDate);
 
-            try
-            {
-                await _conText.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ClothExists(Cloth.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _context.Attach(Cloth).State = EntityState.Modified;
+             await _context.SaveChangesAsync();
+            
+          
 
             return RedirectToPage("./Index");
         }
 
-        private bool ClothExists(long id)
+        private bool ClothExists(int id)
         {
-            return _conText.Clothes.Any(e => e.Id == id);
+            return _context.Clothes.Any(e => e.Id == id);
         }
     }
 }

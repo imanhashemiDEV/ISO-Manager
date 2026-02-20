@@ -27,28 +27,28 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input Type="hidden" asp-for="Reminder.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Reminder.Title" class="control-label"></label>
                                     <input asp-for="Reminder.Title" class="form-control" />
-                                    <span asp-validation-for="Reminder.Title" class="Text-danger"></span>
+                                    <span asp-validation-for="Reminder.Title" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Reminder.ReminderDate" class="control-label"></label>
                                     <input asp-for="Reminder.ReminderDate" class="form-control" />
-                                    <span asp-validation-for="Reminder.ReminderDate" class="Text-danger"></span>
+                                    <span asp-validation-for="Reminder.ReminderDate" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Reminder.Status" class="control-label"></label>
                                     <input asp-for="Reminder.Status" class="form-control" />
-                                    <span asp-validation-for="Reminder.Status" class="Text-danger"></span>
+                                    <span asp-validation-for="Reminder.Status" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Reminder.UserId" class="control-label"></label>
                                     <select asp-for="Reminder.UserId" class="form-control" asp-items="ViewBag.UserId" ></select>
-                                    <span asp-validation-for="Reminder.UserId" class="Text-danger"></span>
+                                    <span asp-validation-for="Reminder.UserId" class="text-danger"></span>
                                 </div>
                             </div>
                             <button Type="submit" class="btn btn-success">ثبت</button>

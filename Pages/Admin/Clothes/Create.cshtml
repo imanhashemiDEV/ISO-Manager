@@ -31,7 +31,7 @@
                                     <select id="users" asp-for="Cloth.UserId" class="form-select">
                                         @foreach (var item in ViewBag.users)
                                         {
-                                            <option value="@item.id">@item.name - - @item.register_code</option>
+                                            <option value="@item.Id">@item.Name - - @item.RegisterCode</option>
                                         }
                                     </select>
                                 </div>
@@ -48,7 +48,7 @@
                                         <option value="rain-coat">بارانی</option>
                                         <option value="Over-coat">اورکت</option>
                                     </select>
-                                    <span asp-validation-for="Cloth.ClothType" class="Text-danger"></span>
+                                    <span asp-validation-for="Cloth.ClothType" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Cloth.ReceiveType" class="control-label"></label>
@@ -58,24 +58,24 @@
                                         <option value="BossOrder">دستور رئیس HSE</option>
                                         <option value="guest">مهمان</option>
                                     </select>
-                                    <span asp-validation-for="Cloth.ReceiveType" class="Text-danger"></span>
+                                    <span asp-validation-for="Cloth.ReceiveType" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Cloth.ReceiveDate" class="control-label"></label>
-                                    <input data-jdp Type="Text"
+                                    <input data-jdp Type="text"
                                            asp-for="@Model.ReceivedDate"
-                                           class="form-control Text-right" dir="rtl">
-                                    <span asp-validation-for="Cloth.ReceiveDate" class="Text-danger"></span>
+                                           class="form-control text-right" dir="rtl">
+                                    <span asp-validation-for="Cloth.ReceiveDate" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Cloth.Size" class="control-label"></label>
                                     <input asp-for="Cloth.Size" class="form-control"/>
-                                    <span asp-validation-for="Cloth.Size" class="Text-danger"></span>
+                                    <span asp-validation-for="Cloth.Size" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Cloth.Description" class="control-label"></label>
                                     <input asp-for="Cloth.Description" class="form-control"/>
-                                    <span asp-validation-for="Cloth.Description" class="Text-danger"></span>
+                                    <span asp-validation-for="Cloth.Description" class="text-danger"></span>
                                 </div>
                             </div>
                             <button Type="submit" class="btn btn-success">ثبت</button>
@@ -92,6 +92,8 @@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <link rel="stylesheet" href="~/js/jalalidatepicker.min.js" />
+        <script src="~/js/jalalidatepicker.min.js"></script>
 
         <script>
 

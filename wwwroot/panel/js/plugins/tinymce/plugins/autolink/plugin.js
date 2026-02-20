@@ -76,9 +76,9 @@
   const isZwsp = char => char === zeroWidth;
   const removeZwsp = s => s.replace(/\uFEFF/g, '');
 
-  var global = tinymce.util.Tools.resolve('tinymce.dom.TextSeeker');
+  var global = tinymce.util.Tools.resolve('tinymce.dom.textSeeker');
 
-  const isTextNode = node => node.nodeType === 3;
+  const istextNode = node => node.nodeType === 3;
   const isElement = node => node.nodeType === 1;
   const isBracketOrSpace = char => /^[(\[{ \u00a0]$/.test(char);
   const hasProtocol = url => /^([A-Za-z][A-Za-z\d.+-]*:\/\/)|mailto:/.test(url);
@@ -97,7 +97,7 @@
     let tempOffset = offset;
     while (isElement(tempNode) && tempNode.childNodes[tempOffset]) {
       tempNode = tempNode.childNodes[tempOffset];
-      tempOffset = isTextNode(tempNode) ? tempNode.data.length : tempNode.childNodes.length;
+      tempOffset = istextNode(tempNode) ? tempNode.data.length : tempNode.childNodes.length;
     }
     return {
       container: tempNode,
@@ -130,21 +130,21 @@
     if (!endSpot) {
       return null;
     }
-    let lastTextNode = endSpot.container;
+    let lasttextNode = endSpot.container;
     const startSpot = textSeeker.backwards(endSpot.container, endSpot.offset, (node, offset) => {
-      lastTextNode = node;
+      lasttextNode = node;
       const idx = findChar(node.data, offset, isBracketOrSpace);
       return idx === -1 ? idx : idx + 1;
     }, root);
     const newRng = dom.createRng();
     if (!startSpot) {
-      newRng.setStart(lastTextNode, 0);
+      newRng.setStart(lasttextNode, 0);
     } else {
       newRng.setStart(startSpot.container, startSpot.offset);
     }
     newRng.setEnd(endSpot.container, endSpot.offset);
-    const rngText = removeZwsp(newRng.toString());
-    const matches = rngText.match(autoLinkPattern);
+    const rngtext = removeZwsp(newRng.toString());
+    const matches = rngtext.match(autoLinkPattern);
     if (matches) {
       let url = matches[0];
       if (startsWith(url, 'www.')) {

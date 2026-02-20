@@ -7,13 +7,16 @@ namespace ISO_Manager.Models
     {
         [Key]
         public int Id { get; set; }
-        
+
+        [Required(ErrorMessage ="نوع لباس الزامی است")]
         [Display(Name = "نوع لباس")]
         public string? ClothType { get; set; }
 
+        [Required(ErrorMessage = "تاریخ تحویل الزامی است")]
         [Display(Name = "تاریخ تحویل")]
         public DateTime ReceiveDate { get; set; }
 
+        [Required(ErrorMessage = "نوع دریافت الزامی است")]
         [Display(Name = "نوع دریافت")]
         public string? ReceiveType { get; set; }
 
@@ -32,6 +35,7 @@ namespace ISO_Manager.Models
 
         // relations
 
+        [Required(ErrorMessage = "نام کاربر الزامی است")]
         [ForeignKey("User")]
         [Display(Name = "دریافت کننده")]
         public string? UserId { get; set; }

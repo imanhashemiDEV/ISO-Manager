@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.ContractorAccidents
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public ContractorAccident ContractorAccident { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.ContractorAccidents
                 return NotFound();
             }
 
-            var contractoraccident = await _conText.ContractorAccidents
+            var contractoraccident = await _context.ContractorAccidents
                 .Include(m=>m.User)
                 .Include(m=>m.Contractor)
                 .FirstOrDefaultAsync(m => m.Id == id);

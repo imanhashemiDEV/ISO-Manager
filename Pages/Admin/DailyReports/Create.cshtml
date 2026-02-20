@@ -25,7 +25,7 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="DailyReport.Type" class="control-label"></label>
@@ -35,17 +35,17 @@
                                         <option value="pump-truck">پمپ های ویژه</option>
                                         <option value="pump-nitrogen">پمپ نیتروژن</option>
                                     </select>
-                                    <span asp-validation-for="DailyReport.Type" class="Text-danger"></span>
+                                    <span asp-validation-for="DailyReport.Type" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="DailyReport.Unit" class="control-label"></label>
                                     <input asp-for="DailyReport.Unit" class="form-control my-2" />
-                                    <span asp-validation-for="DailyReport.Unit" class="Text-danger"></span>
+                                    <span asp-validation-for="DailyReport.Unit" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="DailyReport.Location" class="control-label"></label>
                                     <input asp-for="DailyReport.Location" class="form-control my-2" />
-                                    <span asp-validation-for="DailyReport.Location" class="Text-danger"></span>
+                                    <span asp-validation-for="DailyReport.Location" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
                                     <label asp-for="DailyReport.RigBossId" class="control-label"></label>

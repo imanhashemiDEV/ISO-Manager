@@ -2,8 +2,7 @@
 @model ISO_Manager.Pages.Admin.Occupation.CreateModel
 
 @{
-ViewData["Title"] = "Create";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
+ViewData["Title"] = "ایجاد سمت";
 }
 
 <div class="pc-container">
@@ -13,6 +12,7 @@ ViewData["Title"] = "Create";
             <div class="page-block">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">لیست سمت ها</a></li>
                     <li class="breadcrumb-item" aria-current="page">ایجاد</li>
                 </ul>
             </div>
@@ -27,29 +27,32 @@ ViewData["Title"] = "Create";
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Occupation.Title" class="control-label"></label>
                                     <input asp-for="Occupation.Title" class="form-control mt-4" />
-                                    <span asp-validation-for="Occupation.Title" class="Text-danger"></span>
+                                    <span asp-validation-for="Occupation.Title" class="text-danger"></span>
                                 </div>
-                            </div>
-                            <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Occupation.OccupationCode" class="control-label"></label>
                                     <input asp-for="Occupation.OccupationCode" class="form-control mt-4" />
-                                    <span asp-validation-for="Occupation.OccupationCode" class="Text-danger"></span>
+                                    <span asp-validation-for="Occupation.OccupationCode" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Occupation.OccupationType" class="control-label"></label>
+                                    <select asp-for="Occupation.OccupationType" class="form-select">
+                                        <option value="rasmi">رسمی</option>
+                                        <option value="peymankari">پیمانکاری</option>
+                                    </select>
+                                    <span asp-validation-for="Occupation.OccupationType" class="text-danger"></span>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="Occupation.OrganizationId" class="control-label"></label>
+                                    <select asp-for="Occupation.OrganizationId" class="form-control" asp-items="ViewBag.OrganizationId"></select>
                                 </div>
                             </div>
-                            <div class="col-span-12 md:col-span-6 mb-4">
-                                <label asp-for="Occupation.OccupationType" class="control-label"></label>
-                                <select asp-for="Occupation.OccupationType" class="form-select">
-                                    <option value="rasmi">رسمی</option>
-                                    <option value="peymankari">پیمانکاری</option>
-                                </select>
-                                <span asp-validation-for="Occupation.OccupationType" class="Text-danger"></span>
-                            </div>
+                            
                             <button Type="submit" class="btn btn-info">ایجاد</button>
                         </form>
                     </div>

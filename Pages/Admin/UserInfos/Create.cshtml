@@ -25,10 +25,10 @@
             <div class="col-span-12">
                 <div class="card">
                     <div class="card-body !py-0">
-                        <ul class="flex flex-wrap w-full font-medium Text-center nav-tabs">
+                        <ul class="flex flex-wrap w-full font-medium text-center nav-tabs">
                             <li class="group">
-                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-1" class="inline-flex items-center mr-6 py-4 transition-all Duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
-                                    <i class="ti ti-id ltr:mr-2 rtl:ml-2 Text-lg leading-none"></i>
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-1" class="inline-flex items-center mr-6 py-4 transition-all Duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:text-primary-500 group-[.active]:border-b-primary-500 hover:text-primary-500 active:text-primary-500">
+                                    <i class="ti ti-id ltr:mr-2 rtl:ml-2 text-lg leading-none"></i>
                                     ثبت اطلاعات 
                                 </a>
                             </li>
@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="card-body">
                                         <form method="POST">
-                                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                             <input Type="hidden" asp-for="User_info.UserId" value="@Model.selectedUserId" />
                                             <div class="grid grid-cols-12 gap-6">
                                                 <div class="col-span-12 sm:col-span-6">
@@ -57,7 +57,7 @@
                                                                 <option value="@item.Id">@item.Title</option>
                                                             }
                                                         </select>
-                                                        <span asp-validation-for="User_info.Degree" class="Text-danger"></span>
+                                                        <span asp-validation-for="User_info.Degree" class="text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-span-12 sm:col-span-6">
@@ -69,7 +69,7 @@
                                                                 <option value="@item.Id">@item.Title</option>
                                                             }
                                                         </select>
-                                                        <span asp-validation-for="User_info.Degree" class="Text-danger"></span>
+                                                        <span asp-validation-for="User_info.Degree" class="text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-span-12 sm:col-span-6">
@@ -81,25 +81,25 @@
                                                                 <option value="@item.Id">@item.Title</option>
                                                             }
                                                         </select>
-                                                        <span asp-validation-for="User_info.Degree" class="Text-danger"></span>
+                                                        <span asp-validation-for="User_info.Degree" class="text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-span-12 sm:col-span-6">
                                                     <div class="mb-3">
                                                         <label asp-for="User_info.Birthday" class="form-label"></label>
-                                                        <input data-jdp Type="Text"
+                                                        <input data-jdp Type="text"
                                                                asp-for="Birthday"
-                                                               class="form-control Text-right" dir="rtl">
-                                                        <span asp-validation-for="User_info.Birthday" class="Text-danger"></span>
+                                                               class="form-control text-right" dir="rtl">
+                                                        <span asp-validation-for="User_info.Birthday" class="text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-span-12 sm:col-span-6">
                                                     <div class="mb-3">
                                                         <label asp-for="User_info.EmploymentDate" class="form-label"></label>
-                                                        <input data-jdp Type="Text"
+                                                        <input data-jdp Type="text"
                                                                asp-for="EmploymentDate"
-                                                               class="form-control Text-right" dir="rtl">
-                                                        <span asp-validation-for="User_info.EmploymentDate" class="Text-danger"></span>
+                                                               class="form-control text-right" dir="rtl">
+                                                        <span asp-validation-for="User_info.EmploymentDate" class="text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-span-12 sm:col-span-6">
@@ -113,11 +113,11 @@
                                                             <option value="master">فوق لیسانس</option>
                                                             <option value="doctorate">دکتری</option>
                                                         </select>
-                                                        <span asp-validation-for="User_info.Degree" class="Text-danger"></span>
+                                                        <span asp-validation-for="User_info.Degree" class="text-danger"></span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="card-footer Text-right btn-page cursor-pointer">
+                                            <div class="card-footer text-right btn-page cursor-pointer">
                                                 <button Type="submit" class="btn btn-primary mx-1">ثبت</button>
                                             </div>
                                         </form>

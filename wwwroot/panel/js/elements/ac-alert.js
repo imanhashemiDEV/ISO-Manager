@@ -33,9 +33,9 @@
       showCloseButton: true,
       showCancelButton: true,
       focusConfirm: false,
-      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+      confirmButtontext: '<i class="fa fa-thumbs-up"></i> Great!',
       confirmButtonAriaLabel: 'Thumbs up, great!',
-      cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+      cancelButtontext: '<i class="fa fa-thumbs-down"></i>',
       cancelButtonAriaLabel: 'Thumbs down'
     });
   });
@@ -45,8 +45,8 @@
       title: 'Do you want to save the changes?',
       showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: `Save`,
-      denyButtonText: `Don't save`
+      confirmButtontext: `Save`,
+      denyButtontext: `Don't save`
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire('Saved!', '', 'success');
@@ -92,8 +92,8 @@
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
+        confirmButtontext: 'Yes, delete it!',
+        cancelButtontext: 'No, cancel!',
         reverseButtons: true
       })
       .then((result) => {
@@ -149,8 +149,8 @@
       title: 'هل تريد الاستمرار؟',
       icon: 'question',
       iconHtml: '؟',
-      confirmButtonText: 'نعم',
-      cancelButtonText: 'لا',
+      confirmButtontext: 'نعم',
+      cancelButtontext: 'لا',
       showCancelButton: true,
       showCloseButton: true
     });
@@ -164,13 +164,13 @@
         autocapitalize: 'off'
       },
       showCancelButton: true,
-      confirmButtonText: 'Look up',
+      confirmButtontext: 'Look up',
       showLoaderOnConfirm: true,
       preConfirm: (login) => {
         return fetch(`//api.github.com/users/` + login)
           .then((response) => {
             if (!response.ok) {
-              throw new Error(response.statusText);
+              throw new Error(response.statustext);
             }
             return response.json();
           })
@@ -398,7 +398,7 @@
         input: 'checkbox',
         inputValue: 1,
         inputPlaceholder: 'I agree with the terms and conditions',
-        confirmButtonText: 'Continue<i class="fa fa-arrow-right"></i>',
+        confirmButtontext: 'Continue<i class="fa fa-arrow-right"></i>',
         inputValidator: (result) => {
           return !result && 'You need to agree with T&C';
         }

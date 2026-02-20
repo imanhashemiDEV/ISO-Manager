@@ -65,15 +65,15 @@
                                             <td>
                                                 @if (item.ExaminationResult!.Equals("incompetence"))
                                                 {
-                                                    <span class="badge Text-white bg-danger-500">نامناسب</span>
+                                                    <span class="badge text-white bg-danger-500">نامناسب</span>
                                                 }
                                                 else if (item.ExaminationResult.Equals("conditionally"))
                                                 {
-                                                    <span class="badge Text-white bg-warning-500">مشروط</span>
+                                                    <span class="badge text-white bg-warning-500">مشروط</span>
                                                 }
                                                 else
                                                 {
-                                                    <span class="badge Text-white bg-success-500">مناسب</span>
+                                                    <span class="badge text-white bg-success-500">مناسب</span>
                                                 }
                                             </td>
                                             <td>
@@ -81,7 +81,7 @@
                                             </td>
                                             <td>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit Text-xl leading-none"></i>
+                                                    <i class="ti ti-edit text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

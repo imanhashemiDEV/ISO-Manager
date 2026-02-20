@@ -27,53 +27,53 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input Type="hidden" asp-for="OccupationHarmful.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="OccupationHarmful.ExposureSource" class="control-label"></label>
                                     <input asp-for="OccupationHarmful.ExposureSource" class="form-control"/>
-                                    <span asp-validation-for="OccupationHarmful.ExposureSource" class="Text-danger"></span>
+                                    <span asp-validation-for="OccupationHarmful.ExposureSource" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="OccupationHarmful.EvaluationMethod" class="control-label"></label>
                                     <input asp-for="OccupationHarmful.EvaluationMethod" class="form-control" />
-                                    <span asp-validation-for="OccupationHarmful.EvaluationMethod" class="Text-danger"></span>
+                                    <span asp-validation-for="OccupationHarmful.EvaluationMethod" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="OccupationHarmful.ExposureRate" class="control-label"></label>
                                     <input asp-for="OccupationHarmful.ExposureRate" class="form-control" />
-                                    <span asp-validation-for="OccupationHarmful.ExposureRate" class="Text-danger"></span>
+                                    <span asp-validation-for="OccupationHarmful.ExposureRate" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="OccupationHarmful.ExposureDuration" class="control-label"></label>
                                     <input asp-for="OccupationHarmful.ExposureDuration" class="form-control" />
-                                    <span asp-validation-for="OccupationHarmful.ExposureDuration" class="Text-danger"></span>
+                                    <span asp-validation-for="OccupationHarmful.ExposureDuration" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="OccupationHarmful.ExposureLimit" class="control-label"></label>
                                     <input asp-for="OccupationHarmful.ExposureLimit" class="form-control" />
-                                    <span asp-validation-for="OccupationHarmful.ExposureLimit" class="Text-danger"></span>
+                                    <span asp-validation-for="OccupationHarmful.ExposureLimit" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="OccupationHarmful.Status" class="control-label"></label>
                                     <input asp-for="OccupationHarmful.Status" class="form-control" />
-                                    <span asp-validation-for="OccupationHarmful.Status" class="Text-danger"></span>
+                                    <span asp-validation-for="OccupationHarmful.Status" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="OccupationHarmful.OccupationId" class="control-label"></label>
                                     <select asp-for="OccupationHarmful.OccupationId" class="form-control" asp-items="ViewBag.OccupationId" ></select>
-                                    <span asp-validation-for="OccupationHarmful.OccupationId" class="Text-danger"></span>
+                                    <span asp-validation-for="OccupationHarmful.OccupationId" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="OccupationHarmful.HarmfulFactorId" class="control-label"></label>
                                     <select asp-for="OccupationHarmful.HarmfulFactorId" class="form-control" asp-items="ViewBag.HarmfulFactorId" ></select>
-                                    <span asp-validation-for="OccupationHarmful.HarmfulFactorId" class="Text-danger"></span>
+                                    <span asp-validation-for="OccupationHarmful.HarmfulFactorId" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="OccupationHarmful.HarmfulItemId" class="control-label"></label>
                                     <input asp-for="OccupationHarmful.HarmfulItemId" class="form-control" />
-                                    <span asp-validation-for="OccupationHarmful.HarmfulItemId" class="Text-danger"></span>
+                                    <span asp-validation-for="OccupationHarmful.HarmfulItemId" class="text-danger"></span>
                                 </div>
                             </div>
                             <button Type="submit" class="btn btn-success">ثبت</button>

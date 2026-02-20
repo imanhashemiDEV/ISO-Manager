@@ -370,17 +370,17 @@
       }
     };
     const isInAnchor = (editor, selectedElm) => getAnchorElement(editor, selectedElm).isSome();
-    const getAnchorText = (selection, anchorElm) => {
-      const text = anchorElm.fold(() => selection.getContent({ format: 'text' }), anchorElm => anchorElm.innerText || anchorElm.textContent || '');
+    const getAnchortext = (selection, anchorElm) => {
+      const text = anchorElm.fold(() => selection.getContent({ format: 'text' }), anchorElm => anchorElm.innertext || anchorElm.textContent || '');
       return trimCaretContainers(text);
     };
     const getLinksInSelection = rng => collectNodesInRange(rng, isLink);
     const getLinks$1 = elements => global$2.grep(elements, isLink);
     const hasLinks = elements => getLinks$1(elements).length > 0;
     const hasLinksInSelection = rng => getLinksInSelection(rng).length > 0;
-    const isOnlyTextSelected = editor => {
-      const inlineTextElements = editor.schema.getTextInlineElements();
-      const isElement = elm => elm.nodeType === 1 && !isAnchor(elm) && !has(inlineTextElements, elm.nodeName.toLowerCase());
+    const isOnlytextSelected = editor => {
+      const inlinetextElements = editor.schema.gettextInlineElements();
+      const isElement = elm => elm.nodeType === 1 && !isAnchor(elm) && !has(inlinetextElements, elm.nodeName.toLowerCase());
       const isInBlockAnchor = getAnchorElement(editor).exists(anchor => anchor.hasAttribute('data-mce-block'));
       if (isInBlockAnchor) {
         return false;
@@ -429,8 +429,8 @@
     };
     const updateLink = (editor, anchorElm, text, linkAttrs) => {
       text.each(text => {
-        if (has(anchorElm, 'innerText')) {
-          anchorElm.innerText = text;
+        if (has(anchorElm, 'innertext')) {
+          anchorElm.innertext = text;
         } else {
           anchorElm.textContent = text;
         }
@@ -553,7 +553,7 @@
     };
 
     const getValue = item => isString(item.value) ? item.value : '';
-    const getText = item => {
+    const gettext = item => {
       if (isString(item.text)) {
         return item.text;
       } else if (isString(item.title)) {
@@ -565,7 +565,7 @@
     const sanitizeList = (list, extractValue) => {
       const out = [];
       global$2.each(list, item => {
-        const text = getText(item);
+        const text = gettext(item);
         if (item.menu !== undefined) {
           const items = sanitizeList(item.menu, extractValue);
           out.push({
@@ -598,25 +598,25 @@
     };
 
     const isListGroup = item => hasNonNullableKey(item, 'items');
-    const findTextByValue = (value, catalog) => findMap(catalog, item => {
+    const findtextByValue = (value, catalog) => findMap(catalog, item => {
       if (isListGroup(item)) {
-        return findTextByValue(value, item.items);
+        return findtextByValue(value, item.items);
       } else {
         return someIf(item.value === value, item);
       }
     });
-    const getDelta = (persistentText, fieldName, catalog, data) => {
+    const getDelta = (persistenttext, fieldName, catalog, data) => {
       const value = data[fieldName];
-      const hasPersistentText = persistentText.length > 0;
-      return value !== undefined ? findTextByValue(value, catalog).map(i => ({
+      const hasPersistenttext = persistenttext.length > 0;
+      return value !== undefined ? findtextByValue(value, catalog).map(i => ({
         url: {
           value: i.value,
           meta: {
-            text: hasPersistentText ? persistentText : i.text,
+            text: hasPersistenttext ? persistenttext : i.text,
             attach: noop
           }
         },
-        text: hasPersistentText ? persistentText : i.text
+        text: hasPersistenttext ? persistenttext : i.text
       })) : Optional.none();
     };
     const findCatalog = (catalogs, fieldName) => {
@@ -637,12 +637,12 @@
         var _a;
         return someIf(persistentData.title.length <= 0, Optional.from((_a = url.meta) === null || _a === void 0 ? void 0 : _a.title).getOr(''));
       };
-      const getTextFromUrlChange = url => {
+      const gettextFromUrlChange = url => {
         var _a;
         return someIf(persistentData.text.length <= 0, Optional.from((_a = url.meta) === null || _a === void 0 ? void 0 : _a.text).getOr(url.value));
       };
       const onUrlChange = data => {
-        const text = getTextFromUrlChange(data.url);
+        const text = gettextFromUrlChange(data.url);
         const title = getTitleFromUrlChange(data.url);
         if (text.isSome() || title.isSome()) {
           return Optional.some({
@@ -820,8 +820,8 @@
     };
     const extractFromAnchor = (editor, anchor) => {
       const dom = editor.dom;
-      const onlyText = isOnlyTextSelected(editor);
-      const text = onlyText ? Optional.some(getAnchorText(editor.selection, anchor)) : Optional.none();
+      const onlytext = isOnlytextSelected(editor);
+      const text = onlytext ? Optional.some(getAnchortext(editor.selection, anchor)) : Optional.none();
       const url = anchor.bind(anchorElm => Optional.from(dom.getAttrib(anchorElm, 'href')));
       const target = anchor.bind(anchorElm => Optional.from(dom.getAttrib(anchorElm, 'target')));
       const rel = anchor.bind(anchorElm => nonEmptyAttr(dom, anchorElm, 'rel'));
@@ -907,12 +907,12 @@
           label: 'URL',
           picker_text: 'Browse links'
         }];
-      const displayText = settings.anchor.text.map(() => ({
+      const displaytext = settings.anchor.text.map(() => ({
         name: 'text',
         type: 'input',
-        label: 'Text to display'
+        label: 'text to display'
       })).toArray();
-      const titleText = settings.flags.titleEnabled ? [{
+      const titletext = settings.flags.titleEnabled ? [{
           name: 'title',
           type: 'input',
           label: 'Title'
@@ -925,8 +925,8 @@
         type: 'panel',
         items: flatten([
           urlInput,
-          displayText,
-          titleText,
+          displaytext,
+          titletext,
           cat([
             catalogs.anchor.map(ListOptions.createUi('anchor', 'Anchors')),
             catalogs.rels.map(ListOptions.createUi('rel', 'Rel')),
@@ -1220,11 +1220,11 @@
         buttonApi.setEnabled(isInAnchor(editor, node) && editor.selection.isEditable());
         return noop;
       };
-      const getLinkText = value => {
+      const getLinktext = value => {
         const anchor = getAnchorElement(editor);
-        const onlyText = isOnlyTextSelected(editor);
-        if (anchor.isNone() && onlyText) {
-          const text = getAnchorText(editor.selection, anchor);
+        const onlytext = isOnlytextSelected(editor);
+        if (anchor.isNone() && onlytext) {
+          const text = getAnchortext(editor.selection, anchor);
           return someIf(text.length === 0, value);
         } else {
           return Optional.none();
@@ -1256,7 +1256,7 @@
             },
             onAction: formApi => {
               const value = formApi.getValue();
-              const text = getLinkText(value);
+              const text = getLinktext(value);
               const attachState = {
                 href: value,
                 attach: noop

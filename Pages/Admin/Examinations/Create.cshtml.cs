@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Examinations
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public long ContractorId { get; set; }
@@ -24,8 +24,8 @@ namespace ISO_Manager.Pages.Admin.Examinations
         public IActionResult OnGet(long? ContractorId)
         {
             ContractorId = (long)ContractorId;
-            ViewData["ContractorId"] = new SelectList(_conText.Contractors, "id", "Company");
-        ViewData["UserId"] = new SelectList(_conText.Users, "id", "name");
+            ViewData["ContractorId"] = new SelectList(_context.Contractors, "id", "Company");
+        ViewData["UserId"] = new SelectList(_context.Users, "id", "name");
             return Page();
         }
 
@@ -40,8 +40,8 @@ namespace ISO_Manager.Pages.Admin.Examinations
                 return Page();
             }
 
-            _conText.Examinations.Add(Examination);
-            await _conText.SaveChangesAsync();
+            _context.Examinations.Add(Examination);
+            await _context.SaveChangesAsync();
 
             if (Examination.ContractorId != null)
             {

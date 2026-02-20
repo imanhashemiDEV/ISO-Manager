@@ -14,12 +14,12 @@ namespace ISO_Manager.Pages.Admin.User_infos
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
         
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<Models.Organization> UserOrganizations { get; set; } = default!;
@@ -30,9 +30,9 @@ namespace ISO_Manager.Pages.Admin.User_infos
 
         public IActionResult OnGetAsync(long UserId)
         {
-            UserOrganizations = _conText.Organizations.ToList();
-            UserOccupations = _conText.Occupations.ToList();
-            UserWorkPlaces = _conText.WorkPlaces.ToList();
+            UserOrganizations = _context.Organizations.ToList();
+            UserOccupations = _context.Occupations.ToList();
+            UserWorkPlaces = _context.WorkPlaces.ToList();
             selectedUserId = (long)UserId;
             return Page();
         }
@@ -49,9 +49,9 @@ namespace ISO_Manager.Pages.Admin.User_infos
         public async Task<IActionResult> OnPostAsync()
         {
 
-            UserOrganizations = _conText.Organizations.ToList();
-            UserOccupations = _conText.Occupations.ToList();
-            UserWorkPlaces = _conText.WorkPlaces.ToList();
+            UserOrganizations = _context.Organizations.ToList();
+            UserOccupations = _context.Occupations.ToList();
+            UserWorkPlaces = _context.WorkPlaces.ToList();
 
             if (!ModelState.IsValid)
             {
@@ -61,8 +61,8 @@ namespace ISO_Manager.Pages.Admin.User_infos
             User_info.Birthday = DateToMiladi.ToMiladi(Birthday);
             User_info.EmploymentDate= DateToMiladi.ToMiladi(EmploymentDate);
 
-            _conText.UserInfos.Add(User_info);
-            await _conText.SaveChangesAsync();
+            _context.UserInfos.Add(User_info);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("/Admin/Users/Index");
         }

@@ -12,17 +12,17 @@ namespace ISO_Manager.Pages.Admin.Inspections
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public Inspection Inspection { get; set; } = default!;
         public IList<InspectionDetail> InspectionDetails { get; set; } = default!;
 
-        public IList<InspectionText> InspectionTexts { get; set; } = default!;
+        public IList<Inspectiontext> Inspectiontexts { get; set; } = default!;
 
         public long selectedInspection { get; set; }
 
@@ -35,11 +35,11 @@ namespace ISO_Manager.Pages.Admin.Inspections
 
             selectedInspection = (long)id;
 
-            var inspection = await _conText.Inspections.FirstOrDefaultAsync(m => m.Id == id);
-            var inspectionDetails = await _conText.InspectionDetails
+            var inspection = await _context.Inspections.FirstOrDefaultAsync(m => m.Id == id);
+            var inspectionDetails = await _context.InspectionDetails
                 .Where(m => m.InspectionId == id)
                 .ToListAsync();
-            //var inspectionTexts = await _conText.InspectionTexts
+            //var inspectiontexts = await _context.Inspectiontexts
             //    .Where(m => m.InspectionPlaceId == inspection.InspectionPlaceId)
             //    .ToListAsync();
 
@@ -53,7 +53,7 @@ namespace ISO_Manager.Pages.Admin.Inspections
             {
                 Inspection = inspection;
                 InspectionDetails = inspectionDetails;
-                //InspectionTexts = inspectionTexts;
+                //Inspectiontexts = inspectiontexts;
 
                 return Page();
             }
@@ -71,11 +71,11 @@ namespace ISO_Manager.Pages.Admin.Inspections
         public async Task<IActionResult> OnPostAsync()
         {
 
-            var item = await _conText.InspectionDetails.FindAsync(EditDetailId);
+            var item = await _context.InspectionDetails.FindAsync(EditDetailId);
 
             item.Description = InspectionDesc;
-            _conText.InspectionDetails.Update(item);
-            await _conText.SaveChangesAsync();
+            _context.InspectionDetails.Update(item);
+            await _context.SaveChangesAsync();
 
 
             return RedirectToPage("./Details", new {id = item.InspectionId.ToString()});

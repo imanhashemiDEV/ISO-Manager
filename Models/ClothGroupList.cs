@@ -9,9 +9,11 @@ namespace ISO_Manager.Models
         [Key]
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "سایز کفش الزامی است")]
         [Display(Name = "سایز کفش")]
         public string? Shoes { get; set; }
 
+        [Required(ErrorMessage = "سایز لباس الزامی است")]
         [Display(Name = "سایز لباس")]
         public string? BoilerSuit { get; set; }
 
@@ -25,6 +27,7 @@ namespace ISO_Manager.Models
 
         // relations
 
+        [Required(ErrorMessage = "نام کاربر الزامی است")]
         [ForeignKey("User")]
         [Display(Name = "نام کاربر")]
         public string? UserId { get; set; }
@@ -32,10 +35,11 @@ namespace ISO_Manager.Models
         public virtual User? User { get; set; }
 
 
+        [Required(ErrorMessage = "گروه کارکنان الزامی است")]
         [ForeignKey("ClothGroup")]
-        [Display(Name = "گروه کاربران")]
+        [Display(Name = "گروه کارکنان")]
         public int? ClothGroupId { get; set; }
-        [Display(Name = "گروه کاربران")]
+        [Display(Name = "گروه کارکنان")]
         public virtual ClothGroup? ClothGroup { get; set; }
 
 

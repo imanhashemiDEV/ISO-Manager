@@ -12,17 +12,17 @@ namespace ISO_Manager.Pages.Admin.Messages
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["ReceiverId"] = new SelectList(_conText.Users, "id", "id");
-        ViewData["SenderId"] = new SelectList(_conText.Users, "id", "id");
+        ViewData["ReceiverId"] = new SelectList(_context.Users, "id", "id");
+        ViewData["SenderId"] = new SelectList(_context.Users, "id", "id");
             return Page();
         }
 
@@ -37,8 +37,8 @@ namespace ISO_Manager.Pages.Admin.Messages
                 return Page();
             }
 
-            _conText.Messages.Add(Message);
-            await _conText.SaveChangesAsync();
+            _context.Messages.Add(Message);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

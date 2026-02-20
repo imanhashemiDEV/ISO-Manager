@@ -12,17 +12,17 @@ namespace ISO_Manager.Pages.Admin.ContractorAccidents
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["contractors"] = new SelectList(_conText.Contractors, "id", "Company");
-          ViewData["users"] = _conText.Users.Where(m => m.EmploymentType == "gharardadi" || m.EmploymentType=="peymankari").ToList();
+        ViewData["contractors"] = new SelectList(_context.Contractors, "id", "Company");
+          ViewData["users"] = _context.Users.Where(m => m.EmploymentType == "gharardadi" || m.EmploymentType=="peymankari").ToList();
             return Page();
         }
 
@@ -37,8 +37,8 @@ namespace ISO_Manager.Pages.Admin.ContractorAccidents
                 return Page();
             }
 
-            _conText.ContractorAccidents.Add(ContractorAccident);
-            await _conText.SaveChangesAsync();
+            _context.ContractorAccidents.Add(ContractorAccident);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

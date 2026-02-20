@@ -12,23 +12,22 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int process_id)
         {
-        ViewData["process_id"] = new SelectList(_conText.Processes, "id", "id");
+            ViewData["ProcessId"] = process_id;
             return Page();
         }
 
         [BindProperty]
         public ProcessPlan ProcessPlan { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -36,10 +35,10 @@ namespace ISO_Manager.Pages.Admin.ProcessPlans
                 return Page();
             }
 
-            _conText.ProcessPlans.Add(ProcessPlan);
-            await _conText.SaveChangesAsync();
+            _context.ProcessPlans.Add(ProcessPlan);
+            await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", new {id = ProcessPlan.ProcessId });
         }
     }
 }

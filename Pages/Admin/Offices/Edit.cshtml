@@ -12,6 +12,7 @@
             <div class="page-block">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست اداره ها</a></li>
                     <li class="breadcrumb-item" aria-current="page">ویرایش</li>
                 </ul>
             </div>
@@ -26,18 +27,18 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input Type="hidden" asp-for="Office.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Office.Title" class="control-label"></label>
                                     <input asp-for="Office.Title" class="form-control" />
-                                    <span asp-validation-for="Office.Title" class="Text-danger"></span>
+                                    <span asp-validation-for="Office.Title" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Office.OrganizationId" class="control-label"></label>
                                     <select asp-for="Office.OrganizationId" class="form-control" asp-items="ViewBag.OrganizationId"></select>
-                                    <span asp-validation-for="Office.OrganizationId" class="Text-danger"></span>
+                                    <span asp-validation-for="Office.OrganizationId" class="text-danger"></span>
                                 </div>
                             </div>
                             <button Type="submit" class="btn btn-info">ویرایش</button>

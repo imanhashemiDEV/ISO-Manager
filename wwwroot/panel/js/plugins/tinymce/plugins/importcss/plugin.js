@@ -159,7 +159,7 @@
       return filter;
     };
     const isCssImportRule = rule => rule.styleSheet;
-    const isCssPageRule = rule => rule.selectorText;
+    const isCssPageRule = rule => rule.selectortext;
     const getSelectors = (editor, doc, fileFilter) => {
       const selectors = [];
       const contentCSSUrls = {};
@@ -181,7 +181,7 @@
           if (isCssImportRule(cssRule) && cssRule.styleSheet) {
             append(cssRule.styleSheet, true);
           } else if (isCssPageRule(cssRule)) {
-            global.each(cssRule.selectorText.split(','), selector => {
+            global.each(cssRule.selectortext.split(','), selector => {
               selectors.push(global.trim(selector));
             });
           }
@@ -203,9 +203,9 @@
       }
       return selectors;
     };
-    const defaultConvertSelectorToFormat = (editor, selectorText) => {
+    const defaultConvertSelectorToFormat = (editor, selectortext) => {
       let format = {};
-      const selector = /^(?:([a-z0-9\-_]+))?(\.[a-z0-9_\-\.]+)$/i.exec(selectorText);
+      const selector = /^(?:([a-z0-9\-_]+))?(\.[a-z0-9_\-\.]+)$/i.exec(selectortext);
       if (!selector) {
         return;
       }
@@ -213,8 +213,8 @@
       const classes = selector[2].substr(1).split('.').join(' ');
       const inlineSelectorElements = global.makeMap('a,img');
       if (selector[1]) {
-        format = { title: selectorText };
-        if (editor.schema.getTextBlockElements()[elementName]) {
+        format = { title: selectortext };
+        if (editor.schema.gettextBlockElements()[elementName]) {
           format.block = elementName;
         } else if (editor.schema.getBlockElements()[elementName] || inlineSelectorElements[elementName.toLowerCase()]) {
           format.selector = elementName;
@@ -224,7 +224,7 @@
       } else if (selector[2]) {
         format = {
           inline: 'span',
-          title: selectorText.substr(1),
+          title: selectortext.substr(1),
           classes
         };
       }
@@ -326,8 +326,8 @@
     };
 
     const get = editor => {
-      const convertSelectorToFormat = selectorText => {
-        return defaultConvertSelectorToFormat(editor, selectorText);
+      const convertSelectorToFormat = selectortext => {
+        return defaultConvertSelectorToFormat(editor, selectortext);
       };
       return { convertSelectorToFormat };
     };

@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Contractors
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace ISO_Manager.Pages.Admin.Contractors
                 return NotFound();
             }
 
-            var contractor =  await _conText.Contractors.FirstOrDefaultAsync(m => m.Id == id);
+            var contractor =  await _context.Contractors.FirstOrDefaultAsync(m => m.Id == id);
             if (contractor == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace ISO_Manager.Pages.Admin.Contractors
                 return Page();
             }
 
-            _conText.Attach(Contractor).State = EntityState.Modified;
+            _context.Attach(Contractor).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace ISO_Manager.Pages.Admin.Contractors
 
         private bool ContractorExists(long id)
         {
-            return _conText.Contractors.Any(e => e.Id == id);
+            return _context.Contractors.Any(e => e.Id == id);
         }
     }
 }

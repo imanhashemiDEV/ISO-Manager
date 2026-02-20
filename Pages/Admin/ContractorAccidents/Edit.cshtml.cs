@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.ContractorAccidents
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,14 +30,14 @@ namespace ISO_Manager.Pages.Admin.ContractorAccidents
                 return NotFound();
             }
 
-            var contractoraccident =  await _conText.ContractorAccidents.FirstOrDefaultAsync(m => m.Id == id);
+            var contractoraccident =  await _context.ContractorAccidents.FirstOrDefaultAsync(m => m.Id == id);
             if (contractoraccident == null)
             {
                 return NotFound();
             }
             ContractorAccident = contractoraccident;
-           ViewData["contractors"] = new SelectList(_conText.Contractors, "id", "Company");
-           ViewData["users"] = _conText.Users.Where(m => m.EmploymentType == "gharardadi" || m.EmploymentType == "peymankari").ToList();
+           ViewData["contractors"] = new SelectList(_context.Contractors, "id", "Company");
+           ViewData["users"] = _context.Users.Where(m => m.EmploymentType == "gharardadi" || m.EmploymentType == "peymankari").ToList();
             return Page();
         }
 
@@ -50,11 +50,11 @@ namespace ISO_Manager.Pages.Admin.ContractorAccidents
                 return Page();
             }
 
-            _conText.Attach(ContractorAccident).State = EntityState.Modified;
+            _context.Attach(ContractorAccident).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -73,7 +73,7 @@ namespace ISO_Manager.Pages.Admin.ContractorAccidents
 
         private bool ContractorAccidentExists(long id)
         {
-            return _conText.ContractorAccidents.Any(e => e.Id == id);
+            return _context.ContractorAccidents.Any(e => e.Id == id);
         }
     }
 }

@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,15 +30,15 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
                 return NotFound();
             }
 
-            var inspectiondetail =  await _conText.InspectionDetails.FirstOrDefaultAsync(m => m.Id == id);
+            var inspectiondetail =  await _context.InspectionDetails.FirstOrDefaultAsync(m => m.Id == id);
             if (inspectiondetail == null)
             {
                 return NotFound();
             }
             InspectionDetail = inspectiondetail;
-           ViewData["InspectionId"] = new SelectList(_conText.Inspections, "id", "id");
-           ViewData["TextId"] = new SelectList(_conText.InspectionTexts, "id", "id");
-           ViewData["WorkPlaceId"] = new SelectList(_conText.WorkPlaces, "id", "id");
+           ViewData["InspectionId"] = new SelectList(_context.Inspections, "id", "id");
+           ViewData["textId"] = new SelectList(_context.Inspectiontexts, "id", "id");
+           ViewData["WorkPlaceId"] = new SelectList(_context.WorkPlaces, "id", "id");
             return Page();
         }
 
@@ -51,11 +51,11 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
                 return Page();
             }
 
-            _conText.Attach(InspectionDetail).State = EntityState.Modified;
+            _context.Attach(InspectionDetail).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -74,7 +74,7 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
 
         private bool InspectionDetailExists(long id)
         {
-            return _conText.InspectionDetails.Any(e => e.Id == id);
+            return _context.InspectionDetails.Any(e => e.Id == id);
         }
     }
 }

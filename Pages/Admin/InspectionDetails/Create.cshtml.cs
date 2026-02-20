@@ -13,15 +13,15 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public Inspection Inspection { get; set; } = default!;
-        public IList<InspectionText> InspectionTexts { get; set; } = default!;
+        public IList<Inspectiontext> Inspectiontexts { get; set; } = default!;
 
         [BindProperty]
         public int selectedInspection { get; set; }
@@ -30,15 +30,15 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
         {
             selectedInspection = inspectionId;
 
-            var inspection = await _conText.Inspections.FirstOrDefaultAsync(m => m.Id == inspectionId);
-            var inspectionTexts = await _conText.InspectionTexts
+            var inspection = await _context.Inspections.FirstOrDefaultAsync(m => m.Id == inspectionId);
+            var inspectiontexts = await _context.Inspectiontexts
                 .Where(m=>m.InspectionPlaceId==inspection.InspectionPlaceId)
                 .ToListAsync();
 
             if (inspection is not null)
             {
                 Inspection = inspection;
-                InspectionTexts = inspectionTexts;
+                Inspectiontexts = inspectiontexts;
 
                 return Page();
             }
@@ -52,25 +52,25 @@ namespace ISO_Manager.Pages.Admin.InspectionDetails
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var inspection = await _conText.Inspections.FirstOrDefaultAsync(m => m.Id == selectedInspection);
+            var inspection = await _context.Inspections.FirstOrDefaultAsync(m => m.Id == selectedInspection);
 
             foreach (var item in Checked)
             {
                 
-                var selected = await _conText.InspectionTexts.FindAsync(item);
+                var selected = await _context.Inspectiontexts.FindAsync(item);
 
                 var detail = new InspectionDetail
                 {
                     InspectionId = selectedInspection,
                     InspectionDate = inspection!.InspectionDate,
                     WorkPlaceId = inspection.WorkPlaceId,
-                    TextId = (int) item,
-                    Text = selected!.Text,
+                    textId = (int) item,
+                    text = selected!.text,
                     //Description = InspectionDescription
                 };
 
-                _conText.InspectionDetails.Add(detail);
-                await _conText.SaveChangesAsync();
+                _context.InspectionDetails.Add(detail);
+                await _context.SaveChangesAsync();
             }
 
 

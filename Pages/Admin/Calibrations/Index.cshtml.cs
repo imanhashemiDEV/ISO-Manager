@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Calibrations
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<Calibration> Calibration { get;set; } = default!;
@@ -29,7 +29,7 @@ namespace ISO_Manager.Pages.Admin.Calibrations
 
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _conText.Calibrations.Count();
+            var ItemCount = _context.Calibrations.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -43,7 +43,7 @@ namespace ISO_Manager.Pages.Admin.Calibrations
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            Calibration = await _conText.Calibrations
+            Calibration = await _context.Calibrations
                 .OrderBy(m=>m.EndCalibration)
                 .Skip(skip).Take(Take)
                 .ToListAsync();
@@ -51,7 +51,7 @@ namespace ISO_Manager.Pages.Admin.Calibrations
 
         public async Task OnPostAsync()
         {
-            Calibration = await _conText.Calibrations
+            Calibration = await _context.Calibrations
                 .Where(m =>  m.AssetNumber.Contains(Search) || m.SerialNumber.Contains(Search))
                 .ToListAsync();
 

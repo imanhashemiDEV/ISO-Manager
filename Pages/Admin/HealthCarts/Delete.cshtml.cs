@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
 {
     public class DeleteModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DeleteModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DeleteModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -29,7 +29,7 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
                 return NotFound();
             }
 
-            var healthcart = await _conText.HealthCarts.FirstOrDefaultAsync(m => m.Id == id);
+            var healthcart = await _context.HealthCarts.FirstOrDefaultAsync(m => m.Id == id);
 
             if (healthcart is not null)
             {
@@ -48,12 +48,12 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
                 return NotFound();
             }
 
-            var healthcart = await _conText.HealthCarts.FindAsync(id);
+            var healthcart = await _context.HealthCarts.FindAsync(id);
             if (healthcart != null)
             {
                 HealthCart = healthcart;
-                _conText.HealthCarts.Remove(HealthCart);
-                await _conText.SaveChangesAsync();
+                _context.HealthCarts.Remove(HealthCart);
+                await _context.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");

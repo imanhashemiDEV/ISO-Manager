@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.EmergencyPhoneBooks
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace ISO_Manager.Pages.Admin.EmergencyPhoneBooks
                 return NotFound();
             }
 
-            var emergencyphonebook =  await _conText.EmergencyPhoneBooks.FirstOrDefaultAsync(m => m.Id == id);
+            var emergencyphonebook =  await _context.EmergencyPhoneBooks.FirstOrDefaultAsync(m => m.Id == id);
             if (emergencyphonebook == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace ISO_Manager.Pages.Admin.EmergencyPhoneBooks
                 return Page();
             }
 
-            _conText.Attach(EmergencyPhoneBook).State = EntityState.Modified;
+            _context.Attach(EmergencyPhoneBook).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace ISO_Manager.Pages.Admin.EmergencyPhoneBooks
 
         private bool EmergencyPhoneBookExists(long id)
         {
-            return _conText.EmergencyPhoneBooks.Any(e => e.Id == id);
+            return _context.EmergencyPhoneBooks.Any(e => e.Id == id);
         }
     }
 }

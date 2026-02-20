@@ -8,7 +8,8 @@ namespace ISO_Manager.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "عنوان شرکت")]
+        [Required(ErrorMessage ="نام سازمان الزامی است")]
+        [Display(Name = "عنوان سازمان")]
         public string? Title { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]

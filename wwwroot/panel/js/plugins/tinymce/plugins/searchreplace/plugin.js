@@ -239,11 +239,11 @@
     const DOCUMENT = 9;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const TEXT = 3;
+    const text = 3;
 
     const type = element => element.dom.nodeType;
     const isType = t => element => type(element) === t;
-    const isText$1 = isType(TEXT);
+    const istext$1 = isType(text);
 
     const rawSet = (dom, key, value) => {
       if (isString(value) || isBoolean(value) || isNumber(value)) {
@@ -273,9 +273,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (text, scope) => {
+    const fromtext = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createtextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -288,7 +288,7 @@
     const SugarElement = {
       fromHtml,
       fromTag,
-      fromText,
+      fromtext,
       fromDom,
       fromPoint
     };
@@ -345,7 +345,7 @@
       };
     };
 
-    const api = NodeValue(isText$1, 'text');
+    const api = NodeValue(istext$1, 'text');
     const get$1 = element => api.get(element);
 
     const compareDocumentPosition = (a, b, match) => {
@@ -364,7 +364,7 @@
     const isContentEditableTrueInCef = (dom, node) => dom.getContentEditable(node) === 'true' && node.parentNode && !dom.isEditable(node.parentNode);
     const isHidden = (dom, node) => !dom.isBlock(node) && has(dom.schema.getWhitespaceElements(), node.nodeName);
     const isBoundary = (dom, node) => isSimpleBoundary(dom, node) || isContentEditableFalse(dom, node) || isHidden(dom, node) || isContentEditableTrueInCef(dom, node);
-    const isText = node => node.nodeType === 3;
+    const istext = node => node.nodeType === 3;
     const nuSection = () => ({
       sOffset: 0,
       fOffset: 0,
@@ -387,7 +387,7 @@
           if (callbacks.boundary(next)) {
             break;
           }
-        } else if (isText(next)) {
+        } else if (istext(next)) {
           callbacks.text(next);
         }
         if (next === endNode) {
@@ -397,7 +397,7 @@
         }
       }
     };
-    const collectTextToBoundary = (dom, section, node, rootNode, forwards) => {
+    const collecttextToBoundary = (dom, section, node, rootNode, forwards) => {
       var _a;
       if (isBoundary(dom, node)) {
         return;
@@ -422,7 +422,7 @@
       const walker = new global(startNode, rootNode);
       const sections = [];
       let current = nuSection();
-      collectTextToBoundary(dom, current, startNode, rootNode, false);
+      collecttextToBoundary(dom, current, startNode, rootNode, false);
       const finishSection = () => {
         if (current.elements.length > 0) {
           sections.push(current);
@@ -447,7 +447,7 @@
         }
       }, endNode, skipStart);
       if (endNode) {
-        collectTextToBoundary(dom, current, endNode, rootNode, true);
+        collecttextToBoundary(dom, current, endNode, rootNode, true);
       }
       finishSection();
       return sections;
@@ -488,9 +488,9 @@
       const results = [];
       let match;
       while (match = regex.exec(text)) {
-        const matchedText = match[pattern.matchIndex];
-        const matchStart = match.index + match[0].indexOf(matchedText);
-        const matchFinish = matchStart + matchedText.length;
+        const matchedtext = match[pattern.matchIndex];
+        const matchStart = match.index + match[0].indexOf(matchedtext);
+        const matchFinish = matchStart + matchedtext.length;
         if (matchFinish > finish) {
           break;
         }
@@ -546,9 +546,9 @@
             wrap(pos.element, wrapper);
           } else {
             if (textNode.length !== pos.finish) {
-              textNode.splitText(pos.finish);
+              textNode.splittext(pos.finish);
             }
-            const matchNode = textNode.splitText(pos.start);
+            const matchNode = textNode.splittext(pos.start);
             wrap(SugarElement.fromDom(matchNode), wrapper);
           }
         });
@@ -641,17 +641,17 @@
         dom.remove(parent);
       }
     };
-    const escapeSearchText = (text, wholeWord) => {
-      const escapedText = text.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&').replace(/\s/g, '[^\\S\\r\\n\\uFEFF]');
-      const wordRegex = '(' + escapedText + ')';
+    const escapeSearchtext = (text, wholeWord) => {
+      const escapedtext = text.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&').replace(/\s/g, '[^\\S\\r\\n\\uFEFF]');
+      const wordRegex = '(' + escapedtext + ')';
       return wholeWord ? `(?:^|\\s|${ punctuation() })` + wordRegex + `(?=$|\\s|${ punctuation() })` : wordRegex;
     };
     const find = (editor, currentSearchState, text, matchCase, wholeWord, inSelection) => {
       const selection = editor.selection;
-      const escapedText = escapeSearchText(text, wholeWord);
+      const escapedtext = escapeSearchtext(text, wholeWord);
       const isForwardSelection = selection.isForward();
       const pattern = {
-        regex: new RegExp(escapedText, matchCase ? 'g' : 'gi'),
+        regex: new RegExp(escapedtext, matchCase ? 'g' : 'gi'),
         matchIndex: 1
       };
       const count = markAllMatches(editor, currentSearchState, pattern, inSelection);
@@ -701,7 +701,7 @@
         let matchIndex = currentMatchIndex = parseInt(nodeIndex, 10);
         if (all || matchIndex === searchState.index) {
           if (text.length) {
-            nodes[i].innerText = text;
+            nodes[i].innertext = text;
             unwrap(nodes[i]);
           } else {
             removeNode(editor.dom, nodes[i]);
@@ -829,7 +829,7 @@
     const open = (editor, currentSearchState) => {
       const dialogApi = value();
       editor.undoManager.add();
-      const selectedText = global$1.trim(editor.selection.getContent({ format: 'text' }));
+      const selectedtext = global$1.trim(editor.selection.getContent({ format: 'text' }));
       const updateButtonStates = api => {
         api.setEnabled('next', hasNext(editor, currentSearchState));
         api.setEnabled('prev', hasPrev(editor, currentSearchState));
@@ -887,7 +887,7 @@
       };
       const initialState = currentSearchState.get();
       const initialData = {
-        findtext: selectedText,
+        findtext: selectedtext,
         replacetext: '',
         wholewords: initialState.wholeWord,
         matchcase: initialState.matchCase,

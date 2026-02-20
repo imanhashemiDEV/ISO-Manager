@@ -27,10 +27,10 @@
             <div class="col-span-12">
                 <div class="card">
                     <div class="card-body !py-0">
-                        <ul class="flex flex-wrap w-full font-medium Text-center nav-tabs">
+                        <ul class="flex flex-wrap w-full font-medium text-center nav-tabs">
                             <li class="group active">
-                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-1" class="inline-flex items-center mr-6 py-4 transition-all Duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:Text-primary-500 group-[.active]:border-b-primary-500 hover:Text-primary-500 active:Text-primary-500">
-                                    <i class="ti ti-user ltr:mr-2 rtl:ml-2 Text-lg leading-none"></i>
+                                <a href="javascript:void(0);" data-pc-toggle="tab" data-pc-target="profile-1" class="inline-flex items-center mr-6 py-4 transition-all Duration-300 ease-linear border-t-2 border-b-2 border-transparent group-[.active]:text-primary-500 group-[.active]:border-b-primary-500 hover:text-primary-500 active:text-primary-500">
+                                    <i class="ti ti-user ltr:mr-2 rtl:ml-2 text-lg leading-none"></i>
                                     جزئیات حادثه
                                 </a>
                             </li>
@@ -43,31 +43,31 @@
                             <div class="col-span-12 lg:col-span-4 2xl:col-span-3">
                                 <div class="card">
                                     <div class="card-body relative">
-                                        <div class="Text-center mt-3">
+                                        <div class="text-center mt-3">
                                             <div class="chat-avtar inline-flex mx-auto justify-center">
                                                 <img class="rounded-full w-[60px]" src="~/panel/images/user/avatar-1.jpg" alt="User image">
                                             </div>
                                             <h5 class="mb-0">@Model.OfficialAccident.User?.Name</h5>
-                                            <p class="Text-muted Text-sm">@Model.OfficialAccident.User?.EmploymentType</p>
+                                            <p class="text-muted text-sm">@Model.OfficialAccident.User?.EmploymentType</p>
                                             <hr class="my-4 border-secondary-500/10">
                                             <div class="grid grid-cols-12 gap-0 divide-x rtl:divide-x-reverse divide-inherit divide-theme-border dark:divide-themedark-border">
                                                 <div class="col-span-6">
                                                     <h5 class="mb-0">سن</h5>
-                                                    <small class="Text-muted">55</small>
+                                                    <small class="text-muted">55</small>
                                                 </div>
                                                 <div class="col-span-6">
                                                     <h5 class="mb-0">سابقه</h5>
-                                                    <small class="Text-muted">12</small>
+                                                    <small class="text-muted">12</small>
                                                 </div>
                                             </div>
                                             <hr class="my-4 border-secondary-500/10">
                                             <div class="inline-flex items-center gap-3 w-full mb-3">
                                                 <p class="mb-0">@Html.DisplayNameFor(model => model.OfficialAccident.AccidentDate)</p>
-                                                <small class="Text-muted">@Html.DisplayFor(model => model.OfficialAccident.AccidentDate)</small>
+                                                <small class="text-muted">@Html.DisplayFor(model => model.OfficialAccident.AccidentDate)</small>
                                             </div>
                                             <div class="inline-flex items-center gap-3 w-full mb-3">
                                                 <p class="mb-0">@Html.DisplayNameFor(model => model.OfficialAccident.AccidentHour)</p>
-                                                <small class="Text-muted">@Html.DisplayFor(model => model.OfficialAccident.AccidentHour)</small>
+                                                <small class="text-muted">@Html.DisplayFor(model => model.OfficialAccident.AccidentHour)</small>
                                             </div>
                                         </div>
                                     </div>
@@ -84,11 +84,11 @@
                                             <li class="list-group-item px-0 pt-0">
                                                 <div class="grid grid-cols-12 gap-6">
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted">@Html.DisplayNameFor(model => model.OfficialAccident.HseBoss)</p>
+                                                        <p class="mb-1 text-muted">@Html.DisplayNameFor(model => model.OfficialAccident.HseBoss)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.HseBoss)</p>
                                                     </div>
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted">@Html.DisplayNameFor(model => model.OfficialAccident.AccidentPlace)</p>
+                                                        <p class="mb-1 text-muted">@Html.DisplayNameFor(model => model.OfficialAccident.AccidentPlace)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.AccidentPlace)</p>
                                                     </div>
                                                 </div>
@@ -96,11 +96,11 @@
                                             <li class="list-group-item px-0">
                                                 <div class="grid grid-cols-12 gap-6">
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted">@Html.DisplayNameFor(model => model.OfficialAccident.ActivityInAccident)</p>
+                                                        <p class="mb-1 text-muted">@Html.DisplayNameFor(model => model.OfficialAccident.ActivityInAccident)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.ActivityInAccident)</p>
                                                     </div>
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.DirectAccidentCauses)</p>
+                                                        <p class="mb-1 text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.DirectAccidentCauses)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.DirectAccidentCauses)</p>
                                                     </div>
                                                 </div>
@@ -108,11 +108,11 @@
                                             <li class="list-group-item px-0">
                                                 <div class="grid grid-cols-12 gap-6">
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted">@Html.DisplayNameFor(model => model.OfficialAccident.UnsafeActionCauses)</p>
+                                                        <p class="mb-1 text-muted">@Html.DisplayNameFor(model => model.OfficialAccident.UnsafeActionCauses)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.UnsafeActionCauses)</p>
                                                     </div>
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted">@Html.DisplayNameFor(model => model.OfficialAccident.UnsafeConditionCauses)</p>
+                                                        <p class="mb-1 text-muted">@Html.DisplayNameFor(model => model.OfficialAccident.UnsafeConditionCauses)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.UnsafeConditionCauses)</p>
                                                     </div>
 
@@ -121,11 +121,11 @@
                                             <li class="list-group-item px-0">
                                                 <div class="grid grid-cols-12 gap-6">
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.AccidentConsequence)</p>
+                                                        <p class="mb-1 text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.AccidentConsequence)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.AccidentConsequence)</p>
                                                     </div>
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.AccidentComplication)</p>
+                                                        <p class="mb-1 text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.AccidentComplication)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.AccidentComplication)</p>
                                                     </div>
                                                 </div>
@@ -133,25 +133,25 @@
                                             <li class="list-group-item px-0">
                                                 <div class="grid grid-cols-12 gap-6">
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.Marriage)</p>
+                                                        <p class="mb-1 text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.Marriage)</p>
                                                         @if (Model.OfficialAccident.Marriage == "single")
                                                         {
-                                                            <span class="badge bg-primary-500 Text-white">مجرد</span>
+                                                            <span class="badge bg-primary-500 text-white">مجرد</span>
                                                         }
                                                         else
                                                         {
-                                                            <span class="badge bg-primary-500 Text-white">متاهل</span>
+                                                            <span class="badge bg-primary-500 text-white">متاهل</span>
                                                         }
                                                     </div>
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.IsGuilty)</p>
+                                                        <p class="mb-1 text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.IsGuilty)</p>
                                                         @if (Model.OfficialAccident.IsGuilty == 1)
                                                         {
-                                                            <span class="badge bg-red-500 Text-white">مقصر</span>
+                                                            <span class="badge bg-red-500 text-white">مقصر</span>
                                                         }
                                                         else
                                                         {
-                                                            <span class="badge bg-success-500 Text-white">غیر مقصر</span>
+                                                            <span class="badge bg-success-500 text-white">غیر مقصر</span>
                                                         }
                                                     </div>
                                                 </div>
@@ -159,11 +159,11 @@
                                             <li class="list-group-item px-0">
                                                 <div class="grid grid-cols-12 gap-6">
                                                     <div class="col-span-12 md:col-span-6">
-                                                        <p class="mb-1 Text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.LostDays)</p>
+                                                        <p class="mb-1 text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.LostDays)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.LostDays)</p>
                                                     </div>
                                                     <div class="col-span-12 md:col-span-6">
-                                                        @* <p class="mb-1 Text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.AccidentComplication)</p>
+                                                        @* <p class="mb-1 text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.AccidentComplication)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.AccidentComplication)</p> *@
                                                     </div>
                                                 </div>
@@ -171,7 +171,7 @@
                                             <li class="list-group-item px-0">
                                                 <div class="grid grid-cols-12 gap-6">
                                                     <div class="col-span-12">
-                                                        <p class="mb-1 Text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.AccidentDescription)</p>
+                                                        <p class="mb-1 text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.AccidentDescription)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.AccidentDescription)</p>
                                                     </div>
                                                 </div>
@@ -179,7 +179,7 @@
                                             <li class="list-group-item px-0">
                                                 <div class="grid grid-cols-12 gap-6">
                                                     <div class="col-span-12">
-                                                        <p class="mb-1 Text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.DoctorDescription)</p>
+                                                        <p class="mb-1 text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.DoctorDescription)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.DoctorDescription)</p>
                                                     </div>
                                                 </div>
@@ -187,7 +187,7 @@
                                             <li class="list-group-item px-0">
                                                 <div class="grid grid-cols-12 gap-6">
                                                     <div class="col-span-12">
-                                                        <p class="mb-1 Text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.HseDescription)</p>
+                                                        <p class="mb-1 text-muted"> @Html.DisplayNameFor(model => model.OfficialAccident.HseDescription)</p>
                                                         <p class="mb-0">@Html.DisplayFor(model => model.OfficialAccident.HseDescription)</p>
                                                     </div>
                                                 </div>

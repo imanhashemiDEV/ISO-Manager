@@ -37,7 +37,7 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.InspectionTexts[0].Text)
+                                            @Html.DisplayNameFor(model => model.Inspectiontexts[0].text)
                                         </th>
                                         <th>
                                             توضیحات
@@ -55,19 +55,19 @@
                                             <tr>
                                                 <td>@(row++)</td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Text)
+                                                    @Html.DisplayFor(modelItem => item.text)
                                                 </td>
                                                 @if (item.Description == null)
                                                 {
                                                     <td>
-                                                        <input Type="Text" asp-for="InspectionDesc" class="form-control">
+                                                        <input Type="text" asp-for="InspectionDesc" class="form-control">
                                                     </td>
                                                 <td><button class="btn btn-primary" Type="submit">ذخیره</button></td>
                                                 }
                                                 else
                                                 {
                                                     <td>
-                                                    <input Type="Text" asp-for="InspectionDesc" class="form-control" value="@item.Description">
+                                                    <input Type="text" asp-for="InspectionDesc" class="form-control" value="@item.Description">
                                                     </td>
                                                     <td><button class="btn btn-info" Type="submit">ویرایش</button></td>
                                                 }

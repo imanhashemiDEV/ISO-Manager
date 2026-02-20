@@ -215,8 +215,8 @@ interface Schema {
     getBlockElements: () => SchemaMap;
     getInvalidStyles: () => Record<string, SchemaMap> | undefined;
     getVoidElements: () => SchemaMap;
-    getTextBlockElements: () => SchemaMap;
-    getTextInlineElements: () => SchemaMap;
+    gettextBlockElements: () => SchemaMap;
+    gettextInlineElements: () => SchemaMap;
     getBoolAttrs: () => SchemaMap;
     getElementRule: (name: string) => SchemaElement | undefined;
     getSelfClosingElements: () => SchemaMap;
@@ -644,7 +644,7 @@ interface TableSpec {
     header: string[];
     cells: string[][];
 }
-interface TextAreaSpec extends FormComponentWithLabelSpec {
+interface textAreaSpec extends FormComponentWithLabelSpec {
     type: 'textarea';
     placeholder?: string;
     maximized?: boolean;
@@ -662,7 +662,7 @@ interface BaseToolbarButtonSpec<I extends BaseToolbarButtonInstanceApi> {
 interface BaseToolbarButtonInstanceApi {
     isEnabled: () => boolean;
     setEnabled: (state: boolean) => void;
-    setText: (text: string) => void;
+    settext: (text: string) => void;
     setIcon: (icon: string) => void;
 }
 interface ToolbarButtonSpec extends BaseToolbarButtonSpec<ToolbarButtonInstanceApi> {
@@ -689,13 +689,13 @@ interface CardImageSpec {
     alt?: string;
     classes?: string[];
 }
-interface CardTextSpec {
+interface CardtextSpec {
     type: 'cardtext';
     text: string;
     name?: string;
     classes?: string[];
 }
-type CardItemSpec = CardContainerSpec | CardImageSpec | CardTextSpec;
+type CardItemSpec = CardContainerSpec | CardImageSpec | CardtextSpec;
 type CardContainerDirection = 'vertical' | 'horizontal';
 type CardContainerAlign = 'left' | 'right';
 type CardContainerValign = 'top' | 'middle' | 'bottom';
@@ -835,7 +835,7 @@ interface BaseMenuButtonInstanceApi {
     setEnabled: (state: boolean) => void;
     isActive: () => boolean;
     setActive: (state: boolean) => void;
-    setText: (text: string) => void;
+    settext: (text: string) => void;
     setIcon: (icon: string) => void;
 }
 interface ToolbarMenuButtonSpec extends BaseMenuButtonSpec {
@@ -870,7 +870,7 @@ interface ToolbarSplitButtonInstanceApi {
     isActive: () => boolean;
     setActive: (state: boolean) => void;
     setTooltip: (tooltip: string) => void;
-    setText: (text: string) => void;
+    settext: (text: string) => void;
     setIcon: (icon: string) => void;
 }
 interface BaseToolbarToggleButtonSpec<I extends BaseToolbarButtonInstanceApi> extends BaseToolbarButtonSpec<I> {
@@ -927,7 +927,7 @@ interface UrlInputData {
         text?: string;
     };
 }
-type BodyComponentSpec = BarSpec | ButtonSpec | CheckboxSpec | TextAreaSpec | InputSpec | ListBoxSpec | SelectBoxSpec | SizeInputSpec | SliderSpec | IframeSpec | HtmlPanelSpec | UrlInputSpec | DropZoneSpec | ColorInputSpec | GridSpec | ColorPickerSpec | ImagePreviewSpec | AlertBannerSpec | CollectionSpec | LabelSpec | TableSpec | TreeSpec | PanelSpec | CustomEditorSpec;
+type BodyComponentSpec = BarSpec | ButtonSpec | CheckboxSpec | textAreaSpec | InputSpec | ListBoxSpec | SelectBoxSpec | SizeInputSpec | SliderSpec | IframeSpec | HtmlPanelSpec | UrlInputSpec | DropZoneSpec | ColorInputSpec | GridSpec | ColorPickerSpec | ImagePreviewSpec | AlertBannerSpec | CollectionSpec | LabelSpec | TableSpec | TreeSpec | PanelSpec | CustomEditorSpec;
 interface BarSpec {
     type: 'bar';
     items: BodyComponentSpec[];
@@ -1157,7 +1157,7 @@ type PublicDialog_d_SliderSpec = SliderSpec;
 type PublicDialog_d_TableSpec = TableSpec;
 type PublicDialog_d_TabSpec = TabSpec;
 type PublicDialog_d_TabPanelSpec = TabPanelSpec;
-type PublicDialog_d_TextAreaSpec = TextAreaSpec;
+type PublicDialog_d_textAreaSpec = textAreaSpec;
 type PublicDialog_d_TreeSpec = TreeSpec;
 type PublicDialog_d_TreeItemSpec = TreeItemSpec;
 type PublicDialog_d_UrlInputData = UrlInputData;
@@ -1168,7 +1168,7 @@ type PublicDialog_d_UrlDialogInstanceApi = UrlDialogInstanceApi;
 type PublicDialog_d_UrlDialogActionDetails = UrlDialogActionDetails;
 type PublicDialog_d_UrlDialogMessage = UrlDialogMessage;
 declare namespace PublicDialog_d {
-    export { PublicDialog_d_AlertBannerSpec as AlertBannerSpec, PublicDialog_d_BarSpec as BarSpec, PublicDialog_d_BodyComponentSpec as BodyComponentSpec, PublicDialog_d_ButtonSpec as ButtonSpec, PublicDialog_d_CheckboxSpec as CheckboxSpec, PublicDialog_d_CollectionItem as CollectionItem, PublicDialog_d_CollectionSpec as CollectionSpec, PublicDialog_d_ColorInputSpec as ColorInputSpec, PublicDialog_d_ColorPickerSpec as ColorPickerSpec, PublicDialog_d_CustomEditorSpec as CustomEditorSpec, PublicDialog_d_CustomEditorInit as CustomEditorInit, PublicDialog_d_CustomEditorInitFn as CustomEditorInitFn, PublicDialog_d_DialogData as DialogData, PublicDialog_d_DialogSize as DialogSize, PublicDialog_d_DialogSpec as DialogSpec, PublicDialog_d_DialogInstanceApi as DialogInstanceApi, PublicDialog_d_DialogFooterButtonSpec as DialogFooterButtonSpec, PublicDialog_d_DialogActionDetails as DialogActionDetails, PublicDialog_d_DialogChangeDetails as DialogChangeDetails, PublicDialog_d_DialogTabChangeDetails as DialogTabChangeDetails, PublicDialog_d_DropZoneSpec as DropZoneSpec, PublicDialog_d_GridSpec as GridSpec, PublicDialog_d_HtmlPanelSpec as HtmlPanelSpec, PublicDialog_d_IframeSpec as IframeSpec, PublicDialog_d_ImagePreviewSpec as ImagePreviewSpec, PublicDialog_d_InputSpec as InputSpec, PublicDialog_d_LabelSpec as LabelSpec, PublicDialog_d_ListBoxSpec as ListBoxSpec, PublicDialog_d_ListBoxItemSpec as ListBoxItemSpec, PublicDialog_d_ListBoxNestedItemSpec as ListBoxNestedItemSpec, PublicDialog_d_ListBoxSingleItemSpec as ListBoxSingleItemSpec, PublicDialog_d_PanelSpec as PanelSpec, PublicDialog_d_SelectBoxSpec as SelectBoxSpec, PublicDialog_d_SelectBoxItemSpec as SelectBoxItemSpec, PublicDialog_d_SizeInputSpec as SizeInputSpec, PublicDialog_d_SliderSpec as SliderSpec, PublicDialog_d_TableSpec as TableSpec, PublicDialog_d_TabSpec as TabSpec, PublicDialog_d_TabPanelSpec as TabPanelSpec, PublicDialog_d_TextAreaSpec as TextAreaSpec, PublicDialog_d_TreeSpec as TreeSpec, PublicDialog_d_TreeItemSpec as TreeItemSpec, DirectorySpec as TreeDirectorySpec, LeafSpec as TreeLeafSpec, PublicDialog_d_UrlInputData as UrlInputData, PublicDialog_d_UrlInputSpec as UrlInputSpec, PublicDialog_d_UrlDialogSpec as UrlDialogSpec, PublicDialog_d_UrlDialogFooterButtonSpec as UrlDialogFooterButtonSpec, PublicDialog_d_UrlDialogInstanceApi as UrlDialogInstanceApi, PublicDialog_d_UrlDialogActionDetails as UrlDialogActionDetails, PublicDialog_d_UrlDialogMessage as UrlDialogMessage, };
+    export { PublicDialog_d_AlertBannerSpec as AlertBannerSpec, PublicDialog_d_BarSpec as BarSpec, PublicDialog_d_BodyComponentSpec as BodyComponentSpec, PublicDialog_d_ButtonSpec as ButtonSpec, PublicDialog_d_CheckboxSpec as CheckboxSpec, PublicDialog_d_CollectionItem as CollectionItem, PublicDialog_d_CollectionSpec as CollectionSpec, PublicDialog_d_ColorInputSpec as ColorInputSpec, PublicDialog_d_ColorPickerSpec as ColorPickerSpec, PublicDialog_d_CustomEditorSpec as CustomEditorSpec, PublicDialog_d_CustomEditorInit as CustomEditorInit, PublicDialog_d_CustomEditorInitFn as CustomEditorInitFn, PublicDialog_d_DialogData as DialogData, PublicDialog_d_DialogSize as DialogSize, PublicDialog_d_DialogSpec as DialogSpec, PublicDialog_d_DialogInstanceApi as DialogInstanceApi, PublicDialog_d_DialogFooterButtonSpec as DialogFooterButtonSpec, PublicDialog_d_DialogActionDetails as DialogActionDetails, PublicDialog_d_DialogChangeDetails as DialogChangeDetails, PublicDialog_d_DialogTabChangeDetails as DialogTabChangeDetails, PublicDialog_d_DropZoneSpec as DropZoneSpec, PublicDialog_d_GridSpec as GridSpec, PublicDialog_d_HtmlPanelSpec as HtmlPanelSpec, PublicDialog_d_IframeSpec as IframeSpec, PublicDialog_d_ImagePreviewSpec as ImagePreviewSpec, PublicDialog_d_InputSpec as InputSpec, PublicDialog_d_LabelSpec as LabelSpec, PublicDialog_d_ListBoxSpec as ListBoxSpec, PublicDialog_d_ListBoxItemSpec as ListBoxItemSpec, PublicDialog_d_ListBoxNestedItemSpec as ListBoxNestedItemSpec, PublicDialog_d_ListBoxSingleItemSpec as ListBoxSingleItemSpec, PublicDialog_d_PanelSpec as PanelSpec, PublicDialog_d_SelectBoxSpec as SelectBoxSpec, PublicDialog_d_SelectBoxItemSpec as SelectBoxItemSpec, PublicDialog_d_SizeInputSpec as SizeInputSpec, PublicDialog_d_SliderSpec as SliderSpec, PublicDialog_d_TableSpec as TableSpec, PublicDialog_d_TabSpec as TabSpec, PublicDialog_d_TabPanelSpec as TabPanelSpec, PublicDialog_d_textAreaSpec as textAreaSpec, PublicDialog_d_TreeSpec as TreeSpec, PublicDialog_d_TreeItemSpec as TreeItemSpec, DirectorySpec as TreeDirectorySpec, LeafSpec as TreeLeafSpec, PublicDialog_d_UrlInputData as UrlInputData, PublicDialog_d_UrlInputSpec as UrlInputSpec, PublicDialog_d_UrlDialogSpec as UrlDialogSpec, PublicDialog_d_UrlDialogFooterButtonSpec as UrlDialogFooterButtonSpec, PublicDialog_d_UrlDialogInstanceApi as UrlDialogInstanceApi, PublicDialog_d_UrlDialogActionDetails as UrlDialogActionDetails, PublicDialog_d_UrlDialogMessage as UrlDialogMessage, };
 }
 type PublicInlineContent_d_AutocompleterSpec = AutocompleterSpec;
 type PublicInlineContent_d_AutocompleterItemSpec = AutocompleterItemSpec;
@@ -1209,9 +1209,9 @@ type PublicMenu_d_CardMenuItemInstanceApi = CardMenuItemInstanceApi;
 type PublicMenu_d_CardItemSpec = CardItemSpec;
 type PublicMenu_d_CardContainerSpec = CardContainerSpec;
 type PublicMenu_d_CardImageSpec = CardImageSpec;
-type PublicMenu_d_CardTextSpec = CardTextSpec;
+type PublicMenu_d_CardtextSpec = CardtextSpec;
 declare namespace PublicMenu_d {
-    export { PublicMenu_d_MenuItemSpec as MenuItemSpec, PublicMenu_d_MenuItemInstanceApi as MenuItemInstanceApi, PublicMenu_d_NestedMenuItemContents as NestedMenuItemContents, PublicMenu_d_NestedMenuItemSpec as NestedMenuItemSpec, PublicMenu_d_NestedMenuItemInstanceApi as NestedMenuItemInstanceApi, PublicMenu_d_FancyMenuItemSpec as FancyMenuItemSpec, PublicMenu_d_ColorSwatchMenuItemSpec as ColorSwatchMenuItemSpec, PublicMenu_d_InsertTableMenuItemSpec as InsertTableMenuItemSpec, PublicMenu_d_ToggleMenuItemSpec as ToggleMenuItemSpec, PublicMenu_d_ToggleMenuItemInstanceApi as ToggleMenuItemInstanceApi, PublicMenu_d_ChoiceMenuItemSpec as ChoiceMenuItemSpec, PublicMenu_d_ChoiceMenuItemInstanceApi as ChoiceMenuItemInstanceApi, PublicMenu_d_SeparatorMenuItemSpec as SeparatorMenuItemSpec, PublicMenu_d_ContextMenuApi as ContextMenuApi, PublicMenu_d_ContextMenuContents as ContextMenuContents, PublicMenu_d_ContextMenuItem as ContextMenuItem, PublicMenu_d_ContextSubMenu as ContextSubMenu, PublicMenu_d_CardMenuItemSpec as CardMenuItemSpec, PublicMenu_d_CardMenuItemInstanceApi as CardMenuItemInstanceApi, PublicMenu_d_CardItemSpec as CardItemSpec, PublicMenu_d_CardContainerSpec as CardContainerSpec, PublicMenu_d_CardImageSpec as CardImageSpec, PublicMenu_d_CardTextSpec as CardTextSpec, };
+    export { PublicMenu_d_MenuItemSpec as MenuItemSpec, PublicMenu_d_MenuItemInstanceApi as MenuItemInstanceApi, PublicMenu_d_NestedMenuItemContents as NestedMenuItemContents, PublicMenu_d_NestedMenuItemSpec as NestedMenuItemSpec, PublicMenu_d_NestedMenuItemInstanceApi as NestedMenuItemInstanceApi, PublicMenu_d_FancyMenuItemSpec as FancyMenuItemSpec, PublicMenu_d_ColorSwatchMenuItemSpec as ColorSwatchMenuItemSpec, PublicMenu_d_InsertTableMenuItemSpec as InsertTableMenuItemSpec, PublicMenu_d_ToggleMenuItemSpec as ToggleMenuItemSpec, PublicMenu_d_ToggleMenuItemInstanceApi as ToggleMenuItemInstanceApi, PublicMenu_d_ChoiceMenuItemSpec as ChoiceMenuItemSpec, PublicMenu_d_ChoiceMenuItemInstanceApi as ChoiceMenuItemInstanceApi, PublicMenu_d_SeparatorMenuItemSpec as SeparatorMenuItemSpec, PublicMenu_d_ContextMenuApi as ContextMenuApi, PublicMenu_d_ContextMenuContents as ContextMenuContents, PublicMenu_d_ContextMenuItem as ContextMenuItem, PublicMenu_d_ContextSubMenu as ContextSubMenu, PublicMenu_d_CardMenuItemSpec as CardMenuItemSpec, PublicMenu_d_CardMenuItemInstanceApi as CardMenuItemInstanceApi, PublicMenu_d_CardItemSpec as CardItemSpec, PublicMenu_d_CardContainerSpec as CardContainerSpec, PublicMenu_d_CardImageSpec as CardImageSpec, PublicMenu_d_CardtextSpec as CardtextSpec, };
 }
 interface SidebarInstanceApi {
     element: () => HTMLElement;
@@ -1315,7 +1315,7 @@ interface Registry$1 {
     };
 }
 interface AutocompleteLookupData {
-    readonly matchText: string;
+    readonly matchtext: string;
     readonly items: AutocompleterContents[];
     readonly columns: ColumnTypes;
     readonly onAction: (autoApi: AutocompleterInstanceApi, rng: Range, value: string, meta: Record<string, any>) => void;
@@ -1587,7 +1587,7 @@ interface PreProcessEvent extends ParserArgs {
 interface PostProcessEvent extends ParserArgs {
     content: string;
 }
-interface PastePlainTextToggleEvent {
+interface PastePlaintextToggleEvent {
     state: boolean;
 }
 interface PastePreProcessEvent {
@@ -1704,7 +1704,7 @@ interface EditorEventMap extends Omit<NativeEventMap, 'blur' | 'focus'> {
     'AutocompleterStart': AutocompleterEventArgs;
     'AutocompleterUpdate': AutocompleterEventArgs;
     'AutocompleterEnd': {};
-    'PastePlainTextToggle': PastePlainTextToggleEvent;
+    'PastePlaintextToggle': PastePlaintextToggleEvent;
     'PastePreProcess': PastePreProcessEvent;
     'PastePostProcess': PastePostProcessEvent;
     'TableModified': TableModifiedEvent;
@@ -1753,7 +1753,7 @@ type EventTypes_d_PlaceholderToggleEvent = PlaceholderToggleEvent;
 type EventTypes_d_LoadErrorEvent = LoadErrorEvent;
 type EventTypes_d_PreProcessEvent = PreProcessEvent;
 type EventTypes_d_PostProcessEvent = PostProcessEvent;
-type EventTypes_d_PastePlainTextToggleEvent = PastePlainTextToggleEvent;
+type EventTypes_d_PastePlaintextToggleEvent = PastePlaintextToggleEvent;
 type EventTypes_d_PastePreProcessEvent = PastePreProcessEvent;
 type EventTypes_d_PastePostProcessEvent = PastePostProcessEvent;
 type EventTypes_d_EditableRootStateChangeEvent = EditableRootStateChangeEvent;
@@ -1766,7 +1766,7 @@ type EventTypes_d_OpenNotificationEvent = OpenNotificationEvent;
 type EventTypes_d_EditorEventMap = EditorEventMap;
 type EventTypes_d_EditorManagerEventMap = EditorManagerEventMap;
 declare namespace EventTypes_d {
-    export { EventTypes_d_ExecCommandEvent as ExecCommandEvent, EventTypes_d_BeforeGetContentEvent as BeforeGetContentEvent, EventTypes_d_GetContentEvent as GetContentEvent, EventTypes_d_BeforeSetContentEvent as BeforeSetContentEvent, EventTypes_d_SetContentEvent as SetContentEvent, EventTypes_d_SaveContentEvent as SaveContentEvent, EventTypes_d_NewBlockEvent as NewBlockEvent, EventTypes_d_NodeChangeEvent as NodeChangeEvent, EventTypes_d_FormatEvent as FormatEvent, EventTypes_d_ObjectResizeEvent as ObjectResizeEvent, EventTypes_d_ObjectSelectedEvent as ObjectSelectedEvent, EventTypes_d_ScrollIntoViewEvent as ScrollIntoViewEvent, EventTypes_d_SetSelectionRangeEvent as SetSelectionRangeEvent, EventTypes_d_ShowCaretEvent as ShowCaretEvent, EventTypes_d_SwitchModeEvent as SwitchModeEvent, EventTypes_d_ChangeEvent as ChangeEvent, EventTypes_d_AddUndoEvent as AddUndoEvent, EventTypes_d_UndoRedoEvent as UndoRedoEvent, EventTypes_d_WindowEvent as WindowEvent, EventTypes_d_ProgressStateEvent as ProgressStateEvent, EventTypes_d_AfterProgressStateEvent as AfterProgressStateEvent, EventTypes_d_PlaceholderToggleEvent as PlaceholderToggleEvent, EventTypes_d_LoadErrorEvent as LoadErrorEvent, EventTypes_d_PreProcessEvent as PreProcessEvent, EventTypes_d_PostProcessEvent as PostProcessEvent, EventTypes_d_PastePlainTextToggleEvent as PastePlainTextToggleEvent, EventTypes_d_PastePreProcessEvent as PastePreProcessEvent, EventTypes_d_PastePostProcessEvent as PastePostProcessEvent, EventTypes_d_EditableRootStateChangeEvent as EditableRootStateChangeEvent, EventTypes_d_NewTableRowEvent as NewTableRowEvent, EventTypes_d_NewTableCellEvent as NewTableCellEvent, EventTypes_d_TableEventData as TableEventData, EventTypes_d_TableModifiedEvent as TableModifiedEvent, EventTypes_d_BeforeOpenNotificationEvent as BeforeOpenNotificationEvent, EventTypes_d_OpenNotificationEvent as OpenNotificationEvent, EventTypes_d_EditorEventMap as EditorEventMap, EventTypes_d_EditorManagerEventMap as EditorManagerEventMap, };
+    export { EventTypes_d_ExecCommandEvent as ExecCommandEvent, EventTypes_d_BeforeGetContentEvent as BeforeGetContentEvent, EventTypes_d_GetContentEvent as GetContentEvent, EventTypes_d_BeforeSetContentEvent as BeforeSetContentEvent, EventTypes_d_SetContentEvent as SetContentEvent, EventTypes_d_SaveContentEvent as SaveContentEvent, EventTypes_d_NewBlockEvent as NewBlockEvent, EventTypes_d_NodeChangeEvent as NodeChangeEvent, EventTypes_d_FormatEvent as FormatEvent, EventTypes_d_ObjectResizeEvent as ObjectResizeEvent, EventTypes_d_ObjectSelectedEvent as ObjectSelectedEvent, EventTypes_d_ScrollIntoViewEvent as ScrollIntoViewEvent, EventTypes_d_SetSelectionRangeEvent as SetSelectionRangeEvent, EventTypes_d_ShowCaretEvent as ShowCaretEvent, EventTypes_d_SwitchModeEvent as SwitchModeEvent, EventTypes_d_ChangeEvent as ChangeEvent, EventTypes_d_AddUndoEvent as AddUndoEvent, EventTypes_d_UndoRedoEvent as UndoRedoEvent, EventTypes_d_WindowEvent as WindowEvent, EventTypes_d_ProgressStateEvent as ProgressStateEvent, EventTypes_d_AfterProgressStateEvent as AfterProgressStateEvent, EventTypes_d_PlaceholderToggleEvent as PlaceholderToggleEvent, EventTypes_d_LoadErrorEvent as LoadErrorEvent, EventTypes_d_PreProcessEvent as PreProcessEvent, EventTypes_d_PostProcessEvent as PostProcessEvent, EventTypes_d_PastePlaintextToggleEvent as PastePlaintextToggleEvent, EventTypes_d_PastePreProcessEvent as PastePreProcessEvent, EventTypes_d_PastePostProcessEvent as PastePostProcessEvent, EventTypes_d_EditableRootStateChangeEvent as EditableRootStateChangeEvent, EventTypes_d_NewTableRowEvent as NewTableRowEvent, EventTypes_d_NewTableCellEvent as NewTableCellEvent, EventTypes_d_TableEventData as TableEventData, EventTypes_d_TableModifiedEvent as TableModifiedEvent, EventTypes_d_BeforeOpenNotificationEvent as BeforeOpenNotificationEvent, EventTypes_d_OpenNotificationEvent as OpenNotificationEvent, EventTypes_d_EditorEventMap as EditorEventMap, EventTypes_d_EditorManagerEventMap as EditorManagerEventMap, };
 }
 type Format_d_Formats = Formats;
 type Format_d_Format = Format;
@@ -2298,9 +2298,9 @@ interface DOMUtils {
         x: number;
         y: number;
     };
-    parseStyle: (cssText: string) => Record<string, string>;
+    parseStyle: (csstext: string) => Record<string, string>;
     serializeStyle: (stylesArg: StyleMap, name?: string) => string;
-    addStyle: (cssText: string) => void;
+    addStyle: (csstext: string) => void;
     loadCSS: (url: string) => void;
     hasClass: (elm: string | Element, cls: string) => boolean;
     addClass: (elm: RunArguments<Element>, cls: string) => void;
@@ -2731,7 +2731,7 @@ interface Formatter extends FormatRegistry {
     formatChanged: (names: string, callback: FormatChangeCallback, similar?: boolean, vars?: FormatVars) => {
         unbind: () => void;
     };
-    getCssText: (format: string | ApplyFormat) => string;
+    getCsstext: (format: string | ApplyFormat) => string;
 }
 interface EditorMode {
     isReadOnly: () => boolean;
@@ -2990,14 +2990,14 @@ declare class ScriptLoader {
     loadQueue(): Promise<void>;
     loadScripts(scripts: string[]): Promise<void>;
 }
-type TextProcessCallback = (node: Text, offset: number, text: string) => number;
+type textProcessCallback = (node: text, offset: number, text: string) => number;
 interface Spot {
-    container: Text;
+    container: text;
     offset: number;
 }
-interface TextSeeker {
-    backwards: (node: Node, offset: number, process: TextProcessCallback, root?: Node) => Spot | null;
-    forwards: (node: Node, offset: number, process: TextProcessCallback, root?: Node) => Spot | null;
+interface textSeeker {
+    backwards: (node: Node, offset: number, process: textProcessCallback, root?: Node) => Spot | null;
+    forwards: (node: Node, offset: number, process: textProcessCallback, root?: Node) => Spot | null;
 }
 interface DomTreeWalkerConstructor {
     readonly prototype: DomTreeWalker;
@@ -3097,19 +3097,19 @@ interface Resource {
     get: (id: string) => any;
     unload: (id: string) => void;
 }
-type TextPatterns_d_Pattern = Pattern;
-type TextPatterns_d_RawPattern = RawPattern;
-type TextPatterns_d_DynamicPatternsLookup = DynamicPatternsLookup;
-type TextPatterns_d_RawDynamicPatternsLookup = RawDynamicPatternsLookup;
-type TextPatterns_d_DynamicPatternContext = DynamicPatternContext;
-type TextPatterns_d_BlockCmdPattern = BlockCmdPattern;
-type TextPatterns_d_BlockPattern = BlockPattern;
-type TextPatterns_d_BlockFormatPattern = BlockFormatPattern;
-type TextPatterns_d_InlineCmdPattern = InlineCmdPattern;
-type TextPatterns_d_InlinePattern = InlinePattern;
-type TextPatterns_d_InlineFormatPattern = InlineFormatPattern;
-declare namespace TextPatterns_d {
-    export { TextPatterns_d_Pattern as Pattern, TextPatterns_d_RawPattern as RawPattern, TextPatterns_d_DynamicPatternsLookup as DynamicPatternsLookup, TextPatterns_d_RawDynamicPatternsLookup as RawDynamicPatternsLookup, TextPatterns_d_DynamicPatternContext as DynamicPatternContext, TextPatterns_d_BlockCmdPattern as BlockCmdPattern, TextPatterns_d_BlockPattern as BlockPattern, TextPatterns_d_BlockFormatPattern as BlockFormatPattern, TextPatterns_d_InlineCmdPattern as InlineCmdPattern, TextPatterns_d_InlinePattern as InlinePattern, TextPatterns_d_InlineFormatPattern as InlineFormatPattern, };
+type textPatterns_d_Pattern = Pattern;
+type textPatterns_d_RawPattern = RawPattern;
+type textPatterns_d_DynamicPatternsLookup = DynamicPatternsLookup;
+type textPatterns_d_RawDynamicPatternsLookup = RawDynamicPatternsLookup;
+type textPatterns_d_DynamicPatternContext = DynamicPatternContext;
+type textPatterns_d_BlockCmdPattern = BlockCmdPattern;
+type textPatterns_d_BlockPattern = BlockPattern;
+type textPatterns_d_BlockFormatPattern = BlockFormatPattern;
+type textPatterns_d_InlineCmdPattern = InlineCmdPattern;
+type textPatterns_d_InlinePattern = InlinePattern;
+type textPatterns_d_InlineFormatPattern = InlineFormatPattern;
+declare namespace textPatterns_d {
+    export { textPatterns_d_Pattern as Pattern, textPatterns_d_RawPattern as RawPattern, textPatterns_d_DynamicPatternsLookup as DynamicPatternsLookup, textPatterns_d_RawDynamicPatternsLookup as RawDynamicPatternsLookup, textPatterns_d_DynamicPatternContext as DynamicPatternContext, textPatterns_d_BlockCmdPattern as BlockCmdPattern, textPatterns_d_BlockPattern as BlockPattern, textPatterns_d_BlockFormatPattern as BlockFormatPattern, textPatterns_d_InlineCmdPattern as InlineCmdPattern, textPatterns_d_InlinePattern as InlinePattern, textPatterns_d_InlineFormatPattern as InlineFormatPattern, };
 }
 interface Delay {
     setEditorInterval: (editor: Editor, callback: () => void, time?: number) => number;
@@ -3217,7 +3217,7 @@ interface TinyMCE extends EditorManager {
     dom: {
         EventUtils: EventUtilsConstructor;
         TreeWalker: DomTreeWalkerConstructor;
-        TextSeeker: (dom: DOMUtils, isBlockBoundary?: (node: Node) => boolean) => TextSeeker;
+        textSeeker: (dom: DOMUtils, isBlockBoundary?: (node: Node) => boolean) => textSeeker;
         DOMUtils: DOMUtilsNamespace;
         ScriptLoader: ScriptLoaderConstructor;
         RangeUtils: RangeUtilsNamespace;
@@ -3274,4 +3274,4 @@ interface TinyMCE extends EditorManager {
     _addCacheSuffix: Tools['_addCacheSuffix'];
 }
 declare const tinymce: TinyMCE;
-export { AddOnManager, Annotator, AstNode, Bookmark, BookmarkManager, ControlSelection, DOMUtils, Delay, DomParser, DomParserSettings, DomSerializer, DomSerializerSettings, DomTreeWalker, Editor, EditorCommands, EditorEvent, EditorManager, EditorModeApi, EditorObservable, EditorOptions, EditorSelection, Entities, Env, EventDispatcher, EventUtils, EventTypes_d as Events, FakeClipboard, FocusManager, Format_d as Formats, Formatter, GeomRect, HtmlSerializer, HtmlSerializerSettings, I18n, IconManager, Model, ModelManager, NotificationApi, NotificationManager, NotificationSpec, Observable, Plugin, PluginManager, RangeUtils, RawEditorOptions, Rect, Resource, Schema, SchemaSettings, ScriptLoader, Shortcuts, StyleSheetLoader, Styles, TextPatterns_d as TextPatterns, TextSeeker, Theme, ThemeManager, TinyMCE, Tools, URI, Ui_d as Ui, UndoManager, VK, WindowManager, Writer, WriterSettings, tinymce as default };
+export { AddOnManager, Annotator, AstNode, Bookmark, BookmarkManager, ControlSelection, DOMUtils, Delay, DomParser, DomParserSettings, DomSerializer, DomSerializerSettings, DomTreeWalker, Editor, EditorCommands, EditorEvent, EditorManager, EditorModeApi, EditorObservable, EditorOptions, EditorSelection, Entities, Env, EventDispatcher, EventUtils, EventTypes_d as Events, FakeClipboard, FocusManager, Format_d as Formats, Formatter, GeomRect, HtmlSerializer, HtmlSerializerSettings, I18n, IconManager, Model, ModelManager, NotificationApi, NotificationManager, NotificationSpec, Observable, Plugin, PluginManager, RangeUtils, RawEditorOptions, Rect, Resource, Schema, SchemaSettings, ScriptLoader, Shortcuts, StyleSheetLoader, Styles, textPatterns_d as textPatterns, textSeeker, Theme, ThemeManager, TinyMCE, Tools, URI, Ui_d as Ui, UndoManager, VK, WindowManager, Writer, WriterSettings, tinymce as default };

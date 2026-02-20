@@ -27,14 +27,14 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input Type="hidden" asp-for="HealthCart.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="HealthCart.EndDate" class="control-label"></label>
                                     <input asp-for="HealthCart.EndDate" class="form-control" />
-                                    <span asp-validation-for="HealthCart.EndDate" class="Text-danger"></span>
+                                    <span asp-validation-for="HealthCart.EndDate" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4 flex flex-col gap-2">
                                     <label asp-for="HealthCart.UserId" class="control-label"></label>

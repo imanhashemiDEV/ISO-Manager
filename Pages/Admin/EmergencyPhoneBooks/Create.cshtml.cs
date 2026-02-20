@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.EmergencyPhoneBooks
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IActionResult OnGet()
@@ -35,8 +35,8 @@ namespace ISO_Manager.Pages.Admin.EmergencyPhoneBooks
                 return Page();
             }
 
-            _conText.EmergencyPhoneBooks.Add(EmergencyPhoneBook);
-            await _conText.SaveChangesAsync();
+            _context.EmergencyPhoneBooks.Add(EmergencyPhoneBook);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

@@ -9,12 +9,14 @@ namespace ISO_Manager.Models
         [Key]
         public int Id { get; set; }
 
+        [Required(ErrorMessage ="عنوان سمت الزامی است")]
         [Display(Name = "عنوان سمت")]
         public string? Title { get; set; }
 
         [Display(Name = "کد سمت")]
         public string? OccupationCode { get; set; }
 
+        [Required(ErrorMessage = "نوع سمت الزامی است")]
         [Display(Name = "نوع سمت")]
         public string? OccupationType { get; set; }
 

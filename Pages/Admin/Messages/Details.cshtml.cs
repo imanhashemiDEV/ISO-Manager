@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Messages
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public Message Message { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.Messages
                 return NotFound();
             }
 
-            var message = await _conText.Messages.FirstOrDefaultAsync(m => m.Id == id);
+            var message = await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
 
             if (message is not null)
             {

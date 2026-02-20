@@ -9,6 +9,7 @@ namespace ISO_Manager.Models
         [Key]
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "عنوان گروه الزامی است")]
         [Display(Name = "عنوان گروه")]
         public string? Title { get; set; }
 

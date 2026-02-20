@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Examinations
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,14 +30,14 @@ namespace ISO_Manager.Pages.Admin.Examinations
                 return NotFound();
             }
 
-            var examination =  await _conText.Examinations.FirstOrDefaultAsync(m => m.Id == id);
+            var examination =  await _context.Examinations.FirstOrDefaultAsync(m => m.Id == id);
             if (examination == null)
             {
                 return NotFound();
             }
             Examination = examination;
-           ViewData["ContractorId"] = new SelectList(_conText.Contractors, "id", "Company");
-           ViewData["UserId"] = new SelectList(_conText.Users, "id", "name");
+           ViewData["ContractorId"] = new SelectList(_context.Contractors, "id", "Company");
+           ViewData["UserId"] = new SelectList(_context.Users, "id", "name");
             return Page();
         }
 
@@ -50,11 +50,11 @@ namespace ISO_Manager.Pages.Admin.Examinations
                 return Page();
             }
 
-            _conText.Attach(Examination).State = EntityState.Modified;
+            _context.Attach(Examination).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -78,7 +78,7 @@ namespace ISO_Manager.Pages.Admin.Examinations
 
         private bool ExaminationExists(long id)
         {
-            return _conText.Examinations.Any(e => e.Id == id);
+            return _context.Examinations.Any(e => e.Id == id);
         }
     }
 }

@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Reminders
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public Reminder Reminder { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.Reminders
                 return NotFound();
             }
 
-            var reminder = await _conText.Reminders.FirstOrDefaultAsync(m => m.Id == id);
+            var reminder = await _context.Reminders.FirstOrDefaultAsync(m => m.Id == id);
 
             if (reminder is not null)
             {

@@ -41,13 +41,13 @@
                                          <th>ردیف</th>
                                          <th>عدم انطباق</th>
                                          <th>
-                                             @Html.DisplayNameFor(model => model.InspectionTexts[0].Text)
+                                             @Html.DisplayNameFor(model => model.Inspectiontexts[0].text)
                                          </th>
                                      </tr>
                                      </thead>
                                      <tbody>
 
-                                     @foreach (var item in Model.InspectionTexts)
+                                     @foreach (var item in Model.Inspectiontexts)
                                      {
                                          <tr>
                                              <td>@(row++)</td>
@@ -55,7 +55,7 @@
                                                  <input Type="checkbox" name="Checked" class="form-check-input" value="@item.Id" class="items">
                                              </td>
                                              <td>
-                                                 @Html.DisplayFor(modelItem => item.Text)
+                                                 @Html.DisplayFor(modelItem => item.text)
                                              </td>
                                          </tr>
                                      }

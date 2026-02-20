@@ -3,7 +3,6 @@
 
 @{
     ViewData["Title"] = "Edit";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
 
@@ -28,38 +27,38 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input Type="hidden" asp-for="ProcessPlan.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ProcessPlan.Title" class="control-label"></label>
                                     <input asp-for="ProcessPlan.Title" class="form-control" />
-                                    <span asp-validation-for="ProcessPlan.Title" class="Text-danger"></span>
+                                    <span asp-validation-for="ProcessPlan.Title" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ProcessPlan.AcceptPercent" class="control-label"></label>
                                     <input asp-for="ProcessPlan.AcceptPercent" class="form-control" />
-                                    <span asp-validation-for="ProcessPlan.AcceptPercent" class="Text-danger"></span>
+                                    <span asp-validation-for="ProcessPlan.AcceptPercent" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ProcessPlan.PlanPercent" class="control-label"></label>
                                     <input asp-for="ProcessPlan.PlanPercent" class="form-control" />
-                                    <span asp-validation-for="ProcessPlan.PlanPercent" class="Text-danger"></span>
+                                    <span asp-validation-for="ProcessPlan.PlanPercent" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ProcessPlan.Status" class="control-label"></label>
                                     <input asp-for="ProcessPlan.Status" class="form-control" />
-                                    <span asp-validation-for="ProcessPlan.Status" class="Text-danger"></span>
+                                    <span asp-validation-for="ProcessPlan.Status" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ProcessPlan.Deviation" class="control-label"></label>
                                     <input asp-for="ProcessPlan.Deviation" class="form-control" />
-                                    <span asp-validation-for="ProcessPlan.Deviation" class="Text-danger"></span>
+                                    <span asp-validation-for="ProcessPlan.Deviation" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ProcessPlan.Requests" class="control-label"></label>
                                     <input asp-for="ProcessPlan.Requests" class="form-control" />
-                                    <span asp-validation-for="ProcessPlan.Requests" class="Text-danger"></span>
+                                    <span asp-validation-for="ProcessPlan.Requests" class="text-danger"></span>
                                 </div>
                             </div>
                             <button Type="submit" class="btn btn-success">ثبت</button>

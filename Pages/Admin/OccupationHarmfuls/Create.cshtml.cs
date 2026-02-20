@@ -12,17 +12,17 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["HarmfulFactorId"] = new SelectList(_conText.Set<HarmfulFactor>(), "id", "id");
-        ViewData["OccupationId"] = new SelectList(_conText.Occupations, "id", "id");
+        ViewData["HarmfulFactorId"] = new SelectList(_context.Set<HarmfulFactor>(), "id", "id");
+        ViewData["OccupationId"] = new SelectList(_context.Occupations, "id", "id");
             return Page();
         }
 
@@ -37,8 +37,8 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
                 return Page();
             }
 
-            _conText.OccupationHarmfuls.Add(OccupationHarmful);
-            await _conText.SaveChangesAsync();
+            _context.OccupationHarmfuls.Add(OccupationHarmful);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

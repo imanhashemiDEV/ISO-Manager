@@ -288,7 +288,7 @@
 
     var global$1 = tinymce.util.Tools.resolve('tinymce.Env');
 
-    const convertText = source => {
+    const converttext = source => {
       const isMac = global$1.os.isMacOS() || global$1.os.isiOS();
       const mac = {
         alt: '&#x2325;',
@@ -422,10 +422,10 @@
 
     const tab$2 = () => {
       const shortcutList = map(shortcuts, shortcut => {
-        const shortcutText = map(shortcut.shortcuts, convertText).join(' or ');
+        const shortcuttext = map(shortcut.shortcuts, converttext).join(' or ');
         return [
           shortcut.action,
-          shortcutText
+          shortcuttext
         ];
       });
       const tablePanel = {
@@ -554,7 +554,7 @@
       },
       {
         key: 'textcolor',
-        name: 'Text Color'
+        name: 'text Color'
       },
       {
         key: 'visualblocks',

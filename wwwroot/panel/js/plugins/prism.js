@@ -28,7 +28,7 @@ var Prism = (function (_self) {
 	var uniqueId = 0;
 
 	// The grammar object for plaintext
-	var plainTextGrammar = {};
+	var plaintextGrammar = {};
 
 
 	var _ = {
@@ -305,10 +305,10 @@ var Prism = (function (_self) {
 			/**
 			 * The grammar for plain, unformatted text.
 			 */
-			plain: plainTextGrammar,
-			plaintext: plainTextGrammar,
-			text: plainTextGrammar,
-			txt: plainTextGrammar,
+			plain: plaintextGrammar,
+			plaintext: plaintextGrammar,
+			text: plaintextGrammar,
+			txt: plaintextGrammar,
 
 			/**
 			 * Creates a deep copy of the language with the given id and appends the given tokens.
@@ -1798,11 +1798,11 @@ Prism.languages.js = Prism.languages.javascript;
 		xhr.open('GET', src, true);
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState == 4) {
-				if (xhr.status < 400 && xhr.responseText) {
-					success(xhr.responseText);
+				if (xhr.status < 400 && xhr.responsetext) {
+					success(xhr.responsetext);
 				} else {
 					if (xhr.status >= 400) {
-						error(FAILURE_MESSAGE(xhr.status, xhr.statusText));
+						error(FAILURE_MESSAGE(xhr.status, xhr.statustext));
 					} else {
 						error(FAILURE_EMPTY_MESSAGE);
 					}

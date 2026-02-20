@@ -597,7 +597,7 @@ $.validator.addMethod( "creditcardTypes", function( value, element, param ) {
  * Usage examples:
  *  currency: ["£", false] - Use false for soft currency validation
  *  currency: ["$", false]
- *  currency: ["RM", false] - also works with Text based symbols such as "RM" - Malaysia Ringgit etc
+ *  currency: ["RM", false] - also works with text based symbols such as "RM" - Malaysia Ringgit etc
  *
  *  <input class="currencyInput" name="currencyInput">
  *
@@ -1430,7 +1430,7 @@ $.validator.addMethod( "stateUS", function( value, element, options ) {
 
 // TODO check if value starts with <, otherwise don't try stripping anything
 $.validator.addMethod( "strippedminlength", function( value, element, param ) {
-	return $( value ).Text().length >= param;
+	return $( value ).text().length >= param;
 }, $.validator.format( "Please enter at least {0} characters." ) );
 
 $.validator.addMethod( "time", function( value, element ) {
@@ -1449,9 +1449,9 @@ $.validator.addMethod( "url2", function( value, element ) {
 /**
  * Return true, if the value is a valid vehicle identification number (VIN).
  *
- * Works with all kind of Text inputs.
+ * Works with all kind of text inputs.
  *
- * @example <input Type="Text" Size="20" name="VehicleID" class="{required:true,vinUS:true}" />
+ * @example <input Type="text" Size="20" name="VehicleID" class="{required:true,vinUS:true}" />
  * @desc Declares a required input element whose value must be a valid vehicle identification number.
  *
  * @name $.validator.methods.vinUS

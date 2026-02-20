@@ -12,18 +12,18 @@ namespace ISO_Manager.Pages.Admin.Organization
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<Models.Organization> Organization { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Organization = await _conText.Organizations.ToListAsync();
+            Organization = await _context.Organizations.ToListAsync();
         }
     }
 }

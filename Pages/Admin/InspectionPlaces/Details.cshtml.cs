@@ -12,14 +12,14 @@ namespace ISO_Manager.Pages.Admin.InspectionPlaces
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
-        public IList<InspectionText> InspectionText { get; set; } = default!;
+        public IList<Inspectiontext> Inspectiontext { get; set; } = default!;
         public InspectionPlace InspectionPlace { get; set; }
 
         public async Task<IActionResult> OnGetAsync(long? id)
@@ -29,13 +29,13 @@ namespace ISO_Manager.Pages.Admin.InspectionPlaces
                 return NotFound();
             }
 
-            InspectionText = await _conText.InspectionTexts
+            Inspectiontext = await _context.Inspectiontexts
                 .Include(i => i.InspectionPlace)
                 .Where(m=>m.InspectionPlaceId==id)
                 .OrderBy(n=>n.Step)
                 .ToListAsync();
 
-            var inspectionPlace = await _conText.InspectionPlaces.FirstOrDefaultAsync(m => m.Id == id);
+            var inspectionPlace = await _context.InspectionPlaces.FirstOrDefaultAsync(m => m.Id == id);
 
             if (inspectionPlace is not null)
             {

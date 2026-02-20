@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISO_Manager.Models
 {
-    public class InspectionText
+    public class Inspectiontext
     {
         [Key]
         public int Id { get; set; }
 
         [Display(Name = "متن سوال بازرسی")]
-        public string? Text { get; set; }
+        public string? text { get; set; }
 
         [Display(Name = "مرتبه سوال بازرسی")]
         public int? Step { get; set; }

@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.LegalRequirements
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public LegalRequirement LegalRequirement { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.LegalRequirements
                 return NotFound();
             }
 
-            var legalrequirement = await _conText.LegalRequirements.FirstOrDefaultAsync(m => m.Id == id);
+            var legalrequirement = await _context.LegalRequirements.FirstOrDefaultAsync(m => m.Id == id);
 
             if (legalrequirement is not null)
             {

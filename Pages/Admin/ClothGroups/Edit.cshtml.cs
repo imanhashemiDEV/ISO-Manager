@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
                 return NotFound();
             }
 
-            var clothgroup =  await _conText.ClothGroups.FirstOrDefaultAsync(m => m.Id == id);
+            var clothgroup =  await _context.ClothGroups.FirstOrDefaultAsync(m => m.Id == id);
             if (clothgroup == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
                 return Page();
             }
 
-            _conText.Attach(ClothGroup).State = EntityState.Modified;
+            _context.Attach(ClothGroup).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
 
         private bool ClothGroupExists(long id)
         {
-            return _conText.ClothGroups.Any(e => e.Id == id);
+            return _context.ClothGroups.Any(e => e.Id == id);
         }
     }
 }

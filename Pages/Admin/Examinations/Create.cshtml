@@ -45,7 +45,7 @@ ViewData["Title"] = "ایجاد معاینات";
                                         <option value="1409">1409</option>
                                         <option value="1410">1410</option>
                                     </select>
-                                    <span asp-validation-for="Examination.ExaminationDate" class="Text-danger"></span>
+                                    <span asp-validation-for="Examination.ExaminationDate" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Examination.ExaminationResult" class="control-label"></label>
@@ -54,12 +54,12 @@ ViewData["Title"] = "ایجاد معاینات";
                                         <option value="conditionally">مشروط</option>
                                         <option value="incompetence">نامناسب</option>
                                     </select>
-                                    <span asp-validation-for="Examination.ExaminationResult" class="Text-danger"></span>
+                                    <span asp-validation-for="Examination.ExaminationResult" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Examination.Description" class="control-label"></label>
                                     <input asp-for="Examination.Description" class="form-control"/>
-                                    <span asp-validation-for="Examination.Description" class="Text-danger"></span>
+                                    <span asp-validation-for="Examination.Description" class="text-danger"></span>
                                 </div>
                             </div>
                             <button Type="submit" class="btn btn-success">ثبت</button>

@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Offices
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,13 +30,13 @@ namespace ISO_Manager.Pages.Admin.Offices
                 return NotFound();
             }
 
-            var office =  await _conText.Offices.FirstOrDefaultAsync(m => m.Id == id);
+            var office =  await _context.Offices.FirstOrDefaultAsync(m => m.Id == id);
             if (office == null)
             {
                 return NotFound();
             }
             Office = office;
-           ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "Id", "Title");
+           ViewData["OrganizationId"] = new SelectList(_context.Organizations, "Id", "Title");
             return Page();
         }
 
@@ -49,11 +49,11 @@ namespace ISO_Manager.Pages.Admin.Offices
                 return Page();
             }
 
-            _conText.Attach(Office).State = EntityState.Modified;
+            _context.Attach(Office).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +72,7 @@ namespace ISO_Manager.Pages.Admin.Offices
 
         private bool OfficeExists(int id)
         {
-            return _conText.Offices.Any(e => e.Id == id);
+            return _context.Offices.Any(e => e.Id == id);
         }
     }
 }

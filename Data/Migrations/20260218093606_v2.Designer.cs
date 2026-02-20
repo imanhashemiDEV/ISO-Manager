@@ -861,10 +861,10 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<int?>("OrganizationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Text")
+                    b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TextId")
+                    b.Property<int?>("textId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -879,7 +879,7 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.HasIndex("TextId");
+                    b.HasIndex("textId");
 
                     b.HasIndex("WorkPlaceId");
 
@@ -913,7 +913,7 @@ namespace ISO_Manager.Data.Migrations
                     b.ToTable("InspectionPlaces");
                 });
 
-            modelBuilder.Entity("ISO_Manager.Models.InspectionText", b =>
+            modelBuilder.Entity("ISO_Manager.Models.Inspectiontext", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -933,7 +933,7 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<int?>("Step")
                         .HasColumnType("int");
 
-                    b.Property<string>("Text")
+                    b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -945,7 +945,7 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("InspectionTexts");
+                    b.ToTable("Inspectiontexts");
                 });
 
             modelBuilder.Entity("ISO_Manager.Models.LegalRequirement", b =>
@@ -1052,7 +1052,7 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Text")
+                    b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -1674,7 +1674,7 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("FaSubchapter")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FaText")
+                    b.Property<string>("Fatext")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("OrganizationId")
@@ -2343,9 +2343,9 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("OrganizationId");
 
-                    b.HasOne("ISO_Manager.Models.InspectionText", "InspectionText")
+                    b.HasOne("ISO_Manager.Models.Inspectiontext", "Inspectiontext")
                         .WithMany()
-                        .HasForeignKey("TextId");
+                        .HasForeignKey("textId");
 
                     b.HasOne("ISO_Manager.Models.WorkPlace", "WorkPlace")
                         .WithMany()
@@ -2353,7 +2353,7 @@ namespace ISO_Manager.Data.Migrations
 
                     b.Navigation("Inspection");
 
-                    b.Navigation("InspectionText");
+                    b.Navigation("Inspectiontext");
 
                     b.Navigation("Organization");
 
@@ -2369,7 +2369,7 @@ namespace ISO_Manager.Data.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("ISO_Manager.Models.InspectionText", b =>
+            modelBuilder.Entity("ISO_Manager.Models.Inspectiontext", b =>
                 {
                     b.HasOne("ISO_Manager.Models.InspectionPlace", "InspectionPlace")
                         .WithMany()

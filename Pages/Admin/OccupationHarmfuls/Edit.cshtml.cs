@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,14 +30,14 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
                 return NotFound();
             }
 
-            var occupationharmful =  await _conText.OccupationHarmfuls.FirstOrDefaultAsync(m => m.Id == id);
+            var occupationharmful =  await _context.OccupationHarmfuls.FirstOrDefaultAsync(m => m.Id == id);
             if (occupationharmful == null)
             {
                 return NotFound();
             }
             OccupationHarmful = occupationharmful;
-           ViewData["HarmfulFactorId"] = new SelectList(_conText.Set<HarmfulFactor>(), "id", "id");
-           ViewData["OccupationId"] = new SelectList(_conText.Occupations, "id", "id");
+           ViewData["HarmfulFactorId"] = new SelectList(_context.Set<HarmfulFactor>(), "id", "id");
+           ViewData["OccupationId"] = new SelectList(_context.Occupations, "id", "id");
             return Page();
         }
 
@@ -50,11 +50,11 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
                 return Page();
             }
 
-            _conText.Attach(OccupationHarmful).State = EntityState.Modified;
+            _context.Attach(OccupationHarmful).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -73,7 +73,7 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
 
         private bool OccupationHarmfulExists(long id)
         {
-            return _conText.OccupationHarmfuls.Any(e => e.Id == id);
+            return _context.OccupationHarmfuls.Any(e => e.Id == id);
         }
     }
 }

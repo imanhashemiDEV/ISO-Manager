@@ -24,14 +24,19 @@
                             </div>
                             <div class="card-body">
                                 <form method="post">
-                                    <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                     <div class="grid grid-cols-12 gap-6">
                                         <div class="col-span-12 md:col-span-6 mb-4">
                                             <label asp-for="WorkPlace.Title" class="control-label"></label>
-                                            <input asp-for="WorkPlace.Title" class="form-control mt-4" />
-                                            <span asp-validation-for="WorkPlace.Title" class="Text-danger"></span>
+                                            <input asp-for="WorkPlace.Title" class="form-control my-2" />
+                                            <span asp-validation-for="WorkPlace.Title" class="text-danger"></span>
                                         </div>
+                                <div class="col-span-12 md:col-span-6 mb-4">
+                                    <label asp-for="WorkPlace.OrganizationId" class="control-label"></label>
+                                    <select asp-for="WorkPlace.OrganizationId" class="form-control my-2" asp-items="ViewBag.OrganizationId"></select>
+                                </div>
                                     </div>
+                            
                                     <button Type="submit" class="btn btn-success">ایجاد</button>
                                 </form>
                             </div>

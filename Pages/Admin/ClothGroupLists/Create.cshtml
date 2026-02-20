@@ -27,18 +27,18 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input Type="hidden" asp-for="ClothGroupList.ClothGroupId"  value="@Model.ClothGroupId" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ClothGroupList.Shoes" class="control-label"></label>
                                     <input asp-for="ClothGroupList.Shoes" class="form-control"/>
-                                    <span asp-validation-for="ClothGroupList.Shoes" class="Text-danger"></span>
+                                    <span asp-validation-for="ClothGroupList.Shoes" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ClothGroupList.BoilerSuit" class="control-label"></label>
                                     <input asp-for="ClothGroupList.BoilerSuit" class="form-control"/>
-                                    <span asp-validation-for="ClothGroupList.BoilerSuit" class="Text-danger"></span>
+                                    <span asp-validation-for="ClothGroupList.BoilerSuit" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ClothGroupList.UserId" class="control-label"></label>

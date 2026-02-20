@@ -2,7 +2,7 @@
 @model ISO_Manager.Pages.Admin.Offices.IndexModel
 
 @{
-    ViewData["Title"] = "لیست ادارات";
+    ViewData["Title"] = "لیست اداره ها";
     var row = 1;
 }
 
@@ -14,7 +14,7 @@
             <div class="page-block">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a asp-page="Index">خانه</a></li>
-                    <li class="breadcrumb-item" aria-current="page">لیست ادارات</li>
+                    <li class="breadcrumb-item" aria-current="page">لیست اداره ها</li>
                 </ul>
             </div>
         </div>
@@ -25,9 +25,9 @@
                 <div class="card table-card">
                     <div class="card-header">
                         <div class="sm:flex items-center justify-between">
-                            <h5 class="mb-3 sm:mb-0">لیست ادارات</h5>
+                            <h5 class="mb-3 sm:mb-0">لیست اداره ها</h5>
                             <div>
-                                <a asp-page="/Admin/Offices/Create" class="btn btn-primary">اضافه کردن اداره</a>
+                                <a asp-page="./Create" class="btn btn-primary">افزودن اداره</a>
                             </div>
                         </div>
                     </div>
@@ -59,8 +59,8 @@
                                                 @Html.DisplayFor(modelItem => item.Organization!.Title)
                                             </td>
                                             <td>
-                                                <a asp-page="/Admin/Offices/Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit Text-xl leading-none"></i>
+                                                <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                    <i class="ti ti-edit text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

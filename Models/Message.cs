@@ -10,7 +10,7 @@ namespace ISO_Manager.Models
         public int Id { get; set; }
 
         [Display(Name = "متن پیام")]
-        public string? Text { get; set; }
+        public string? text { get; set; }
 
         [Display(Name = "وضعیت")]
         public string? Status { get; set; }

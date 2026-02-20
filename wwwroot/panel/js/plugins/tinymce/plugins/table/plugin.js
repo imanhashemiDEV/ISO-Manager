@@ -343,7 +343,7 @@
     const DOCUMENT = 9;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const TEXT = 3;
+    const text = 3;
 
     const fromHtml = (html, scope) => {
       const doc = scope || document;
@@ -361,9 +361,9 @@
       const node = doc.createElement(tag);
       return fromDom$1(node);
     };
-    const fromText = (text, scope) => {
+    const fromtext = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createtextNode(text);
       return fromDom$1(node);
     };
     const fromDom$1 = node => {
@@ -376,7 +376,7 @@
     const SugarElement = {
       fromHtml,
       fromTag,
-      fromText,
+      fromtext,
       fromDom: fromDom$1,
       fromPoint
     };
@@ -423,7 +423,7 @@
     const isType = t => element => type(element) === t;
     const isComment = element => type(element) === COMMENT || name(element) === '#comment';
     const isElement = isType(ELEMENT);
-    const isText = isType(TEXT);
+    const istext = isType(text);
     const isDocument = isType(DOCUMENT);
     const isDocumentFragment = isType(DOCUMENT_FRAGMENT);
     const isTag = tag => e => isElement(e) && name(e) === tag;
@@ -465,7 +465,7 @@
     const getShadowHost = e => SugarElement.fromDom(e.dom.host);
 
     const inBody = element => {
-      const dom = isText(element) ? element.dom.parentNode : element.dom;
+      const dom = istext(element) ? element.dom.parentNode : element.dom;
       if (dom === undefined || dom === null || dom.ownerDocument === null) {
         return false;
       }
@@ -1210,7 +1210,7 @@
       };
     };
 
-    const api = NodeValue(isText, 'text');
+    const api = NodeValue(istext, 'text');
     const get = element => api.get(element);
     const set = (element, value) => api.set(element, value);
 
@@ -1335,7 +1335,7 @@
         create: constant({
           nu: SugarElement.fromTag,
           clone: clone$1,
-          text: SugarElement.fromText
+          text: SugarElement.fromtext
         }),
         query: constant({
           comparePosition,
@@ -1347,13 +1347,13 @@
           name: name,
           parent: parent,
           document,
-          isText: isText,
+          istext: istext,
           isComment: isComment,
           isElement: isElement,
           isSpecial,
           getLanguage,
-          getText: get,
-          setText: set,
+          gettext: get,
+          settext: set,
           isBoundary,
           isEmptyTag,
           isNonEditable
@@ -2808,7 +2808,7 @@
         }
         return Optional.none();
       })));
-      const getExtractedDetails = targets => {
+      const getextractedDetails = targets => {
         const tableOpt = table(targets.element);
         return tableOpt.map(table => {
           const warehouse = Warehouse.fromTable(table);
@@ -2837,7 +2837,7 @@
       };
       const resetTargets = () => {
         targets.set(cached(findTargets)());
-        selectionDetails = targets.get().bind(getExtractedDetails);
+        selectionDetails = targets.get().bind(getextractedDetails);
         each(changeHandlers.get(), call);
       };
       const setupHandler = handler => {

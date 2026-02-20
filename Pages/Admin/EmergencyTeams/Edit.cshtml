@@ -27,28 +27,28 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input Type="hidden" asp-for="EmergencyTeam.Id" />
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="EmergencyTeam.Duty" class="control-label"></label>
                                     <input asp-for="EmergencyTeam.Duty" class="form-control"/>
-                                    <span asp-validation-for="EmergencyTeam.Duty" class="Text-danger"></span>
+                                    <span asp-validation-for="EmergencyTeam.Duty" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="EmergencyTeam.UserId" class="control-label"></label>
                                     <select asp-for="EmergencyTeam.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-                                    <span asp-validation-for="EmergencyTeam.UserId" class="Text-danger"></span>
+                                    <span asp-validation-for="EmergencyTeam.UserId" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="EmergencyTeam.WorkPlaceId" class="control-label"></label>
                                     <select asp-for="EmergencyTeam.WorkPlaceId" class="form-control" asp-items="ViewBag.WorkPlaceId"></select>
-                                    <span asp-validation-for="EmergencyTeam.WorkPlaceId" class="Text-danger"></span>
+                                    <span asp-validation-for="EmergencyTeam.WorkPlaceId" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="EmergencyTeam.DutyId" class="control-label"></label>
                                     <select asp-for="EmergencyTeam.DutyId" class="form-control" asp-items="ViewBag.DutyId"></select>
-                                    <span asp-validation-for="EmergencyTeam.DutyId" class="Text-danger"></span>
+                                    <span asp-validation-for="EmergencyTeam.DutyId" class="text-danger"></span>
                                 </div>
                             </div>
                             <button Type="submit" class="btn btn-success">ثبت</button>

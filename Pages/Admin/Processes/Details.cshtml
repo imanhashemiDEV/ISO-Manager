@@ -2,43 +2,107 @@
 @model ISO_Manager.Pages.Admin.Processes.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "جزئیات فرایند";
 }
+   
 
-<h1>Details</h1>
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست فرایندها</a></li>
+                    <li class="breadcrumb-item" aria-current="page">جزئیات</li>
+                </ul>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>جزئیات شناسنامه فرایند</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid grid-cols-12 gap-6">
+                            <div class="col-span-12 md:col-span-6 mb-4">
+                                <label asp-for="Process.ProcessNumber" class="control-label"></label>
+                                <input asp-for="Process.ProcessNumber" disabled class="form-control" />
+                            </div>
+                            <div class="col-span-12 md:col-span-6 mb-4">
+                                <label asp-for="Process.ProcessReviewNumber" class="control-label"></label>
+                                <input asp-for="Process.ProcessReviewNumber" disabled class="form-control" />
+                            </div>
+                            <div class="col-span-12 md:col-span-6 mb-4">
+                                <label asp-for="Process.ProcessEditDate" class="control-label"></label>
+                                <input asp-for="Process.ProcessEditDate" disabled class="form-control" />
+                            </div>
+                            <div class="col-span-12 md:col-span-6 mb-4">
+                                <label asp-for="Process.ProcessTitle" class="control-label"></label>
+                                <input asp-for="Process.ProcessTitle" disabled class="form-control" />
+                            </div>
+                            <div class="col-span-12 md:col-span-6 mb-4">
+                                <label asp-for="Process.ProcessPurpose" class="control-label"></label>
+                                <input asp-for="Process.ProcessPurpose" disabled class="form-control" />
+                            </div>
+                            <div class="col-span-12 md:col-span-6 mb-4">
+                                <label asp-for="Process.ProcessOwner" class="control-label"></label>
+                                <input asp-for="Process.ProcessOwner" disabled class="form-control" />
+                            </div>
+                            <div class="col-span-12 md:col-span-6 mb-4">
+                                <label asp-for="Process.ProcessResources" class="control-label"></label>
+                                <input asp-for="Process.ProcessResources" disabled class="form-control" />
+                            </div>
+                            <div class="col-span-12 md:col-span-6 mb-4">
+                                <label asp-for="Process.ProcessGroup" class="control-label"></label>
+                                <input asp-for="Process.ProcessGroup" disabled class="form-control" />
+                            </div>
+                            <div class="col-span-12 md:col-span-6 mb-4">
+                                <label asp-for="Process.ProcessRequirement" class="control-label"></label>
+                                <input asp-for="Process.ProcessRequirement" disabled class="form-control" />
+                            </div>
+                            <div class="col-span-12 mb-4">
+                                <label asp-for="Process.ProcessProviders" class="control-label"></label>
+                                <textarea asp-for="Process.ProcessProviders" disabled class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                            </div>
+                            <div class="col-span-12 mb-4">
+                                <label asp-for="Process.ProcessInputs" class="control-label"></label>
+                                <textarea asp-for="Process.ProcessInputs" disabled class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                            </div>
+                            <div class="col-span-12 mb-4">
+                                <label asp-for="Process.ProcessActitvities" class="control-label"></label>
+                                <textarea asp-for="Process.ProcessActitvities" disabled class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                            </div>
+                            <div class="col-span-12 mb-4">
+                                <label asp-for="Process.ProcessResponsible" class="control-label"></label>
+                                <textarea asp-for="Process.ProcessResponsible" disabled class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                            </div>
+                            <div class="col-span-12 mb-4">
+                                <label asp-for="Process.ProcessDocuments" class="control-label"></label>
+                                <textarea asp-for="Process.ProcessResponsible" disabled class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                            </div>
+                            <div class="col-span-12 mb-4">
+                                <label asp-for="Process.ProcessExport" class="control-label"></label>
+                                <textarea asp-for="Process.ProcessResponsible" disabled class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                            </div>
+                            <div class="col-span-12 mb-4">
+                                <label asp-for="Process.ProcessIntrested" class="control-label"></label>
+                                <textarea asp-for="Process.ProcessResponsible" disabled class="form-control" style="direction:rtl !important" dir="rtl" rows="10"></textarea>
+                            </div>
 
-<div>
-    <h4>Process</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Process.ProcessTitle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Process.ProcessTitle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Process.Year)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Process.Year)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Process.CreatedAt)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Process.CreatedAt)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Process.UpdatedAt)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Process.UpdatedAt)
-        </dd>
-    </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Process.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

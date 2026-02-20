@@ -238,7 +238,7 @@
 
     var global$1 = tinymce.util.Tools.resolve('tinymce.dom.TreeWalker');
 
-    const getText = (node, schema) => {
+    const gettext = (node, schema) => {
       const blockElements = schema.getBlockElements();
       const voidElements = schema.getVoidElements();
       const isNewline = node => blockElements[node.nodeName] || voidElements[node.nodeName];
@@ -263,15 +263,15 @@
     const removeZwsp = text => text.replace(/\u200B/g, '');
     const strLen = str => str.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '_').length;
     const countWords = (node, schema) => {
-      const text = removeZwsp(getText(node, schema).join('\n'));
+      const text = removeZwsp(gettext(node, schema).join('\n'));
       return getWords(text.split(''), identity).length;
     };
     const countCharacters = (node, schema) => {
-      const text = getText(node, schema).join('');
+      const text = gettext(node, schema).join('');
       return strLen(text);
     };
     const countCharactersWithoutSpaces = (node, schema) => {
-      const text = getText(node, schema).join('').replace(/\s/g, '');
+      const text = gettext(node, schema).join('').replace(/\s/g, '');
       return strLen(text);
     };
 

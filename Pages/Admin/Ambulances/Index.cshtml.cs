@@ -15,11 +15,11 @@ namespace ISO_Manager.Pages.Admin.Ambulances
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<Ambulance> Ambulances { get;set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.Ambulances
         {
             var Take = 10;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _conText.Ambulances.Count();
+            var ItemCount = _context.Ambulances.Count();
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -42,7 +42,7 @@ namespace ISO_Manager.Pages.Admin.Ambulances
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            Ambulances = await _conText.Ambulances
+            Ambulances = await _context.Ambulances
                 .Include(a => a.User)
                 .Include(a => a.WorkPlace)
                 .Skip(skip).Take(Take)

@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public ClothGroupList ClothGroupList { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
                 return NotFound();
             }
 
-            var clothgrouplist = await _conText.ClothGroupLists.FirstOrDefaultAsync(m => m.Id == id);
+            var clothgrouplist = await _context.ClothGroupLists.FirstOrDefaultAsync(m => m.Id == id);
 
             if (clothgrouplist is not null)
             {

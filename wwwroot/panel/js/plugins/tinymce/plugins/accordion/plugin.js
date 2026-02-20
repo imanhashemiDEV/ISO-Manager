@@ -202,7 +202,7 @@
     const DOCUMENT = 9;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const TEXT = 3;
+    const text = 3;
 
     const name = element => {
       const r = element.dom.nodeName;
@@ -212,7 +212,7 @@
     const isType = t => element => type(element) === t;
     const isComment = element => type(element) === COMMENT || name(element) === '#comment';
     const isElement = isType(ELEMENT);
-    const isText = isType(TEXT);
+    const istext = isType(text);
     const isDocument = isType(DOCUMENT);
     const isDocumentFragment = isType(DOCUMENT_FRAGMENT);
 
@@ -262,9 +262,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (text, scope) => {
+    const fromtext = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createtextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -277,7 +277,7 @@
     const SugarElement = {
       fromHtml,
       fromTag,
-      fromText,
+      fromtext,
       fromDom,
       fromPoint
     };
@@ -358,7 +358,7 @@
     const getShadowHost = e => SugarElement.fromDom(e.dom.host);
 
     const inBody = element => {
-      const dom = isText(element) ? element.dom.parentNode : element.dom;
+      const dom = istext(element) ? element.dom.parentNode : element.dom;
       if (dom === undefined || dom === null || dom.ownerDocument === null) {
         return false;
       }
@@ -529,7 +529,7 @@
       };
     };
 
-    const api = NodeValue(isText, 'text');
+    const api = NodeValue(istext, 'text');
     const get = element => api.get(element);
     const set = (element, value) => api.set(element, value);
 
@@ -654,7 +654,7 @@
         create: constant({
           nu: SugarElement.fromTag,
           clone: clone$1,
-          text: SugarElement.fromText
+          text: SugarElement.fromtext
         }),
         query: constant({
           comparePosition,
@@ -666,13 +666,13 @@
           name: name,
           parent: parent,
           document,
-          isText: isText,
+          istext: istext,
           isComment: isComment,
           isElement: isElement,
           isSpecial,
           getLanguage,
-          getText: get,
-          setText: set,
+          gettext: get,
+          settext: set,
           isBoundary,
           isEmptyTag,
           isNonEditable
@@ -688,7 +688,7 @@
     });
 
     const scan = (universe, element, direction) => {
-      if (universe.property().isText(element) && universe.property().getText(element).trim().length === 0 || universe.property().isComment(element)) {
+      if (universe.property().istext(element) && universe.property().gettext(element).trim().length === 0 || universe.property().isComment(element)) {
         return direction(element).bind(elem => {
           return scan(universe, elem, direction).orThunk(() => {
             return Optional.some(elem);
@@ -699,15 +699,15 @@
       }
     };
     const toEnd = (universe, element) => {
-      if (universe.property().isText(element)) {
-        return universe.property().getText(element).length;
+      if (universe.property().istext(element)) {
+        return universe.property().gettext(element).length;
       }
       const children = universe.property().children(element);
       return children.length;
     };
     const freefallRtl$2 = (universe, element) => {
       const candidate = scan(universe, element, universe.query().prevSibling).getOr(element);
-      if (universe.property().isText(candidate)) {
+      if (universe.property().istext(candidate)) {
         return point(candidate, toEnd(universe, candidate));
       }
       const children = universe.property().children(candidate);
@@ -791,10 +791,10 @@
       }
       const editorBody = SugarElement.fromDom(editor.getBody());
       const uid = generate('acc');
-      const summaryText = editor.dom.encode(editor.selection.getRng().toString() || editor.translate('Accordion summary...'));
-      const bodyText = editor.dom.encode(editor.translate('Accordion body...'));
-      const accordionSummaryHtml = `<summary class="${ accordionSummaryClass }">${ summaryText }</summary>`;
-      const accordionBodyHtml = `<${ accordionBodyWrapperTag } class="${ accordionBodyWrapperClass }"><p>${ bodyText }</p></${ accordionBodyWrapperTag }>`;
+      const summarytext = editor.dom.encode(editor.selection.getRng().toString() || editor.translate('Accordion summary...'));
+      const bodytext = editor.dom.encode(editor.translate('Accordion body...'));
+      const accordionSummaryHtml = `<summary class="${ accordionSummaryClass }">${ summarytext }</summary>`;
+      const accordionBodyHtml = `<${ accordionBodyWrapperTag } class="${ accordionBodyWrapperClass }"><p>${ bodytext }</p></${ accordionBodyWrapperTag }>`;
       editor.undoManager.transact(() => {
         editor.insertContent([
           `<details data-mce-id="${ uid }" class="${ accordionDetailsClass }" open="open">`,

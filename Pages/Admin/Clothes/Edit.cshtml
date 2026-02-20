@@ -25,7 +25,7 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="Text-danger"></div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input Type="hidden" asp-for="Cloth.Id" />
                             <input Type="hidden" asp-for="Cloth.UserId" />
                             <div class="grid grid-cols-12 gap-6">
@@ -42,7 +42,7 @@
                                         <option value="rain-coat">بارانی</option>
                                         <option value="Over-coat">اورکت</option>
                                     </select>
-                                    <span asp-validation-for="Cloth.ClothType" class="Text-danger"></span>
+                                    <span asp-validation-for="Cloth.ClothType" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Cloth.ReceiveType" class="control-label"></label>
@@ -52,22 +52,22 @@
                                         <option value="BossOrder">دستور رئیس HSE</option>
                                         <option value="guest">مهمان</option>
                                     </select>
-                                    <span asp-validation-for="Cloth.ReceiveType" class="Text-danger"></span>
+                                    <span asp-validation-for="Cloth.ReceiveType" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Cloth.ReceiveDate" class="control-label"></label>
-                                    <input asp-for="Cloth.ReceiveDate" Type="Text" class="form-control" id="pc-datepicker-1"/>
-                                    <span asp-validation-for="Cloth.ReceiveDate" class="Text-danger"></span>
+                                    <input data-jdp asp-for="@Model.ReceivedDate" Type="text" class="form-control" dir="ltr" />
+                                    <span asp-validation-for="Cloth.ReceiveDate" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Cloth.Size" class="control-label"></label>
                                     <input asp-for="Cloth.Size" class="form-control"/>
-                                    <span asp-validation-for="Cloth.Size" class="Text-danger"></span>
+                                    <span asp-validation-for="Cloth.Size" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="Cloth.Description" class="control-label"></label>
                                     <input asp-for="Cloth.Description" class="form-control"/>
-                                    <span asp-validation-for="Cloth.Description" class="Text-danger"></span>
+                                    <span asp-validation-for="Cloth.Description" class="text-danger"></span>
                                 </div>
                             </div>
                             <button Type="submit" class="btn btn-success">ثبت</button>
@@ -85,11 +85,12 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
 
-        <script>
-              const d_week = new Datepicker(document.querySelector('#pc-datepicker-1'), {
-                buttonClass: 'btn'
-              });
+        <link rel="stylesheet" href="~/js/jalalidatepicker.min.js" />
+        <script src="~/js/jalalidatepicker.min.js"></script>
 
+
+        <script>
+            jalaliDatepicker.startWatch();
             var users = new Choices(document.getElementById('users'));
 
         </script>

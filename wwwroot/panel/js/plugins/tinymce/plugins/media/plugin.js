@@ -827,14 +827,14 @@
           sizeInput
         ])
       };
-      const embedTextarea = {
+      const embedtextarea = {
         type: 'textarea',
         name: 'embed',
         label: 'Paste your embed code below:'
       };
       const embedTab = {
         title: 'Embed',
-        items: [embedTextarea]
+        items: [embedtextarea]
       };
       const advancedFormItems = [];
       if (hasAltSource(editor)) {

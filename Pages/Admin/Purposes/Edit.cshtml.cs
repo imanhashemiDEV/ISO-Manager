@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Purposes
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,13 +30,13 @@ namespace ISO_Manager.Pages.Admin.Purposes
                 return NotFound();
             }
 
-            var purpose =  await _conText.Purposes.FirstOrDefaultAsync(m => m.Id == id);
+            var purpose =  await _context.Purposes.FirstOrDefaultAsync(m => m.Id == id);
             if (purpose == null)
             {
                 return NotFound();
             }
             Purpose = purpose;
-           ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "id");
+           ViewData["OrganizationId"] = new SelectList(_context.Organizations, "id", "id");
             return Page();
         }
 
@@ -49,11 +49,11 @@ namespace ISO_Manager.Pages.Admin.Purposes
                 return Page();
             }
 
-            _conText.Attach(Purpose).State = EntityState.Modified;
+            _context.Attach(Purpose).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +72,7 @@ namespace ISO_Manager.Pages.Admin.Purposes
 
         private bool PurposeExists(long id)
         {
-            return _conText.Purposes.Any(e => e.Id == id);
+            return _context.Purposes.Any(e => e.Id == id);
         }
     }
 }

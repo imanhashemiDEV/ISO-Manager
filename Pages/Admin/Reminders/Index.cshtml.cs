@@ -12,18 +12,18 @@ namespace ISO_Manager.Pages.Admin.Reminders
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<Reminder> Reminder { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Reminder = await _conText.Reminders
+            Reminder = await _context.Reminders
                 //.Include(r => r.Organization)
                 .Include(r => r.User).ToListAsync();
         }

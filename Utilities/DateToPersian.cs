@@ -51,5 +51,12 @@ namespace ISO_Manager.Utilities
         {
             return date.ToString(format, GetPersianCulture());
         }
+
+        public static DateTime ToShamsiDate(this DateTime date, string format = "yyyy/MM/dd")
+        {
+            System.Globalization.PersianCalendar PC = new System.Globalization.PersianCalendar();
+
+            return new DateTime(PC.GetYear(date), PC.GetMonth(date), PC.GetDayOfMonth(date));
+        }
     }
 }

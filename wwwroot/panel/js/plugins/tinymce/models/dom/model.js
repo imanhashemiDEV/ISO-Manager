@@ -421,7 +421,7 @@
     const DOCUMENT = 9;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const TEXT = 3;
+    const text = 3;
 
     const name = element => {
       const r = element.dom.nodeName;
@@ -432,7 +432,7 @@
     const isComment = element => type(element) === COMMENT || name(element) === '#comment';
     const isHTMLElement = element => isElement(element) && isPrototypeOf(element.dom);
     const isElement = isType(ELEMENT);
-    const isText = isType(TEXT);
+    const istext = isType(text);
     const isDocument = isType(DOCUMENT);
     const isDocumentFragment = isType(DOCUMENT_FRAGMENT);
     const isTag = tag => e => isElement(e) && name(e) === tag;
@@ -492,9 +492,9 @@
       const node = doc.createElement(tag);
       return fromDom$1(node);
     };
-    const fromText = (text, scope) => {
+    const fromtext = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createtextNode(text);
       return fromDom$1(node);
     };
     const fromDom$1 = node => {
@@ -507,7 +507,7 @@
     const SugarElement = {
       fromHtml: fromHtml$1,
       fromTag,
-      fromText,
+      fromtext,
       fromDom: fromDom$1,
       fromPoint: fromPoint$1
     };
@@ -773,7 +773,7 @@
     const isOpenShadowHost = element => isNonNullable(element.dom.shadowRoot);
 
     const inBody = element => {
-      const dom = isText(element) ? element.dom.parentNode : element.dom;
+      const dom = istext(element) ? element.dom.parentNode : element.dom;
       if (dom === undefined || dom === null || dom.ownerDocument === null) {
         return false;
       }
@@ -957,7 +957,7 @@
       const sourceDom = source.dom;
       const targetDom = target.dom;
       if (isSupported(sourceDom) && isSupported(targetDom)) {
-        targetDom.style.cssText = sourceDom.style.cssText;
+        targetDom.style.csstext = sourceDom.style.csstext;
       }
     };
 
@@ -2209,20 +2209,20 @@
       };
     };
 
-    const api = NodeValue(isText, 'text');
+    const api = NodeValue(istext, 'text');
     const get$6 = element => api.get(element);
     const getOption = element => api.getOption(element);
     const set = (element, value) => api.set(element, value);
 
     const getEnd = element => name(element) === 'img' ? 1 : getOption(element).fold(() => children$2(element).length, v => v.length);
-    const isTextNodeWithCursorPosition = el => getOption(el).filter(text => text.trim().length !== 0 || text.indexOf(nbsp) > -1).isSome();
+    const istextNodeWithCursorPosition = el => getOption(el).filter(text => text.trim().length !== 0 || text.indexOf(nbsp) > -1).isSome();
     const isContentEditableFalse = elem => isHTMLElement(elem) && get$b(elem, 'contenteditable') === 'false';
     const elementsWithCursorPosition = [
       'img',
       'br'
     ];
     const isCursorPosition = elem => {
-      const hasCursorPosition = isTextNodeWithCursorPosition(elem);
+      const hasCursorPosition = istextNodeWithCursorPosition(elem);
       return hasCursorPosition || contains$2(elementsWithCursorPosition, name(elem)) || isContentEditableFalse(elem);
     };
 
@@ -2282,9 +2282,9 @@
     };
     const cloneFormats = (oldCell, newCell, formats) => {
       const first$1 = first(oldCell);
-      return first$1.map(firstText => {
+      return first$1.map(firsttext => {
         const formatSelector = formats.join(',');
-        const parents = ancestors$3(firstText, formatSelector, element => {
+        const parents = ancestors$3(firsttext, formatSelector, element => {
           return eq$1(element, oldCell);
         });
         return foldr(parents, (last, parent) => {
@@ -2741,7 +2741,7 @@
         create: constant({
           nu: SugarElement.fromTag,
           clone,
-          text: SugarElement.fromText
+          text: SugarElement.fromtext
         }),
         query: constant({
           comparePosition,
@@ -2753,13 +2753,13 @@
           name: name,
           parent: parent,
           document,
-          isText: isText,
+          istext: istext,
           isComment: isComment,
           isElement: isElement,
           isSpecial,
           getLanguage,
-          getText: get$6,
-          setText: set,
+          gettext: get$6,
+          settext: set,
           isBoundary,
           isEmptyTag,
           isNonEditable
@@ -3025,7 +3025,7 @@
       });
     };
     const serializeElements = (editor, elements) => map$1(elements, elm => editor.selection.serializer.serialize(elm.dom, {})).join('');
-    const getTextContent = (editor, replicaElements) => {
+    const gettextContent = (editor, replicaElements) => {
       const doc = editor.getDoc();
       const dos = getRootNode(SugarElement.fromDom(editor.getBody()));
       const offscreenDiv = SugarElement.fromTag('div', doc);
@@ -3040,7 +3040,7 @@
       const root = getContentContainer(dos);
       append(offscreenDiv, replicaElements);
       append$1(root, offscreenDiv);
-      const textContent = offscreenDiv.dom.innerText;
+      const textContent = offscreenDiv.dom.innertext;
       remove$6(offscreenDiv);
       return textContent;
     };
@@ -3049,7 +3049,7 @@
         const multiCellContext = cells => {
           e.preventDefault();
           extractSelected(cells).each(replicaElements => {
-            const content = e.format === 'text' ? getTextContent(editor, replicaElements) : serializeElements(editor, replicaElements);
+            const content = e.format === 'text' ? gettextContent(editor, replicaElements) : serializeElements(editor, replicaElements);
             e.content = content;
           });
         };
@@ -3090,7 +3090,7 @@
     });
 
     const scan$1 = (universe, element, direction) => {
-      if (universe.property().isText(element) && universe.property().getText(element).trim().length === 0 || universe.property().isComment(element)) {
+      if (universe.property().istext(element) && universe.property().gettext(element).trim().length === 0 || universe.property().isComment(element)) {
         return direction(element).bind(elem => {
           return scan$1(universe, elem, direction).orThunk(() => {
             return Optional.some(elem);
@@ -3101,15 +3101,15 @@
       }
     };
     const toEnd = (universe, element) => {
-      if (universe.property().isText(element)) {
-        return universe.property().getText(element).length;
+      if (universe.property().istext(element)) {
+        return universe.property().gettext(element).length;
       }
       const children = universe.property().children(element);
       return children.length;
     };
     const freefallRtl$2 = (universe, element) => {
       const candidate = scan$1(universe, element, universe.query().prevSibling).getOr(element);
-      if (universe.property().isText(candidate)) {
+      if (universe.property().istext(candidate)) {
         return point(candidate, toEnd(universe, candidate));
       }
       const children = universe.property().children(candidate);
@@ -4444,7 +4444,7 @@
       const isBr = isTag('br');
       const advancedBr = children => {
         return forall(children, c => {
-          return isBr(c) || isText(c) && get$6(c).trim().length === 0;
+          return isBr(c) || istext(c) && get$6(c).trim().length === 0;
         });
       };
       const isListItem = el => {
@@ -5357,7 +5357,7 @@
       const isRoot = getIsRoot(editor);
       const eraseTable = () => getSelectionStartCellOrCaption(editor).each(cellOrCaption => {
         table(cellOrCaption, isRoot).filter(not(isRoot)).each(table => {
-          const cursor = SugarElement.fromText('');
+          const cursor = SugarElement.fromtext('');
           after$5(table, cursor);
           remove$6(table);
           if (editor.dom.isEmpty(editor.getBody())) {
@@ -5410,7 +5410,7 @@
           table(cellOrCaption, isRoot).each(table => {
             child(table, 'caption').fold(() => {
               const caption = SugarElement.fromTag('caption');
-              append$1(caption, SugarElement.fromText('Caption'));
+              append$1(caption, SugarElement.fromtext('Caption'));
               appendAt(table, caption, 0);
               editor.selection.setCursorLocation(caption.dom, 0);
             }, caption => {
@@ -5926,7 +5926,7 @@
     const isBr = isTag('br');
     const gatherer = (cand, gather, isRoot) => {
       return gather(cand, isRoot).bind(target => {
-        return isText(target) && get$6(target).trim().length === 0 ? gatherer(target, gather, isRoot) : Optional.some(target);
+        return istext(target) && get$6(target).trim().length === 0 ? gatherer(target, gather, isRoot) : Optional.some(target);
       });
     };
     const handleBr = (isRoot, element, direction) => {
@@ -6022,7 +6022,7 @@
     const getBoxAt = (bridge, element, offset) => {
       if (isElement(element)) {
         return getElemBox(bridge, element).map(toCaret);
-      } else if (isText(element)) {
+      } else if (istext(element)) {
         return getPartialBox(bridge, element, offset).map(toCaret);
       } else {
         return Optional.none();
@@ -6031,7 +6031,7 @@
     const getEntireBox = (bridge, element) => {
       if (isElement(element)) {
         return getElemBox(bridge, element).map(toCaret);
-      } else if (isText(element)) {
+      } else if (istext(element)) {
         return bridge.getRangedRect(element, 0, element, getEnd(element)).map(toCaret);
       } else {
         return Optional.none();

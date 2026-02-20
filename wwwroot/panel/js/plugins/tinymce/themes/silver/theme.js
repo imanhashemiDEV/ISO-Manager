@@ -503,9 +503,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (text, scope) => {
+    const fromtext = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createtextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -518,7 +518,7 @@
     const SugarElement = {
       fromHtml: fromHtml$2,
       fromTag,
-      fromText,
+      fromtext,
       fromDom,
       fromPoint
     };
@@ -560,7 +560,7 @@
     const DOCUMENT = 9;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
-    const TEXT = 3;
+    const text = 3;
 
     const name$3 = element => {
       const r = element.dom.nodeName;
@@ -570,7 +570,7 @@
     const isType = t => element => type$1(element) === t;
     const isHTMLElement = element => isElement$1(element) && isPrototypeOf(element.dom);
     const isElement$1 = isType(ELEMENT);
-    const isText = isType(TEXT);
+    const istext = isType(text);
     const isDocument = isType(DOCUMENT);
     const isDocumentFragment = isType(DOCUMENT_FRAGMENT);
     const isTag = tag => e => isElement$1(e) && name$3(e) === tag;
@@ -677,7 +677,7 @@
     const isOpenShadowHost = element => isNonNullable(element.dom.shadowRoot);
 
     const inBody = element => {
-      const dom = isText(element) ? element.dom.parentNode : element.dom;
+      const dom = istext(element) ? element.dom.parentNode : element.dom;
       if (dom === undefined || dom === null || dom.ownerDocument === null) {
         return false;
       }
@@ -3824,7 +3824,7 @@
       return Result.value(build$2(completeSpec, obsoleted));
     };
     const text$2 = textContent => {
-      const element = SugarElement.fromText(textContent);
+      const element = SugarElement.fromtext(textContent);
       return external$1({ element });
     };
     const external$1 = spec => {
@@ -5087,7 +5087,7 @@
       };
     };
 
-    const api = NodeValue(isText, 'text');
+    const api = NodeValue(istext, 'text');
     const get$5 = element => api.get(element);
 
     const point = (element, offset) => ({
@@ -5102,12 +5102,12 @@
         return point(children$1[offset], 0);
       } else {
         const last = children$1[children$1.length - 1];
-        const len = isText(last) ? get$5(last).length : children(last).length;
+        const len = istext(last) ? get$5(last).length : children(last).length;
         return point(last, len);
       }
     };
 
-    const descendOnce = (element, offset) => isText(element) ? point(element, offset) : descendOnce$1(element, offset);
+    const descendOnce = (element, offset) => istext(element) ? point(element, offset) : descendOnce$1(element, offset);
     const isSimRange = detail => detail.foffset !== undefined;
     const getAnchorSelection = (win, anchorInfo) => {
       const getSelection = anchorInfo.getSelection.getOrThunk(() => () => getExact(win));
@@ -5127,7 +5127,7 @@
       const selectionBox = getAnchorSelection(win, anchorInfo).bind(sel => {
         if (isSimRange(sel)) {
           const optRect = getBounds$1(win, SimSelection.exactFromRange(sel)).orThunk(() => {
-            const zeroWidth$1 = SugarElement.fromText(zeroWidth);
+            const zeroWidth$1 = SugarElement.fromtext(zeroWidth);
             before$1(sel.start, zeroWidth$1);
             const rect = getFirstRect(win, SimSelection.exact(zeroWidth$1, 0, zeroWidth$1, 1));
             remove$6(zeroWidth$1);
@@ -5687,27 +5687,27 @@
     };
     const dataset = () => {
       const dataByValue = Cell({});
-      const dataByText = Cell({});
+      const dataBytext = Cell({});
       const readState = () => ({
         mode: 'dataset',
         dataByValue: dataByValue.get(),
-        dataByText: dataByText.get()
+        dataBytext: dataBytext.get()
       });
       const clear = () => {
         dataByValue.set({});
-        dataByText.set({});
+        dataBytext.set({});
       };
-      const lookup = itemString => get$h(dataByValue.get(), itemString).orThunk(() => get$h(dataByText.get(), itemString));
+      const lookup = itemString => get$h(dataByValue.get(), itemString).orThunk(() => get$h(dataBytext.get(), itemString));
       const update = items => {
         const currentDataByValue = dataByValue.get();
-        const currentDataByText = dataByText.get();
+        const currentDataBytext = dataBytext.get();
         const newDataByValue = {};
-        const newDataByText = {};
+        const newDataBytext = {};
         each$1(items, item => {
           newDataByValue[item.value] = item;
           get$h(item, 'meta').each(meta => {
             get$h(meta, 'text').each(text => {
-              newDataByText[text] = item;
+              newDataBytext[text] = item;
             });
           });
         });
@@ -5715,9 +5715,9 @@
           ...currentDataByValue,
           ...newDataByValue
         });
-        dataByText.set({
-          ...currentDataByText,
-          ...newDataByText
+        dataBytext.set({
+          ...currentDataBytext,
+          ...newDataBytext
         });
       };
       return nu$7({
@@ -8633,7 +8633,7 @@
     const useElementPath = option$2('elementpath');
     const useBranding = option$2('branding');
     const getResize = option$2('resize');
-    const getPasteAsText = option$2('paste_as_text');
+    const getPasteAstext = option$2('paste_as_text');
     const getSidebarShow = option$2('sidebar_show');
     const promotionEnabled = option$2('promotion');
     const useHelpAccessibility = option$2('help_accessibility');
@@ -8757,7 +8757,7 @@
         promotionEnabled: promotionEnabled,
         useBranding: useBranding,
         getResize: getResize,
-        getPasteAsText: getPasteAsText,
+        getPasteAstext: getPasteAstext,
         getSidebarShow: getSidebarShow,
         useHelpAccessibility: useHelpAccessibility,
         getDefaultFontStack: getDefaultFontStack
@@ -9912,7 +9912,7 @@
         }
         CONFIG = cfg;
       };
-      const MATHML_TEXT_INTEGRATION_POINTS = addToSet({}, ['mi', 'mo', 'mn', 'ms', 'mtext']);
+      const MATHML_text_INTEGRATION_POINTS = addToSet({}, ['mi', 'mo', 'mn', 'ms', 'mtext']);
       const HTML_INTEGRATION_POINTS = addToSet({}, ['annotation-xml']);
 
       // Certain elements are allowed in both SVG and HTML
@@ -9961,7 +9961,7 @@
           // svg if parent is either <annotation-xml> or MathML
           // text integration points.
           if (parent.namespaceURI === MATHML_NAMESPACE) {
-            return tagName === 'svg' && (parentTagName === 'annotation-xml' || MATHML_TEXT_INTEGRATION_POINTS[parentTagName]);
+            return tagName === 'svg' && (parentTagName === 'annotation-xml' || MATHML_text_INTEGRATION_POINTS[parentTagName]);
           }
 
           // We only allow elements that are defined in SVG
@@ -9993,7 +9993,7 @@
           if (parent.namespaceURI === SVG_NAMESPACE && !HTML_INTEGRATION_POINTS[parentTagName]) {
             return false;
           }
-          if (parent.namespaceURI === MATHML_NAMESPACE && !MATHML_TEXT_INTEGRATION_POINTS[parentTagName]) {
+          if (parent.namespaceURI === MATHML_NAMESPACE && !MATHML_text_INTEGRATION_POINTS[parentTagName]) {
             return false;
           }
 
@@ -10108,7 +10108,7 @@
         }
         const body = doc.body || doc.documentElement;
         if (dirty && leadingWhitespace) {
-          body.insertBefore(document.createTextNode(leadingWhitespace), body.childNodes[0] || null);
+          body.insertBefore(document.createtextNode(leadingWhitespace), body.childNodes[0] || null);
         }
 
         /* Work on whole document or just its body */
@@ -10127,7 +10127,7 @@
       const _createNodeIterator = function _createNodeIterator(root) {
         return createNodeIterator.call(root.ownerDocument || root, root,
         // eslint-disable-next-line no-bitwise
-        NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION, null);
+        NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_text | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION, null);
       };
 
       /**
@@ -10823,9 +10823,9 @@
       info: 'info'
     };
     const factory$m = detail => {
-      const notificationTextId = generate$6('notification-text');
-      const memBannerText = record({
-        dom: fromHtml(`<p id=${ notificationTextId }>${ sanitizeHtmlString(detail.backstageProvider.translate(detail.text)) }</p>`),
+      const notificationtextId = generate$6('notification-text');
+      const memBannertext = record({
+        dom: fromHtml(`<p id=${ notificationtextId }>${ sanitizeHtmlString(detail.backstageProvider.translate(detail.text)) }</p>`),
         behaviours: derive$1([Replacing.config({})])
       });
       const renderPercentBar = percent => ({
@@ -10835,7 +10835,7 @@
           styles: { width: `${ percent }%` }
         }
       });
-      const renderPercentText = percent => ({
+      const renderPercenttext = percent => ({
         dom: {
           tag: 'div',
           classes: ['tox-text'],
@@ -10858,7 +10858,7 @@
             },
             components: [renderPercentBar(0)]
           },
-          renderPercentText(0)
+          renderPercenttext(0)
         ],
         behaviours: derive$1([Replacing.config({})])
       });
@@ -10873,20 +10873,20 @@
                 },
                 components: [renderPercentBar(percent)]
               },
-              renderPercentText(percent)
+              renderPercenttext(percent)
             ]);
           });
         }
       };
-      const updateText = (comp, text) => {
+      const updatetext = (comp, text) => {
         if (comp.getSystem().isConnected()) {
-          const banner = memBannerText.get(comp);
+          const banner = memBannertext.get(comp);
           Replacing.set(banner, [text$2(text)]);
         }
       };
       const apis = {
         updateProgress,
-        updateText
+        updatetext
       };
       const iconChoices = flatten([
         detail.icon.toArray(),
@@ -10910,7 +10910,7 @@
           }, detail.iconProvider)],
         buttonBehaviours: derive$1([
           Tabstopping.config({}),
-          Tooltipping.config({ ...detail.backstageProvider.tooltips.getConfig({ tooltipText: detail.backstageProvider.translate('Close') }) })
+          Tooltipping.config({ ...detail.backstageProvider.tooltips.getConfig({ tooltiptext: detail.backstageProvider.translate('Close') }) })
         ]),
         action: comp => {
           detail.onAction(comp);
@@ -10925,7 +10925,7 @@
           tag: 'div',
           classes: ['tox-notification__body']
         },
-        components: [memBannerText.asSpec()],
+        components: [memBannertext.asSpec()],
         behaviours: derive$1([Replacing.config({})])
       };
       const components = [
@@ -10938,7 +10938,7 @@
           tag: 'div',
           attributes: {
             'role': 'alert',
-            'aria-labelledby': notificationTextId
+            'aria-labelledby': notificationtextId
           },
           classes: detail.level.map(level => [
             'tox-notification',
@@ -10980,8 +10980,8 @@
         updateProgress: (apis, comp, percent) => {
           apis.updateProgress(comp, percent);
         },
-        updateText: (apis, comp, text) => {
-          apis.updateText(comp, text);
+        updatetext: (apis, comp, text) => {
+          apis.updatetext(comp, text);
         }
       }
     });
@@ -11129,8 +11129,8 @@
         const thisNotification = {
           close,
           reposition,
-          text: nuText => {
-            Notification.updateText(notification, nuText);
+          text: nutext => {
+            Notification.updatetext(notification, nutext);
           },
           settings,
           getEl: () => notification.element.dom,
@@ -11683,7 +11683,7 @@
     const onItemAction = requiredFunction('onItemAction');
     const onSetup = defaultedFunction('onSetup', () => noop);
     const optionalName = optionString('name');
-    const optionalText = optionString('text');
+    const optionaltext = optionString('text');
     const optionalRole = optionString('role');
     const optionalIcon = optionString('icon');
     const optionalTooltip = optionString('tooltip');
@@ -11703,7 +11703,7 @@
 
     const separatorMenuItemSchema = objOf([
       type,
-      optionalText
+      optionaltext
     ]);
     const createSeparatorMenuItem = spec => asRaw('separatormenuitem', separatorMenuItemSchema, spec);
 
@@ -11713,7 +11713,7 @@
       enabled,
       defaultedMeta,
       value$1,
-      optionalText,
+      optionaltext,
       optionalIcon
     ]);
     const createSeparatorItem = spec => asRaw('Autocompleter.Separator', separatorMenuItemSchema, spec);
@@ -11723,7 +11723,7 @@
       enabled,
       optionalTooltip,
       optionalIcon,
-      optionalText,
+      optionaltext,
       onSetup,
       defaultedString('context', 'mode:design')
     ];
@@ -11799,17 +11799,17 @@
     ];
     const cardImageSchema = objOf(cardImageFields);
 
-    const cardTextFields = [
+    const cardtextFields = [
       type,
       text,
       optionalName,
       defaultedArrayOf('classes', ['tox-collection__item-label'], string)
     ];
-    const cardTextSchema = objOf(cardTextFields);
+    const cardtextSchema = objOf(cardtextFields);
 
     const itemSchema$1 = valueThunk(() => choose$2('type', {
       cardimage: cardImageSchema,
-      cardtext: cardTextSchema,
+      cardtext: cardtextSchema,
       cardcontainer: cardContainerSchema
     }));
     const cardContainerSchema = objOf([
@@ -11822,7 +11822,7 @@
 
     const commonMenuItemFields = [
       enabled,
-      optionalText,
+      optionaltext,
       optionalRole,
       optionalShortcut,
       generatedValue('menuitem'),
@@ -12059,7 +12059,7 @@
       }
     });
 
-    const convertText = source => {
+    const converttext = source => {
       const isMac = global$6.os.isMacOS() || global$6.os.isiOS();
       const mac = {
         alt: '\u2325',
@@ -12085,7 +12085,7 @@
       tag: 'div',
       classes
     }, icons);
-    const renderText = text => ({
+    const rendertext = text => ({
       dom: {
         tag: 'div',
         classes: [textClass]
@@ -12099,7 +12099,7 @@
         innerHtml: html
       }
     });
-    const renderStyledText = (style, text) => ({
+    const renderStyledtext = (style, text) => ({
       dom: {
         tag: 'div',
         classes: [textClass]
@@ -12117,7 +12117,7 @@
         tag: 'div',
         classes: [accessoryClass]
       },
-      components: [text$2(convertText(shortcut))]
+      components: [text$2(converttext(shortcut))]
     });
     const renderCheckmark = icons => renderIcon$2('checkmark', icons, [checkmarkClass]);
     const renderSubmenuCaret = icons => renderIcon$2('chevron-right', icons, [caretClass]);
@@ -12239,7 +12239,7 @@
       const renderEmptyIcon = () => Optional.some({ dom: iconSpec });
       const leftIcon = renderIcons ? info.iconContent.map(renderIcon).orThunk(renderEmptyIcon) : Optional.none();
       const checkmark = info.checkMark;
-      const textRender = Optional.from(info.meta).fold(() => renderText, meta => has$2(meta, 'style') ? curry(renderStyledText, meta.style) : renderText);
+      const textRender = Optional.from(info.meta).fold(() => rendertext, meta => has$2(meta, 'style') ? curry(renderStyledtext, meta.style) : rendertext);
       const content = info.htmlContent.fold(() => info.textContent.map(textRender), html => Optional.some(renderHtml(html, [textClass])));
       const menuItem = {
         dom: renderItemDomStructure(info.ariaLabel),
@@ -12261,7 +12261,7 @@
       }
     };
 
-    const tooltipBehaviour = (meta, sharedBackstage, tooltipText) => get$h(meta, 'tooltipWorker').map(tooltipWorker => [Tooltipping.config({
+    const tooltipBehaviour = (meta, sharedBackstage, tooltiptext) => get$h(meta, 'tooltipWorker').map(tooltipWorker => [Tooltipping.config({
         lazySink: sharedBackstage.getSink,
         tooltipDom: {
           tag: 'div',
@@ -12280,27 +12280,27 @@
           });
         }
       })]).getOrThunk(() => {
-      return tooltipText.map(text => [Tooltipping.config({
-          ...sharedBackstage.providers.tooltips.getConfig({ tooltipText: text }),
+      return tooltiptext.map(text => [Tooltipping.config({
+          ...sharedBackstage.providers.tooltips.getConfig({ tooltiptext: text }),
           mode: 'follow-highlight'
         })]).getOr([]);
     });
-    const encodeText = text => global$8.DOM.encode(text);
-    const replaceText = (text, matchText) => {
+    const encodetext = text => global$8.DOM.encode(text);
+    const replacetext = (text, matchtext) => {
       const translated = global$5.translate(text);
-      const encoded = encodeText(translated);
-      if (matchText.length > 0) {
-        const escapedMatchRegex = new RegExp(escape(matchText), 'gi');
+      const encoded = encodetext(translated);
+      if (matchtext.length > 0) {
+        const escapedMatchRegex = new RegExp(escape(matchtext), 'gi');
         return encoded.replace(escapedMatchRegex, match => `<span class="tox-autocompleter-highlight">${ match }</span>`);
       } else {
         return encoded;
       }
     };
-    const renderAutocompleteItem = (spec, matchText, useText, presets, onItemValueHandler, itemResponse, sharedBackstage, renderIcons = true) => {
+    const renderAutocompleteItem = (spec, matchtext, usetext, presets, onItemValueHandler, itemResponse, sharedBackstage, renderIcons = true) => {
       const structure = renderItemStructure({
         presets,
         textContent: Optional.none(),
-        htmlContent: useText ? spec.text.map(text => replaceText(text, matchText)) : Optional.none(),
+        htmlContent: usetext ? spec.text.map(text => replacetext(text, matchtext)) : Optional.none(),
         ariaLabel: spec.text,
         iconContent: spec.icon,
         shortcutContent: Optional.none(),
@@ -12308,7 +12308,7 @@
         caret: Optional.none(),
         value: spec.value
       }, sharedBackstage.providers, renderIcons, spec.icon);
-      const tooltipString = spec.text.filter(text => !useText && text !== '');
+      const tooltipString = spec.text.filter(text => !usetext && text !== '');
       return renderCommonItem({
         context: 'mode:design',
         data: buildData(spec),
@@ -12328,9 +12328,9 @@
       case 'cardimage':
         return renderImage(item.src, item.classes, item.alt);
       case 'cardtext':
-        const shouldHighlight = item.name.exists(name => contains$2(extras.cardText.highlightOn, name));
-        const matchText = shouldHighlight ? Optional.from(extras.cardText.matchText).getOr('') : '';
-        return renderHtml(replaceText(item.text, matchText), item.classes);
+        const shouldHighlight = item.name.exists(name => contains$2(extras.cardtext.highlightOn, name));
+        const matchtext = shouldHighlight ? Optional.from(extras.cardtext.matchtext).getOr('') : '';
+        return renderHtml(replacetext(item.text, matchtext), item.classes);
       }
     });
     const renderCardMenuItem = (spec, itemResponse, sharedBackstage, extras) => {
@@ -12375,7 +12375,7 @@
       }, structure, itemResponse, sharedBackstage.providers);
     };
 
-    const renderChoiceItem = (spec, useText, presets, onItemValueHandler, isSelected, itemResponse, providersBackstage, renderIcons = true) => {
+    const renderChoiceItem = (spec, usetext, presets, onItemValueHandler, isSelected, itemResponse, providersBackstage, renderIcons = true) => {
       const getApi = component => ({
         setActive: state => {
           Toggling.set(component, state);
@@ -12386,16 +12386,16 @@
       });
       const structure = renderItemStructure({
         presets,
-        textContent: useText ? spec.text : Optional.none(),
+        textContent: usetext ? spec.text : Optional.none(),
         htmlContent: Optional.none(),
         ariaLabel: spec.text,
         iconContent: spec.icon,
-        shortcutContent: useText ? spec.shortcut : Optional.none(),
-        checkMark: useText ? Optional.some(renderCheckmark(providersBackstage.icons)) : Optional.none(),
+        shortcutContent: usetext ? spec.shortcut : Optional.none(),
+        checkMark: usetext ? Optional.some(renderCheckmark(providersBackstage.icons)) : Optional.none(),
         caret: Optional.none(),
         value: spec.value
       }, providersBackstage, renderIcons);
-      const optTooltipping = spec.text.filter(constant$1(!useText)).map(t => Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltipText: providersBackstage.translate(t) })));
+      const optTooltipping = spec.text.filter(constant$1(!usetext)).map(t => Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltiptext: providersBackstage.translate(t) })));
       return deepMerge(renderCommonItem({
         context: spec.context,
         data: buildData(spec),
@@ -12563,8 +12563,8 @@
     const fireScrollContent = (editor, e) => {
       editor.dispatch('ScrollContent', e);
     };
-    const fireTextColorChange = (editor, data) => {
-      editor.dispatch('TextColorChange', data);
+    const firetextColorChange = (editor, data) => {
+      editor.dispatch('textColorChange', data);
     };
     const fireAfterProgressState = (editor, state) => {
       editor.dispatch('AfterProgressState', { state });
@@ -12576,23 +12576,23 @@
     const fireToggleToolbarDrawer = (editor, state) => {
       editor.dispatch('ToggleToolbarDrawer', { state });
     };
-    const fireStylesTextUpdate = (editor, data) => {
-      editor.dispatch('StylesTextUpdate', data);
+    const fireStylestextUpdate = (editor, data) => {
+      editor.dispatch('StylestextUpdate', data);
     };
-    const fireAlignTextUpdate = (editor, data) => {
-      editor.dispatch('AlignTextUpdate', data);
+    const fireAligntextUpdate = (editor, data) => {
+      editor.dispatch('AligntextUpdate', data);
     };
-    const fireFontSizeTextUpdate = (editor, data) => {
-      editor.dispatch('FontSizeTextUpdate', data);
+    const fireFontSizetextUpdate = (editor, data) => {
+      editor.dispatch('FontSizetextUpdate', data);
     };
-    const fireFontSizeInputTextUpdate = (editor, data) => {
-      editor.dispatch('FontSizeInputTextUpdate', data);
+    const fireFontSizeInputtextUpdate = (editor, data) => {
+      editor.dispatch('FontSizeInputtextUpdate', data);
     };
-    const fireBlocksTextUpdate = (editor, data) => {
-      editor.dispatch('BlocksTextUpdate', data);
+    const fireBlockstextUpdate = (editor, data) => {
+      editor.dispatch('BlockstextUpdate', data);
     };
-    const fireFontFamilyTextUpdate = (editor, data) => {
-      editor.dispatch('FontFamilyTextUpdate', data);
+    const fireFontFamilytextUpdate = (editor, data) => {
+      editor.dispatch('FontFamilytextUpdate', data);
     };
     const fireToggleSidebar = editor => {
       editor.dispatch('ToggleSidebar');
@@ -12953,10 +12953,10 @@
       });
     };
     const registerCommands = editor => {
-      editor.addCommand('mceApplyTextcolor', (format, value) => {
+      editor.addCommand('mceApplytextcolor', (format, value) => {
         applyFormat(editor, format, value);
       });
-      editor.addCommand('mceRemoveTextcolor', format => {
+      editor.addCommand('mceRemovetextcolor', format => {
         removeFormat(editor, format);
       });
     };
@@ -12985,16 +12985,16 @@
         dialog(colorOpt => {
           colorOpt.each(color => {
             addColor(format, color);
-            editor.execCommand('mceApplyTextcolor', format, color);
+            editor.execCommand('mceApplytextcolor', format, color);
             onChoice(color);
           });
         }, getCurrentColor(editor, format).getOr(fallbackColor));
       } else if (value === 'remove') {
         onChoice('');
-        editor.execCommand('mceRemoveTextcolor', format);
+        editor.execCommand('mceRemovetextcolor', format);
       } else {
         onChoice(value);
-        editor.execCommand('mceApplyTextcolor', format, value);
+        editor.execCommand('mceApplytextcolor', format, value);
       }
     };
     const getColors$1 = (colors, id, hasCustom) => colors.concat(getCurrentColors(id).concat(getAdditionalColors(hasCustom)));
@@ -13012,21 +13012,21 @@
       const optCurrentHex = getCurrentColor(editor, format);
       return is$1(optCurrentHex, value.toUpperCase());
     };
-    const getToolTipText = (editor, format, lastColor) => {
+    const getToolTiptext = (editor, format, lastColor) => {
       if (isEmpty(lastColor)) {
-        return format === 'forecolor' ? 'Text color' : 'Background color';
+        return format === 'forecolor' ? 'text color' : 'Background color';
       }
-      const tooltipPrefix = format === 'forecolor' ? 'Text color {0}' : 'Background color {0}';
+      const tooltipPrefix = format === 'forecolor' ? 'text color {0}' : 'Background color {0}';
       const colors = getColors$1(getColors$2(editor, format), format, false);
-      const colorText = find$5(colors, c => c.value === lastColor).getOr({ text: '' }).text;
+      const colortext = find$5(colors, c => c.value === lastColor).getOr({ text: '' }).text;
       return editor.translate([
         tooltipPrefix,
-        editor.translate(colorText)
+        editor.translate(colortext)
       ]);
     };
-    const registerTextColorButton = (editor, name, format, lastColor) => {
+    const registertextColorButton = (editor, name, format, lastColor) => {
       editor.ui.registry.addSplitButton(name, {
-        tooltip: getToolTipText(editor, format, lastColor.get()),
+        tooltip: getToolTiptext(editor, format, lastColor.get()),
         presets: 'color',
         icon: name === 'forecolor' ? 'text-color' : 'highlight-bg-color',
         select: select$1(editor, format),
@@ -13038,7 +13038,7 @@
         onItemAction: (_splitButtonApi, value) => {
           applyColor(editor, format, value, newColor => {
             lastColor.set(newColor);
-            fireTextColorChange(editor, {
+            firetextColorChange(editor, {
               name,
               color: newColor
             });
@@ -13049,22 +13049,22 @@
           const handler = e => {
             if (e.name === name) {
               setIconColor(splitButtonApi, e.name, e.color);
-              setTooltip(splitButtonApi, getToolTipText(editor, format, e.color));
+              setTooltip(splitButtonApi, getToolTiptext(editor, format, e.color));
             }
           };
-          editor.on('TextColorChange', handler);
+          editor.on('textColorChange', handler);
           return composeUnbinders(onSetupEditableToggle(editor)(splitButtonApi), () => {
-            editor.off('TextColorChange', handler);
+            editor.off('textColorChange', handler);
           });
         }
       });
     };
-    const registerTextColorMenuItem = (editor, name, format, text, lastColor) => {
+    const registertextColorMenuItem = (editor, name, format, text, lastColor) => {
       editor.ui.registry.addNestedMenuItem(name, {
         text,
         icon: name === 'forecolor' ? 'text-color' : 'highlight-bg-color',
         onSetup: api => {
-          setTooltip(api, getToolTipText(editor, format, lastColor.get()));
+          setTooltip(api, getToolTiptext(editor, format, lastColor.get()));
           setIconColor(api, name, lastColor.get());
           return onSetupEditableToggle(editor)(api);
         },
@@ -13076,7 +13076,7 @@
             onAction: data => {
               applyColor(editor, format, data.value, newColor => {
                 lastColor.set(newColor);
-                fireTextColorChange(editor, {
+                firetextColorChange(editor, {
                   name,
                   color: newColor
                 });
@@ -13145,10 +13145,10 @@
       const fallbackColorBackground = getDefaultBackgroundColor(editor);
       const lastForeColor = Cell(fallbackColorForeground);
       const lastBackColor = Cell(fallbackColorBackground);
-      registerTextColorButton(editor, 'forecolor', 'forecolor', lastForeColor);
-      registerTextColorButton(editor, 'backcolor', 'hilitecolor', lastBackColor);
-      registerTextColorMenuItem(editor, 'forecolor', 'forecolor', 'Text color', lastForeColor);
-      registerTextColorMenuItem(editor, 'backcolor', 'hilitecolor', 'Background color', lastBackColor);
+      registertextColorButton(editor, 'forecolor', 'forecolor', lastForeColor);
+      registertextColorButton(editor, 'backcolor', 'hilitecolor', lastBackColor);
+      registertextColorMenuItem(editor, 'forecolor', 'forecolor', 'text color', lastForeColor);
+      registertextColorMenuItem(editor, 'backcolor', 'hilitecolor', 'Background color', lastBackColor);
     };
 
     const createPartialChoiceMenu = (value, items, onItemValueHandler, columns, presets, itemResponse, select, providersBackstage) => {
@@ -13251,7 +13251,7 @@
 
     const cellOverEvent = generate$6('cell-over');
     const cellExecuteEvent = generate$6('cell-execute');
-    const makeAnnouncementText = backstage => (row, col) => backstage.shared.providers.translate([
+    const makeAnnouncementtext = backstage => (row, col) => backstage.shared.providers.translate([
       '{0} columns, {1} rows',
       col,
       row
@@ -13312,19 +13312,19 @@
       }
     };
     const makeComponents = cells => bind$3(cells, cellRow => map$2(cellRow, premade));
-    const makeLabelText = (row, col) => text$2(`${ col }x${ row }`);
+    const makeLabeltext = (row, col) => text$2(`${ col }x${ row }`);
     const renderInsertTableMenuItem = (spec, backstage) => {
       const numRows = 10;
       const numColumns = 10;
-      const getCellLabel = makeAnnouncementText(backstage);
+      const getCellLabel = makeAnnouncementtext(backstage);
       const cells = makeCells(getCellLabel, numRows, numColumns);
-      const emptyLabelText = makeLabelText(0, 0);
+      const emptyLabeltext = makeLabeltext(0, 0);
       const memLabel = record({
         dom: {
           tag: 'span',
           classes: ['tox-insert-table-picker__label']
         },
-        components: [emptyLabelText],
+        components: [emptyLabeltext],
         behaviours: derive$1([Replacing.config({})])
       });
       return {
@@ -13344,12 +13344,12 @@
             behaviours: derive$1([
               config('insert-table-picker', [
                 runOnAttached(c => {
-                  Replacing.set(memLabel.get(c), [emptyLabelText]);
+                  Replacing.set(memLabel.get(c), [emptyLabeltext]);
                 }),
                 runWithTarget(cellOverEvent, (c, t, e) => {
                   const {row, col} = e.event;
                   selectCells(cells, row, col, numRows, numColumns);
-                  Replacing.set(memLabel.get(c), [makeLabelText(row + 1, col + 1)]);
+                  Replacing.set(memLabel.get(c), [makeLabeltext(row + 1, col + 1)]);
                 }),
                 runWithTarget(cellExecuteEvent, (c, _, e) => {
                   const {row, col} = e.event;
@@ -14099,9 +14099,9 @@
         }
       }
     };
-    const createAutocompleteItems = (items, matchText, onItemValueHandler, columns, itemResponse, sharedBackstage, highlightOn) => {
-      const renderText = columns === 1;
-      const renderIcons = !renderText || menuHasIcons(items);
+    const createAutocompleteItems = (items, matchtext, onItemValueHandler, columns, itemResponse, sharedBackstage, highlightOn) => {
+      const rendertext = columns === 1;
+      const renderIcons = !rendertext || menuHasIcons(items);
       return cat(map$2(items, item => {
         switch (item.type) {
         case 'separator':
@@ -14115,14 +14115,14 @@
             }
           }, itemResponse, sharedBackstage, {
             itemBehaviours: tooltipBehaviour(d.meta, sharedBackstage, Optional.none()),
-            cardText: {
-              matchText,
+            cardtext: {
+              matchtext,
               highlightOn
             }
           })));
         case 'autocompleteitem':
         default:
-          return createAutocompleterItem(item).fold(handleError, d => Optional.some(autocomplete(d, matchText, renderText, 'normal', onItemValueHandler, itemResponse, sharedBackstage, renderIcons)));
+          return createAutocompleterItem(item).fold(handleError, d => Optional.some(autocomplete(d, matchtext, rendertext, 'normal', onItemValueHandler, itemResponse, sharedBackstage, renderIcons)));
         }
       }));
     };
@@ -14208,7 +14208,7 @@
         const columns = findMap(matches, m => Optional.from(m.columns)).getOr(1);
         return bind$3(matches, match => {
           const choices = match.items;
-          return createAutocompleteItems(choices, match.matchText, (itemValue, itemMeta) => {
+          return createAutocompleteItems(choices, match.matchtext, (itemValue, itemMeta) => {
             const autocompleterApi = {
               hide: () => cancelIfNecessary(),
               reload: fetchOptions => {
@@ -14765,14 +14765,14 @@
       };
       const addToWorld = component => {
         component.connect(systemApi);
-        if (!isText(component.element)) {
+        if (!istext(component.element)) {
           registry.register(component);
           each$1(component.components(), addToWorld);
           systemApi.triggerEvent(systemInit(), component.element, { target: component.element });
         }
       };
       const removeFromWorld = component => {
-        if (!isText(component.element)) {
+        if (!istext(component.element)) {
           each$1(component.components(), removeFromWorld);
           registry.unregister(component);
         }
@@ -15002,15 +15002,15 @@
         const disabled = providersBackstage.checkUiComponentContext('mode:design').shouldDisable || providersBackstage.isDisabled();
         const disabledClass = disabled ? ' tox-collection__item--state-disabled' : '';
         const htmlLines = map$2(items, item => {
-          const itemText = global$5.translate(item.text);
-          const textContent = spec.columns === 1 ? `<div class="tox-collection__item-label">${ itemText }</div>` : '';
+          const itemtext = global$5.translate(item.text);
+          const textContent = spec.columns === 1 ? `<div class="tox-collection__item-label">${ itemtext }</div>` : '';
           const iconContent = `<div class="tox-collection__item-icon">${ getIcon(item.icon) }</div>`;
           const mapItemName = {
             '_': ' ',
             ' - ': ' ',
             '-': ' '
           };
-          const ariaLabel = itemText.replace(/\_| \- |\-/g, match => mapItemName[match]);
+          const ariaLabel = itemtext.replace(/\_| \- |\-/g, match => mapItemName[match]);
           return `<div data-mce-tooltip="${ ariaLabel }" class="tox-collection__item${ disabledClass }" tabindex="-1" data-collection-item-value="${ global$3.encodeAllRaw(item.value) }" aria-label="${ ariaLabel }">${ iconContent }${ textContent }</div>`;
         });
         const chunks = spec.columns !== 'auto' && spec.columns > 1 ? chunk$1(htmlLines, spec.columns) : [htmlLines];
@@ -15079,11 +15079,11 @@
           Replacing.config({}),
           Tooltipping.config({
             ...providersBackstage.tooltips.getConfig({
-              tooltipText: '',
+              tooltiptext: '',
               onShow: comp => {
                 descendant(comp.element, '.' + activeClass + '[data-mce-tooltip]').each(current => {
                   getOpt(current, 'data-mce-tooltip').each(text => {
-                    Tooltipping.setComponents(comp, providersBackstage.tooltips.getComponents({ tooltipText: text }));
+                    Tooltipping.setComponents(comp, providersBackstage.tooltips.getComponents({ tooltiptext: text }));
                   });
                 });
               }
@@ -16338,7 +16338,7 @@
           validateOnLoad: false
         }
       });
-      const renderTextField = (isValid, name, label, description, data) => {
+      const rendertextField = (isValid, name, label, description, data) => {
         const tooltipApi = Cell(uninitiatedTooltipApi);
         const helptext = translate(translatePrefix + 'range');
         const pLabel = FormField.parts.label({
@@ -16359,7 +16359,7 @@
             Tabstopping.config({}),
             Tooltipping.config({
               ...tooltipGetConfig({
-                tooltipText: '',
+                tooltiptext: '',
                 onSetup: comp => {
                   tooltipApi.set({
                     isEnabled: () => {
@@ -16529,10 +16529,10 @@
             attributes: { 'aria-label': translate('aria.color.picker') }
           },
           components: [
-            parts.field('red', FormField.sketch(renderTextField(isRgbaComponent, 'red', redStrings.label, redStrings.description, 255))),
-            parts.field('green', FormField.sketch(renderTextField(isRgbaComponent, 'green', greenStrings.label, greenStrings.description, 255))),
-            parts.field('blue', FormField.sketch(renderTextField(isRgbaComponent, 'blue', blueStrings.label, blueStrings.description, 255))),
-            parts.field('hex', FormField.sketch(renderTextField(isHexString, 'hex', hexStrings.label, hexStrings.description, 'ffffff'))),
+            parts.field('red', FormField.sketch(rendertextField(isRgbaComponent, 'red', redStrings.label, redStrings.description, 255))),
+            parts.field('green', FormField.sketch(rendertextField(isRgbaComponent, 'green', greenStrings.label, greenStrings.description, 255))),
+            parts.field('blue', FormField.sketch(rendertextField(isRgbaComponent, 'blue', blueStrings.label, blueStrings.description, 255))),
+            parts.field('hex', FormField.sketch(rendertextField(isHexString, 'hex', hexStrings.label, hexStrings.description, 'ffffff'))),
             memPreview.asSpec()
           ],
           formBehaviours: derive$1([
@@ -17564,11 +17564,11 @@
       behaviours: derive$1([Replacing.config({})])
     });
 
-    const updateMenuText = generate$6('update-menu-text');
+    const updateMenutext = generate$6('update-menu-text');
     const updateMenuIcon = generate$6('update-menu-icon');
     const renderCommonDropdown = (spec, prefix, sharedBackstage, btnName) => {
       const editorOffCell = Cell(noop);
-      const optMemDisplayText = spec.text.map(text => record(renderLabel$1(text, prefix, sharedBackstage.providers)));
+      const optMemDisplaytext = spec.text.map(text => record(renderLabel$1(text, prefix, sharedBackstage.providers)));
       const optMemDisplayIcon = spec.icon.map(iconName => record(renderReplaceableIconFromPack(iconName, sharedBackstage.providers.icons)));
       const onLeftOrRightInMenu = (comp, se) => {
         const dropdown = Representing.getValue(comp);
@@ -17606,7 +17606,7 @@
         },
         components: componentRenderPipeline([
           optMemDisplayIcon.map(mem => mem.asSpec()),
-          optMemDisplayText.map(mem => mem.asSpec()),
+          optMemDisplaytext.map(mem => mem.asSpec()),
           Optional.some(iconSpec)
         ]),
         matchWidth: true,
@@ -17622,7 +17622,7 @@
           toggleOnReceive(() => sharedBackstage.providers.checkUiComponentContext(spec.context)),
           Unselecting.config({}),
           Replacing.config({}),
-          ...spec.tooltip.map(t => Tooltipping.config(sharedBackstage.providers.tooltips.getConfig({ tooltipText: sharedBackstage.providers.translate(t) }))).toArray(),
+          ...spec.tooltip.map(t => Tooltipping.config(sharedBackstage.providers.tooltips.getConfig({ tooltiptext: sharedBackstage.providers.translate(t) }))).toArray(),
           config(customEventsName, [
             onControlAttached(spec, editorOffCell),
             onControlDetached(spec, editorOffCell)
@@ -17634,9 +17634,9 @@
             })]),
           config('update-dropdown-width-variable', [run$1(windowResize(), (comp, _se) => Dropdown.close(comp))]),
           config('menubutton-update-display-text', [
-            run$1(updateMenuText, (comp, se) => {
-              optMemDisplayText.bind(mem => mem.getOpt(comp)).each(displayText => {
-                Replacing.set(displayText, [text$2(sharedBackstage.providers.translate(se.event.text))]);
+            run$1(updateMenutext, (comp, se) => {
+              optMemDisplaytext.bind(mem => mem.getOpt(comp)).each(displaytext => {
+                Replacing.set(displaytext, [text$2(sharedBackstage.providers.translate(se.event.text))]);
               });
             }),
             run$1(updateMenuIcon, (comp, se) => {
@@ -17864,7 +17864,7 @@
               withComp(initialItem.map(item => item.value), comp => get$g(comp.element, dataAttribute), (comp, data) => {
                 findItemByValue(spec.items, data).each(item => {
                   set$9(comp.element, dataAttribute, item.value);
-                  emitWith(comp, updateMenuText, { text: item.text });
+                  emitWith(comp, updateMenutext, { text: item.text });
                 });
               })
             ]
@@ -18136,15 +18136,15 @@
         '%': 4
       };
       const maxDecimal = unit => unit in unitDec ? unitDec[unit] : 1;
-      let numText = size.value.toFixed(maxDecimal(size.unit));
-      if (numText.indexOf('.') !== -1) {
-        numText = numText.replace(/\.?0*$/, '');
+      let numtext = size.value.toFixed(maxDecimal(size.unit));
+      if (numtext.indexOf('.') !== -1) {
+        numtext = numtext.replace(/\.?0*$/, '');
       }
-      return numText + size.unit;
+      return numtext + size.unit;
     };
-    const parseSize = sizeText => {
+    const parseSize = sizetext => {
       const numPattern = /^\s*(\d+(?:\.\d+)?)\s*(|cm|mm|in|px|pt|pc|em|ex|ch|rem|vw|vh|vmin|vmax|%)\s*$/;
-      const match = numPattern.exec(sizeText);
+      const match = numPattern.exec(sizetext);
       if (match !== null) {
         const value = parseFloat(match[1]);
         const unit = match[2];
@@ -18153,7 +18153,7 @@
           unit
         });
       } else {
-        return Result.error(sizeText);
+        return Result.error(sizetext);
       }
     };
     const convertUnit = (size, unit) => {
@@ -18184,9 +18184,9 @@
       value: value * scale,
       unit
     }));
-    const makeRatioConverter = (currentFieldText, otherFieldText) => {
-      const cValue = parseSize(currentFieldText).toOptional();
-      const oValue = parseSize(otherFieldText).toOptional();
+    const makeRatioConverter = (currentFieldtext, otherFieldtext) => {
+      const cValue = parseSize(currentFieldtext).toOptional();
+      const oValue = parseSize(otherFieldtext).toOptional();
       return lift2(cValue, oValue, (cSize, oSize) => convertUnit(cSize, oSize.unit).map(val => oSize.value / val).map(r => ratioSizeConversion(r, oSize.unit)).getOr(noSizeConversion)).getOr(noSizeConversion);
     };
 
@@ -18224,7 +18224,7 @@
           Disabling.config({ disabled: () => !spec.enabled || providersBackstage.checkUiComponentContext(spec.context).shouldDisable }),
           toggleOnReceive(() => providersBackstage.checkUiComponentContext(spec.context)),
           Tabstopping.config({}),
-          Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltipText: translatedLabel }))
+          Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltiptext: translatedLabel }))
         ])
       });
       const formGroup = components => ({
@@ -18426,7 +18426,7 @@
       };
     };
 
-    const renderTextField = (spec, providersBackstage) => {
+    const rendertextField = (spec, providersBackstage) => {
       const pLabel = spec.label.map(label => renderLabel$3(label, providersBackstage));
       const baseInputBehaviours = [
         Disabling.config({ disabled: () => spec.disabled || providersBackstage.checkUiComponentContext(spec.context).shouldDisable }),
@@ -18483,7 +18483,7 @@
         selectOnFocus: false,
         factory: Input
       });
-      const pTextField = spec.multiline ? {
+      const ptextField = spec.multiline ? {
         dom: {
           tag: 'div',
           classes: ['tox-textarea-wrap']
@@ -18504,9 +18504,9 @@
         }),
         toggleOnReceive(() => providersBackstage.checkUiComponentContext(spec.context))
       ];
-      return renderFormFieldWith(pLabel, pTextField, extraClasses2, extraBehaviours);
+      return renderFormFieldWith(pLabel, ptextField, extraClasses2, extraBehaviours);
     };
-    const renderInput = (spec, providersBackstage, initialData) => renderTextField({
+    const renderInput = (spec, providersBackstage, initialData) => rendertextField({
       name: spec.name,
       multiline: false,
       label: spec.label,
@@ -18520,7 +18520,7 @@
       data: initialData,
       context: spec.context
     }, providersBackstage);
-    const renderTextarea = (spec, providersBackstage, initialData) => renderTextField({
+    const rendertextarea = (spec, providersBackstage, initialData) => rendertextField({
       name: spec.name,
       multiline: true,
       label: spec.label,
@@ -18757,8 +18757,8 @@
         }
       },
       isActive: () => has(component.element, 'tox-tbtn--enabled'),
-      setText: text => {
-        emitWith(component, updateMenuText, { text });
+      settext: text => {
+        emitWith(component, updateMenutext, { text });
       },
       setIcon: icon => emitWith(component, updateMenuIcon, { icon })
     });
@@ -18830,7 +18830,7 @@
       components: [text$2(text)]
     });
     const renderCustomStateIcon = (container, components, backstage) => {
-      container.customStateIcon.each(icon => components.push(renderIcon(icon, backstage.shared.providers.icons, container.customStateIconTooltip.fold(() => [], tooltip => [Tooltipping.config(backstage.shared.providers.tooltips.getConfig({ tooltipText: tooltip }))]), ['tox-icon-custom-state'], container.customStateIconTooltip.fold(() => ({}), tooltip => ({ title: tooltip })))));
+      container.customStateIcon.each(icon => components.push(renderIcon(icon, backstage.shared.providers.icons, container.customStateIconTooltip.fold(() => [], tooltip => [Tooltipping.config(backstage.shared.providers.tooltips.getConfig({ tooltiptext: tooltip }))]), ['tox-icon-custom-state'], container.customStateIconTooltip.fold(() => ({}), tooltip => ({ title: tooltip })))));
     };
     const leafLabelEventsId = generate$6('leaf-label-event-id');
     const renderLeafLabel = ({leaf, onLeafAction, visible, treeId, selectedId, backstage}) => {
@@ -19261,9 +19261,9 @@
         return Optional.none();
       } else {
         const currentValue = Representing.getValue(input);
-        const inputDisplay = model.getDisplayText(currentValue);
+        const inputDisplay = model.getDisplaytext(currentValue);
         const itemValue = Representing.getValue(item);
-        const itemDisplay = model.getDisplayText(itemValue);
+        const itemDisplay = model.getDisplaytext(itemValue);
         return itemDisplay.indexOf(inputDisplay) === 0 ? Optional.some(() => {
           setValueFromItem(model, input, item);
           setSelectionToEnd(input, inputDisplay.length);
@@ -19314,7 +19314,7 @@
               meta: {}
             }),
             setValue: (comp, data) => {
-              set$5(comp.element, detail.model.getDisplayText(data));
+              set$5(comp.element, detail.model.getDisplaytext(data));
             },
             ...detail.initialData.map(d => wrap$1('initialValue', d)).getOr({})
           }
@@ -19472,7 +19472,7 @@
       defaulted('layouts', Optional.none()),
       defaulted('eventOrder', {}),
       defaultedObjOf('model', {}, [
-        defaulted('getDisplayText', itemData => itemData.meta !== undefined && itemData.meta.text !== undefined ? itemData.meta.text : itemData.value),
+        defaulted('getDisplaytext', itemData => itemData.meta !== undefined && itemData.meta.text !== undefined ? itemData.meta.text : itemData.value),
         defaulted('selectsOver', true),
         defaulted('populateFromBrowse', true)
       ]),
@@ -19522,8 +19522,8 @@
                     } else {
                       detail.previewing.set(false);
                     }
-                  }, selectOverTextInInput => {
-                    selectOverTextInInput();
+                  }, selectOvertextInInput => {
+                    selectOvertextInInput();
                     detail.previewing.set(false);
                   });
                 });
@@ -19641,7 +19641,7 @@
           DisablingConfigs.item(() => !spec.enabled || providersBackstage.checkUiComponentContext(spec.context).shouldDisable),
           toggleOnReceive(() => providersBackstage.checkUiComponentContext(spec.context)),
           Tabstopping.config({}),
-          ...tooltip.map(t => Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltipText: providersBackstage.translate(t) }))).toArray(),
+          ...tooltip.map(t => Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltiptext: providersBackstage.translate(t) }))).toArray(),
           config('button press', [preventDefault('click')])
         ].concat(extraBehaviours)),
         eventOrder: {
@@ -19688,9 +19688,9 @@
       }
     };
     const renderButtonSpec = (spec, action, providersBackstage, extraBehaviours = [], extraClasses = []) => {
-      const translatedText = providersBackstage.translate(spec.text);
+      const translatedtext = providersBackstage.translate(spec.text);
       const icon = spec.icon.map(iconName => renderIconFromPack$1(iconName, providersBackstage.icons));
-      const components = [icon.getOrThunk(() => text$2(translatedText))];
+      const components = [icon.getOrThunk(() => text$2(translatedtext))];
       const buttonType = spec.buttonType.getOr(!spec.primary && !spec.borderless ? 'secondary' : 'primary');
       const baseClasses = calculateClassesFromButtonType(buttonType);
       const classes = [
@@ -19703,11 +19703,11 @@
         tag: 'button',
         classes,
         attributes: {
-          'aria-label': translatedText,
+          'aria-label': translatedtext,
           'data-mce-name': spec.text
         }
       };
-      const optTooltip = spec.icon.map(constant$1(translatedText));
+      const optTooltip = spec.icon.map(constant$1(translatedtext));
       return renderCommonSpec(spec, action, extraBehaviours, dom, components, optTooltip, providersBackstage);
     };
     const renderButton$1 = (spec, action, providersBackstage, extraBehaviours = [], extraClasses = []) => {
@@ -19757,13 +19757,13 @@
       };
       const tooltipAttributes = buttonSpec.tooltip.or(spec.text).map(tooltip => ({ 'aria-label': providers.translate(tooltip) })).getOr({});
       const buttonTypeClasses = calculateClassesFromButtonType(buttonType !== null && buttonType !== void 0 ? buttonType : 'secondary');
-      const showIconAndText = spec.icon.isSome() && spec.text.isSome();
+      const showIconAndtext = spec.icon.isSome() && spec.text.isSome();
       const dom = {
         tag: 'button',
         classes: [
           ...buttonTypeClasses.concat(spec.icon.isSome() ? ['tox-button--icon'] : []),
           ...spec.active ? ['tox-button--enabled'] : [],
-          ...showIconAndText ? ['tox-button--icon-and-text'] : []
+          ...showIconAndtext ? ['tox-button--icon-and-text'] : []
         ],
         attributes: {
           ...tooltipAttributes,
@@ -19771,12 +19771,12 @@
         }
       };
       const extraBehaviours = [];
-      const translatedText = providers.translate(spec.text.getOr(''));
-      const translatedTextComponed = text$2(translatedText);
+      const translatedtext = providers.translate(spec.text.getOr(''));
+      const translatedtextComponed = text$2(translatedtext);
       const iconComp = componentRenderPipeline([optMemIcon.map(memIcon => memIcon.asSpec())]);
       const components = [
         ...iconComp,
-        ...spec.text.isSome() ? [translatedTextComponed] : []
+        ...spec.text.isSome() ? [translatedtextComponed] : []
       ];
       const iconButtonSpec = renderCommonSpec(buttonSpec, Optional.some(action), extraBehaviours, dom, components, spec.tooltip, providers);
       return Button.sketch(iconButtonSpec);
@@ -19975,7 +19975,7 @@
           ]
         },
         model: {
-          getDisplayText: itemData => itemData.value,
+          getDisplaytext: itemData => itemData.value,
           selectsOver: false,
           populateFromBrowse: false
         },
@@ -20237,11 +20237,11 @@
           containerBehaviours: derive$1([
             Tooltipping.config({
               ...providersBackstage.tooltips.getConfig({
-                tooltipText: '',
+                tooltiptext: '',
                 onShow: comp => {
                   descendant(comp.element, '[data-mce-tooltip]:hover').orThunk(() => search(comp.element)).each(current => {
                     getOpt(current, 'data-mce-tooltip').each(text => {
-                      Tooltipping.setComponents(comp, providersBackstage.tooltips.getComponents({ tooltipText: text }));
+                      Tooltipping.setComponents(comp, providersBackstage.tooltips.getComponents({ tooltiptext: text }));
                     });
                   });
                 }
@@ -20304,7 +20304,7 @@
       collection: make$2((spec, backstage, data) => renderCollection(spec, backstage.shared.providers, data)),
       alertbanner: make$2((spec, backstage) => renderAlertBanner(spec, backstage.shared.providers)),
       input: make$2((spec, backstage, data) => renderInput(spec, backstage.shared.providers, data)),
-      textarea: make$2((spec, backstage, data) => renderTextarea(spec, backstage.shared.providers, data)),
+      textarea: make$2((spec, backstage, data) => rendertextarea(spec, backstage.shared.providers, data)),
       label: make$2((spec, backstage, _data, getCompByName) => renderLabel$2(spec, backstage.shared, getCompByName)),
       iframe: makeIframe((spec, backstage, data) => renderIFrame(spec, backstage.shared.providers, data)),
       button: make$2((spec, backstage) => renderDialogButton(spec, backstage.shared.providers)),
@@ -20803,7 +20803,7 @@
         const fmt = editor.formatter.get(format);
         return fmt !== undefined ? Optional.some({
           tag: fmt.length > 0 ? fmt[0].inline || fmt[0].block || 'div' : 'div',
-          styles: editor.dom.parseStyle(editor.formatter.getCssText(format))
+          styles: editor.dom.parseStyle(editor.formatter.getCsstext(format))
         }) : Optional.none();
       };
       const settingsFormats = Cell([]);
@@ -20838,7 +20838,7 @@
               tag: 'div',
               classes: ['tox-tooltip__body']
             },
-            components: [text$2(spec.tooltipText)]
+            components: [text$2(spec.tooltiptext)]
           }];
       };
       const getConfig = spec => {
@@ -20915,8 +20915,8 @@
         return element.dom;
       });
     };
-    const getElementText = elm => {
-      return elm.innerText || elm.textContent;
+    const getElementtext = elm => {
+      return elm.innertext || elm.textContent;
     };
     const getOrGenerateId = elm => {
       return elm.id ? elm.id : generate$6('h');
@@ -20945,12 +20945,12 @@
       const attach = () => {
         elm.id = headerId;
       };
-      return create('header', (_a = getElementText(elm)) !== null && _a !== void 0 ? _a : '', '#' + headerId, getLevel(elm), attach);
+      return create('header', (_a = getElementtext(elm)) !== null && _a !== void 0 ? _a : '', '#' + headerId, getLevel(elm), attach);
     };
     const anchorTarget = elm => {
       const anchorId = elm.id || elm.name;
-      const anchorText = getElementText(elm);
-      return create('anchor', anchorText ? anchorText : '#' + anchorId, '#' + anchorId, 0, noop);
+      const anchortext = getElementtext(elm);
+      return create('anchor', anchortext ? anchortext : '#' + anchorId, '#' + anchorId, 0, noop);
     };
     const getHeaderTargets = elms => {
       return map$2(filter$2(elms, isValidHeader), headerTarget);
@@ -21054,15 +21054,15 @@
       };
       picker.call(editor, handler, entry.value, meta);
     }));
-    const getTextSetting = value => Optional.from(value).filter(isString).getOrUndefined();
+    const gettextSetting = value => Optional.from(value).filter(isString).getOrUndefined();
     const getLinkInformation = editor => {
       if (!useTypeaheadUrls(editor)) {
         return Optional.none();
       }
       return Optional.some({
         targets: LinkTargets.find(editor.getBody()),
-        anchorTop: getTextSetting(getAnchorTop(editor)),
-        anchorBottom: getTextSetting(getAnchorBottom(editor))
+        anchorTop: gettextSetting(getAnchorTop(editor)),
+        anchorBottom: gettextSetting(getAnchorBottom(editor))
       });
     };
     const getValidationHandler = editor => Optional.from(getFilePickerValidatorHandler(editor));
@@ -21650,7 +21650,7 @@
       type,
       optionalTooltip,
       optionalIcon,
-      optionalText,
+      optionaltext,
       optionalSelect,
       fetch$1,
       onSetup,
@@ -23015,7 +23015,7 @@
     };
 
     const baseButtonFields = [
-      optionalText,
+      optionaltext,
       optionalIcon,
       optionString('tooltip'),
       defaultedStringEnum('buttonType', 'secondary', [
@@ -23102,18 +23102,18 @@
         borderless: spec.borderless
       };
       const buttonTypeClasses = calculateClassesFromButtonType((_b = spec.buttonType) !== null && _b !== void 0 ? _b : 'secondary');
-      const optTranslatedText = isToggleButton ? spec.text.map(providers.translate) : Optional.some(providers.translate(spec.text));
-      const optTranslatedTextComponed = optTranslatedText.map(text$2);
-      const ariaLabelAttributes = buttonSpec.tooltip.or(optTranslatedText).map(al => ({ 'aria-label': providers.translate(al) })).getOr({});
+      const optTranslatedtext = isToggleButton ? spec.text.map(providers.translate) : Optional.some(providers.translate(spec.text));
+      const optTranslatedtextComponed = optTranslatedtext.map(text$2);
+      const ariaLabelAttributes = buttonSpec.tooltip.or(optTranslatedtext).map(al => ({ 'aria-label': providers.translate(al) })).getOr({});
       const optIconSpec = optMemIcon.map(memIcon => memIcon.asSpec());
       const components = componentRenderPipeline([
         optIconSpec,
-        optTranslatedTextComponed
+        optTranslatedtextComponed
       ]);
-      const hasIconAndText = spec.icon.isSome() && optTranslatedTextComponed.isSome();
+      const hasIconAndtext = spec.icon.isSome() && optTranslatedtextComponed.isSome();
       const dom = {
         tag: 'button',
-        classes: buttonTypeClasses.concat(...spec.icon.isSome() && !hasIconAndText ? ['tox-button--icon'] : []).concat(...hasIconAndText ? ['tox-button--icon-and-text'] : []).concat(...spec.borderless ? ['tox-button--naked'] : []).concat(...spec.type === 'togglebutton' && spec.active ? ['tox-button--enabled'] : []),
+        classes: buttonTypeClasses.concat(...spec.icon.isSome() && !hasIconAndtext ? ['tox-button--icon'] : []).concat(...hasIconAndtext ? ['tox-button--icon-and-text'] : []).concat(...spec.borderless ? ['tox-button--naked'] : []).concat(...spec.type === 'togglebutton' && spec.active ? ['tox-button--enabled'] : []),
         attributes: ariaLabelAttributes
       };
       const extraBehaviours = [];
@@ -23848,18 +23848,18 @@
     const iframe = curry(loadSkin, false);
     const inline = curry(loadSkin, true);
 
-    const makeTooltipText = (editor, labelWithPlaceholder, value) => isEmpty(value) ? editor.translate(labelWithPlaceholder) : editor.translate([
+    const makeTooltiptext = (editor, labelWithPlaceholder, value) => isEmpty(value) ? editor.translate(labelWithPlaceholder) : editor.translate([
       labelWithPlaceholder,
       editor.translate(value)
     ]);
 
     const generateSelectItems = (backstage, spec) => {
       const generateItem = (rawItem, response, invalid, value) => {
-        const translatedText = backstage.shared.providers.translate(rawItem.title);
+        const translatedtext = backstage.shared.providers.translate(rawItem.title);
         if (rawItem.type === 'separator') {
           return Optional.some({
             type: 'separator',
-            text: translatedText
+            text: translatedtext
           });
         } else if (rawItem.type === 'submenu') {
           const items = bind$3(rawItem.getStyleItems(), si => validate(si, response, value));
@@ -23868,7 +23868,7 @@
           } else {
             return Optional.some({
               type: 'nestedmenuitem',
-              text: translatedText,
+              text: translatedtext,
               enabled: items.length > 0,
               getSubmenuItems: () => bind$3(rawItem.getStyleItems(), si => validate(si, response, value))
             });
@@ -23876,7 +23876,7 @@
         } else {
           return Optional.some({
             type: 'togglemenuitem',
-            text: translatedText,
+            text: translatedtext,
             icon: rawItem.icon,
             active: rawItem.isSelected(value),
             enabled: !invalid,
@@ -23932,11 +23932,11 @@
         }
       });
       const onSetup = api => {
-        const handler = e => api.setTooltip(makeTooltipText(editor, getTooltip(e.value), e.value));
+        const handler = e => api.setTooltip(makeTooltiptext(editor, getTooltip(e.value), e.value));
         editor.on(textUpdateEventName, handler);
         return composeUnbinders(onSetupEvent(editor, 'NodeChange', api => {
           const comp = api.getComponent();
-          spec.updateText(comp);
+          spec.updatetext(comp);
           Disabling.set(api.getComponent(), !editor.selection.isEditable());
         })(api), () => editor.off(textUpdateEventName, handler));
       };
@@ -23955,11 +23955,11 @@
         classes: spec.icon.isSome() ? [] : ['bespoke'],
         dropdownBehaviours: [Tooltipping.config({
             ...backstage.shared.providers.tooltips.getConfig({
-              tooltipText: backstage.shared.providers.translate(spec.tooltip),
+              tooltiptext: backstage.shared.providers.translate(spec.tooltip),
               onShow: comp => {
                 if (spec.tooltip !== tooltipString.get()) {
                   const translatedTooltip = backstage.shared.providers.translate(tooltipString.get());
-                  Tooltipping.setComponents(comp, backstage.shared.providers.tooltips.getComponents({ tooltipText: translatedTooltip }));
+                  Tooltipping.setComponents(comp, backstage.shared.providers.tooltips.getComponents({ tooltiptext: translatedTooltip }));
                 }
               }
             })
@@ -24041,25 +24041,25 @@
         const match = getMatchingValue();
         const alignment = match.fold(constant$1(fallbackAlignment), item => item.title.toLowerCase());
         emitWith(comp, updateMenuIcon, { icon: `align-${ alignment }` });
-        fireAlignTextUpdate(editor, { value: alignment });
+        fireAligntextUpdate(editor, { value: alignment });
       };
       const dataset = buildBasicStaticDataset(alignMenuItems);
       const onAction = rawItem => () => find$5(alignMenuItems, item => item.format === rawItem.format).each(item => editor.execCommand(item.command));
       return {
-        tooltip: makeTooltipText(editor, getTooltipPlaceholder$4(), fallbackAlignment),
+        tooltip: makeTooltiptext(editor, getTooltipPlaceholder$4(), fallbackAlignment),
         text: Optional.none(),
         icon: Optional.some('align-left'),
         isSelectedFor,
         getCurrentValue: Optional.none,
         getPreviewFor,
         onAction,
-        updateText: updateSelectMenuIcon,
+        updatetext: updateSelectMenuIcon,
         dataset,
         shouldHide: false,
         isInvalid: item => !editor.formatter.canApply(item.format)
       };
     };
-    const createAlignButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$4(editor), getTooltipPlaceholder$4, 'AlignTextUpdate', 'align');
+    const createAlignButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$4(editor), getTooltipPlaceholder$4, 'AligntextUpdate', 'align');
     const createAlignMenu = (editor, backstage) => {
       const menuItems = createMenuItems(backstage, getSpec$4(editor));
       editor.ui.registry.addNestedMenuItem('align', {
@@ -24085,34 +24085,34 @@
         if (fmt) {
           return Optional.some({
             tag: fmt.length > 0 ? fmt[0].inline || fmt[0].block || 'div' : 'div',
-            styles: editor.dom.parseStyle(editor.formatter.getCssText(format))
+            styles: editor.dom.parseStyle(editor.formatter.getCsstext(format))
           });
         } else {
           return Optional.none();
         }
       };
-      const updateSelectMenuText = comp => {
+      const updateSelectMenutext = comp => {
         const detectedFormat = findNearest(editor, () => dataset.data);
         const text = detectedFormat.fold(constant$1(fallbackFormat), fmt => fmt.title);
-        emitWith(comp, updateMenuText, { text });
-        fireBlocksTextUpdate(editor, { value: text });
+        emitWith(comp, updateMenutext, { text });
+        fireBlockstextUpdate(editor, { value: text });
       };
       const dataset = buildBasicSettingsDataset(editor, 'block_formats', Delimiter.SemiColon);
       return {
-        tooltip: makeTooltipText(editor, getTooltipPlaceholder$3(), fallbackFormat),
+        tooltip: makeTooltiptext(editor, getTooltipPlaceholder$3(), fallbackFormat),
         text: Optional.some(fallbackFormat),
         icon: Optional.none(),
         isSelectedFor,
         getCurrentValue: Optional.none,
         getPreviewFor,
         onAction: onActionToggleFormat$1(editor),
-        updateText: updateSelectMenuText,
+        updatetext: updateSelectMenutext,
         dataset,
         shouldHide: false,
         isInvalid: item => !editor.formatter.canApply(item.format)
       };
     };
-    const createBlocksButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$3(editor), getTooltipPlaceholder$3, 'BlocksTextUpdate', 'blocks');
+    const createBlocksButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$3(editor), getTooltipPlaceholder$3, 'BlockstextUpdate', 'blocks');
     const createBlocksMenu = (editor, backstage) => {
       const menuItems = createMenuItems(backstage, getSpec$3(editor));
       editor.ui.registry.addNestedMenuItem('blocks', {
@@ -24181,28 +24181,28 @@
           editor.execCommand('FontName', false, rawItem.format);
         });
       };
-      const updateSelectMenuText = comp => {
+      const updateSelectMenutext = comp => {
         const {matchOpt, font} = getMatchingValue();
         const text = matchOpt.fold(constant$1(font), item => item.title);
-        emitWith(comp, updateMenuText, { text });
-        fireFontFamilyTextUpdate(editor, { value: text });
+        emitWith(comp, updateMenutext, { text });
+        fireFontFamilytextUpdate(editor, { value: text });
       };
       const dataset = buildBasicSettingsDataset(editor, 'font_family_formats', Delimiter.SemiColon);
       return {
-        tooltip: makeTooltipText(editor, getTooltipPlaceholder$2(), systemFont),
+        tooltip: makeTooltiptext(editor, getTooltipPlaceholder$2(), systemFont),
         text: Optional.some(systemFont),
         icon: Optional.none(),
         isSelectedFor,
         getCurrentValue,
         getPreviewFor,
         onAction,
-        updateText: updateSelectMenuText,
+        updatetext: updateSelectMenutext,
         dataset,
         shouldHide: false,
         isInvalid: never
       };
     };
-    const createFontFamilyButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$2(editor), getTooltipPlaceholder$2, 'FontFamilyTextUpdate', 'fontfamily');
+    const createFontFamilyButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$2(editor), getTooltipPlaceholder$2, 'FontFamilytextUpdate', 'fontfamily');
     const createFontFamilyMenu = (editor, backstage) => {
       const menuItems = createMenuItems(backstage, getSpec$2(editor));
       editor.ui.registry.addNestedMenuItem('fontfamily', {
@@ -24358,7 +24358,7 @@
           components: [renderIconFromPack$1(title, backstage.shared.providers.icons)],
           buttonBehaviours: derive$1([
             Disabling.config({}),
-            Tooltipping.config(backstage.shared.providers.tooltips.getConfig({ tooltipText: translatedTooltip })),
+            Tooltipping.config(backstage.shared.providers.tooltips.getConfig({ tooltiptext: translatedTooltip })),
             config(altExecuting, [
               onControlAttached({
                 onSetup,
@@ -24419,7 +24419,7 @@
                 onControlDetached({ getApi }, editorOffCell)
               ]),
               config('input-update-display-text', [
-                run$1(updateMenuText, (comp, se) => {
+                run$1(updateMenutext, (comp, se) => {
                   Representing.setValue(comp, se.event.text);
                 }),
                 run$1(focusout(), comp => {
@@ -24569,28 +24569,28 @@
           editor.execCommand('FontSize', false, rawItem.format);
         });
       };
-      const updateSelectMenuText = comp => {
+      const updateSelectMenutext = comp => {
         const {matchOpt, size} = getMatchingValue();
         const text = matchOpt.fold(constant$1(size), match => match.title);
-        emitWith(comp, updateMenuText, { text });
-        fireFontSizeTextUpdate(editor, { value: text });
+        emitWith(comp, updateMenutext, { text });
+        fireFontSizetextUpdate(editor, { value: text });
       };
       const dataset = buildBasicSettingsDataset(editor, 'font_size_formats', Delimiter.Space);
       return {
-        tooltip: makeTooltipText(editor, getTooltipPlaceholder$1(), fallbackFontSize),
+        tooltip: makeTooltiptext(editor, getTooltipPlaceholder$1(), fallbackFontSize),
         text: Optional.some(fallbackFontSize),
         icon: Optional.none(),
         isSelectedFor,
         getPreviewFor,
         getCurrentValue,
         onAction,
-        updateText: updateSelectMenuText,
+        updatetext: updateSelectMenutext,
         dataset,
         shouldHide: false,
         isInvalid: never
       };
     };
-    const createFontSizeButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$1(editor), getTooltipPlaceholder$1, 'FontSizeTextUpdate', 'fontsize');
+    const createFontSizeButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$1(editor), getTooltipPlaceholder$1, 'FontSizetextUpdate', 'fontsize');
     const getConfigFromUnit = unit => {
       var _a;
       const baseConfig = { step: 1 };
@@ -24608,7 +24608,7 @@
     const isValidValue = value => value >= 0;
     const getNumberInputSpec = editor => {
       const getCurrentValue = () => editor.queryCommandValue('FontSize');
-      const updateInputValue = comp => emitWith(comp, updateMenuText, { text: getCurrentValue() });
+      const updateInputValue = comp => emitWith(comp, updateMenutext, { text: getCurrentValue() });
       return {
         updateInputValue,
         onAction: (format, focusBack) => editor.execCommand('FontSize', false, format, { skip_focus: !focusBack }),
@@ -24618,20 +24618,20 @@
             'empty'
           ]);
           const currentValue = getCurrentValue();
-          const parsedText = parse(text, [
+          const parsedtext = parse(text, [
             'unsupportedLength',
             'empty'
           ]).or(parse(currentValue, [
             'unsupportedLength',
             'empty'
           ]));
-          const value = parsedText.map(res => res.value).getOr(defaultValue);
+          const value = parsedtext.map(res => res.value).getOr(defaultValue);
           const defaultUnit = getFontSizeInputDefaultUnit(editor);
-          const unit = parsedText.map(res => res.unit).filter(u => u !== '').getOr(defaultUnit);
+          const unit = parsedtext.map(res => res.unit).filter(u => u !== '').getOr(defaultUnit);
           const newValue = updateFunction(value, getConfigFromUnit(unit).step);
           const res = `${ isValidValue(newValue) ? newValue : value }${ unit }`;
           if (res !== currentValue) {
-            fireFontSizeInputTextUpdate(editor, { value: res });
+            fireFontSizeInputtextUpdate(editor, { value: res });
           }
           return res;
         }
@@ -24656,10 +24656,10 @@
         const fmt = editor.formatter.get(format);
         return fmt !== undefined ? Optional.some({
           tag: fmt.length > 0 ? fmt[0].inline || fmt[0].block || 'div' : 'div',
-          styles: editor.dom.parseStyle(editor.formatter.getCssText(format))
+          styles: editor.dom.parseStyle(editor.formatter.getCsstext(format))
         }) : Optional.none();
       };
-      const updateSelectMenuText = comp => {
+      const updateSelectMenutext = comp => {
         const getFormatItems = fmt => {
           if (isNestedFormat(fmt)) {
             return bind$3(fmt.items, getFormatItems);
@@ -24681,18 +24681,18 @@
           title: fmt.title,
           tooltipLabel: fmt.title
         }));
-        emitWith(comp, updateMenuText, { text: text.title });
-        fireStylesTextUpdate(editor, { value: text.tooltipLabel });
+        emitWith(comp, updateMenutext, { text: text.title });
+        fireStylestextUpdate(editor, { value: text.tooltipLabel });
       };
       return {
-        tooltip: makeTooltipText(editor, getTooltipPlaceholder(''), ''),
+        tooltip: makeTooltiptext(editor, getTooltipPlaceholder(''), ''),
         text: Optional.some(fallbackFormat),
         icon: Optional.none(),
         isSelectedFor,
         getCurrentValue: Optional.none,
         getPreviewFor,
         onAction: onActionToggleFormat$1(editor),
-        updateText: updateSelectMenuText,
+        updatetext: updateSelectMenutext,
         shouldHide: shouldAutoHideStyleFormats(editor),
         isInvalid: item => !editor.formatter.canApply(item.format),
         dataset
@@ -24703,7 +24703,7 @@
         type: 'advanced',
         ...backstage.styles
       };
-      return createSelectButton(editor, backstage, getSpec(editor, dataset), getTooltipPlaceholder, 'StylesTextUpdate', 'styles');
+      return createSelectButton(editor, backstage, getSpec(editor, dataset), getTooltipPlaceholder, 'StylestextUpdate', 'styles');
     };
     const createStylesMenu = (editor, backstage) => {
       const dataset = {
@@ -24922,7 +24922,7 @@
     const getButtonApi = component => ({
       isEnabled: () => !Disabling.isDisabled(component),
       setEnabled: state => Disabling.set(component, !state),
-      setText: text => emitWith(component, updateMenuText, { text }),
+      settext: text => emitWith(component, updateMenutext, { text }),
       setIcon: icon => emitWith(component, updateMenuIcon, { icon })
     });
     const getToggleApi = component => ({
@@ -24932,18 +24932,18 @@
       isActive: () => Toggling.isOn(component),
       isEnabled: () => !Disabling.isDisabled(component),
       setEnabled: state => Disabling.set(component, !state),
-      setText: text => emitWith(component, updateMenuText, { text }),
+      settext: text => emitWith(component, updateMenutext, { text }),
       setIcon: icon => emitWith(component, updateMenuIcon, { icon })
     });
     const getTooltipAttributes = (tooltip, providersBackstage) => tooltip.map(tooltip => ({ 'aria-label': providersBackstage.translate(tooltip) })).getOr({});
     const focusButtonEvent = generate$6('focus-button');
-    const renderCommonStructure = (optIcon, optText, tooltip, behaviours, providersBackstage, context, btnName) => {
-      const optMemDisplayText = optText.map(text => record(renderLabel$1(text, 'tox-tbtn', providersBackstage)));
+    const renderCommonStructure = (optIcon, opttext, tooltip, behaviours, providersBackstage, context, btnName) => {
+      const optMemDisplaytext = opttext.map(text => record(renderLabel$1(text, 'tox-tbtn', providersBackstage)));
       const optMemDisplayIcon = optIcon.map(icon => record(renderReplaceableIconFromPack(icon, providersBackstage.icons)));
       return {
         dom: {
           tag: 'button',
-          classes: ['tox-tbtn'].concat(optText.isSome() ? ['tox-tbtn--select'] : []),
+          classes: ['tox-tbtn'].concat(opttext.isSome() ? ['tox-tbtn--select'] : []),
           attributes: {
             ...getTooltipAttributes(tooltip, providersBackstage),
             ...isNonNullable(btnName) ? { 'data-mce-name': btnName } : {}
@@ -24951,7 +24951,7 @@
         },
         components: componentRenderPipeline([
           optMemDisplayIcon.map(mem => mem.asSpec()),
-          optMemDisplayText.map(mem => mem.asSpec())
+          optMemDisplaytext.map(mem => mem.asSpec())
         ]),
         eventOrder: {
           [mousedown()]: [
@@ -24969,9 +24969,9 @@
           toggleOnReceive(() => providersBackstage.checkUiComponentContext(context)),
           config(commonButtonDisplayEvent, [
             runOnAttached((comp, _se) => forceInitialSize(comp)),
-            run$1(updateMenuText, (comp, se) => {
-              optMemDisplayText.bind(mem => mem.getOpt(comp)).each(displayText => {
-                Replacing.set(displayText, [text$2(providersBackstage.translate(se.event.text))]);
+            run$1(updateMenutext, (comp, se) => {
+              optMemDisplaytext.bind(mem => mem.getOpt(comp)).each(displaytext => {
+                Replacing.set(displaytext, [text$2(providersBackstage.translate(se.event.text))]);
               });
             }),
             run$1(updateMenuIcon, (comp, se) => {
@@ -25035,7 +25035,7 @@
               onControlAttached(specialisation, editorOffCell),
               onControlDetached(specialisation, editorOffCell)
             ]),
-            ...spec.tooltip.map(t => Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltipText: providersBackstage.translate(t) + spec.shortcut.map(shortcut => ` (${ convertText(shortcut) })`).getOr('') }))).toArray(),
+            ...spec.tooltip.map(t => Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltiptext: providersBackstage.translate(t) + spec.shortcut.map(shortcut => ` (${ converttext(shortcut) })`).getOr('') }))).toArray(),
             DisablingConfigs.toolbarButton(() => !spec.enabled || providersBackstage.checkUiComponentContext(spec.context).shouldDisable),
             toggleOnReceive(() => providersBackstage.checkUiComponentContext(spec.context))
           ].concat(specialisation.toolbarButtonBehaviours)),
@@ -25089,7 +25089,7 @@
           });
         },
         isActive: () => descendant(comp.element, 'span').exists(button => comp.getSystem().getByDom(button).exists(Toggling.isOn)),
-        setText: text => descendant(comp.element, 'span').each(button => comp.getSystem().getByDom(button).each(buttonComp => emitWith(buttonComp, updateMenuText, { text }))),
+        settext: text => descendant(comp.element, 'span').each(button => comp.getSystem().getByDom(button).each(buttonComp => emitWith(buttonComp, updateMenutext, { text }))),
         setIcon: icon => descendant(comp.element, 'span').each(button => comp.getSystem().getByDom(button).each(buttonComp => emitWith(buttonComp, updateMenuIcon, { icon }))),
         setTooltip: tooltip => {
           const translatedTooltip = sharedBackstage.providers.translate(tooltip);
@@ -25133,11 +25133,11 @@
           ...spec.tooltip.map(tooltip => {
             return Tooltipping.config({
               ...sharedBackstage.providers.tooltips.getConfig({
-                tooltipText: sharedBackstage.providers.translate(tooltip),
+                tooltiptext: sharedBackstage.providers.translate(tooltip),
                 onShow: comp => {
                   if (tooltipString.get() !== tooltip) {
                     const translatedTooltip = sharedBackstage.providers.translate(tooltipString.get());
-                    Tooltipping.setComponents(comp, sharedBackstage.providers.tooltips.getComponents({ tooltipText: translatedTooltip }));
+                    Tooltipping.setComponents(comp, sharedBackstage.providers.tooltips.getComponents({ tooltiptext: translatedTooltip }));
                   }
                 }
               })
@@ -25994,7 +25994,7 @@
       const rect = rng.getBoundingClientRect();
       if (rect.height <= 0 && rect.width <= 0) {
         const leaf$1 = leaf(SugarElement.fromDom(rng.startContainer), rng.startOffset).element;
-        const elm = isText(leaf$1) ? parent(leaf$1) : Optional.some(leaf$1);
+        const elm = istext(leaf$1) ? parent(leaf$1) : Optional.some(leaf$1);
         return elm.filter(isElement$1).map(e => e.dom.getBoundingClientRect()).getOr(rect);
       } else {
         return rect;
@@ -26796,30 +26796,30 @@
       registerButtons$2(editor);
     };
 
-    const makeSetupHandler = (editor, pasteAsText) => api => {
-      api.setActive(pasteAsText.get());
-      const pastePlainTextToggleHandler = e => {
-        pasteAsText.set(e.state);
+    const makeSetupHandler = (editor, pasteAstext) => api => {
+      api.setActive(pasteAstext.get());
+      const pastePlaintextToggleHandler = e => {
+        pasteAstext.set(e.state);
         api.setActive(e.state);
       };
-      editor.on('PastePlainTextToggle', pastePlainTextToggleHandler);
-      return composeUnbinders(() => editor.off('PastePlainTextToggle', pastePlainTextToggleHandler), onSetupEditableToggle(editor)(api));
+      editor.on('PastePlaintextToggle', pastePlaintextToggleHandler);
+      return composeUnbinders(() => editor.off('PastePlaintextToggle', pastePlaintextToggleHandler), onSetupEditableToggle(editor)(api));
     };
     const register$4 = editor => {
-      const pasteAsText = Cell(getPasteAsText(editor));
-      const onAction = () => editor.execCommand('mceTogglePlainTextPaste');
+      const pasteAstext = Cell(getPasteAstext(editor));
+      const onAction = () => editor.execCommand('mceTogglePlaintextPaste');
       editor.ui.registry.addToggleButton('pastetext', {
         active: false,
         icon: 'paste-text',
         tooltip: 'Paste as text',
         onAction,
-        onSetup: makeSetupHandler(editor, pasteAsText)
+        onSetup: makeSetupHandler(editor, pasteAstext)
       });
       editor.ui.registry.addToggleMenuItem('pastetext', {
         text: 'Paste as text',
         icon: 'paste-text',
         onAction,
-        onSetup: makeSetupHandler(editor, pasteAsText)
+        onSetup: makeSetupHandler(editor, pasteAstext)
       });
     };
 
@@ -28268,7 +28268,7 @@
         buttonBehaviours: derive$1([
           Tooltipping.config({
             ...providersBackstage.tooltips.getConfig({
-              tooltipText: providersBackstage.translate([
+              tooltiptext: providersBackstage.translate([
                 'Select the {0} element',
                 element.nodeName.toLowerCase()
               ]),
@@ -28420,13 +28420,13 @@
           }),
           Tabstopping.config({}),
           Focusing.config({}),
-          Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltipText: providersBackstage.translate('Resize') }))
+          Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltiptext: providersBackstage.translate('Resize') }))
         ]
       }, providersBackstage.icons));
     };
 
     const renderWordCount = (editor, providersBackstage) => {
-      const replaceCountText = (comp, count, mode) => Replacing.set(comp, [text$2(providersBackstage.translate([
+      const replaceCounttext = (comp, count, mode) => Replacing.set(comp, [text$2(providersBackstage.translate([
           '{0} ' + mode,
           count[mode]
         ]))]);
@@ -28461,7 +28461,7 @@
                 mode: newMode,
                 count: currentVal.count
               });
-              replaceCountText(comp, currentVal.count, newMode);
+              replaceCounttext(comp, currentVal.count, newMode);
             }),
             runOnAttached(comp => {
               editor.on('wordCountUpdate', e => {
@@ -28470,7 +28470,7 @@
                   mode,
                   count: e.wordCount
                 });
-                replaceCountText(comp, e.wordCount, mode);
+                replaceCounttext(comp, e.wordCount, mode);
               });
             })
           ])
@@ -28514,7 +28514,7 @@
         };
       };
       const renderHelpAccessibility = () => {
-        const shortcutText = convertText('Alt+0');
+        const shortcuttext = converttext('Alt+0');
         const text = `Press {0} for help`;
         return {
           dom: {
@@ -28523,7 +28523,7 @@
           },
           components: [text$2(global$5.translate([
               text,
-              shortcutText
+              shortcuttext
             ]))]
         };
       };
@@ -28543,12 +28543,12 @@
           components
         };
       };
-      const getTextComponents = () => {
+      const gettextComponents = () => {
         const components = [];
         const shouldRenderHelp = useHelpAccessibility(editor);
         const shouldRenderElementPath = useElementPath(editor);
         const shouldRenderRightContainer = useBranding(editor) || editor.hasPlugin('wordcount');
-        const getTextComponentClasses = () => {
+        const gettextComponentClasses = () => {
           const flexStart = 'tox-statusbar__text-container--flex-start';
           const flexEnd = 'tox-statusbar__text-container--flex-end';
           const spaceAround = 'tox-statusbar__text-container--space-around';
@@ -28588,7 +28588,7 @@
                 tag: 'div',
                 classes: [
                   'tox-statusbar__text-container',
-                  ...getTextComponentClasses()
+                  ...gettextComponentClasses()
                 ]
               },
               components
@@ -28597,7 +28597,7 @@
         return [];
       };
       const getComponents = () => {
-        const components = getTextComponents();
+        const components = gettextComponents();
         const resizeHandler = renderResizeHandler(editor, providersBackstage);
         return components.concat(resizeHandler.toArray());
       };
@@ -29199,7 +29199,7 @@
     ];
     const menuFooterButtonFields = [
       requiredStringEnum('type', ['menu']),
-      optionalText,
+      optionaltext,
       optionalTooltip,
       optionalIcon,
       requiredArrayOf('items', dialogToggleMenuItemSchema),
@@ -29210,7 +29210,7 @@
       requiredStringEnum('type', ['togglebutton']),
       optionalTooltip,
       optionalIcon,
-      optionalText,
+      optionaltext,
       defaultedBoolean('active', false)
     ];
     const dialogFooterButtonSchema = choose$1('type', {
@@ -30456,7 +30456,7 @@
       },
       buttonBehaviours: derive$1([
         Tabstopping.config({}),
-        Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltipText: providersBackstage.translate('Close') }))
+        Tooltipping.config(providersBackstage.tooltips.getConfig({ tooltiptext: providersBackstage.translate('Close') }))
       ]),
       components: [render$3('close', {
           tag: 'span',
@@ -30534,7 +30534,7 @@
       behaviours: bs,
       components: [{ dom: fromHtml('<div class="tox-spinner"><div></div><div></div><div></div></div>') }]
     });
-    const getEventExtras = (lazyDialog, providers, extra) => ({
+    const getEventextras = (lazyDialog, providers, extra) => ({
       onClose: () => extra.closeWindow(),
       onBlock: blockEvent => {
         const headerHeight = descendant(lazyDialog().element, '.tox-dialog__header').map(header => get$e(header));
@@ -30902,7 +30902,7 @@
       const storedMenuButtons = mapMenuButtons(internalDialog.buttons);
       const objOfCells = extractCellsToObject(storedMenuButtons);
       const footer = someIf(storedMenuButtons.length !== 0, renderModalFooter({ buttons: storedMenuButtons }, dialogId, backstage));
-      const dialogEvents = initDialog(() => instanceApi, getEventExtras(() => dialog, backstage.shared.providers, extra), backstage.shared.getSink);
+      const dialogEvents = initDialog(() => instanceApi, getEventextras(() => dialog, backstage.shared.providers, extra), backstage.shared.getSink);
       const spec = {
         id: dialogId,
         header,
@@ -31142,7 +31142,7 @@
           return Optional.some(renderModalFooter({ buttons }, dialogId, backstage));
         }
       });
-      const dialogEvents = initUrlDialog(() => instanceApi, getEventExtras(() => dialog, backstage.shared.providers, extra));
+      const dialogEvents = initUrlDialog(() => instanceApi, getEventextras(() => dialog, backstage.shared.providers, extra));
       const styles = {
         ...internalDialog.height.fold(() => ({}), height => ({
           'height': height + 'px',

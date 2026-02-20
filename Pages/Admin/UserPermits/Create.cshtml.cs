@@ -12,16 +12,16 @@ namespace ISO_Manager.Pages.Admin.UserPermits
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["UserId"] = new SelectList(_conText.Users, "id", "name");
+        ViewData["UserId"] = new SelectList(_context.Users, "id", "name");
             return Page();
         }
 
@@ -36,8 +36,8 @@ namespace ISO_Manager.Pages.Admin.UserPermits
                 return Page();
             }
 
-            _conText.UserPermits.Add(UserPermit);
-            await _conText.SaveChangesAsync();
+            _context.UserPermits.Add(UserPermit);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

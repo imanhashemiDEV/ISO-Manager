@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public OccupationHarmful OccupationHarmful { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.OccupationHarmfuls
                 return NotFound();
             }
 
-            var occupationharmful = await _conText.OccupationHarmfuls.FirstOrDefaultAsync(m => m.Id == id);
+            var occupationharmful = await _context.OccupationHarmfuls.FirstOrDefaultAsync(m => m.Id == id);
 
             if (occupationharmful is not null)
             {

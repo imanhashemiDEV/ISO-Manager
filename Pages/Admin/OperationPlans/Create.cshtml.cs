@@ -12,16 +12,16 @@ namespace ISO_Manager.Pages.Admin.OperationPlans
 {
     public class CreateModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public CreateModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public CreateModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["PurposeId"] = new SelectList(_conText.Purposes, "id", "id");
+        ViewData["PurposeId"] = new SelectList(_context.Purposes, "id", "id");
             return Page();
         }
 
@@ -36,8 +36,8 @@ namespace ISO_Manager.Pages.Admin.OperationPlans
                 return Page();
             }
 
-            _conText.OperationPlans.Add(OperationPlan);
-            await _conText.SaveChangesAsync();
+            _context.OperationPlans.Add(OperationPlan);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

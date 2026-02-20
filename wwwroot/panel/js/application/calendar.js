@@ -231,8 +231,8 @@ Description:  this file will contains code for build and handle calender applica
           text: 'you want to delete this event?',
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonText: 'Yes, delete it!',
-          cancelButtonText: 'No, cancel!',
+          confirmButtontext: 'Yes, delete it!',
+          cancelButtontext: 'No, cancel!',
           reverseButtons: true
         })
         .then((result) => {

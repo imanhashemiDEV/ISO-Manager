@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Organization
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace ISO_Manager.Pages.Admin.Organization
                 return NotFound();
             }
 
-            var organization =  await _conText.Organizations.FirstOrDefaultAsync(m => m.Id == id);
+            var organization =  await _context.Organizations.FirstOrDefaultAsync(m => m.Id == id);
             if (organization == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace ISO_Manager.Pages.Admin.Organization
                 return Page();
             }
 
-            _conText.Attach(Organization).State = EntityState.Modified;
+            _context.Attach(Organization).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace ISO_Manager.Pages.Admin.Organization
 
         private bool OrganizationExists(long id)
         {
-            return _conText.Organizations.Any(e => e.Id == id);
+            return _context.Organizations.Any(e => e.Id == id);
         }
     }
 }

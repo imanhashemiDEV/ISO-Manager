@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Processes
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public Process Process { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.Processes
                 return NotFound();
             }
 
-            var process = await _conText.Processes.FirstOrDefaultAsync(m => m.Id == id);
+            var process = await _context.Processes.FirstOrDefaultAsync(m => m.Id == id);
 
             if (process is not null)
             {

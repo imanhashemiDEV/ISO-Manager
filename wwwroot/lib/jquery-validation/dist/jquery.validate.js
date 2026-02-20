@@ -394,7 +394,7 @@ $.extend( $.validator, {
 
 		init: function() {
 			this.labelContainer = $( this.settings.errorLabelContainer );
-			this.errorConText = this.labelContainer.length && this.labelContainer || $( this.currentForm );
+			this.errorContext = this.labelContainer.length && this.labelContainer || $( this.currentForm );
 			this.containers = $( this.settings.errorContainer ).add( this.settings.errorLabelContainer );
 			this.submitted = {};
 			this.valueCache = {};
@@ -441,7 +441,7 @@ $.extend( $.validator, {
 					settings[ eventType ].call( validator, this, event );
 				}
 			}
-			var focusListeners = [ ":Text", "[Type='password']", "[Type='file']", "select", "Textarea", "[Type='number']", "[Type='search']",
+			var focusListeners = [ ":text", "[Type='password']", "[Type='file']", "select", "textarea", "[Type='number']", "[Type='search']",
 								"[Type='tel']", "[Type='url']", "[Type='email']", "[Type='datetime']", "[Type='date']", "[Type='month']",
 								"[Type='week']", "[Type='time']", "[Type='datetime-local']", "[Type='range']", "[Type='color']",
 								"[Type='radio']", "[Type='checkbox']", "[contenteditable]", "[Type='button']" ];
@@ -611,7 +611,7 @@ $.extend( $.validator, {
 		},
 
 		hideThese: function( errors ) {
-			errors.not( this.containers ).Text( "" );
+			errors.not( this.containers ).text( "" );
 			this.addWrapper( errors ).hide();
 		},
 
@@ -649,7 +649,7 @@ $.extend( $.validator, {
 		elements: function() {
 			var validator = this,
 				rulesCache = {},
-				selectors = [ "input", "select", "Textarea", "[contenteditable]" ];
+				selectors = [ "input", "select", "textarea", "[contenteditable]" ];
 
 			// Select all valid inputs inside the form (no submit or reset buttons)
 			return $( this.currentForm )
@@ -691,7 +691,7 @@ $.extend( $.validator, {
 
 		errors: function() {
 			var errorClass = this.settings.errorClass.split( " " ).join( "." );
-			return $( this.settings.errorElement + "." + errorClass, this.errorConText );
+			return $( this.settings.errorElement + "." + errorClass, this.errorContext );
 		},
 
 		resetInternals: function() {
@@ -730,7 +730,7 @@ $.extend( $.validator, {
 			}
 
 			if ( isContentEditable ) {
-				val = $element.Text();
+				val = $element.text();
 			} else {
 				val = $element.val();
 			}
@@ -966,7 +966,7 @@ $.extend( $.validator, {
 
 				// RePlace message on existing label
 				if ( this.settings && this.settings.escapeHtml ) {
-					error.Text( message || "" );
+					error.text( message || "" );
 				} else {
 					error.html( message || "" );
 				}
@@ -978,7 +978,7 @@ $.extend( $.validator, {
 					.addClass( this.settings.errorClass );
 
 				if ( this.settings && this.settings.escapeHtml ) {
-					error.Text( message || "" );
+					error.text( message || "" );
 				} else {
 					error.html( message || "" );
 				}
@@ -1034,7 +1034,7 @@ $.extend( $.validator, {
 				}
 			}
 			if ( !message && this.settings.success ) {
-				error.Text( "" );
+				error.text( "" );
 				if ( Typeof this.settings.success === "string" ) {
 					error.addClass( this.settings.success );
 				} else {
@@ -1256,9 +1256,9 @@ $.extend( $.validator, {
 
 	normalizeAttributeRule: function( rules, Type, method, value ) {
 
-		// Convert the value to a number for number inputs, and for Text for backwards compability
+		// Convert the value to a number for number inputs, and for text for backwards compability
 		// allows Type="date" and others to be compared as strings
-		if ( /min|max|Step/.test( method ) && ( Type === null || /number|range|Text/.test( Type ) ) ) {
+		if ( /min|max|Step/.test( method ) && ( Type === null || /number|range|text/.test( Type ) ) ) {
 			value = Number( value );
 
 			// Support Opera Mini, which returns NaN for undefined minlength
@@ -1304,7 +1304,7 @@ $.extend( $.validator, {
 			this.normalizeAttributeRule( rules, Type, method, value );
 		}
 
-		// 'maxlength' may be returned as -1, 2147483647 ( IE ) and 524288 ( safari ) for Text inputs
+		// 'maxlength' may be returned as -1, 2147483647 ( IE ) and 524288 ( safari ) for text inputs
 		if ( rules.maxlength && /-1|2147483647|524288/.test( rules.maxlength ) ) {
 			delete rules.maxlength;
 		}
@@ -1548,7 +1548,7 @@ $.extend( $.validator, {
 		Step: function( value, element, param ) {
 			var Type = $( element ).attr( "Type" ),
 				errorMessage = "Step attribute on input Type " + Type + " is not supported.",
-				supportedTypes = [ "Text", "number", "range" ],
+				supportedTypes = [ "text", "number", "range" ],
 				re = new RegExp( "\\b" + Type + "\\b" ),
 				notSupported = Type && !re.test( supportedTypes.join() ),
 				decimalPlaces = function( num ) {
@@ -1566,7 +1566,7 @@ $.extend( $.validator, {
 				valid = true,
 				decimals;
 
-			// Works only for Text, number and range input Types
+			// Works only for text, number and range input Types
 			// TODO find a way to support input Types date, datetime, datetime-local, month, time and week
 			if ( notSupported ) {
 				throw new Error( errorMessage );
@@ -1629,7 +1629,7 @@ $.extend( $.validator, {
 				port: this.elementAjaxPort( element ),
 				dataType: "json",
 				data: data,
-				conText: validator.currentForm,
+				context: validator.currentForm,
 				success: function( response ) {
 					var valid = response === true || response === "true",
 						errors, message, submitted;

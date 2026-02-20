@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.UserPermits
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,13 +30,13 @@ namespace ISO_Manager.Pages.Admin.UserPermits
                 return NotFound();
             }
 
-            var userpermit =  await _conText.UserPermits.FirstOrDefaultAsync(m => m.Id == id);
+            var userpermit =  await _context.UserPermits.FirstOrDefaultAsync(m => m.Id == id);
             if (userpermit == null)
             {
                 return NotFound();
             }
             UserPermit = userpermit;
-           ViewData["UserId"] = new SelectList(_conText.Users, "id", "name");
+           ViewData["UserId"] = new SelectList(_context.Users, "id", "name");
             return Page();
         }
 
@@ -49,11 +49,11 @@ namespace ISO_Manager.Pages.Admin.UserPermits
                 return Page();
             }
 
-            _conText.Attach(UserPermit).State = EntityState.Modified;
+            _context.Attach(UserPermit).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +72,7 @@ namespace ISO_Manager.Pages.Admin.UserPermits
 
         private bool UserPermitExists(long id)
         {
-            return _conText.UserPermits.Any(e => e.Id == id);
+            return _context.UserPermits.Any(e => e.Id == id);
         }
     }
 }

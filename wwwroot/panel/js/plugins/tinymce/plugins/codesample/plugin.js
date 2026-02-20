@@ -125,7 +125,7 @@
       var Prism = function (_self) {
         var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
         var uniqueId = 0;
-        var plainTextGrammar = {};
+        var plaintextGrammar = {};
         var _ = {
           manual: _self.Prism && _self.Prism.manual,
           disableWorkerMessageHandler: _self.Prism && _self.Prism.disableWorkerMessageHandler,
@@ -233,10 +233,10 @@
             }
           },
           languages: {
-            plain: plainTextGrammar,
-            plaintext: plainTextGrammar,
-            text: plainTextGrammar,
-            txt: plainTextGrammar,
+            plain: plaintextGrammar,
+            plaintext: plaintextGrammar,
+            text: plaintextGrammar,
+            txt: plaintextGrammar,
             extend: function (id, redef) {
               var lang = _.util.clone(_.languages[id]);
               for (var key in redef) {
@@ -2386,7 +2386,7 @@
             global.each(unprocessedCodeSamples, elm => {
               var _a;
               global.each(dom.select('br', elm), elm => {
-                dom.replace(editor.getDoc().createTextNode('\n'), elm);
+                dom.replace(editor.getDoc().createtextNode('\n'), elm);
               });
               elm.innerHTML = dom.encode((_a = elm.textContent) !== null && _a !== void 0 ? _a : '');
               get(editor).highlightElement(elm);

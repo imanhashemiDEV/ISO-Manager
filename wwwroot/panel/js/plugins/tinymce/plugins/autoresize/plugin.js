@@ -65,7 +65,7 @@
         return false;
       }
     };
-    const resize = (editor, oldSize, trigger, getExtraMarginBottom) => {
+    const resize = (editor, oldSize, trigger, getextraMarginBottom) => {
       var _a;
       const dom = editor.dom;
       const doc = editor.getDoc();
@@ -77,7 +77,7 @@
         return;
       }
       const docEle = doc.documentElement;
-      const resizeBottomMargin = getExtraMarginBottom ? getExtraMarginBottom() : getAutoResizeOverflowPadding(editor);
+      const resizeBottomMargin = getextraMarginBottom ? getextraMarginBottom() : getAutoResizeOverflowPadding(editor);
       const minHeight = (_a = getMinHeight(editor)) !== null && _a !== void 0 ? _a : editor.getElement().offsetHeight;
       let resizeHeight = minHeight;
       const marginTop = parseCssValueToInt(dom, docEle, 'margin-top', true);
@@ -121,12 +121,12 @@
           editor.selection.scrollIntoView();
         }
         if ((global.browser.isSafari() || global.browser.isChromium()) && deltaSize < 0) {
-          resize(editor, oldSize, trigger, getExtraMarginBottom);
+          resize(editor, oldSize, trigger, getextraMarginBottom);
         }
       }
     };
     const setup = (editor, oldSize) => {
-      const getExtraMarginBottom = () => getAutoResizeBottomMargin(editor);
+      const getextraMarginBottom = () => getAutoResizeBottomMargin(editor);
       editor.on('init', e => {
         const overflowPadding = getAutoResizeOverflowPadding(editor);
         const dom = editor.dom;
@@ -143,10 +143,10 @@
             paddingRight: overflowPadding
           });
         }
-        resize(editor, oldSize, e, getExtraMarginBottom);
+        resize(editor, oldSize, e, getextraMarginBottom);
       });
       editor.on('NodeChange SetContent keyup FullscreenStateChanged ResizeContent', e => {
-        resize(editor, oldSize, e, getExtraMarginBottom);
+        resize(editor, oldSize, e, getextraMarginBottom);
       });
     };
 

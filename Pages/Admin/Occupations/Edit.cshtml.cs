@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Occupation
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,7 +30,9 @@ namespace ISO_Manager.Pages.Admin.Occupation
                 return NotFound();
             }
 
-            var occupation =  await _conText.Occupations.FirstOrDefaultAsync(m => m.Id == id);
+            ViewData["OrganizationId"] = new SelectList(_context.Organizations, "Id", "Title");
+
+            var occupation =  await _context.Occupations.FirstOrDefaultAsync(m => m.Id == id);
             if (occupation == null)
             {
                 return NotFound();
@@ -48,11 +50,11 @@ namespace ISO_Manager.Pages.Admin.Occupation
                 return Page();
             }
 
-            _conText.Attach(Occupation).State = EntityState.Modified;
+            _context.Attach(Occupation).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +73,7 @@ namespace ISO_Manager.Pages.Admin.Occupation
 
         private bool OccupationExists(long id)
         {
-            return _conText.Occupations.Any(e => e.Id == id);
+            return _context.Occupations.Any(e => e.Id == id);
         }
     }
 }

@@ -28,7 +28,7 @@ var Mh1PersianDatePicker = function() {
 
     var _today = null;
     var _datePicker = null;
-    var _TextBox = null;
+    var _textBox = null;
     var _datePickerStyle = null;
     var _clicked = false;
 
@@ -41,7 +41,7 @@ var Mh1PersianDatePicker = function() {
             _clicked = true;
         };
         _datePicker.onclick = function() {
-            _TextBox.focus();
+            _textBox.focus();
         };
     }
 
@@ -49,13 +49,13 @@ var Mh1PersianDatePicker = function() {
         _datePickerStyle.visibility = "hidden";
     }
 
-    this.show = function(TextBox, today) {
+    this.show = function(textBox, today) {
         if (_datePicker === null) {
             init();
         }
         _today = today;
-        _TextBox = TextBox;
-        _TextBox.onblur = function() {
+        _textBox = textBox;
+        _textBox.onblur = function() {
             if (!_clicked) {
                 hide();
             }
@@ -64,25 +64,25 @@ var Mh1PersianDatePicker = function() {
 
         var left = 0;
         var top = 0;
-        var parent = _TextBox;
+        var parent = _textBox;
         while (parent.offsetParent) {
             left += parent.offsetLeft;
             top += parent.offsetTop;
             parent = parent.offsetParent;
         }
         _datePickerStyle.left = left + "px";
-        _datePickerStyle.top = top + _TextBox.offsetHeight + "px";
+        _datePickerStyle.top = top + _textBox.offsetHeight + "px";
         _datePickerStyle.visibility = "visible";
 
-        draw(_TextBox.value.length === 10 ? _TextBox.value : _today);
+        draw(_textBox.value.length === 10 ? _textBox.value : _today);
     };
 
     function setValue(date) {
-        _TextBox.value = date;
-        _TextBox.focus();
+        _textBox.value = date;
+        _textBox.focus();
         hide();
-        if (_TextBox.onchange) {
-            _TextBox.onchange();
+        if (_textBox.onchange) {
+            _textBox.onchange();
         }
     }
 
@@ -97,7 +97,7 @@ var Mh1PersianDatePicker = function() {
     }
 
     function draw(date) {
-        _TextBox.focus();
+        _textBox.focus();
         var weekDay = getWeekDay(date.substring(0, 8) + "01");
 
         setInnerHTML(_datePicker, "");
@@ -126,7 +126,7 @@ var Mh1PersianDatePicker = function() {
 
         td = createElement("td", tr);
         td.colSpan = 4;
-        td.style.TextAlign = "left";
+        td.style.textAlign = "left";
 
         button = createElement("button", td);
         setInnerHTML(button, "<span class='mh1-icon-plus'>+</span>");
@@ -155,7 +155,7 @@ var Mh1PersianDatePicker = function() {
                     setInnerHTML(td, cellValue);
                     var cellDate = changeDay(date, cellValue);
                     var cellClassName = "datePickerDay";
-                    if (cellDate === _TextBox.value)
+                    if (cellDate === _textBox.value)
                         cellClassName = "datePickerDaySelect";
                     else if (cellDate === _today)
                         cellClassName = "datePickerToday";
@@ -177,7 +177,7 @@ var Mh1PersianDatePicker = function() {
 
         td = createElement("td", tr);
         td.colSpan = 5;
-        td.style.TextAlign = "left";
+        td.style.textAlign = "left";
 
         button = createElement("button", td);
         setInnerHTML(button, "خالی");
@@ -249,8 +249,8 @@ var Mh1PersianDatePicker = function() {
         element.className = className;
     }
 
-    function toInt(Text) {
-        return parseInt(Text, 10);
+    function toInt(text) {
+        return parseInt(text, 10);
     }
 
     function getDays(date) {
@@ -271,6 +271,6 @@ var Mh1PersianDatePicker = function() {
 };
 var _mh1PersianDatePicker = new Mh1PersianDatePicker();
 
-Mh1PersianDatePicker.Show = function (TextBox, today) {
-    _mh1PersianDatePicker.show(TextBox, today);
+Mh1PersianDatePicker.Show = function (textBox, today) {
+    _mh1PersianDatePicker.show(textBox, today);
 };

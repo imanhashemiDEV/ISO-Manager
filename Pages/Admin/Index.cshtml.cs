@@ -11,11 +11,11 @@ namespace ISO_Manager.Pages.Admin
     public class IndexModel : PageModel
     {
 
-        public readonly ApplicationDbContext _conText;
+        public readonly ApplicationDbContext _context;
 
-        public IndexModel(ApplicationDbContext conText)
+        public IndexModel(ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public int RasmiUserCount { get; set; } = 0;
@@ -44,7 +44,7 @@ namespace ISO_Manager.Pages.Admin
         public async Task OnGetAsync()
         {
            // long id = 30;
-           //// var user = _conText.UserInfos.First(m => Equals(m.UserId , id));
+           //// var user = _context.UserInfos.First(m => Equals(m.UserId , id));
             // var B = user.Birthday;
             // var diff = DateTime.Now - B;
             // Age = ((diff.Days%365)/30)-1;
@@ -63,21 +63,21 @@ namespace ISO_Manager.Pages.Admin
             //YearStartDate = DateTime.Parse($"{Year}/01/01");
 
             // Users
-            var users = _conText.Users;
+            var users = _context.Users;
             RasmiUserCount = users.Where(m=>m.EmploymentType == "rasmi").Count();
             GharardadiUserCount = users.Where(m=>m.EmploymentType == "gharardadi").Count();
             PeymankariUserCount = users.Where(m=>m.EmploymentType == "peymankari").Count();
 
 
             // Accidents
-            var OfficialAccidents = _conText.OfficialAccidents;
+            var OfficialAccidents = _context.OfficialAccidents;
             RasmiAccidentCount = OfficialAccidents.Where(m=>m.AccidentComplication== "???? ?? ??? ?????")
                 .Count(m => m.AccidentDate >= YearStartDate && m.AccidentDate <= YearEndDate);
             var RasmiLostDays = OfficialAccidents
                 .Where(m => m.AccidentComplication == "???? ?? ??? ?????" && m.AccidentDate >= YearStartDate && m.AccidentDate <= YearEndDate)
                 .Sum(m => m.LostDays);
 
-            var ContractorAccidents = _conText.ContractorAccidents;
+            var ContractorAccidents = _context.ContractorAccidents;
             PeymankariAccidentCount = ContractorAccidents
                 .Where(m => m.AccidentComplication == "???? ?? ??? ?????")
                 .Count(m => m.AccidentDate >= YearStartDate && m.AccidentDate <= YearEndDate);
@@ -87,18 +87,18 @@ namespace ISO_Manager.Pages.Admin
             LostAccidentDays = (int)(RasmiLostDays + PeymankariLostDays);
 
             // Calibration
-            var Calibration = _conText.Calibrations;
+            var Calibration = _context.Calibrations;
             ActiveGasDetector = Calibration.Count(m => m.Status=="active");
             InProgressGasDetector = Calibration.Count(m => m.Status== "in-calibration");
             ExpiredGasDetector = Calibration.Count(m => m.Status== "wasted");
 
             //Contractors
-            var Contractors = _conText.Contractors;
+            var Contractors = _context.Contractors;
             ActiveContractor = Contractors.Where(m=>m.EndDate > DateTime.Now).Count(m => m.Status == "active");
             ExpiredContractor = Contractors.Where(m=>m.EndDate < DateTime.Now).Count(m => m.Status == "active");
 
 
-            DailyReport = await _conText.DailyReports
+            DailyReport = await _context.DailyReports
                 .Include(d => d.CampBoss)
                 .Include(d => d.Doctor)
                 .Include(d => d.RigBoss)

@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Cartables
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public Cartable Cartable { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.Cartables
                 return NotFound();
             }
 
-            var cartable = await _conText.Cartables.FirstOrDefaultAsync(m => m.Id == id);
+            var cartable = await _context.Cartables.FirstOrDefaultAsync(m => m.Id == id);
 
             if (cartable is not null)
             {

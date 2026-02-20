@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Examinations
 {
     public class ContractorModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public ContractorModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public ContractorModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<Examination> Examination { get;set; } = default!;
@@ -29,7 +29,7 @@ namespace ISO_Manager.Pages.Admin.Examinations
 
             var Take = 100;
             var skip = (pageId - 1) * Take;
-            var ItemCount = _conText.Examinations.Count(m => m.ContractorId == ContractorId);
+            var ItemCount = _context.Examinations.Count(m => m.ContractorId == ContractorId);
             ViewData["ItemCount"] = ItemCount;
             ViewData["Take"] = Take;
             ViewData["pageId"] = pageId;
@@ -43,7 +43,7 @@ namespace ISO_Manager.Pages.Admin.Examinations
                 ViewData["PageCount"] = (ItemCount / Take) + 1;
             }
 
-            Examination = await _conText.Examinations
+            Examination = await _context.Examinations
                 .Include(e => e.Contractor)
                 .Include(e => e.User)
                 .Where(m=>m.ContractorId == ContractorId)

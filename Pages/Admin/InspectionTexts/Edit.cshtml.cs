@@ -9,19 +9,19 @@ using Microsoft.EntityFrameworkCore;
 using ISO_Manager.Data;
 using ISO_Manager.Models;
 
-namespace ISO_Manager.Pages.Admin.InspectionTexts
+namespace ISO_Manager.Pages.Admin.Inspectiontexts
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
-        public InspectionText InspectionText { get; set; } = default!;
+        public Inspectiontext Inspectiontext { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {
@@ -30,14 +30,14 @@ namespace ISO_Manager.Pages.Admin.InspectionTexts
                 return NotFound();
             }
 
-            var inspectionText =  await _conText.InspectionTexts.FirstOrDefaultAsync(m => m.Id == id);
-            if (inspectionText == null)
+            var inspectiontext =  await _context.Inspectiontexts.FirstOrDefaultAsync(m => m.Id == id);
+            if (inspectiontext == null)
             {
                 return NotFound();
             }
-            InspectionText = inspectionText;
-           ViewData["InspectionPlaceId"] = new SelectList(_conText.InspectionPlaces, "id", "id");
-           ViewData["OrganizationId"] = new SelectList(_conText.Organizations, "id", "id");
+            Inspectiontext = inspectiontext;
+           ViewData["InspectionPlaceId"] = new SelectList(_context.InspectionPlaces, "id", "id");
+           ViewData["OrganizationId"] = new SelectList(_context.Organizations, "id", "id");
             return Page();
         }
 
@@ -50,15 +50,15 @@ namespace ISO_Manager.Pages.Admin.InspectionTexts
                 return Page();
             }
 
-            _conText.Attach(InspectionText).State = EntityState.Modified;
+            _context.Attach(Inspectiontext).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InspectionTextExists(InspectionText.Id))
+                if (!InspectiontextExists(Inspectiontext.Id))
                 {
                     return NotFound();
                 }
@@ -71,9 +71,9 @@ namespace ISO_Manager.Pages.Admin.InspectionTexts
             return RedirectToPage("/Admin/InspectionPlaces/Index");
         }
 
-        private bool InspectionTextExists(long id)
+        private bool InspectiontextExists(long id)
         {
-            return _conText.InspectionTexts.Any(e => e.Id == id);
+            return _context.Inspectiontexts.Any(e => e.Id == id);
         }
     }
 }

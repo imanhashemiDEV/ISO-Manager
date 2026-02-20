@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public HealthCart HealthCart { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.HealthCarts
                 return NotFound();
             }
 
-            var healthcart = await _conText.HealthCarts.FirstOrDefaultAsync(m => m.Id == id);
+            var healthcart = await _context.HealthCarts.FirstOrDefaultAsync(m => m.Id == id);
 
             if (healthcart is not null)
             {

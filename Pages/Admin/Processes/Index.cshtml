@@ -41,9 +41,6 @@
                                         <th>
                                             @Html.DisplayNameFor(model => model.Process[0].ProcessTitle)
                                         </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Process[0].Year)
-                                        </th>
                                         <th>پایش فرایندها</th>
                                         <th>عملیات</th>
                                     </tr>
@@ -57,18 +54,19 @@
                                                 @Html.DisplayFor(modelItem => item.ProcessTitle)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Year)
-                                            </td>
-                                            <td>
                                                 <a asp-page="/Admin/ProcessPlans/Index" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-check Text-xl leading-none"></i>
+                                                    <i class="ti ti-check text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                             <td>
+                                                <a asp-page="./Details" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                    <i class="ti ti-eye text-xl leading-none"></i>
+                                                </a>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit Text-xl leading-none"></i>
+                                                    <i class="ti ti-edit text-xl leading-none"></i>
                                                 </a>
                                             </td>
+                                          
                                         </tr>
                                     }
                                 </tbody>

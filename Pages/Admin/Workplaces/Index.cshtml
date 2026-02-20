@@ -26,7 +26,7 @@
                         <div class="sm:flex items-center justify-between">
                             <h5 class="mb-3 sm:mb-0">لیست محل های کار</h5>
                             <div>
-                                <a asp-page="/Admin/WorkPlaces/Create" class="btn btn-primary">اضافه کردن محل کار</a>
+                                <a asp-page="./Create" class="btn btn-primary">اضافه کردن محل کار</a>
                             </div>
                         </div>
                     </div>
@@ -38,6 +38,9 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>@Html.DisplayNameFor(model => model.WorkPlace[0].Title)</th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WorkPlace[0].Organization)
+                                    </th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
@@ -47,9 +50,12 @@
                                     <tr>
                                             <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
                                         <td> @Html.DisplayFor(modelItem => item.Title)</td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Organization.Title)
+                                            </td>
                                         <td>
-                                            <a asp-page="/Admin/WorkPlaces/Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                <i class="ti ti-edit Text-xl leading-none"></i>
+                                            <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                <i class="ti ti-edit text-xl leading-none"></i>
                                             </a>
                                         </td>
                                     </tr>

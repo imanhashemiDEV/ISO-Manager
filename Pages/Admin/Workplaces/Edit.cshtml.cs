@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.WorkPlace
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,7 +30,8 @@ namespace ISO_Manager.Pages.Admin.WorkPlace
                 return NotFound();
             }
 
-            var workPlace =  await _conText.WorkPlaces.FirstOrDefaultAsync(m => m.Id == id);
+            ViewData["OrganizationId"] = new SelectList(_context.Organizations, "Id", "Title");
+            var workPlace =  await _context.WorkPlaces.FirstOrDefaultAsync(m => m.Id == id);
             if (workPlace == null)
             {
                 return NotFound();
@@ -48,11 +49,11 @@ namespace ISO_Manager.Pages.Admin.WorkPlace
                 return Page();
             }
 
-            _conText.Attach(WorkPlace).State = EntityState.Modified;
+            _context.Attach(WorkPlace).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +72,7 @@ namespace ISO_Manager.Pages.Admin.WorkPlace
 
         private bool WorkPlaceExists(long id)
         {
-            return _conText.WorkPlaces.Any(e => e.Id == id);
+            return _context.WorkPlaces.Any(e => e.Id == id);
         }
     }
 }

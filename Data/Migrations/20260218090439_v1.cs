@@ -510,7 +510,7 @@ namespace ISO_Manager.Data.Migrations
                     StandardName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FaChapter = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FaSubchapter = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FaText = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Fatext = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OrganizationId = table.Column<int>(type: "int", nullable: true)
@@ -710,7 +710,7 @@ namespace ISO_Manager.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    text = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -991,12 +991,12 @@ namespace ISO_Manager.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InspectionTexts",
+                name: "Inspectiontexts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    text = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Step = table.Column<int>(type: "int", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -1005,14 +1005,14 @@ namespace ISO_Manager.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InspectionTexts", x => x.Id);
+                    table.PrimaryKey("PK_Inspectiontexts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InspectionTexts_InspectionPlaces_InspectionPlaceId",
+                        name: "FK_Inspectiontexts_InspectionPlaces_InspectionPlaceId",
                         column: x => x.InspectionPlaceId,
                         principalTable: "InspectionPlaces",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_InspectionTexts_Organizations_OrganizationId",
+                        name: "FK_Inspectiontexts_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
                         principalColumn: "Id");
@@ -1370,12 +1370,12 @@ namespace ISO_Manager.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     InspectionDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    text = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     InspectionId = table.Column<int>(type: "int", nullable: true),
-                    TextId = table.Column<int>(type: "int", nullable: true),
+                    textId = table.Column<int>(type: "int", nullable: true),
                     WorkPlaceId = table.Column<int>(type: "int", nullable: true),
                     OrganizationId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -1383,9 +1383,9 @@ namespace ISO_Manager.Data.Migrations
                 {
                     table.PrimaryKey("PK_InspectionDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InspectionDetails_InspectionTexts_TextId",
-                        column: x => x.TextId,
-                        principalTable: "InspectionTexts",
+                        name: "FK_InspectionDetails_Inspectiontexts_textId",
+                        column: x => x.textId,
+                        principalTable: "Inspectiontexts",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_InspectionDetails_Inspections_InspectionId",
@@ -1634,9 +1634,9 @@ namespace ISO_Manager.Data.Migrations
                 column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InspectionDetails_TextId",
+                name: "IX_InspectionDetails_textId",
                 table: "InspectionDetails",
-                column: "TextId");
+                column: "textId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_InspectionDetails_WorkPlaceId",
@@ -1669,13 +1669,13 @@ namespace ISO_Manager.Data.Migrations
                 column: "WorkPlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InspectionTexts_InspectionPlaceId",
-                table: "InspectionTexts",
+                name: "IX_Inspectiontexts_InspectionPlaceId",
+                table: "Inspectiontexts",
                 column: "InspectionPlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InspectionTexts_OrganizationId",
-                table: "InspectionTexts",
+                name: "IX_Inspectiontexts_OrganizationId",
+                table: "Inspectiontexts",
                 column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
@@ -1950,7 +1950,7 @@ namespace ISO_Manager.Data.Migrations
                 name: "Contractors");
 
             migrationBuilder.DropTable(
-                name: "InspectionTexts");
+                name: "Inspectiontexts");
 
             migrationBuilder.DropTable(
                 name: "Inspections");

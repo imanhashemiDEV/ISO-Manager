@@ -14,11 +14,11 @@ namespace ISO_Manager.Pages.Admin.RigAssets
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<RigAsset> RigAsset { get;set; } = default!;
@@ -32,7 +32,7 @@ namespace ISO_Manager.Pages.Admin.RigAssets
             var comparer = StringComparer.Create(persianCulture, false);
 
 
-            RigAsset = await _conText.RigAssets
+            RigAsset = await _context.RigAssets
                 .Where(m => m.Place == "rig-102")
                 .OrderBy(x => x.AssetName)
                 .ToListAsync();
@@ -40,7 +40,7 @@ namespace ISO_Manager.Pages.Admin.RigAssets
 
         public async Task OnPostAsync()
         {
-            RigAsset = await _conText.RigAssets
+            RigAsset = await _context.RigAssets
                 .Where(m => m.Place == Search)
                 .ToListAsync();
 

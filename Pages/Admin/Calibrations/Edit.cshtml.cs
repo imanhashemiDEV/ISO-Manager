@@ -13,11 +13,11 @@ namespace ISO_Manager.Pages.Admin.Calibrations
 {
     public class EditModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public EditModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public EditModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace ISO_Manager.Pages.Admin.Calibrations
                 return NotFound();
             }
 
-            var calibration =  await _conText.Calibrations.FirstOrDefaultAsync(m => m.Id == id);
+            var calibration =  await _context.Calibrations.FirstOrDefaultAsync(m => m.Id == id);
             if (calibration == null)
             {
                 return NotFound();
@@ -48,11 +48,11 @@ namespace ISO_Manager.Pages.Admin.Calibrations
                 return Page();
             }
 
-            _conText.Attach(Calibration).State = EntityState.Modified;
+            _context.Attach(Calibration).State = EntityState.Modified;
 
             try
             {
-                await _conText.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace ISO_Manager.Pages.Admin.Calibrations
 
         private bool CalibrationExists(long id)
         {
-            return _conText.Calibrations.Any(e => e.Id == id);
+            return _context.Calibrations.Any(e => e.Id == id);
         }
     }
 }

@@ -125,23 +125,23 @@
                                             <td>
                                                 @if (item.Status.Equals("active"))
                                                 {
-                                                    <span class="badge Text-white bg-success-500">فعال</span>
+                                                    <span class="badge text-white bg-success-500">فعال</span>
                                                 }
                                                 else if (item.Status.Equals("expired"))
                                                 {
-                                                    <span class="badge Text-white bg-warning-500">پایان یافته</span>
+                                                    <span class="badge text-white bg-warning-500">پایان یافته</span>
                                                 }
                                                 else
                                                 {
-                                                    <span class="badge Text-white bg-danger-500">رد شده</span>
+                                                    <span class="badge text-white bg-danger-500">رد شده</span>
                                                 }
                                             </td>
                                             <td>
                                                 <a asp-page="/Admin/Examinations/Contractor" asp-route-ContractorId="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-heart Text-xl leading-none"></i>
+                                                    <i class="ti ti-heart text-xl leading-none"></i>
                                                 </a>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit Text-xl leading-none"></i>
+                                                    <i class="ti ti-edit text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

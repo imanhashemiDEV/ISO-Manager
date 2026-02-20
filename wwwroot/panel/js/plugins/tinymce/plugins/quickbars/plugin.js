@@ -75,7 +75,7 @@
         default: defaultImageToolbar
       });
     };
-    const getTextSelectionToolbarItems = option('quickbars_selection_toolbar');
+    const gettextSelectionToolbarItems = option('quickbars_selection_toolbar');
     const getInsertToolbarItems = option('quickbars_insert_toolbar');
     const getImageToolbarItems = option('quickbars_image_toolbar');
 
@@ -319,9 +319,9 @@
       const node = doc.createElement(tag);
       return fromDom(node);
     };
-    const fromText = (text, scope) => {
+    const fromtext = (text, scope) => {
       const doc = scope || document;
-      const node = doc.createTextNode(text);
+      const node = doc.createtextNode(text);
       return fromDom(node);
     };
     const fromDom = node => {
@@ -334,7 +334,7 @@
     const SugarElement = {
       fromHtml,
       fromTag,
-      fromText,
+      fromtext,
       fromDom,
       fromPoint
     };
@@ -392,7 +392,7 @@
         editor.ui.registry.addContextToolbar('quickblock', {
           predicate: node => {
             const sugarNode = SugarElement.fromDom(node);
-            const textBlockElementsMap = editor.schema.getTextBlockElements();
+            const textBlockElementsMap = editor.schema.gettextBlockElements();
             const isRoot = elem => elem.dom === editor.getBody();
             return !has$1(sugarNode, 'data-mce-bogus') && closest(sugarNode, 'table,[data-mce-bogus="all"]', isRoot).fold(() => closest$1(sugarNode, elem => name(elem) in textBlockElementsMap && editor.dom.isEmpty(elem.dom), isRoot), never);
           },
@@ -424,7 +424,7 @@
           position: 'node'
         });
       }
-      const textToolbarItems = getTextSelectionToolbarItems(editor);
+      const textToolbarItems = gettextSelectionToolbarItems(editor);
       if (textToolbarItems.length > 0) {
         editor.ui.registry.addContextToolbar('textselection', {
           predicate: node => !isImage(node) && !editor.selection.isCollapsed() && isEditable(node),

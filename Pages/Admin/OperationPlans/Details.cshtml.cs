@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.OperationPlans
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public OperationPlan OperationPlan { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.OperationPlans
                 return NotFound();
             }
 
-            var operationplan = await _conText.OperationPlans.FirstOrDefaultAsync(m => m.Id == id);
+            var operationplan = await _context.OperationPlans.FirstOrDefaultAsync(m => m.Id == id);
 
             if (operationplan is not null)
             {

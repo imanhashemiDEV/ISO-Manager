@@ -2,13 +2,7 @@
 @model ISO_Manager.Pages.Admin.ProcessPlans.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
-}
-
-
-@{
-    ViewData["Title"] = "لیست آمبولانس ها";
+    ViewData["Title"] = "لیست پایش فرایندها";
     var row = 1;
 }
 
@@ -19,7 +13,8 @@
             <div class="page-block">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
-                    <li class="breadcrumb-item" aria-current="page">لیست آمبولانس ها</li>
+                    <li class="breadcrumb-item"><a asp-page="/Admin/Processes/Index">لیست فرایندها</a></li>
+                    <li class="breadcrumb-item" aria-current="page">لیست پایش فرایندها</li>
                 </ul>
             </div>
         </div>
@@ -30,9 +25,9 @@
                 <div class="card table-card">
                     <div class="card-header">
                         <div class="sm:flex items-center justify-between">
-                            <h5 class="mb-3 sm:mb-0">لیست آمبولانس ها</h5>
+                            <h5 class="mb-3 sm:mb-0">لیست پایش فرایندها</h5>
                             <div>
-                                <a asp-page="./Create" class="btn btn-primary">اضافه کردن آمبولانس</a>
+                                <a asp-page="./Create" asp-route-process_id="@ViewBag.ProcessId" class="btn btn-primary">اضافه کردن پایش فرایند</a>
                             </div>
                         </div>
                     </div>
@@ -89,7 +84,7 @@
                                             </td>
                                             <td>
                                                 <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                    <i class="ti ti-edit Text-xl leading-none"></i>
+                                                    <i class="ti ti-edit text-xl leading-none"></i>
                                                 </a>
                                             </td>
                                         </tr>

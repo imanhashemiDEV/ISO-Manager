@@ -11,8 +11,7 @@
         <div class="page-header">
             <div class="page-block">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-page="Index">Home</a></li>
-                    @* <li class="breadcrumb-item"><a href="javascript: void(0)">Online Courses</a></li> *@
+                    <li class="breadcrumb-item"><a asp-page="Index">خانه</a></li>
                     <li class="breadcrumb-item" aria-current="page">لیست سمت ها</li>
                 </ul>
             </div>
@@ -39,6 +38,9 @@
                                     <th> @Html.DisplayNameFor(model => model.Occupation[0].Title)</th>
                                     <th> @Html.DisplayNameFor(model => model.Occupation[0].OccupationCode)</th>
                                     <th> @Html.DisplayNameFor(model => model.Occupation[0].OccupationType)</th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Occupation[0].Organization)
+                                        </th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
@@ -50,22 +52,25 @@
                                         <td>@Html.DisplayFor(modelItem => item.Title)</td>
                                         <td>@Html.DisplayFor(modelItem => item.OccupationCode)</td>
                                         <td>
-                                            @if (item.OccupationType.Equals("rasmi"))
+                                            @if (item.OccupationType!.Equals("rasmi"))
                                             {
-                                                <span class="badge Text-white bg-success-500">رسمی</span>
+                                                <span class="badge text-white bg-success-500">رسمی</span>
                                             }
                                             else if (item.OccupationType.Equals("gharardadi"))
                                             {
-                                                <span class="badge Text-white bg-danger-500">قراردادی</span> 
+                                                <span class="badge text-white bg-danger-500">قراردادی</span> 
                                             }
                                             else
                                             {
-                                                <span class="badge Text-white bg-info-500">پیمانکاری</span>
+                                                <span class="badge text-white bg-info-500">پیمانکاری</span>
                                             }
                                         </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Organization!.Title)
+                                            </td>
                                         <td>
                                             <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                <i class="ti ti-edit Text-xl leading-none"></i>
+                                                <i class="ti ti-edit text-xl leading-none"></i>
                                             </a>
                                         </td>
                                     </tr>

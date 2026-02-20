@@ -14,11 +14,11 @@ namespace ISO_Manager.Pages.Admin.User_infos
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         [BindProperty]
@@ -33,10 +33,10 @@ namespace ISO_Manager.Pages.Admin.User_infos
                 return NotFound();
             }
 
-            var user = await _conText.Users.FirstOrDefaultAsync(m => Equals(m.Id, UserId));
+            var user = await _context.Users.FirstOrDefaultAsync(m => Equals(m.Id, UserId));
             SelectedUser = user;
-            ViewData["OccupationId"] = new SelectList(_conText.Occupations, "id", "Title");
-            var user_info = await _conText.UserInfos
+            ViewData["OccupationId"] = new SelectList(_context.Occupations, "id", "Title");
+            var user_info = await _context.UserInfos
                 .Include(r=>r.User)
                 .Include(r=>r.Occupation)
                 .FirstOrDefaultAsync(m => Equals(m.UserId , UserId));
@@ -62,9 +62,9 @@ namespace ISO_Manager.Pages.Admin.User_infos
                 return Page();
             }
 
-            _conText.Attach(User).State = EntityState.Modified;
+            _context.Attach(User).State = EntityState.Modified;
 
-            await _conText.SaveChangesAsync();
+            await _context.SaveChangesAsync();
            
 
             return Page();

@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.RigAssets
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public RigAsset RigAsset { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.RigAssets
                 return NotFound();
             }
 
-            var rigasset = await _conText.RigAssets.FirstOrDefaultAsync(m => m.Id == id);
+            var rigasset = await _context.RigAssets.FirstOrDefaultAsync(m => m.Id == id);
 
             if (rigasset is not null)
             {

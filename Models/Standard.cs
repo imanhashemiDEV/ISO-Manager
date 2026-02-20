@@ -19,7 +19,7 @@ namespace ISO_Manager.Models
         public string? FaSubchapter { get; set; }
 
         [Display(Name = "متن استاندارد")]
-        public string? FaText { get; set; }
+        public string? Fatext { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
         public DateTime CreatedAt { get; set; } = DateTime.Now;

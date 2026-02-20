@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Maneuveres
 {
     public class DetailsModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public DetailsModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public DetailsModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public Maneuver Maneuver { get; set; } = default!;
@@ -28,7 +28,7 @@ namespace ISO_Manager.Pages.Admin.Maneuveres
                 return NotFound();
             }
 
-            var maneuver = await _conText.Maneuvers.FirstOrDefaultAsync(m => m.Id == id);
+            var maneuver = await _context.Maneuvers.FirstOrDefaultAsync(m => m.Id == id);
 
             if (maneuver is not null)
             {

@@ -22,7 +22,7 @@ namespace ISO_Manager.Data
         public DbSet<ContractorAccident> ContractorAccidents { get; set; } = default!;
         public DbSet<InspectionPlace> InspectionPlaces { get; set; } = default!;
         public DbSet<Inspection> Inspections { get; set; } = default!;
-        public DbSet<InspectionText> InspectionTexts { get; set; } = default!;
+        public DbSet<Inspectiontext> Inspectiontexts { get; set; } = default!;
         public DbSet<Purpose> Purposes { get; set; } = default!;
         public DbSet<Process> Processes { get; set; } = default!;
         public DbSet<ProcessPlan> ProcessPlans { get; set; } = default!;

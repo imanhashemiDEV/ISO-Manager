@@ -174,7 +174,7 @@
       return () => editor.off('NodeChange', nodeChangeHandler);
     };
 
-    const styleValueToText = styleValue => {
+    const styleValueTotext = styleValue => {
       return styleValue.replace(/\-/g, ' ').replace(/\b\w/g, chr => {
         return chr.toUpperCase();
       });
@@ -200,12 +200,12 @@
             const iconStyle = nodeName === 'OL' ? 'num' : 'bull';
             const iconName = styleValue === 'disc' || styleValue === 'decimal' ? 'default' : styleValue;
             const itemValue = normalizeStyleValue(styleValue);
-            const displayText = styleValueToText(styleValue);
+            const displaytext = styleValueTotext(styleValue);
             return {
               type: 'choiceitem',
               value: itemValue,
               icon: 'list-' + iconStyle + '-' + iconName,
-              text: displayText
+              text: displaytext
             };
           });
           callback(items);

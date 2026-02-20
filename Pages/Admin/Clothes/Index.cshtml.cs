@@ -12,11 +12,11 @@ namespace ISO_Manager.Pages.Admin.Clothes
 {
     public class IndexModel : PageModel
     {
-        private readonly ISO_Manager.Data.ApplicationDbContext _conText;
+        private readonly ISO_Manager.Data.ApplicationDbContext _context;
 
-        public IndexModel(ISO_Manager.Data.ApplicationDbContext conText)
+        public IndexModel(ISO_Manager.Data.ApplicationDbContext context)
         {
-            _conText = conText;
+            _context = context;
         }
 
         public IList<Cloth> Cloth { get;set; } = default!;
@@ -34,7 +34,7 @@ namespace ISO_Manager.Pages.Admin.Clothes
 
             if (Search != null)
             {
-                Cloth = await _conText.Clothes.Include(c=>c.User)
+                Cloth = await _context.Clothes.Include(c=>c.User)
                     .Where(m => m.User.Mobile == Search || m.User.Name.Contains(Search) || m.User.RegisterCode == Search || m.User.NationalCode == Search)
                     .ToListAsync();
             }

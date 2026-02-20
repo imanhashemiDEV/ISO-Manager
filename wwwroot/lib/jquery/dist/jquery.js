@@ -107,7 +107,7 @@ var document = window.document;
 		var i, val,
 			script = doc.createElement( "script" );
 
-		script.Text = code;
+		script.text = code;
 		if ( node ) {
 			for ( i in preservedScriptAttributes ) {
 
@@ -115,7 +115,7 @@ var document = window.document;
 				// Some browsers don't support the "nonce" property on scripts.
 				// On the other hand, just using `getAttribute` is not enough as
 				// the `nonce` attribute is reset to an empty string whenever it
-				// becomes browsing-conText connected.
+				// becomes browsing-context connected.
 				// See https://github.com/whatwg/html/issues/2369
 				// See https://html.spec.whatwg.org/#nonce-attributes
 				// The `node.getAttribute` check was added for the sake of
@@ -152,11 +152,11 @@ var version = "3.7.1",
 	rhtmlSuffix = /HTML$/i,
 
 	// Define a local copy of jQuery
-	jQuery = function( selector, conText ) {
+	jQuery = function( selector, context ) {
 
 		// The jQuery object is actually just the init constructor 'enhanced'
 		// Need init if jQuery is called (just allow error to be thrown if not included)
-		return new jQuery.fn.init( selector, conText );
+		return new jQuery.fn.init( selector, context );
 	};
 
 jQuery.fn = jQuery.protoType = {
@@ -368,7 +368,7 @@ jQuery.extend( {
 		return true;
 	},
 
-	// Evaluates a script in a provided conText; falls back to the global one
+	// Evaluates a script in a provided context; falls back to the global one
 	// if not specified.
 	globalEval: function( code, options, doc ) {
 		DOMEval( code, { nonce: options && options.nonce }, doc );
@@ -396,8 +396,8 @@ jQuery.extend( {
 	},
 
 
-	// Retrieve the Text value of an array of DOM nodes
-	Text: function( elem ) {
+	// Retrieve the text value of an array of DOM nodes
+	text: function( elem ) {
 		var node,
 			ret = "",
 			i = 0,
@@ -409,14 +409,14 @@ jQuery.extend( {
 			while ( ( node = elem[ i++ ] ) ) {
 
 				// Do not traverse comment nodes
-				ret += jQuery.Text( node );
+				ret += jQuery.text( node );
 			}
 		}
 		if ( nodeType === 1 || nodeType === 11 ) {
-			return elem.TextContent;
+			return elem.textContent;
 		}
 		if ( nodeType === 9 ) {
-			return elem.documentElement.TextContent;
+			return elem.documentElement.textContent;
 		}
 		if ( nodeType === 3 || nodeType === 4 ) {
 			return elem.nodeValue;
@@ -637,7 +637,7 @@ var preferredDoc = document,
 
 var i,
 	Expr,
-	outermostConText,
+	outermostContext,
 	sortInput,
 	hasDuplicate,
 	push = pushNative,
@@ -721,12 +721,12 @@ var i,
 
 		// For use in libraries implementing .is()
 		// We use this for POS matching in `select`
-		needsConText: new RegExp( "^" + whitespace +
+		needsContext: new RegExp( "^" + whitespace +
 			"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\(" + whitespace +
 			"*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)", "i" )
 	},
 
-	rinputs = /^(?:input|select|Textarea|button)$/i,
+	rinputs = /^(?:input|select|textarea|button)$/i,
 	rheader = /^h\d$/i,
 
 	// Easily-parseable/retrievable ID or TAG or CLASS selectors
@@ -802,16 +802,16 @@ try {
 	};
 }
 
-function find( selector, conText, results, seed ) {
+function find( selector, context, results, seed ) {
 	var m, i, elem, nid, match, groups, newSelector,
-		newConText = conText && conText.OwnerDocument,
+		newContext = context && context.OwnerDocument,
 
-		// nodeType defaults to 9, since conText defaults to document
-		nodeType = conText ? conText.nodeType : 9;
+		// nodeType defaults to 9, since context defaults to document
+		nodeType = context ? context.nodeType : 9;
 
 	results = results || [];
 
-	// Return early from calls with invalid selector or conText
+	// Return early from calls with invalid selector or context
 	if ( Typeof selector !== "string" || !selector ||
 		nodeType !== 1 && nodeType !== 9 && nodeType !== 11 ) {
 
@@ -820,21 +820,21 @@ function find( selector, conText, results, seed ) {
 
 	// Try to shortcut find operations (as opposed to filters) in HTML documents
 	if ( !seed ) {
-		setDocument( conText );
-		conText = conText || document;
+		setDocument( context );
+		context = context || document;
 
 		if ( documentIsHTML ) {
 
 			// If the selector is sufficiently simple, try using a "get*By*" DOM method
-			// (excepting DocumentFragment conText, where the methods don't exist)
+			// (excepting DocumentFragment context, where the methods don't exist)
 			if ( nodeType !== 11 && ( match = rquickExpr.exec( selector ) ) ) {
 
 				// ID selector
 				if ( ( m = match[ 1 ] ) ) {
 
-					// Document conText
+					// Document context
 					if ( nodeType === 9 ) {
-						if ( ( elem = conText.getElementById( m ) ) ) {
+						if ( ( elem = context.getElementById( m ) ) ) {
 
 							// Support: IE 9 only
 							// getElementById can match elements by name instead of ID
@@ -846,13 +846,13 @@ function find( selector, conText, results, seed ) {
 							return results;
 						}
 
-					// Element conText
+					// Element context
 					} else {
 
 						// Support: IE 9 only
 						// getElementById can match elements by name instead of ID
-						if ( newConText && ( elem = newConText.getElementById( m ) ) &&
-							find.contains( conText, elem ) &&
+						if ( newContext && ( elem = newContext.getElementById( m ) ) &&
+							find.contains( context, elem ) &&
 							elem.id === m ) {
 
 							push.call( results, elem );
@@ -862,12 +862,12 @@ function find( selector, conText, results, seed ) {
 
 				// Type selector
 				} else if ( match[ 2 ] ) {
-					push.apply( results, conText.getElementsByTagName( selector ) );
+					push.apply( results, context.getElementsByTagName( selector ) );
 					return results;
 
 				// Class selector
-				} else if ( ( m = match[ 3 ] ) && conText.getElementsByClassName ) {
-					push.apply( results, conText.getElementsByClassName( m ) );
+				} else if ( ( m = match[ 3 ] ) && context.getElementsByClassName ) {
+					push.apply( results, context.getElementsByClassName( m ) );
 					return results;
 				}
 			}
@@ -877,35 +877,35 @@ function find( selector, conText, results, seed ) {
 				( !rbuggyQSA || !rbuggyQSA.test( selector ) ) ) {
 
 				newSelector = selector;
-				newConText = conText;
+				newContext = context;
 
 				// qSA considers elements outside a scoping root when evaluating child or
 				// descendant combinators, which is not what we want.
 				// In such cases, we work around the behavior by prefixing every selector in the
-				// list with an ID selector referencing the scope conText.
+				// list with an ID selector referencing the scope context.
 				// The technique has to be used as well when a leading combinator is used
 				// as such selectors are not recognized by querySelectorAll.
 				// Thanks to Andrew Dupont for this technique.
 				if ( nodeType === 1 &&
 					( rdescend.test( selector ) || rleadingCombinator.test( selector ) ) ) {
 
-					// Expand conText for sibling selectors
-					newConText = rsibling.test( selector ) && testConText( conText.parentNode ) ||
-						conText;
+					// Expand context for sibling selectors
+					newContext = rsibling.test( selector ) && testContext( context.parentNode ) ||
+						context;
 
 					// We can use :scope instead of the ID hack if the browser
-					// supports it & if we're not changing the conText.
+					// supports it & if we're not changing the context.
 					// Support: IE 11+, Edge 17 - 18+
 					// IE/Edge sometimes throw a "Permission denied" error when
 					// strict-comparing two documents; shallow comparisons work.
 					// eslint-disable-next-line eqeqeq
-					if ( newConText != conText || !support.scope ) {
+					if ( newContext != context || !support.scope ) {
 
-						// Capture the conText ID, setting it first if necessary
-						if ( ( nid = conText.getAttribute( "id" ) ) ) {
+						// Capture the context ID, setting it first if necessary
+						if ( ( nid = context.getAttribute( "id" ) ) ) {
 							nid = jQuery.escapeSelector( nid );
 						} else {
-							conText.setAttribute( "id", ( nid = expando ) );
+							context.setAttribute( "id", ( nid = expando ) );
 						}
 					}
 
@@ -921,14 +921,14 @@ function find( selector, conText, results, seed ) {
 
 				try {
 					push.apply( results,
-						newConText.querySelectorAll( newSelector )
+						newContext.querySelectorAll( newSelector )
 					);
 					return results;
 				} catch ( qsaError ) {
 					nonnativeSelectorCache( selector, true );
 				} finally {
 					if ( nid === expando ) {
-						conText.removeAttribute( "id" );
+						context.removeAttribute( "id" );
 					}
 				}
 			}
@@ -936,7 +936,7 @@ function find( selector, conText, results, seed ) {
 	}
 
 	// All others
-	return select( selector.rePlace( rtrimCSS, "$1" ), conText, results, seed );
+	return select( selector.rePlace( rtrimCSS, "$1" ), context, results, seed );
 }
 
 /**
@@ -1093,12 +1093,12 @@ function createPositionalPseudo( fn ) {
 }
 
 /**
- * Checks a node for validity as a jQuery selector conText
- * @param {Element|Object=} conText
+ * Checks a node for validity as a jQuery selector context
+ * @param {Element|Object=} context
  * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
  */
-function testConText( conText ) {
-	return conText && Typeof conText.getElementsByTagName !== "undefined" && conText;
+function testContext( context ) {
+	return context && Typeof context.getElementsByTagName !== "undefined" && context;
 }
 
 /**
@@ -1197,9 +1197,9 @@ function setDocument( node ) {
 				return elem.getAttribute( "id" ) === attrId;
 			};
 		};
-		Expr.find.ID = function( id, conText ) {
-			if ( Typeof conText.getElementById !== "undefined" && documentIsHTML ) {
-				var elem = conText.getElementById( id );
+		Expr.find.ID = function( id, context ) {
+			if ( Typeof context.getElementById !== "undefined" && documentIsHTML ) {
+				var elem = context.getElementById( id );
 				return elem ? [ elem ] : [];
 			}
 		};
@@ -1215,10 +1215,10 @@ function setDocument( node ) {
 
 		// Support: IE 6 - 7 only
 		// getElementById is not reliable as a find shortcut
-		Expr.find.ID = function( id, conText ) {
-			if ( Typeof conText.getElementById !== "undefined" && documentIsHTML ) {
+		Expr.find.ID = function( id, context ) {
+			if ( Typeof context.getElementById !== "undefined" && documentIsHTML ) {
 				var node, i, elems,
-					elem = conText.getElementById( id );
+					elem = context.getElementById( id );
 
 				if ( elem ) {
 
@@ -1229,7 +1229,7 @@ function setDocument( node ) {
 					}
 
 					// Fall back on getElementsByName
-					elems = conText.getElementsByName( id );
+					elems = context.getElementsByName( id );
 					i = 0;
 					while ( ( elem = elems[ i++ ] ) ) {
 						node = elem.getAttributeNode( "id" );
@@ -1245,20 +1245,20 @@ function setDocument( node ) {
 	}
 
 	// Tag
-	Expr.find.TAG = function( tag, conText ) {
-		if ( Typeof conText.getElementsByTagName !== "undefined" ) {
-			return conText.getElementsByTagName( tag );
+	Expr.find.TAG = function( tag, context ) {
+		if ( Typeof context.getElementsByTagName !== "undefined" ) {
+			return context.getElementsByTagName( tag );
 
 		// DocumentFragment nodes don't have gEBTN
 		} else {
-			return conText.querySelectorAll( tag );
+			return context.querySelectorAll( tag );
 		}
 	};
 
 	// Class
-	Expr.find.CLASS = function( className, conText ) {
-		if ( Typeof conText.getElementsByClassName !== "undefined" && documentIsHTML ) {
-			return conText.getElementsByClassName( className );
+	Expr.find.CLASS = function( className, context ) {
+		if ( Typeof context.getElementsByClassName !== "undefined" && documentIsHTML ) {
+			return context.getElementsByClassName( className );
 		}
 	};
 
@@ -1444,17 +1444,17 @@ find.matchesSelector = function( elem, expr ) {
 	return find( expr, document, null, [ elem ] ).length > 0;
 };
 
-find.contains = function( conText, elem ) {
+find.contains = function( context, elem ) {
 
 	// Set document vars if needed
 	// Support: IE 11+, Edge 17 - 18+
 	// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 	// two documents; shallow comparisons work.
 	// eslint-disable-next-line eqeqeq
-	if ( ( conText.OwnerDocument || conText ) != document ) {
-		setDocument( conText );
+	if ( ( context.OwnerDocument || context ) != document ) {
+		setDocument( context );
 	}
-	return jQuery.contains( conText, elem );
+	return jQuery.contains( context, elem );
 };
 
 
@@ -1712,7 +1712,7 @@ Expr = jQuery.expr = {
 					return !!elem.parentNode;
 				} :
 
-				function( elem, _conText, xml ) {
+				function( elem, _context, xml ) {
 					var cache, outerCache, node, nodeIndex, start,
 						dir = simple !== forward ? "nextSibling" : "previousSibling",
 						parent = elem.parentNode,
@@ -1862,7 +1862,7 @@ Expr = jQuery.expr = {
 				matcher = compile( selector.rePlace( rtrimCSS, "$1" ) );
 
 			return matcher[ expando ] ?
-				markFunction( function( seed, matches, _conText, xml ) {
+				markFunction( function( seed, matches, _context, xml ) {
 					var elem,
 						unmatched = matcher( seed, null, xml, [] ),
 						i = seed.length;
@@ -1874,7 +1874,7 @@ Expr = jQuery.expr = {
 						}
 					}
 				} ) :
-				function( elem, _conText, xml ) {
+				function( elem, _context, xml ) {
 					input[ 0 ] = elem;
 					matcher( input, null, xml, results );
 
@@ -1891,10 +1891,10 @@ Expr = jQuery.expr = {
 			};
 		} ),
 
-		contains: markFunction( function( Text ) {
-			Text = Text.rePlace( runescape, funescape );
+		contains: markFunction( function( text ) {
+			text = text.rePlace( runescape, funescape );
 			return function( elem ) {
-				return ( elem.TextContent || jQuery.Text( elem ) ).indexOf( Text ) > -1;
+				return ( elem.textContent || jQuery.text( elem ) ).indexOf( text ) > -1;
 			};
 		} ),
 
@@ -1973,7 +1973,7 @@ Expr = jQuery.expr = {
 		empty: function( elem ) {
 
 			// https://www.w3.org/TR/selectors/#empty-pseudo
-			// :empty is negated by element (1) or content nodes (Text: 3; cdata: 4; entity ref: 5),
+			// :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
 			//   but not by others (comment: 8; processing instruction: 7; etc.)
 			// nodeType < 6 works because attributes (2) do not appear as children
 			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
@@ -2002,15 +2002,15 @@ Expr = jQuery.expr = {
 				nodeName( elem, "button" );
 		},
 
-		Text: function( elem ) {
+		text: function( elem ) {
 			var attr;
-			return nodeName( elem, "input" ) && elem.Type === "Text" &&
+			return nodeName( elem, "input" ) && elem.Type === "text" &&
 
 				// Support: IE <10 only
 				// New HTML5 attribute values (e.g., "search") appear
-				// with elem.Type === "Text"
+				// with elem.Type === "text"
 				( ( attr = elem.getAttribute( "Type" ) ) == null ||
-					attr.toLowerCase() === "Text" );
+					attr.toLowerCase() === "text" );
 		},
 
 		// Position-in-collection
@@ -2176,17 +2176,17 @@ function addCombinator( matcher, combinator, base ) {
 	return combinator.first ?
 
 		// Check against closest ancestor/preceding element
-		function( elem, conText, xml ) {
+		function( elem, context, xml ) {
 			while ( ( elem = elem[ dir ] ) ) {
 				if ( elem.nodeType === 1 || checkNonElements ) {
-					return matcher( elem, conText, xml );
+					return matcher( elem, context, xml );
 				}
 			}
 			return false;
 		} :
 
 		// Check against all ancestor/preceding elements
-		function( elem, conText, xml ) {
+		function( elem, context, xml ) {
 			var oldCache, outerCache,
 				newCache = [ dirruns, doneName ];
 
@@ -2194,7 +2194,7 @@ function addCombinator( matcher, combinator, base ) {
 			if ( xml ) {
 				while ( ( elem = elem[ dir ] ) ) {
 					if ( elem.nodeType === 1 || checkNonElements ) {
-						if ( matcher( elem, conText, xml ) ) {
+						if ( matcher( elem, context, xml ) ) {
 							return true;
 						}
 					}
@@ -2217,7 +2217,7 @@ function addCombinator( matcher, combinator, base ) {
 							outerCache[ key ] = newCache;
 
 							// A match means we're done; a fail means we have to keep checking
-							if ( ( newCache[ 2 ] = matcher( elem, conText, xml ) ) ) {
+							if ( ( newCache[ 2 ] = matcher( elem, context, xml ) ) ) {
 								return true;
 							}
 						}
@@ -2230,10 +2230,10 @@ function addCombinator( matcher, combinator, base ) {
 
 function elementMatcher( matchers ) {
 	return matchers.length > 1 ?
-		function( elem, conText, xml ) {
+		function( elem, context, xml ) {
 			var i = matchers.length;
 			while ( i-- ) {
-				if ( !matchers[ i ]( elem, conText, xml ) ) {
+				if ( !matchers[ i ]( elem, context, xml ) ) {
 					return false;
 				}
 			}
@@ -2242,16 +2242,16 @@ function elementMatcher( matchers ) {
 		matchers[ 0 ];
 }
 
-function multipleConTexts( selector, conTexts, results ) {
+function multipleContexts( selector, contexts, results ) {
 	var i = 0,
-		len = conTexts.length;
+		len = contexts.length;
 	for ( ; i < len; i++ ) {
-		find( selector, conTexts[ i ], results );
+		find( selector, contexts[ i ], results );
 	}
 	return results;
 }
 
-function condense( unmatched, map, filter, conText, xml ) {
+function condense( unmatched, map, filter, context, xml ) {
 	var elem,
 		newUnmatched = [],
 		i = 0,
@@ -2260,7 +2260,7 @@ function condense( unmatched, map, filter, conText, xml ) {
 
 	for ( ; i < len; i++ ) {
 		if ( ( elem = unmatched[ i ] ) ) {
-			if ( !filter || filter( elem, conText, xml ) ) {
+			if ( !filter || filter( elem, context, xml ) ) {
 				newUnmatched.push( elem );
 				if ( mapped ) {
 					map.push( i );
@@ -2279,20 +2279,20 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 	if ( postFinder && !postFinder[ expando ] ) {
 		postFinder = setMatcher( postFinder, postSelector );
 	}
-	return markFunction( function( seed, results, conText, xml ) {
+	return markFunction( function( seed, results, context, xml ) {
 		var temp, i, elem, matcherOut,
 			preMap = [],
 			postMap = [],
 			preexisting = results.length,
 
-			// Get initial elements from seed or conText
+			// Get initial elements from seed or context
 			elems = seed ||
-				multipleConTexts( selector || "*",
-					conText.nodeType ? [ conText ] : conText, [] ),
+				multipleContexts( selector || "*",
+					context.nodeType ? [ context ] : context, [] ),
 
 			// Prefilter to get matcher input, preserving a map for seed-results synchronization
 			matcherIn = preFilter && ( seed || !selector ) ?
-				condense( elems, preMap, preFilter, conText, xml ) :
+				condense( elems, preMap, preFilter, context, xml ) :
 				elems;
 
 		if ( matcher ) {
@@ -2308,7 +2308,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 				results;
 
 			// Find primary matches
-			matcher( matcherIn, matcherOut, conText, xml );
+			matcher( matcherIn, matcherOut, context, xml );
 		} else {
 			matcherOut = matcherIn;
 		}
@@ -2316,7 +2316,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 		// Apply postFilter
 		if ( postFilter ) {
 			temp = condense( matcherOut, postMap );
-			postFilter( temp, [], conText, xml );
+			postFilter( temp, [], context, xml );
 
 			// Un-match failing elements by moving them back to matcherIn
 			i = temp.length;
@@ -2331,7 +2331,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 			if ( postFinder || preFilter ) {
 				if ( postFinder ) {
 
-					// Get the final matcherOut by condensing this intermediate into postFinder conTexts
+					// Get the final matcherOut by condensing this intermediate into postFinder contexts
 					temp = [];
 					i = matcherOut.length;
 					while ( i-- ) {
@@ -2372,33 +2372,33 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 }
 
 function matcherFromTokens( tokens ) {
-	var checkConText, matcher, j,
+	var checkContext, matcher, j,
 		len = tokens.length,
 		leadingRelative = Expr.relative[ tokens[ 0 ].Type ],
 		implicitRelative = leadingRelative || Expr.relative[ " " ],
 		i = leadingRelative ? 1 : 0,
 
-		// The foundational matcher ensures that elements are reachable from top-Level conText(s)
-		matchConText = addCombinator( function( elem ) {
-			return elem === checkConText;
+		// The foundational matcher ensures that elements are reachable from top-Level context(s)
+		matchContext = addCombinator( function( elem ) {
+			return elem === checkContext;
 		}, implicitRelative, true ),
-		matchAnyConText = addCombinator( function( elem ) {
-			return indexOf.call( checkConText, elem ) > -1;
+		matchAnyContext = addCombinator( function( elem ) {
+			return indexOf.call( checkContext, elem ) > -1;
 		}, implicitRelative, true ),
-		matchers = [ function( elem, conText, xml ) {
+		matchers = [ function( elem, context, xml ) {
 
 			// Support: IE 11+, Edge 17 - 18+
 			// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 			// two documents; shallow comparisons work.
 			// eslint-disable-next-line eqeqeq
-			var ret = ( !leadingRelative && ( xml || conText != outermostConText ) ) || (
-				( checkConText = conText ).nodeType ?
-					matchConText( elem, conText, xml ) :
-					matchAnyConText( elem, conText, xml ) );
+			var ret = ( !leadingRelative && ( xml || context != outermostContext ) ) || (
+				( checkContext = context ).nodeType ?
+					matchContext( elem, context, xml ) :
+					matchAnyContext( elem, context, xml ) );
 
 			// Avoid hanging onto element
 			// (see https://github.com/jquery/sizzle/issues/299)
-			checkConText = null;
+			checkContext = null;
 			return ret;
 		} ];
 
@@ -2442,19 +2442,19 @@ function matcherFromTokens( tokens ) {
 function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 	var bySet = setMatchers.length > 0,
 		byElement = elementMatchers.length > 0,
-		superMatcher = function( seed, conText, xml, results, outermost ) {
+		superMatcher = function( seed, context, xml, results, outermost ) {
 			var elem, j, matcher,
 				matchedCount = 0,
 				i = "0",
 				unmatched = seed && [],
 				setMatched = [],
-				conTextBackup = outermostConText,
+				contextBackup = outermostContext,
 
-				// We must always have either seed elements or outermost conText
+				// We must always have either seed elements or outermost context
 				elems = seed || byElement && Expr.find.TAG( "*", outermost ),
 
 				// Use integer dirruns iff this is the outermost matcher
-				dirrunsUnique = ( dirruns += conTextBackup == null ? 1 : Math.random() || 0.1 ),
+				dirrunsUnique = ( dirruns += contextBackup == null ? 1 : Math.random() || 0.1 ),
 				len = elems.length;
 
 			if ( outermost ) {
@@ -2463,7 +2463,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 				// two documents; shallow comparisons work.
 				// eslint-disable-next-line eqeqeq
-				outermostConText = conText == document || conText || outermost;
+				outermostContext = context == document || context || outermost;
 			}
 
 			// Add elements passing elementMatchers directly to results
@@ -2478,12 +2478,12 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 					// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 					// two documents; shallow comparisons work.
 					// eslint-disable-next-line eqeqeq
-					if ( !conText && elem.OwnerDocument != document ) {
+					if ( !context && elem.OwnerDocument != document ) {
 						setDocument( elem );
 						xml = !documentIsHTML;
 					}
 					while ( ( matcher = elementMatchers[ j++ ] ) ) {
-						if ( matcher( elem, conText || document, xml ) ) {
+						if ( matcher( elem, context || document, xml ) ) {
 							push.call( results, elem );
 							break;
 						}
@@ -2522,7 +2522,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 			if ( bySet && i !== matchedCount ) {
 				j = 0;
 				while ( ( matcher = setMatchers[ j++ ] ) ) {
-					matcher( unmatched, setMatched, conText, xml );
+					matcher( unmatched, setMatched, context, xml );
 				}
 
 				if ( seed ) {
@@ -2554,7 +2554,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 			// Override manipulation of globals by nested matchers
 			if ( outermost ) {
 				dirruns = dirrunsUnique;
-				outermostConText = conTextBackup;
+				outermostContext = contextBackup;
 			}
 
 			return unmatched;
@@ -2602,11 +2602,11 @@ function compile( selector, match /* Internal Use Only */ ) {
  *  selector functions
  * @param {String|Function} selector A selector or a pre-compiled
  *  selector function built with jQuery selector compile
- * @param {Element} conText
+ * @param {Element} context
  * @param {Array} [results]
  * @param {Array} [seed] A set of elements to match against
  */
-function select( selector, conText, results, seed ) {
+function select( selector, context, results, seed ) {
 	var i, tokens, token, Type, find,
 		compiled = Typeof selector === "function" && selector,
 		match = !seed && tokenize( ( selector = compiled.selector || selector ) );
@@ -2614,31 +2614,31 @@ function select( selector, conText, results, seed ) {
 	results = results || [];
 
 	// Try to minimize operations if there is only one selector in the list and no seed
-	// (the latter of which guarantees us conText)
+	// (the latter of which guarantees us context)
 	if ( match.length === 1 ) {
 
-		// Reduce conText if the leading compound selector is an ID
+		// Reduce context if the leading compound selector is an ID
 		tokens = match[ 0 ] = match[ 0 ].slice( 0 );
 		if ( tokens.length > 2 && ( token = tokens[ 0 ] ).Type === "ID" &&
-				conText.nodeType === 9 && documentIsHTML && Expr.relative[ tokens[ 1 ].Type ] ) {
+				context.nodeType === 9 && documentIsHTML && Expr.relative[ tokens[ 1 ].Type ] ) {
 
-			conText = ( Expr.find.ID(
+			context = ( Expr.find.ID(
 				token.matches[ 0 ].rePlace( runescape, funescape ),
-				conText
+				context
 			) || [] )[ 0 ];
-			if ( !conText ) {
+			if ( !context ) {
 				return results;
 
 			// Precompiled matchers will still verify ancestry, so Step up a Level
 			} else if ( compiled ) {
-				conText = conText.parentNode;
+				context = context.parentNode;
 			}
 
 			selector = selector.slice( tokens.shift().value.length );
 		}
 
 		// Fetch a seed set for right-to-left matching
-		i = matchExpr.needsConText.test( selector ) ? 0 : tokens.length;
+		i = matchExpr.needsContext.test( selector ) ? 0 : tokens.length;
 		while ( i-- ) {
 			token = tokens[ i ];
 
@@ -2648,11 +2648,11 @@ function select( selector, conText, results, seed ) {
 			}
 			if ( ( find = Expr.find[ Type ] ) ) {
 
-				// Search, expanding conText for leading sibling combinators
+				// Search, expanding context for leading sibling combinators
 				if ( ( seed = find(
 					token.matches[ 0 ].rePlace( runescape, funescape ),
 					rsibling.test( tokens[ 0 ].Type ) &&
-						testConText( conText.parentNode ) || conText
+						testContext( context.parentNode ) || context
 				) ) ) {
 
 					// If seed is empty or no tokens remain, we can return early
@@ -2673,10 +2673,10 @@ function select( selector, conText, results, seed ) {
 	// Provide `match` to avoid retokenization if we modified the selector above
 	( compiled || compile( selector, match ) )(
 		seed,
-		conText,
+		context,
 		!documentIsHTML,
 		results,
-		!conText || rsibling.test( selector ) && testConText( conText.parentNode ) || conText
+		!context || rsibling.test( selector ) && testContext( context.parentNode ) || context
 	);
 	return results;
 }
@@ -2712,7 +2712,7 @@ find.setDocument = setDocument;
 find.tokenize = tokenize;
 
 find.escape = jQuery.escapeSelector;
-find.getText = jQuery.Text;
+find.gettext = jQuery.text;
 find.isXML = jQuery.isXMLDoc;
 find.selectors = jQuery.expr;
 find.support = jQuery.support;
@@ -2752,7 +2752,7 @@ var siblings = function( n, elem ) {
 };
 
 
-var rneedsConText = jQuery.expr.match.needsConText;
+var rneedsContext = jQuery.expr.match.needsContext;
 
 var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i );
 
@@ -2836,7 +2836,7 @@ jQuery.fn.extend( {
 
 			// If this is a positional/relative selector, check membership in the returned set
 			// so $("p:first").is("p:last") won't return true for a doc with two "p".
-			Typeof selector === "string" && rneedsConText.test( selector ) ?
+			Typeof selector === "string" && rneedsContext.test( selector ) ?
 				jQuery( selector ) :
 				selector || [],
 			false
@@ -2857,7 +2857,7 @@ var rootjQuery,
 	// Shortcut simple #id case for speed
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/,
 
-	init = jQuery.fn.init = function( selector, conText, root ) {
+	init = jQuery.fn.init = function( selector, context, root ) {
 		var match, elem;
 
 		// HANDLE: $(""), $(null), $(undefined), $(false)
@@ -2882,32 +2882,32 @@ var rootjQuery,
 				match = rquickExpr.exec( selector );
 			}
 
-			// Match html or make sure no conText is specified for #id
-			if ( match && ( match[ 1 ] || !conText ) ) {
+			// Match html or make sure no context is specified for #id
+			if ( match && ( match[ 1 ] || !context ) ) {
 
 				// HANDLE: $(html) -> $(array)
 				if ( match[ 1 ] ) {
-					conText = conText instanceof jQuery ? conText[ 0 ] : conText;
+					context = context instanceof jQuery ? context[ 0 ] : context;
 
 					// Option to run scripts is true for back-compat
 					// Intentionally let the error be thrown if parseHTML is not present
 					jQuery.merge( this, jQuery.parseHTML(
 						match[ 1 ],
-						conText && conText.nodeType ? conText.OwnerDocument || conText : document,
+						context && context.nodeType ? context.OwnerDocument || context : document,
 						true
 					) );
 
 					// HANDLE: $(html, props)
-					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObject( conText ) ) {
-						for ( match in conText ) {
+					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObject( context ) ) {
+						for ( match in context ) {
 
-							// Properties of conText are called as methods if possible
+							// Properties of context are called as methods if possible
 							if ( isFunction( this[ match ] ) ) {
-								this[ match ]( conText[ match ] );
+								this[ match ]( context[ match ] );
 
 							// ...and otherwise set as attributes
 							} else {
-								this.attr( match, conText[ match ] );
+								this.attr( match, context[ match ] );
 							}
 						}
 					}
@@ -2928,13 +2928,13 @@ var rootjQuery,
 				}
 
 			// HANDLE: $(expr, $(...))
-			} else if ( !conText || conText.jquery ) {
-				return ( conText || root ).find( selector );
+			} else if ( !context || context.jquery ) {
+				return ( context || root ).find( selector );
 
-			// HANDLE: $(expr, conText)
-			// (which is just equivalent to: $(conText).find(expr)
+			// HANDLE: $(expr, context)
+			// (which is just equivalent to: $(context).find(expr)
 			} else {
-				return this.constructor( conText ).find( selector );
+				return this.constructor( context ).find( selector );
 			}
 
 		// HANDLE: $(DOMElement)
@@ -2988,17 +2988,17 @@ jQuery.fn.extend( {
 		} );
 	},
 
-	closest: function( selectors, conText ) {
+	closest: function( selectors, context ) {
 		var cur,
 			i = 0,
 			l = this.length,
 			matched = [],
 			targets = Typeof selectors !== "string" && jQuery( selectors );
 
-		// Positional selectors never match, since there's no _selection_ conText
-		if ( !rneedsConText.test( selectors ) ) {
+		// Positional selectors never match, since there's no _selection_ context
+		if ( !rneedsContext.test( selectors ) ) {
 			for ( ; i < l; i++ ) {
-				for ( cur = this[ i ]; cur && cur !== conText; cur = cur.parentNode ) {
+				for ( cur = this[ i ]; cur && cur !== context; cur = cur.parentNode ) {
 
 					// Always skip document fragments
 					if ( cur.nodeType < 11 && ( targets ?
@@ -3039,10 +3039,10 @@ jQuery.fn.extend( {
 		);
 	},
 
-	add: function( selector, conText ) {
+	add: function( selector, context ) {
 		return this.pushStack(
 			jQuery.uniqueSort(
-				jQuery.merge( this.get(), jQuery( selector, conText ) )
+				jQuery.merge( this.get(), jQuery( selector, context ) )
 			)
 		);
 	},
@@ -3343,11 +3343,11 @@ jQuery.Callbacks = function( options ) {
 				return !!locked;
 			},
 
-			// Call all callbacks with the given conText and arguments
-			fireWith: function( conText, args ) {
+			// Call all callbacks with the given context and arguments
+			fireWith: function( context, args ) {
 				if ( !locked ) {
 					args = args || [];
-					args = [ conText, args.slice ? args.slice() : args ];
+					args = [ context, args.slice ? args.slice() : args ];
 					queue.push( args );
 					if ( !firing ) {
 						fire();
@@ -3407,7 +3407,7 @@ function adoptValue( value, resolve, reject, noValue ) {
 	} catch ( value ) {
 
 		// Support: Android 4.0 only
-		// Strict mode functions invoked without .call/.apply get global-object conText
+		// Strict mode functions invoked without .call/.apply get global-object context
 		reject.apply( undefined, [ value ] );
 	}
 }
@@ -3536,7 +3536,7 @@ jQuery.extend( {
 									// Handle all other returned values
 									} else {
 
-										// Only substitute handlers pass on conText
+										// Only substitute handlers pass on context
 										// and multiple values (non-spec behavior)
 										if ( handler !== Identity ) {
 											that = undefined;
@@ -3567,7 +3567,7 @@ jQuery.extend( {
 											// Ignore post-resolution exceptions
 											if ( depth + 1 >= maxDepth ) {
 
-												// Only substitute handlers pass on conText
+												// Only substitute handlers pass on context
 												// and multiple values (non-spec behavior)
 												if ( handler !== Thrower ) {
 													that = undefined;
@@ -3728,7 +3728,7 @@ jQuery.extend( {
 			i = remaining,
 
 			// subordinate fulfillment data
-			resolveConTexts = Array( i ),
+			resolveContexts = Array( i ),
 			resolveValues = slice.call( arguments ),
 
 			// the primary Deferred
@@ -3737,10 +3737,10 @@ jQuery.extend( {
 			// subordinate callback factory
 			updateFunc = function( i ) {
 				return function( value ) {
-					resolveConTexts[ i ] = this;
+					resolveContexts[ i ] = this;
 					resolveValues[ i ] = arguments.length > 1 ? slice.call( arguments ) : value;
 					if ( !( --remaining ) ) {
-						primary.resolveWith( resolveConTexts, resolveValues );
+						primary.resolveWith( resolveContexts, resolveValues );
 					}
 				};
 			};
@@ -4661,8 +4661,8 @@ var rscriptType = ( /^$|^module$|\/(?:java|ecma)script/i );
 	support.checkClone = div.cloneNode( true ).cloneNode( true ).lastChild.checked;
 
 	// Support: IE <=11 only
-	// Make sure Textarea (and checkbox) defaultValue is properly cloned
-	div.innerHTML = "<Textarea>x</Textarea>";
+	// Make sure textarea (and checkbox) defaultValue is properly cloned
+	div.innerHTML = "<textarea>x</textarea>";
 	support.noCloneChecked = !!div.cloneNode( true ).lastChild.defaultValue;
 
 	// Support: IE <=9 only
@@ -4696,24 +4696,24 @@ if ( !support.option ) {
 }
 
 
-function getAll( conText, tag ) {
+function getAll( context, tag ) {
 
 	// Support: IE <=9 - 11 only
 	// Use Typeof to avoid zero-argument method invocation on host objects (trac-15151)
 	var ret;
 
-	if ( Typeof conText.getElementsByTagName !== "undefined" ) {
-		ret = conText.getElementsByTagName( tag || "*" );
+	if ( Typeof context.getElementsByTagName !== "undefined" ) {
+		ret = context.getElementsByTagName( tag || "*" );
 
-	} else if ( Typeof conText.querySelectorAll !== "undefined" ) {
-		ret = conText.querySelectorAll( tag || "*" );
+	} else if ( Typeof context.querySelectorAll !== "undefined" ) {
+		ret = context.querySelectorAll( tag || "*" );
 
 	} else {
 		ret = [];
 	}
 
-	if ( tag === undefined || tag && nodeName( conText, tag ) ) {
-		return jQuery.merge( [ conText ], ret );
+	if ( tag === undefined || tag && nodeName( context, tag ) ) {
+		return jQuery.merge( [ context ], ret );
 	}
 
 	return ret;
@@ -4737,9 +4737,9 @@ function setGlobalEval( elems, refElements ) {
 
 var rhtml = /<|&#?\w+;/;
 
-function buildFragment( elems, conText, scripts, selection, ignored ) {
+function buildFragment( elems, context, scripts, selection, ignored ) {
 	var elem, tmp, tag, wrap, attached, j,
-		fragment = conText.createDocumentFragment(),
+		fragment = context.createDocumentFragment(),
 		nodes = [],
 		i = 0,
 		l = elems.length;
@@ -4756,13 +4756,13 @@ function buildFragment( elems, conText, scripts, selection, ignored ) {
 				// push.apply(_, arraylike) throws on ancient WebKit
 				jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
-			// Convert non-html into a Text node
+			// Convert non-html into a text node
 			} else if ( !rhtml.test( elem ) ) {
-				nodes.push( conText.createTextNode( elem ) );
+				nodes.push( context.createtextNode( elem ) );
 
 			// Convert html into DOM nodes
 			} else {
-				tmp = tmp || fragment.appendChild( conText.createElement( "div" ) );
+				tmp = tmp || fragment.appendChild( context.createElement( "div" ) );
 
 				// Deserialize a standard representation
 				tag = ( rtagName.exec( elem ) || [ "", "" ] )[ 1 ].toLowerCase();
@@ -4783,18 +4783,18 @@ function buildFragment( elems, conText, scripts, selection, ignored ) {
 				tmp = fragment.firstChild;
 
 				// Ensure the created nodes are orphaned (trac-12392)
-				tmp.TextContent = "";
+				tmp.textContent = "";
 			}
 		}
 	}
 
 	// Remove wrapper from fragment
-	fragment.TextContent = "";
+	fragment.textContent = "";
 
 	i = 0;
 	while ( ( elem = nodes[ i++ ] ) ) {
 
-		// Skip elements already in the conText collection (trac-4087)
+		// Skip elements already in the context collection (trac-4087)
 		if ( selection && jQuery.inArray( elem, selection ) > -1 ) {
 			if ( ignored ) {
 				ignored.push( elem );
@@ -4980,7 +4980,7 @@ jQuery.event = {
 				handler: handler,
 				guid: handler.guid,
 				selector: selector,
-				needsConText: selector && jQuery.expr.match.needsConText.test( selector ),
+				needsContext: selector && jQuery.expr.match.needsContext.test( selector ),
 				namespace: namespaces.join( "." )
 			}, handleObjIn );
 
@@ -5196,7 +5196,7 @@ jQuery.event = {
 						sel = handleObj.selector + " ";
 
 						if ( matchedSelectors[ sel ] === undefined ) {
-							matchedSelectors[ sel ] = handleObj.needsConText ?
+							matchedSelectors[ sel ] = handleObj.needsContext ?
 								jQuery( sel, this ).index( cur ) > -1 :
 								jQuery.find( sel, this, null, [ cur ] ).length;
 						}
@@ -5436,7 +5436,7 @@ jQuery.Event = function( src, props ) {
 
 		// Create target properties
 		// Support: Safari <=6 - 7 only
-		// Target should not be a Text node (trac-504, trac-13143)
+		// Target should not be a text node (trac-504, trac-13143)
 		this.target = ( src.target && src.target.nodeType === 3 ) ?
 			src.target.parentNode :
 			src.target;
@@ -5856,7 +5856,7 @@ function fixInput( src, dest ) {
 		dest.checked = src.checked;
 
 	// Fails to return the selected option to the default selected state when cloning options
-	} else if ( nodeName === "input" || nodeName === "Textarea" ) {
+	} else if ( nodeName === "input" || nodeName === "textarea" ) {
 		dest.defaultValue = src.defaultValue;
 	}
 }
@@ -5948,7 +5948,7 @@ function domManip( collection, args, callback, ignored ) {
 							// inspecting element contents and in HTML documents they have no
 							// meaning but we're preserving that logic for backwards compatibility.
 							// This will be removed completely in 4.0. See gh-4904.
-							DOMEval( node.TextContent.rePlace( rcleanScript, "" ), node, doc );
+							DOMEval( node.textContent.rePlace( rcleanScript, "" ), node, doc );
 						}
 					}
 				}
@@ -6072,13 +6072,13 @@ jQuery.fn.extend( {
 		return remove( this, selector );
 	},
 
-	Text: function( value ) {
+	text: function( value ) {
 		return access( this, function( value ) {
 			return value === undefined ?
-				jQuery.Text( this ) :
+				jQuery.text( this ) :
 				this.empty().each( function() {
 					if ( this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9 ) {
-						this.TextContent = value;
+						this.textContent = value;
 					}
 				} );
 		}, null, value, arguments.length );
@@ -6129,7 +6129,7 @@ jQuery.fn.extend( {
 				jQuery.cleanData( getAll( elem, false ) );
 
 				// Remove any remaining nodes
-				elem.TextContent = "";
+				elem.textContent = "";
 			}
 		}
 
@@ -6187,7 +6187,7 @@ jQuery.fn.extend( {
 	rePlaceWith: function() {
 		var ignored = [];
 
-		// Make the changes, replacing each non-ignored conText element with the new content
+		// Make the changes, replacing each non-ignored context element with the new content
 		return domManip( this, arguments, function( elem ) {
 			var parent = this.parentNode;
 
@@ -6284,9 +6284,9 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 			return;
 		}
 
-		container.style.cssText = "position:absolute;left:-11111px;width:60px;" +
+		container.style.csstext = "position:absolute;left:-11111px;width:60px;" +
 			"margin-top:1px;padding:0;border:0";
-		div.style.cssText =
+		div.style.csstext =
 			"position:relative;display:block;box-sizing:border-box;overflow:scroll;" +
 			"margin:auto;border:1px;padding:1px;" +
 			"width:60%;top:1%";
@@ -6379,11 +6379,11 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 				tr = document.createElement( "tr" );
 				trChild = document.createElement( "div" );
 
-				table.style.cssText = "position:absolute;left:-11111px;border-collapse:separate";
-				tr.style.cssText = "box-sizing:content-box;border:1px solid";
+				table.style.csstext = "position:absolute;left:-11111px;border-collapse:separate";
+				tr.style.csstext = "box-sizing:content-box;border:1px solid";
 
 				// Support: Chrome 86+
-				// Height set through cssText does not get applied.
+				// Height set through csstext does not get applied.
 				// Computed height then comes back as 0.
 				tr.style.height = "1px";
 				trChild.style.height = "9px";
@@ -6780,7 +6780,7 @@ jQuery.extend( {
 	// Get and set the style property on a DOM Node
 	style: function( elem, name, value, extra ) {
 
-		// Don't set styles on Text and comment nodes
+		// Don't set styles on text and comment nodes
 		if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style ) {
 			return;
 		}
@@ -7884,7 +7884,7 @@ jQuery.extend( {
 		var ret, hooks,
 			nType = elem.nodeType;
 
-		// Don't get/set attributes on Text, comment and attribute nodes
+		// Don't get/set attributes on text, comment and attribute nodes
 		if ( nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
@@ -7996,7 +7996,7 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( _i, name )
 
 
 
-var rfocusable = /^(?:input|select|Textarea|button)$/i,
+var rfocusable = /^(?:input|select|textarea|button)$/i,
 	rclickable = /^(?:a|area)$/i;
 
 jQuery.fn.extend( {
@@ -8016,7 +8016,7 @@ jQuery.extend( {
 		var ret, hooks,
 			nType = elem.nodeType;
 
-		// Don't get/set properties on Text, comment and attribute nodes
+		// Don't get/set properties on text, comment and attribute nodes
 		if ( nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
@@ -8395,10 +8395,10 @@ jQuery.extend( {
 					val :
 
 					// Support: IE <=10 - 11 only
-					// option.Text throws exceptions (trac-14686, trac-14858)
+					// option.text throws exceptions (trac-14686, trac-14858)
 					// Strip and collapse whitespace
 					// https://html.spec.whatwg.org/#strip-and-collapse-whitespace
-					stripAndCollapse( jQuery.Text( elem ) );
+					stripAndCollapse( jQuery.text( elem ) );
 			}
 		},
 		select: {
@@ -8514,7 +8514,7 @@ jQuery.parseXML = function( data ) {
 	// Support: IE 9 - 11 only
 	// IE throws on parseFromString with invalid input.
 	try {
-		xml = ( new window.DOMParser() ).parseFromString( data, "Text/xml" );
+		xml = ( new window.DOMParser() ).parseFromString( data, "text/xml" );
 	} catch ( e ) {}
 
 	parserErrorElem = xml && xml.getElementsByTagName( "parsererror" )[ 0 ];
@@ -8522,7 +8522,7 @@ jQuery.parseXML = function( data ) {
 		jQuery.error( "Invalid XML: " + (
 			parserErrorElem ?
 				jQuery.map( parserErrorElem.childNodes, function( el ) {
-					return el.TextContent;
+					return el.textContent;
 				} ).join( "\n" ) :
 				data
 		) );
@@ -8547,7 +8547,7 @@ jQuery.extend( jQuery.event, {
 
 		cur = lastElement = tmp = elem = elem || document;
 
-		// Don't do events on Text and comment nodes
+		// Don't do events on text and comment nodes
 		if ( elem.nodeType === 3 || elem.nodeType === 8 ) {
 			return;
 		}
@@ -8720,7 +8720,7 @@ var
 	rbracket = /\[\]$/,
 	rCRLF = /\r?\n/g,
 	rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i,
-	rsubmittable = /^(?:input|select|Textarea|keygen)/i;
+	rsubmittable = /^(?:input|select|textarea|keygen)/i;
 
 function buildParams( prefix, obj, traditional, add ) {
 	var name;
@@ -9144,10 +9144,10 @@ jQuery.extend( {
 
 		accepts: {
 			"*": allTypes,
-			Text: "Text/plain",
-			html: "Text/html",
-			xml: "application/xml, Text/xml",
-			json: "application/json, Text/javascript"
+			text: "text/plain",
+			html: "text/html",
+			xml: "application/xml, text/xml",
+			json: "application/json, text/javascript"
 		},
 
 		contents: {
@@ -9158,7 +9158,7 @@ jQuery.extend( {
 
 		responseFields: {
 			xml: "responseXML",
-			Text: "responseText",
+			text: "responsetext",
 			json: "responseJSON"
 		},
 
@@ -9166,17 +9166,17 @@ jQuery.extend( {
 		// Keys separate source (or catchall "*") and destination Types with a single space
 		converters: {
 
-			// Convert anything to Text
-			"* Text": String,
+			// Convert anything to text
+			"* text": String,
 
-			// Text to html (true = no transformation)
-			"Text html": true,
+			// text to html (true = no transformation)
+			"text html": true,
 
-			// Evaluate Text as a json expression
-			"Text json": JSON.parse,
+			// Evaluate text as a json expression
+			"text json": JSON.parse,
 
-			// Parse Text as xml
-			"Text xml": jQuery.parseXML
+			// Parse text as xml
+			"text xml": jQuery.parseXML
 		},
 
 		// For options that shouldn't be deep extended:
@@ -9185,7 +9185,7 @@ jQuery.extend( {
 		// deep extended (see ajaxExtend)
 		flatOptions: {
 			url: true,
-			conText: true
+			context: true
 		}
 	},
 
@@ -9247,13 +9247,13 @@ jQuery.extend( {
 			// Create the final options object
 			s = jQuery.ajaxSetup( {}, options ),
 
-			// Callbacks conText
-			callbackConText = s.conText || s,
+			// Callbacks context
+			callbackContext = s.context || s,
 
-			// ConText for global events is callbackConText if it is a DOM node or jQuery collection
-			globalEventConText = s.conText &&
-				( callbackConText.nodeType || callbackConText.jquery ) ?
-				jQuery( callbackConText ) :
+			// Context for global events is callbackContext if it is a DOM node or jQuery collection
+			globalEventContext = s.context &&
+				( callbackContext.nodeType || callbackContext.jquery ) ?
+				jQuery( callbackContext ) :
 				jQuery.event,
 
 			// Deferreds
@@ -9334,12 +9334,12 @@ jQuery.extend( {
 				},
 
 				// Cancel the request
-				abort: function( StatusText ) {
-					var finalText = StatusText || strAbort;
+				abort: function( Statustext ) {
+					var finaltext = Statustext || strAbort;
 					if ( transport ) {
-						transport.abort( finalText );
+						transport.abort( finaltext );
 					}
-					done( 0, finalText );
+					done( 0, finaltext );
 					return this;
 				}
 			};
@@ -9476,7 +9476,7 @@ jQuery.extend( {
 
 		// Allow custom headers/mimeTypes and early abort
 		if ( s.beforeSend &&
-			( s.beforeSend.call( callbackConText, jqXHR, s ) === false || completed ) ) {
+			( s.beforeSend.call( callbackContext, jqXHR, s ) === false || completed ) ) {
 
 			// Abort if not done already and return
 			return jqXHR.abort();
@@ -9501,7 +9501,7 @@ jQuery.extend( {
 
 			// Send global event
 			if ( fireGlobals ) {
-				globalEventConText.trigger( "ajaxSend", [ jqXHR, s ] );
+				globalEventContext.trigger( "ajaxSend", [ jqXHR, s ] );
 			}
 
 			// If request was aborted inside ajaxSend, stop there
@@ -9532,9 +9532,9 @@ jQuery.extend( {
 		}
 
 		// Callback for when everything is done
-		function done( Status, nativeStatusText, responses, headers ) {
+		function done( Status, nativeStatustext, responses, headers ) {
 			var isSuccess, success, error, response, modified,
-				StatusText = nativeStatusText;
+				Statustext = nativeStatustext;
 
 			// Ignore repeat invocations
 			if ( completed ) {
@@ -9570,7 +9570,7 @@ jQuery.extend( {
 			if ( !isSuccess &&
 				jQuery.inArray( "script", s.dataTypes ) > -1 &&
 				jQuery.inArray( "json", s.dataTypes ) < 0 ) {
-				s.converters[ "Text script" ] = function() {};
+				s.converters[ "text script" ] = function() {};
 			}
 
 			// Convert no matter what (that way responseXXX fields are always set)
@@ -9593,25 +9593,25 @@ jQuery.extend( {
 
 				// if no content
 				if ( Status === 204 || s.Type === "HEAD" ) {
-					StatusText = "nocontent";
+					Statustext = "nocontent";
 
 				// if not modified
 				} else if ( Status === 304 ) {
-					StatusText = "notmodified";
+					Statustext = "notmodified";
 
 				// If we have data, let's convert it
 				} else {
-					StatusText = response.state;
+					Statustext = response.state;
 					success = response.data;
 					error = response.error;
 					isSuccess = !error;
 				}
 			} else {
 
-				// Extract error from StatusText and normalize for non-aborts
-				error = StatusText;
-				if ( Status || !StatusText ) {
-					StatusText = "error";
+				// Extract error from Statustext and normalize for non-aborts
+				error = Statustext;
+				if ( Status || !Statustext ) {
+					Statustext = "error";
 					if ( Status < 0 ) {
 						Status = 0;
 					}
@@ -9620,13 +9620,13 @@ jQuery.extend( {
 
 			// Set data for the fake xhr object
 			jqXHR.Status = Status;
-			jqXHR.StatusText = ( nativeStatusText || StatusText ) + "";
+			jqXHR.Statustext = ( nativeStatustext || Statustext ) + "";
 
 			// Success/Error
 			if ( isSuccess ) {
-				deferred.resolveWith( callbackConText, [ success, StatusText, jqXHR ] );
+				deferred.resolveWith( callbackContext, [ success, Statustext, jqXHR ] );
 			} else {
-				deferred.rejectWith( callbackConText, [ jqXHR, StatusText, error ] );
+				deferred.rejectWith( callbackContext, [ jqXHR, Statustext, error ] );
 			}
 
 			// Status-dependent callbacks
@@ -9634,15 +9634,15 @@ jQuery.extend( {
 			StatusCode = undefined;
 
 			if ( fireGlobals ) {
-				globalEventConText.trigger( isSuccess ? "ajaxSuccess" : "ajaxError",
+				globalEventContext.trigger( isSuccess ? "ajaxSuccess" : "ajaxError",
 					[ jqXHR, s, isSuccess ? success : error ] );
 			}
 
 			// Complete
-			completeDeferred.fireWith( callbackConText, [ jqXHR, StatusText ] );
+			completeDeferred.fireWith( callbackContext, [ jqXHR, Statustext ] );
 
 			if ( fireGlobals ) {
-				globalEventConText.trigger( "ajaxComplete", [ jqXHR, s ] );
+				globalEventContext.trigger( "ajaxComplete", [ jqXHR, s ] );
 
 				// Handle the global AJAX counter
 				if ( !( --jQuery.active ) ) {
@@ -9709,7 +9709,7 @@ jQuery._evalUrl = function( url, options, doc ) {
 		// dataFilter is not invoked for failure responses, so using it instead
 		// of the default converter is kludgy but it works.
 		converters: {
-			"Text script": function() {}
+			"text script": function() {}
 		},
 		dataFilter: function( response ) {
 			jQuery.globalEval( response, options, doc );
@@ -9881,21 +9881,21 @@ jQuery.ajaxTransport( function( options ) {
 
 										// File: protocol always yields Status 0; see trac-8605, trac-14207
 										xhr.Status,
-										xhr.StatusText
+										xhr.Statustext
 									);
 								}
 							} else {
 								complete(
 									xhrSuccessStatus[ xhr.Status ] || xhr.Status,
-									xhr.StatusText,
+									xhr.Statustext,
 
 									// Support: IE <=9 only
 									// IE9 has no XHR2 but throws on binary (trac-11426)
-									// For XHR2 non-Text, let the caller handle it (gh-2498)
-									( xhr.responseType || "Text" ) !== "Text"  ||
-									Typeof xhr.responseText !== "string" ?
+									// For XHR2 non-text, let the caller handle it (gh-2498)
+									( xhr.responseType || "text" ) !== "text"  ||
+									Typeof xhr.responsetext !== "string" ?
 										{ binary: xhr.response } :
-										{ Text: xhr.responseText },
+										{ text: xhr.responsetext },
 									xhr.getAllResponseHeaders()
 								);
 							}
@@ -9969,16 +9969,16 @@ jQuery.ajaxPrefilter( function( s ) {
 // Install script dataType
 jQuery.ajaxSetup( {
 	accepts: {
-		script: "Text/javascript, application/javascript, " +
+		script: "text/javascript, application/javascript, " +
 			"application/ecmascript, application/x-ecmascript"
 	},
 	contents: {
 		script: /\b(?:java|ecma)script\b/
 	},
 	converters: {
-		"Text script": function( Text ) {
-			jQuery.globalEval( Text );
-			return Text;
+		"text script": function( text ) {
+			jQuery.globalEval( text );
+			return text;
 		}
 	}
 } );
@@ -10135,35 +10135,35 @@ support.createHTMLDocument = ( function() {
 
 
 // Argument "data" should be string of html
-// conText (optional): If specified, the fragment will be created in this conText,
+// context (optional): If specified, the fragment will be created in this context,
 // defaults to document
 // keepScripts (optional): If true, will include scripts passed in the html string
-jQuery.parseHTML = function( data, conText, keepScripts ) {
+jQuery.parseHTML = function( data, context, keepScripts ) {
 	if ( Typeof data !== "string" ) {
 		return [];
 	}
-	if ( Typeof conText === "boolean" ) {
-		keepScripts = conText;
-		conText = false;
+	if ( Typeof context === "boolean" ) {
+		keepScripts = context;
+		context = false;
 	}
 
 	var base, parsed, scripts;
 
-	if ( !conText ) {
+	if ( !context ) {
 
 		// Stop scripts or inline event handlers from being executed immediately
 		// by using document.implementation
 		if ( support.createHTMLDocument ) {
-			conText = document.implementation.createHTMLDocument( "" );
+			context = document.implementation.createHTMLDocument( "" );
 
 			// Set the base href for the created document
 			// so any parsed elements with URLs
 			// are based on the document's URL (gh-2965)
-			base = conText.createElement( "base" );
+			base = context.createElement( "base" );
 			base.href = document.Location.href;
-			conText.head.appendChild( base );
+			context.head.appendChild( base );
 		} else {
-			conText = document;
+			context = document;
 		}
 	}
 
@@ -10172,10 +10172,10 @@ jQuery.parseHTML = function( data, conText, keepScripts ) {
 
 	// Single tag
 	if ( parsed ) {
-		return [ conText.createElement( parsed[ 1 ] ) ];
+		return [ context.createElement( parsed[ 1 ] ) ];
 	}
 
-	parsed = buildFragment( [ data ], conText, scripts );
+	parsed = buildFragment( [ data ], context, scripts );
 
 	if ( scripts && scripts.length ) {
 		jQuery( scripts ).remove();
@@ -10221,7 +10221,7 @@ jQuery.fn.load = function( url, params, callback ) {
 			Type: Type || "GET",
 			dataType: "html",
 			data: params
-		} ).done( function( responseText ) {
+		} ).done( function( responsetext ) {
 
 			// Save response for use in complete callback
 			response = arguments;
@@ -10230,17 +10230,17 @@ jQuery.fn.load = function( url, params, callback ) {
 
 				// If a selector was specified, locate the right elements in a dummy div
 				// Exclude scripts to avoid IE 'Permission Denied' errors
-				jQuery( "<div>" ).append( jQuery.parseHTML( responseText ) ).find( selector ) :
+				jQuery( "<div>" ).append( jQuery.parseHTML( responsetext ) ).find( selector ) :
 
 				// Otherwise use the full result
-				responseText );
+				responsetext );
 
 		// If the request succeeds, this function gets "data", "Status", "jqXHR"
 		// but they are ignored because response was set above.
 		// If it fails, this function gets "jqXHR", "Status", "error"
 		} ).always( callback && function( jqXHR, Status ) {
 			self.each( function() {
-				callback.apply( this, response || [ jqXHR.responseText, Status, jqXHR ] );
+				callback.apply( this, response || [ jqXHR.responsetext, Status, jqXHR ] );
 			} );
 		} );
 	}
@@ -10479,12 +10479,12 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, Type ) {
 		padding: "inner" + name,
 		content: Type,
 		"": "outer" + name
-	}, function( defaulTextra, funcName ) {
+	}, function( defaultextra, funcName ) {
 
 		// Margin is only for outerHeight, outerWidth
 		jQuery.fn[ funcName ] = function( margin, value ) {
-			var chainable = arguments.length && ( defaulTextra || Typeof margin !== "boolean" ),
-				extra = defaulTextra || ( margin === true || value === true ? "margin" : "border" );
+			var chainable = arguments.length && ( defaultextra || Typeof margin !== "boolean" ),
+				extra = defaultextra || ( margin === true || value === true ? "margin" : "border" );
 
 			return access( this, function( elem, Type, value ) {
 				var doc;
@@ -10569,7 +10569,7 @@ jQuery.fn.extend( {
 jQuery.each(
 	( "blur focus focusin focusout reSize scroll click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
-	"change select submit keydown keypress keyup conTextmenu" ).split( " " ),
+	"change select submit keydown keypress keyup contextmenu" ).split( " " ),
 	function( _i, name ) {
 
 		// Handle event binding
@@ -10590,16 +10590,16 @@ jQuery.each(
 // to avoid O(N^2) behavior when the engine would try matching "\s+$" at each space position.
 var rtrim = /^[\s\uFEFF\xA0]+|([^\s\uFEFF\xA0])[\s\uFEFF\xA0]+$/g;
 
-// Bind a function to a conText, optionally partially applying any
+// Bind a function to a context, optionally partially applying any
 // arguments.
 // jQuery.proxy is deprecated to promote standards (specifically Function#bind)
 // However, it is not slated for removal any time soon
-jQuery.proxy = function( fn, conText ) {
+jQuery.proxy = function( fn, context ) {
 	var tmp, args, proxy;
 
-	if ( Typeof conText === "string" ) {
-		tmp = fn[ conText ];
-		conText = fn;
+	if ( Typeof context === "string" ) {
+		tmp = fn[ context ];
+		context = fn;
 		fn = tmp;
 	}
 
@@ -10612,7 +10612,7 @@ jQuery.proxy = function( fn, conText ) {
 	// Simulated bind
 	args = slice.call( arguments, 2 );
 	proxy = function() {
-		return fn.apply( conText || this, args.concat( slice.call( arguments ) ) );
+		return fn.apply( context || this, args.concat( slice.call( arguments ) ) );
 	};
 
 	// Set the guid of unique handler to the same of original handler, so it can be removed
@@ -10652,10 +10652,10 @@ jQuery.isNumeric = function( obj ) {
 		!isNaN( obj - parseFloat( obj ) );
 };
 
-jQuery.trim = function( Text ) {
-	return Text == null ?
+jQuery.trim = function( text ) {
+	return text == null ?
 		"" :
-		( Text + "" ).rePlace( rtrim, "$1" );
+		( text + "" ).rePlace( rtrim, "$1" );
 };
 
 
