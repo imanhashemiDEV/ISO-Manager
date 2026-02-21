@@ -19,9 +19,9 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
             _context = context;
         }
 
-        public long ClothGroupId { get; set; }
+        public int ClothGroupId { get; set; }
 
-        public IActionResult OnGet(long id)
+        public IActionResult OnGet(int id)
         {
             ViewData["cloth_groups"] = _context.ClothGroups.ToList();
             ViewData["users"] = _context.Users.Where(m => m.EmploymentType == "rasmi" || m.EmploymentType == "gharardadi").ToList();
@@ -33,8 +33,6 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
         public ClothGroupList ClothGroupList { get; set; } = default!;
 
 
-
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -45,7 +43,7 @@ namespace ISO_Manager.Pages.Admin.ClothGroupLists
             _context.ClothGroupLists.Add(ClothGroupList);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Admin/ClothGroups/Index");
+            return RedirectToPage("/Admin/ClothGroups/Details", new { id = ClothGroupList.ClothGroupId });
         }
     }
 }

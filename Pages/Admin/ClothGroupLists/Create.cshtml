@@ -1,10 +1,9 @@
 ﻿@page
 @model ISO_Manager.Pages.Admin.ClothGroupLists.CreateModel
 
-        @{
-        ViewData["Title"] = "Create";
-            Layout = "~/Pages/Shared/_Layout.cshtml";
-        }
+@{
+ViewData["Title"] = "لیست اعضای گروه";
+}
         
 <div class="pc-container">
     <div class="pc-content">
@@ -13,6 +12,7 @@
             <div class="page-block">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-route-id="@Model.ClothGroupId" asp-page="/Admin/ClothGroups/Details">لیست اعضای گروه</a></li>
                     <li class="breadcrumb-item" aria-current="page">ایجاد</li>
                 </ul>
             </div>
@@ -32,20 +32,20 @@
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ClothGroupList.Shoes" class="control-label"></label>
-                                    <input asp-for="ClothGroupList.Shoes" class="form-control"/>
+                                    <input asp-for="ClothGroupList.Shoes" class="form-control my-2"/>
                                     <span asp-validation-for="ClothGroupList.Shoes" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ClothGroupList.BoilerSuit" class="control-label"></label>
-                                    <input asp-for="ClothGroupList.BoilerSuit" class="form-control"/>
+                                    <input asp-for="ClothGroupList.BoilerSuit" class="form-control my-2"/>
                                     <span asp-validation-for="ClothGroupList.BoilerSuit" class="text-danger"></span>
                                 </div>
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ClothGroupList.UserId" class="control-label"></label>
-                                    <select id="users" asp-for="ClothGroupList.UserId" class="form-select">
+                                    <select id="users" asp-for="ClothGroupList.UserId" class="form-select my-2">
                                         @foreach (var item in ViewBag.users)
                                         {
-                                            <option value="@item.id">@item.name - - @item.register_code</option>
+                                            <option value="@item.Id">@item.Name - - @item.RegisterCode</option>
                                         }
                                     </select>
                                 </div>

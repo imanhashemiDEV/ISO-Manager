@@ -27,7 +27,6 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
         [BindProperty]
         public ClothGroup ClothGroup { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

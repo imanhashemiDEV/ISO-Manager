@@ -1,10 +1,9 @@
 ﻿@page
 @model ISO_Manager.Pages.Admin.ClothGroups.CreateModel
 
-        @{
-        ViewData["Title"] = "Create";
-            Layout = "~/Pages/Shared/_Layout.cshtml";
-        }
+@{
+ViewData["Title"] = "ایجاد گروه البسه";
+}
         
 <div class="pc-container">
     <div class="pc-content">
@@ -13,6 +12,7 @@
             <div class="page-block">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a asp-page="/Admin/Index">خانه</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">لیست گروه البسه</a></li>
                     <li class="breadcrumb-item" aria-current="page">ایجاد</li>
                 </ul>
             </div>
@@ -30,7 +30,7 @@
                             <div class="grid grid-cols-12 gap-6">
                                 <div class="col-span-12 md:col-span-6 mb-4">
                                     <label asp-for="ClothGroup.Title" class="control-label"></label>
-                                    <input asp-for="ClothGroup.Title" class="form-control" />
+                                    <input asp-for="ClothGroup.Title" class="form-control my-2" />
                                     <span asp-validation-for="ClothGroup.Title" class="text-danger"></span>
                                 </div>
                             </div>

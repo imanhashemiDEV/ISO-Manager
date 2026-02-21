@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ISO_Manager.Data;
+using ISO_Manager.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using ISO_Manager.Data;
-using ISO_Manager.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ISO_Manager.Pages.Admin.ClothGroups
 {
@@ -22,7 +23,7 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
         public ClothGroup ClothGroup { get; set; } = default!;
         public IList<ClothGroupList> ClothGroupList { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(long? id, int pageId = 1)
+        public async Task<IActionResult> OnGetAsync(int? id, int pageId = 1)
         {
             if (id == null)
             {
@@ -62,6 +63,26 @@ namespace ISO_Manager.Pages.Admin.ClothGroups
             }
 
             return NotFound();
+        }
+
+
+        public async Task<IActionResult> OnGetSetCloth(string type , int clothGroupId)
+        {
+            var lists = await _context.ClothGroupLists.Where(m=>m.ClothGroupId == clothGroupId ).ToListAsync();
+            foreach (var item in lists)
+            {
+               var newCloth =  new Cloth {
+                    UserId =  item.UserId,
+                    ReceiveDate = DateTime.Now,
+                    ClothType = type,
+                    ReceiveType = "usual",
+                    Size = item.Shoes
+                };
+
+                _context.Clothes.Add(newCloth);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToPage("/Admin/Clothes/Index");
         }
     }
 }

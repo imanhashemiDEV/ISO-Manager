@@ -31,7 +31,6 @@ namespace ISO_Manager.Pages.Admin.Clothes
 
         public async Task OnPostAsync()
         {
-
             if (Search != null)
             {
                 Cloth = await _context.Clothes.Include(c=>c.User)
@@ -42,8 +41,21 @@ namespace ISO_Manager.Pages.Admin.Clothes
             {
                 Cloth = [];
             }
+        }
 
+        public async Task<IActionResult> OnGetDelete(int id)
+        {
+          
 
+            var record = await _context.Clothes.FindAsync(id);
+
+            if (record != null)
+            {
+                _context.Clothes.Remove(record);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
         }
     }
 }

@@ -3,7 +3,7 @@
 @model ISO_Manager.Pages.Admin.Clothes.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "سوابق دریافت البسه";
     var row = 1;
 }
 
@@ -73,9 +73,9 @@
                                 @foreach (var item in Model.Cloth)
                                 {
                                     <tr>
-                                            <td>@(row++ + ((ViewBag.pageId - 1) * ViewBag.Take))</td>
+                                            <td>@(row++)</td>
                                             <td class="text-start">
-                                                @if (item.ClothType.Equals("Shoes"))
+                                                @if (item.ClothType!.Equals("shoes"))
                                                 {
                                                     <span class="badge text-white bg-rose-500">کفش ایمنی</span>
                                                 }
@@ -83,7 +83,7 @@
                                                 {
                                                     <span class="badge text-white bg-danger-500">کفش ساق بلند</span>
                                                 }
-                                                else if (item.ClothType.Equals("boot-Shoes"))
+                                                else if (item.ClothType.Equals("boot-shoes"))
                                                 {
                                                     <span class="badge text-white bg-info-500">چکمه ایمنی</span>
                                                 }
@@ -112,7 +112,7 @@
                                                 @DateToPersian.ToShamsi(item.ReceiveDate)
                                             </td>
                                         <td class="text-start">
-                                                @if (item.ReceiveType.Equals("usual"))
+                                                @if (item.ReceiveType!.Equals("usual"))
                                             {
                                                 <span class="badge text-white bg-success-500">سهمیه</span>
                                             }
@@ -136,8 +136,33 @@
                                             @Html.DisplayFor(modelItem => item.Description)
                                         </td>
                                         <td>
+                                            <a data-pc-animate="3d-sign" data-pc-toggle="modal" data-pc-target="#animateModal" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                <i class="ti ti-trash text-xl leading-none"></i>
+                                            </a>
+                                                <div id="animateModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="animateModalLabel"
+                                                     aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">حذف</h5>
+                                                                <button data-pc-modal-dismiss="#animateModal"
+                                                                        class="text-lg flex items-center justify-center rounded w-7 h-7 text-secondary-500 hover:bg-danger-500/10 hover:text-danger-500">
+                                                                    <i class="ti ti-x"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h3 class="mb-4 text-rose-500">آیا از حذف مطمئن هستید؟</h3>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary ml-4" data-pc-modal-dismiss="#animateModal">انصراف</button>
+                                                                <a asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-primary ltr:ml-2 trl:mr-2">حذف</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             <a asp-page="./Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                <i class="ti ti-edit text-xl leading-none"></i>
+                                                    <i class="ti ti-edit text-xl leading-none"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -150,6 +175,8 @@
                 </div>
             </div>
         </div>
+
+    
         <!-- [ Main Content ] end -->
     </div>
 </div>

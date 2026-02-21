@@ -230,6 +230,7 @@ namespace ISO_Manager.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClothType")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -245,6 +246,7 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ReceiveType")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Size")
@@ -254,6 +256,7 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -280,6 +283,7 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -300,10 +304,10 @@ namespace ISO_Manager.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BoilerSuit")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("BoilerSuit")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("ClothGroupId")
+                    b.Property<int>("ClothGroupId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -312,13 +316,14 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<int?>("OrganizationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Shoes")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Shoes")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -858,16 +863,16 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<int?>("OrganizationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("text")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("textId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("WorkPlaceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("textId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -876,9 +881,9 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.HasIndex("textId");
-
                     b.HasIndex("WorkPlaceId");
+
+                    b.HasIndex("textId");
 
                     b.ToTable("InspectionDetails");
                 });
@@ -930,11 +935,11 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<int?>("Step")
                         .HasColumnType("int");
 
-                    b.Property<string>("text")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("text")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1049,11 +1054,11 @@ namespace ISO_Manager.Data.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("text")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("text")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1081,12 +1086,14 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OccupationType")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("OrganizationId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -1171,6 +1178,7 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -1349,6 +1357,7 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -1787,6 +1796,7 @@ namespace ISO_Manager.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -2098,7 +2108,9 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Organization");
 
@@ -2118,7 +2130,9 @@ namespace ISO_Manager.Data.Migrations
                 {
                     b.HasOne("ISO_Manager.Models.ClothGroup", "ClothGroup")
                         .WithMany()
-                        .HasForeignKey("ClothGroupId");
+                        .HasForeignKey("ClothGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ISO_Manager.Models.Organization", "Organization")
                         .WithMany()
@@ -2126,7 +2140,9 @@ namespace ISO_Manager.Data.Migrations
 
                     b.HasOne("ISO_Manager.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ClothGroup");
 
@@ -2340,13 +2356,13 @@ namespace ISO_Manager.Data.Migrations
                         .WithMany()
                         .HasForeignKey("OrganizationId");
 
-                    b.HasOne("ISO_Manager.Models.Inspectiontext", "Inspectiontext")
-                        .WithMany()
-                        .HasForeignKey("textId");
-
                     b.HasOne("ISO_Manager.Models.WorkPlace", "WorkPlace")
                         .WithMany()
                         .HasForeignKey("WorkPlaceId");
+
+                    b.HasOne("ISO_Manager.Models.Inspectiontext", "Inspectiontext")
+                        .WithMany()
+                        .HasForeignKey("textId");
 
                     b.Navigation("Inspection");
 

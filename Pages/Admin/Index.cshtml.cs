@@ -2,12 +2,14 @@ using System.Globalization;
 using ISO_Manager.Data;
 using ISO_Manager.Models;
 using ISO_Manager.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace ISO_Manager.Pages.Admin
 {
+    //[Authorize]
     public class IndexModel : PageModel
     {
 

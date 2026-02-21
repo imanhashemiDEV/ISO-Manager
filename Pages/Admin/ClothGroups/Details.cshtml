@@ -2,7 +2,7 @@
 @model ISO_Manager.Pages.Admin.ClothGroups.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "لیست اعضای گروه";
 }
 
 
@@ -20,6 +20,27 @@
         <!-- [ breadcrumb ] end -->
         <!-- [ Main Content ] start -->
         <div class="grid grid-cols-12 gap-x-6">
+            <div class="col-span-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ثبت گروهی البسه</h5>
+                    </div>
+                    <div class="card-body pc-component">
+                        <div class="flex flex-wrap gap-2">
+                            <a asp-page-handler="SetCloth" asp-route-type="shoes" asp-route-clothGroupId="@Model.ClothGroup.Id" class="btn shadow-[0_6px_7px_-1px_rgba(80,86,175,.3)] btn-primary">کفش ایمنی </a>
+                            <a asp-page-handler="SetCloth" asp-route-type="boot" asp-route-clothGroupId="@Model.ClothGroup.Id" class="btn shadow-[0_6px_7px_-1px_rgba(80,86,175,.3)] btn-primary">چکمه ایمنی </a>
+                            <a asp-page-handler="SetCloth" asp-route-type="boot-shoes" asp-route-clothGroupId="@Model.ClothGroup.Id" class="btn shadow-[0_6px_7px_-1px_rgba(80,86,175,.3)] btn-primary">کفش ایمنی ساق بلند </a>
+                            <a asp-page-handler="SetCloth" asp-route-type="boiler-suit" asp-route-clothGroupId="@Model.ClothGroup.Id" class="btn shadow-[0_6px_7px_-1px_rgba(80,86,175,.3)] btn-primary">لباس کار</a>
+                            <a asp-page-handler="SetCloth" asp-route-type="glasses" asp-route-clothGroupId="@Model.ClothGroup.Id" class="btn shadow-[0_6px_7px_-1px_rgba(80,86,175,.3)] btn-primary">عینک ایمنی </a>
+                            <a asp-page-handler="SetCloth" asp-route-type="earmuff" asp-route-clothGroupId="@Model.ClothGroup.Id" class="btn shadow-[0_6px_7px_-1px_rgba(80,86,175,.3)] btn-primary">گوشی ایمنی </a>
+                            <a asp-page-handler="SetCloth" asp-route-type="safety-helmet" asp-route-clothGroupId="@Model.ClothGroup.Id" class="btn shadow-[0_6px_7px_-1px_rgba(80,86,175,.3)] btn-primary">کلاه ایمنی </a>
+                            <a asp-page-handler="SetCloth" asp-route-type="rain-coat" asp-route-clothGroupId="@Model.ClothGroup.Id" class="btn shadow-[0_6px_7px_-1px_rgba(80,86,175,.3)] btn-primary">بارانی</a>
+                            <a asp-page-handler="SetCloth" asp-route-type="over-coat" asp-route-clothGroupId="@Model.ClothGroup.Id" class="btn shadow-[0_6px_7px_-1px_rgba(80,86,175,.3)] btn-primary">اورکت</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-span-12">
                 <div class="card table-card">
                     <div class="card-header">
@@ -61,7 +82,7 @@
                                                 @Html.DisplayFor(modelItem => item.BoilerSuit)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.User.Name)
+                                               @Html.DisplayFor(modelItem => item.User.Name)
                                             </td>
                                             <td>
                                                 <a asp-page="/Admin/ClothGroupLists/Edit" asp-route-id="@item.Id" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">

@@ -11,11 +11,11 @@ namespace ISO_Manager.Models
 
         [Required(ErrorMessage = "سایز کفش الزامی است")]
         [Display(Name = "سایز کفش")]
-        public string? Shoes { get; set; }
+        public int? Shoes { get; set; }
 
         [Required(ErrorMessage = "سایز لباس الزامی است")]
         [Display(Name = "سایز لباس")]
-        public string? BoilerSuit { get; set; }
+        public int? BoilerSuit { get; set; }
 
         [Display(Name = "تاریخ ایجاد")]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
